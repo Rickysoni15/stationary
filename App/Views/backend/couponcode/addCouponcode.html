@@ -1,0 +1,175 @@
+{% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+<style>
+	.waves-effect {
+		color: white;
+		background-color: #3c8dbc;
+	}
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Coupon Code</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Coupon Code</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<!-- <h6 class="panel-title txt-dark">Settings</h6> -->
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										{% if couponcodeData %}
+										<form method="POST" action="/backend/editPostCouponcode"
+											class="form-horizontal" enctype="multipart/form-data">
+											{% else %}
+											<form id="formdata" method="POST" action="/backend/addPostCouponcode"
+												class="form-horizontal" enctype="multipart/form-data">
+												{% endif %}
+												<table border="0" class="table display  pb-30">
+													<div class="col-sm-12">
+														<div class="panel-wrapper collapse in">
+															<div class="panel-body">
+                                                                <input type="hidden" class="form-control"
+																			name="id" id="id"
+																			value="{{couponcodeData._id}}" />
+																<div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="couponcode">CouponCode Name:</label>
+																	<div class="col-sm-6">
+																		<input type="text" class="form-control"
+																			name="couponcode" id="couponcode"
+																			value="{{couponcodeData.couponcode}}" required/>
+																	</div>
+																</div>
+                                                                <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="discount_amount">Discount Amount:</label>
+																	<div class="col-sm-6">
+																		<input type="number" class="form-control"
+                                                                        pattern="[0-9]+([\,|\.][0-9]+)?" step="0.01" class="form-control"
+																			name="discount_amount" id="discount_amount"
+																			value="{{couponcodeData.discount_amount}}" required/>
+																	</div>
+																</div>
+                                                                <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="couponcode_text">Coupon Code Text:</label>
+																	<div class="col-sm-6">
+																		<input type="text" class="form-control"
+																			name="couponcode_text" id="couponcode_text"
+																			value="{{couponcodeData.couponcode_text}}" required/>
+																	</div>
+																</div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label mb-10 col-sm-2"
+                                                                        for="product_newform"> Set CouponCode
+                                                                        From:</label>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="col-lg-5" style="padding: 0;">
+                                                                            <input type="date" class="form-control"
+                                                                                name="couponcode_startdate" id="couponcode_startdate"
+                                                                                value="{{couponcodeData.couponcode_startdate}}" required/>
+                                                                        </div>
+                                                                        <div class="col-lg-2" style="width: 10.666667% !important;padding-left: 5px;">
+            
+                                                                            <h4>To</h4>
+            
+                                                                        </div>
+                                                                        <div class="col-lg-5" style="padding: 0;">
+                                                                            <input type="date" class="form-control"
+                                                                                name="couponcode_enddate" id="couponcode_enddate"
+                                                                                value="{{couponcodeData.couponcode_enddate}}" min={{previous_date}} required/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label mb-10 col-sm-2"
+                                                                        for="couponcode_type">CouponCode Type:</label>
+                                                                    <div class="col-sm-6">
+                                                                        <select id="couponcode_type" name="couponcode_type"
+                                                                            style="margin-top: 5px;" required>
+                                                                            <option value="">Please Select</option>
+                                                                            <option value="true" {% if
+                                                                                couponcodeData.couponcode_type=="true" %}
+                                                                                selected {% endif %}>One Time Used
+                                                                            </option>
+                                                                            <option value="false" {% if
+                                                                                couponcodeData.couponcode_type=="false" %}
+                                                                                selected {% endif %}>Multiple Time Used
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+														</div>
+													</div>
+													<tr>
+														<td colspan="2">
+
+															{% if couponcodeData %}
+															<input type="submit" class="btn btn-success btn-flat"
+																value="Update">
+                                                               
+                                                                <button id="back_btn" class="btn waves-effect waves-light" name="action">Back
+                                                                </button>
+															{%else%}
+															<input id="submit" type="submit"
+																class="btn btn-success btn-flat" value="submit">
+                                                               
+                                                                <button id="back_btn" class="btn waves-effect waves-light" name="action">Back
+                                                                </button>
+															{% endif %}
+														</td>
+													</tr>
+												</table>
+											</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- /Row -->
+			</div>
+		</section>
+
+		{% endblock %}
+
+		{% block Jscript %}
+		<script>
+            $("#back_btn").click(function () {
+                window.history.back();
+            });
+		</script>
+
+		{% endblock %}

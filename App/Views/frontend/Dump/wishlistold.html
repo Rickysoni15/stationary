@@ -1,0 +1,235 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+<div class="site-content">
+    <main class="site-main  main-container no-sidebar">
+        <div class="container">
+            <div class="breadcrumb-trail breadcrumbs">
+                <ul class="trail-items breadcrumb">
+                    <li class="trail-item trail-begin">
+                        <a href="#">
+								<span>
+									Home
+								</span>
+                        </a>
+                    </li>
+                    <li class="trail-item trail-end active">
+							<span>
+								Wishlist
+							</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="main-content-cart main-content col-sm-12">
+                    <h3 class="custom_blog_title">
+                        Wishlist
+                    </h3>
+                    <div class="page-main-content">
+                        <div class="shoppingcart-content">
+                            <form class="cart-form">
+                                <table class="shop_table">
+                                    <thead>
+                                    <tr>
+                                        <th class="product-remove"></th>
+                                        <th class="product-thumbnail"></th>
+                                        <th class="product-name"></th>
+                                        <th class="product-price"></th>
+                                        <th class="product-quantity"></th>
+                                        <th class="product-subtotal"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% set i = 0 %}
+                                    {% if wishlistdata %}
+                                    {% for item in wishlistdata %}
+                                    {% set i = i + 1 %}
+                                    <tr class="cart_item">
+                                        <td class="product-remove">
+                                            <a href="#" class="remove_wishlist" id="{{item._id}}"></a>
+                                        </td>
+                                        <td class="product-thumbnail">
+                                            <a href="#">
+                                                <img src="{{item.product_image[0].path}}" alt="img"
+                                                     class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                            </a>
+                                        </td>
+                                        <td class="product-name" data-title="Product">
+                                            <a href="#" class="title">{{item.product_name}}</a>
+                                            <span class="attributes-select attributes-color">Black,</span>
+                                            <span class="attributes-select attributes-size">XXL</span>
+                                        </td>
+                                        <td class="product-quantity" data-title="Quantity">
+                                            <div class="quantity">
+                                                <div class="control">
+                                                    <a class="btn-number qtyminus quantity-minus" data-id="{{item._id}}" id="{{item.product_price}}" data-price="{{item.product_price}}" href="#">-</a>
+                                                    <input type="text" data-step="1" data-num="0" id="id{{item._id}}" min="1" data-min="1" value="1" title="Qty"
+                                                           class="input-qty qty" size="4" readonly>
+                                                    <a href="#" class="btn-number qtyplus quantity-plus" data-id="{{item._id}}" id="{{item.product_price}}">+</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="product-price" data-title="Price">
+													<span class="woocommerce-Price-amount amount" data-id="{{item._id}}" id="{{item.product_price}}">
+														<span class="woocommerce-Price-currencySymbol">
+															
+														</span>
+														{{item.product_price}}
+													</span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+                                    <tr>
+                                        <td class="actions">
+                                            <div class="coupon">
+                                                <label class="coupon_code">Coupon Code:</label>
+                                                <input type="text" class="input-text" placeholder="Promotion code here">
+                                                <a href="#" class="button"></a>
+                                            </div>
+                                            <div class="order-total">
+														<span class="title">
+															Total Price:
+														</span>
+                                                <span class="total-price" id="95">
+															95
+														</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            <div class="control-cart">
+                                <button class="button btn-continue-shopping">
+                                    Continue Shopping
+                                </button>
+                                <button class="button btn-cart-to-checkout">
+                                    Checkout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script>
+        $(document).ready(function () {
+        var host = window.location.origin;
+
+        $(function() {
+		"use strict";
+
+		var SweetAlert = function() {};
+
+		SweetAlert.prototype.init = function() {
+
+			//Parameter
+            var host = window.location.origin;
+			$('body').on('click', '.remove_wishlist', function(e){
+				var id = $(this).attr('id');
+				var thisElement = this;
+					swal({
+							title: "Are you sure?",
+							text: "You will not be able to recover this item!",
+							type: "warning",
+							showCancelButton: true,
+							confirmButtonColor: "#e69a2a",
+							confirmButtonText: "Yes, delete it!",
+							cancelButtonText: "No, cancel plx!",
+							closeOnConfirm: false,
+							closeOnCancel: false
+					}, function(isConfirm){
+							if (isConfirm) {
+								$.ajax({
+									type: 'POST',
+									url: host + "/wishlist_call",
+									data: {id: id},
+									success: function(resultData) {
+										// alert(resultData)
+										console.log(resultData);
+										if (resultData == 'success') {
+											swal("Deleted!", "Your item has been deleted.", "success");
+                                            location.reload();
+										}else {
+											swal("Deleted!", "Your item has been deleted.", "success");
+                                            location.reload();
+										}
+										// alert("Save Complete")
+									}
+								});
+									swal("Deleted!", "Item Deleted Succesfully.", "success");
+							} else {
+									swal("Cancelled", "Item Not Deleted", "error");
+							}
+					});
+					return false;
+			});
+
+		},
+		$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+		$.SweetAlert.init();
+	});
+       let finaltotal = 0;
+        $(".woocommerce-Price-amount").each(function() {
+            let amount = $(this).attr('id');
+            console.log("am",amount);
+            finaltotal = parseFloat(finaltotal) + parseFloat(amount);
+            console.log("fn",finaltotal);
+
+            
+        });
+        $(".total-price").text(finaltotal)
+        let ii = 1;
+        let plustot = 0;
+        $(".quantity-plus").on("click", function() {
+            // if(ii >= 1){
+            let dataid = $(this).attr('data-id');
+            let idnum = $('#id'+dataid+'.input-qty').attr('data-num');  
+            if(idnum == 0){
+                ii = 1;
+            }
+            let amount = $(this).attr('id');
+            console.log("am",amount);
+            let oldamt = $('.quantity-minus').attr('data-price');
+            plustot = parseFloat(oldamt) + parseFloat(amount);
+            console.log("am",plustot);
+            $('.woocommerce-Price-amount[data-id='+dataid+']').text(plustot);
+            $(this).attr('id',plustot);
+            // }
+            ii = ii + 1;
+            $('#id'+dataid+'.input-qty').attr('data-num',ii);   
+        });
+        let minustot = 0;
+        let jj = 0
+        $(".quantity-minus").on("click", function() {
+            let datasid = $(this).attr('data-id');
+            // let qty = $('.input-qty[id'+datasid+']').attr('data-num');
+            var qty = $('#id'+datasid+'.input-qty').attr('data-num');
+            if(qty == 0){
+                ii = 1;
+            }   
+            jj = qty - 1;
+            $('#id'+datasid+'.input-qty').attr('data-num',jj);   
+            console.log("qty",jj);
+            if(jj >= 1){
+                let amt = $('.woocommerce-Price-amount[data-id='+datasid+']').text();
+                let oldamt = $('.quantity-minus').attr('data-price');
+                console.log("minus",amt,oldamt);
+                minustot = parseFloat(amt) - parseFloat(oldamt);
+                console.log("am",minustot);
+                $('.woocommerce-Price-amount[data-id='+datasid+']').text(minustot);
+                $(this).attr('id',minustot);
+            }
+        });
+
+	});
+</script>
+{% endblock %}

@@ -1,0 +1,3475 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+<style>
+    .imageSize {
+        height: 250px !important;
+    }
+
+    .pb_10 {
+        padding-top: 20px;
+        padding-bottom: 10px;
+
+    }
+
+    .priceaftermodel:after {
+        font-size: 14px;
+        font-weight: bold;
+    }
+</style>
+
+
+<div class="main-content main-content-product left-sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="/">Home</a>
+                        </li>
+                        <!-- <li class="trail-item trail-end active">
+                            Grid Products
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="content-area shop-grid-content no-banner col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="site-main">
+                    <input type="hidden" id="user_login" value="{{App.role}}">
+
+                    <div class="shop-top-control">
+                        <!-- <form class="select-item select-form">
+                            <span class="title">Sort</span>
+                            <select title="sort" data-placeholder="12 Products/Page" class="chosen-select">
+                                <option value="1">12 Products/Page</option>
+                                <option value="2">9 Products/Page</option>
+                                <option value="3">10 Products/Page</option>
+                                <option value="4">8 Products/Page</option>
+                                <option value="5">6 Products/Page</option>
+                            </select>
+                        </form> -->
+                        <form class="filter-choice select-form">
+                            <span class="title">Sort by</span>
+                            <select title="sort-by" id="sort_idPrice" class="chosen-select priceSort">
+                                <option id="selectPrice" style="display: none;">Please Select</option>
+                                <option value="1">Sort by price: Low to High</option>
+                                <!-- <option value="2">Sort by popularity</option> -->
+                                <option value="3">Sort by average rating</option>
+                                <!-- <option value="4">Sort by newness</option> -->
+                                <option value="-1">Sort by price: High to Low</option>
+                            </select>
+                        </form>
+                        <div class="grid-view-mode">
+                            <div class="inner">
+                                <!-- <a href="/listproducts" class="modes-mode mode-list">
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <a href="/gridproducts" class="modes-mode mode-grid  active">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a> -->
+
+                                <a href="javascript:void(0)" id="listproducts" class="modes-mode mode-list">
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <a href="javascript:void(0)" id="gridproducts" class="modes-mode mode-grid ">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div id="gridItem"> -->
+
+                    <!-- <h3 class="custom_blog_title gridItem ">
+                        Grid Products
+                    </h3> -->
+                    <div class="gridItem" id="newGrid">
+
+                        <ul class="row list-products auto-clear equal-container  product-grid">
+
+                            {% if productfilterData.length %}
+
+                            {% for item in productfilterData %}
+
+                            {% if (loop.index <= 9) %} <li
+                                class="product-item  col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                <div class="product-inner">
+                                    <div class="product-top">
+                                        <div class="flash">
+                                            <span class="onnew">
+                                                <span class="text">
+                                                    new
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="product-thumb">
+
+                                        {% if item.product_defaultImg.length > 0 %}
+
+                                        {% for img in item.product_defaultImg %}
+
+                                        <div class="thumb-inner">
+
+                                            <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                <img src="{{img.path}}" alt="img" style=" height: 250px;">
+
+                                            </a>
+
+                                            <div class="thumb-group">
+                                                <div class="yith-wcwl-add-to-wishlist">
+                                                    <div class="yith-wcwl-add-button">
+                                                        {% if item.wishlist_arr != null %}
+                                                        <a href="javascript:void(0)" {% if
+                                                            item.wishlist_arr==item._id.toString() %}
+                                                            class="wishlist_call wishlist_active" {% else %}
+                                                            class="wishlist_call" {% endif %}
+                                                            data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                            to
+                                                            Wishlist</a>
+                                                        {% else %}
+                                                        <a href="javascript:void(0)" class="wishlist_call"
+                                                            data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                            to
+                                                            Wishlist</a>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:void(0)"
+                                                    class="button quick-wiew-button popup-button-click  openModel"
+                                                    data-id="{{item._id}}">Quick View</a>
+                                                <div class="loop-form-add-to-cart">
+                                                    <button class="single_add_to_cart_button button"
+                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}"
+                                                        id="{{item._id}}" data-price="{{item.product_price}}">Add to
+                                                        cart
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% endfor %}
+
+
+                                        {% else %}
+                                        <div class="thumb-inner">
+
+
+
+                                            <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+
+                                                <img src="/assets/images/no_image.jpg" alt="img" style="height: 250px;">
+
+                                            </a>
+
+
+                                            <div class="thumb-group">
+                                                <div class="yith-wcwl-add-to-wishlist">
+                                                    <div class="yith-wcwl-add-button">
+                                                        {% if item.wishlist_arr != null %}
+                                                        <a href="javascript:void(0)" {% if
+                                                            item.wishlist_arr==item._id.toString() %}
+                                                            class="wishlist_call wishlist_active" {% else %}
+                                                            class="wishlist_call" {% endif %}
+                                                            data="{{item.wishlist_arr}}"
+                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}"
+                                                            data-id="{{item._id}}">Add to
+                                                            Wishlist</a>
+                                                        {% else %}
+                                                        <a href="javascript:void(0)" class="wishlist_call"
+                                                            data="{{item.wishlist_arr}}"
+                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}"
+                                                            data-id="{{item._id}}">Add to
+                                                            Wishlist</a>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <a href="javascript:void(0)"
+                                                    class="button quick-wiew-button popup-button-click  openModel"
+                                                    data-id="{{item._id}}">Quick View</a>
+                                                <div class="loop-form-add-to-cart">
+                                                    <button class="single_add_to_cart_button button" id="{{item._id}}"
+                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}"
+                                                        data-price="{{item.product_price}}">Add to cart
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% endif %}
+                                    </div>
+                                    <div class="product-info pb_20">
+                                        <h5 class="product-name product_title">
+                                            <a
+                                                href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                <span class="proName" data-proName="{{item.product_name}}"></span>
+                                            </a>
+                                        </h5>
+                                        <div class="group-info">
+                                            <div class="stars-rating">
+                                                <div class="star-ratingD">
+                                                    <span class="starD-{{item.product_rating_num}}"></span>
+                                                </div>
+                                                <div class="count-starD">
+                                                    {% if item.product_rating != 0 %} {{item.product_rating}} {% endif
+                                                    %}
+                                                </div>
+                                            </div>
+                                            <div class="price">
+
+                                                {% if item.is_discount == "1" and item.discount_start == "true" %}
+
+
+                                                <del>
+                                                    &#8377;<span class="main_price"
+                                                        data-main_price="{{item.product_price}}"></span>
+                                                </del>
+                                                <ins>
+                                                    &#8377;<span class="dis_price"
+                                                        data-dis_price="{{item.discount_price}}"></span>
+                                                    <span class="product_stock_quantity"
+                                                        data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                        style="color: red;"></span>
+                                                </ins>
+
+                                                {% else %}
+
+
+                                                <ins>
+
+                                                    &#8377;<span class="main_price"
+                                                        data-main_price="{{item.product_price}}"></span>
+                                                    <span class="product_stock_quantity"
+                                                        data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                        style="color: red;"></span>
+                                                </ins>
+
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </li>
+                                {% endif %}
+
+                                {% endfor %}
+
+                                {% else %}
+
+                                <div class="productnot_found">
+                                    <h1>
+                                        Product not found !
+                                    </h1>
+                                </div>
+
+                                {% endif %}
+                        </ul>
+
+                    </div>
+
+                    <!-- </div> -->
+
+                    <!-- <div id="listItem"> -->
+
+                    <!-- <h3 class="custom_blog_title listItem">
+                        List Products
+                    </h3> -->
+                    <div class="listItem" id="listView">
+                        <ul class="row list-products auto-clear equal-container  product-list">
+
+                            {% if productfilterData.length %}
+
+                            {% for item in productfilterData %}
+
+                            {% if (loop.index <= 9) %} <li
+                                class="product-item style-list col-lg-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-ts-12">
+                                <div class="product-inner">
+                                    <div class="product-top">
+                                        <div class="flash">
+                                            <span class="onnew">
+                                                <span class="text">
+                                                    new
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="products-bottom-content">
+                                        <div class="product-thumb">
+
+                                            {% if item.product_defaultImg.length > 0 %}
+
+                                            {% for img in item.product_defaultImg %}
+                                            <div class="thumb-inner">
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                    <img src="{{img.path}}" alt="img" style="height:250px ;">
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="button quick-wiew-button popup-button-click  openModel  "
+                                                    data-id="{{item._id}}">Quick View</a>
+                                            </div>
+                                            {% endfor %}
+                                            {% else %}
+
+                                            <div class="thumb-inner">
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                    <img src="/assets/images/no_image.jpg" alt="img"
+                                                        style="height:250px;">
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="button quick-wiew-button popup-button-click openModel  "
+                                                    data-id="{{item._id}}">Quick View</a>
+                                            </div>
+
+                                            {% endif %}
+
+
+                                        </div>
+                                        <div class="product-info-left">
+                                            <div class="yith-wcwl-add-to-wishlist">
+                                                <div class="yith-wcwl-add-button">
+                                                    {% if item.wishlist_arr != null %}
+                                                    <a href="javascript:void(0)" {% if
+                                                        item.wishlist_arr==item._id.toString() %}
+                                                        class="wishlist_call wishlist_active" {% else %}
+                                                        class="wishlist_call" {% endif %} data="{{item.wishlist_arr}}"
+                                                        data-id="{{item._id}}"
+                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                        to Wishlist</a>
+                                                    {% else %}
+                                                    <a href="javascript:void(0)" class="wishlist_call"
+                                                        data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                        to
+                                                        Wishlist</a>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <h5 class="product-name product_title">
+                                                <a
+                                                    href="/productDetails/{{item._id}}/{{item.product_name}}">{{item.product_name}}</a>
+                                            </h5>
+                                            <div class="stars-rating">
+                                                <div class="star-ratingD">
+                                                    <span class="starD-{{item.product_rating_num}}"></span>
+                                                </div>
+                                                <div class="count-starD">
+                                                    {% if item.product_rating != 0 %} {{item.product_rating}} {% endif
+                                                    %}
+                                                </div>
+                                            </div>
+                                            <ul class="product-attributes">
+                                                <li>
+                                                    Brand: {{item.product_brand}}
+                                                </li>
+
+                                            </ul>
+                                            <ul class="attributes-display">
+                                                <li class="swatch-color">
+                                                    SKU: {{item.product_sku}}
+                                                </li>
+
+                                            </ul>
+                                            <ul class="attributes-display">
+                                                <li class="swatch-text-label">
+                                                    Sold By: {{item.venodor_name}}
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="product-info-right">
+
+                                            <div class="price">
+                                                {% if item.is_discount == "1" and item.discount_start == "true" %}
+                                                <del>
+                                                    &#8377;<span class="main_price"
+                                                        data-main_price="{{item.product_price}}"></span>
+
+
+
+                                                </del>
+                                                <ins>
+                                                    &#8377;<span class="dis_price"
+                                                        data-dis_price="{{item.discount_price}}"></span>
+                                                    <span class="product_stock_quantity"
+                                                        data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                        style="color: red;"></span>
+
+                                                </ins>
+
+                                                {% else %}
+
+                                                <ins>
+
+                                                    &#8377;<span class="main_price"
+                                                        data-main_price="{{item.product_price}}"></span>
+                                                    <span class="product_stock_quantity"
+                                                        data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                        style="color: red;"></span>
+                                                </ins>
+
+                                                {% endif %}
+                                            </div>
+                                            <!-- <div class="price">
+
+                                                {% if item.is_discount == "1" %}
+                                                <del>
+                                                    &#8377;{{item.product_price}}
+                                                </del>
+                                                <ins>
+                                                    &#8377;{{item.discount_price}}
+                                                </ins>
+
+                                                {% else %}
+
+
+                                                <ins>
+
+                                                    &#8377;{{item.product_price}}
+                                                </ins>
+
+                                                {% endif %}
+                                            </div> -->
+                                            <!-- <div class="product-list-message">
+                                                <i class="icon fa fa-truck" aria-hidden="true"></i>
+                                                UK Free Delivery
+                                            </div> -->
+                                            <div class="cart">
+                                                <div class="single_variation_wrap">
+                                                    <!-- <div class="quantity">
+                                                        <div class="control">
+                                                            <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                                            <input type="text" data-step="1" data-min="0" value="1"
+                                                                title="Qty" class="input-qty qty" size="4">
+                                                            <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                                        </div>
+                                                    </div> -->
+                                                    <button class="single_add_to_cart_button button"
+                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}"
+                                                        id="{{item._id}}" data-price="{{item.product_price}}">Add to
+                                                        cart</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </li>
+                                {% endif %}
+
+                                {% endfor %}
+
+                                {% else %}
+
+                                <div class="productnot_found">
+                                    <h1>
+                                        Product not found !
+                                    </h1>
+                                </div>
+
+                                {% endif %}
+
+                        </ul>
+
+                    </div>
+
+                    <input type="hidden" value="{{totalRecord}}" id="totalRecord1">
+
+                    <input type="hidden" value="0" name="startNew" id="startNew">
+
+                    <input type="hidden" value="{{productid}}" name="id" id="product__id">
+                    <input type="hidden" value="{{productname}}" name="name" id="product__name">
+                    <!-- </div> -->
+                    <div class="pagination clearfix style3">
+                        <div class="nav-link">
+                            <a href="javascript:void(0)" class="page-numbers prev__Page"><i
+                                    class="icon fa fa-angle-left" aria-hidden="true"></i></a>
+
+                            <span class="newpage"></span>
+                            <!-- <a href="#" class="page-numbers">1</a>
+                            <a href="#" class="page-numbers">2</a>
+                            <a href="#" class="page-numbers current">3</a> -->
+                            <a href="javascript:void(0)" class="page-numbers next__Page "><i
+                                    class="icon fa fa-angle-right" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="wrapper-sidebar shop-sidebar">
+                    <div class="widget woof_Widget">
+                        <div class="widget widget-categories">
+                            <h3 class="widgettitle">Categories</h3>
+                            <ul class="list-categories" id="categoryId">
+                                {% if filterOutput %}
+                                {% for item in filterOutput %}
+
+
+                                {% if item.subof_subproduct %}
+                                {% for itemsub in item.subof_subproduct %}
+
+                                <li>
+                                    <input class="categoryBtn" type="checkbox" data-name="{{itemsub.name}}"
+                                        id="{{itemsub.idids}}">
+                                    <label for="{{itemsub.idids}}" class="label-text">
+                                        {{itemsub.name}}
+                                    </label>
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+
+                                {% endfor %}
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                        <div class="widget widget_filter_price">
+                            <h4 class="widgettitle">
+                                Price
+                            </h4>
+                            <div class="price-slider-wrapper">
+                                <div data-label-reasult="Range:" data-min="0" data-max="100000" data-unit="&#8377;"
+                                    class="slider-range-price  " data-value-min="1" data-value-max="99999">
+                                </div>
+                                <div class="price-slider-amount">
+                                    <span class="from">1</span>
+                                    <span class="to">99999</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget widget-brand">
+                            <h3 class="widgettitle">Brand</h3>
+                            <ul class="list-brand" id="brandList">
+
+                                {% set i = 0 %}
+
+                                {% if productfilterData.length %}
+
+                                {% for item in productfilterData %}
+
+                                {% if item.product_brand %}
+
+                                {% set i = i+1 %}
+
+
+                                <li>
+                                    <input class="brandBtn" id="brand{{i}}" type="checkbox"
+                                        data-brand="{{item.product_brand}}">
+                                    <label for="brand{{i}}" class="label-text">{{item.product_brand}}</label>
+                                </li>
+
+                                {% endif %}
+
+
+                                {% endfor %}
+                                {% endif %}
+                                <!-- <li>
+                                    <input id="cb8" type="checkbox">
+                                    <label for="cb8" class="label-text">Dining</label>
+                                </li>
+                                <li>
+                                    <input id="cb9" type="checkbox">
+                                    <label for="cb9" class="label-text">Desks</label>
+                                </li>
+                                <li>
+                                    <input id="cb10" type="checkbox">
+                                    <label for="cb10" class="label-text">Accents</label>
+                                </li>
+                                <li>
+                                    <input id="cb11" type="checkbox">
+                                    <label for="cb11" class="label-text">Accessories</label>
+                                </li>
+                                <li>
+                                    <input id="cb12" type="checkbox">
+                                    <label for="cb12" class="label-text">Tables</label>
+                                </li> -->
+                            </ul>
+                        </div>
+
+
+                        <div class="widget widget_filter_size">
+                            <h4 class="widgettitle">Model Number</h4>
+                            <ul class="list-brand" id="modelList">
+                                {% set i = 0 %}
+
+                                {% if productfilterData.length %}
+
+                                {% for item in productfilterData %}
+
+                                {% if item.model_Number %}
+
+                                {% set i = i+1 %}
+
+                                <li>
+                                    <input class="modelBtn" id="model{{i}}" type="checkbox"
+                                        data-model="{{item.model_Number}}">
+                                    <label for="model{{i}}" class="label-text">{{item.model_Number}}</label>
+                                </li>
+
+                                {% endif %}
+
+
+                                {% endfor %}
+                                {% endif %}
+
+                            </ul>
+                        </div>
+
+
+
+                        <div class="widget widget_filter_size">
+                            <h4 class="widgettitle">SEAL TYPE</h4>
+                            <ul class="list-brand" id="sealList">
+
+                                {% set i = 0 %}
+
+                                {% if productfilterData.length %}
+
+                                {% for item in productfilterData %}
+
+                                {% if item.seal_Type %}
+
+                                {% set i = i+1 %}
+
+                                <li>
+                                    <input class="sealBtn" id="seal{{i}}" type="checkbox"
+                                        data-seal="{{item.seal_Type}}">
+                                    <label for="seal{{i}}" class="label-text">{{item.seal_Type}}</label>
+                                </li>
+
+                                {% endif %}
+
+
+                                {% endfor %}
+                                {% endif %}
+
+                            </ul>
+                        </div>
+
+
+
+                        <div class="widget widget_filter_size">
+                            <h4 class="widgettitle">SERIES TYPE</h4>
+                            <ul class="list-brand" id="seriesList">
+                                {% set i = 0 %}
+
+
+                                {% if productfilterData.length %}
+
+                                {% for item in productfilterData %}
+
+                                {% if item.series_Type %}
+
+                                {% set i = i+1 %}
+
+                                <li>
+                                    <input class="seriesBtn" id="series{{i}}" type="checkbox"
+                                        data-series="{{item.series_Type}}">
+                                    <label for="series{{i}}" class="label-text">{{item.series_Type}}</label>
+                                </li>
+
+                                {% endif %}
+
+
+                                {% endfor %}
+                                {% endif %}
+
+                            </ul>
+                        </div>
+
+                        <div class="widget widget_filter_size">
+                            <h4 class="widgettitle">SHAFT SLEEVE</h4>
+                            <ul class="list-brand" id="shaftList">
+
+                                {% set i = 0 %}
+
+
+                                {% if productfilterData.length %}
+
+                                {% for item in productfilterData %}
+
+                                {% if item.shaft_Sleeve %}
+
+                                {% set i = i+1 %}
+
+                                <li>
+                                    <input class="shaftBtn" id="shaft{{i}}" type="checkbox"
+                                        data-shaft="{{item.shaft_Sleeve}}">
+                                    <label for="shaft{{i}}" class="label-text">{{item.shaft_Sleeve}}</label>
+                                </li>
+
+                                {% endif %}
+
+
+                                {% endfor %}
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                        <!-- <div class="widget widget-color">
+                            <h4 class="widgettitle">
+                                Color
+                            </h4>
+                            <div class="list-color">
+                                <a href="#" class="color1"></a>
+                                <a href="#" class="color2 "></a>
+                                <a href="#" class="color3 active"></a>
+                                <a href="#" class="color4"></a>
+                                <a href="#" class="color5"></a>
+                                <a href="#" class="color6"></a>
+                                <a href="#" class="color7"></a>
+                            </div>
+                        </div> -->
+                        <!-- <p class="form-row">
+                            <input type="submit" class="button-submit" value="Filter">
+                        </p> -->
+                        <!-- <div class="widget widget-tags">
+                            <h3 class="widgettitle">
+                                Popular Tags
+                            </h3>
+                            <ul class="tagcloud">
+                                <li class="tag-cloud-link">
+                                    <a href="#">Office</a>
+                                </li>
+                                <li class="tag-cloud-link">
+                                    <a href="#">Accents</a>
+                                </li>
+                                <li class="tag-cloud-link">
+                                    <a href="#">Flowering</a>
+                                </li>
+                                <li class="tag-cloud-link active">
+                                    <a href="#">Accessories</a>
+                                </li>
+                                <li class="tag-cloud-link">
+                                    <a href="#">Hot</a>
+                                </li>
+                                <li class="tag-cloud-link">
+                                    <a href="#">Tables</a>
+                                </li>
+                                <li class="tag-cloud-link">
+                                    <a href="#">Dining</a>
+                                </li>
+                            </ul>
+                        </div> -->
+                    </div>
+                    <!-- <div class="widget newsletter-widget">
+                        <div class="newsletter-form-wrap ">
+                            <h3 class="title">Subscribe to Our Newsletter</h3>
+                            <div class="subtitle">
+                                More special Deals, Events & Promotions
+                            </div>
+                            <input type="email" class="email" placeholder="Your email letter">
+                            <button type="submit" class="button submit-newsletter">Subscribe</button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Model  -->
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block Jscript %}
+
+<script>
+    $(document).ready(function () {
+
+        $('.form-search-width-category').css({ 'display': 'block' });
+        $("#hidefrom_productpage").css({ 'display': 'none' });
+
+        let user_login = $('#user_login').attr('value');
+        if (user_login != "user") {
+            $('.yith-wcwl-add-to-wishlist').hide();
+            $('.review_form_wrapper').hide();
+            $('.loop-form-add-to-cart').css({ 'display': 'none' });
+        }
+
+        var host = window.location.origin;
+        $(".wishlist_call").on("click", function () {
+            var id = $(this).attr('data-id');
+            var product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+            if (parseInt(product_stock_quantity_check) != 0) {
+                $.ajax({
+                    type: 'POST',
+                    url: host + "/wishlist_call",
+                    data: { id: id },
+                    success: function (resultData) {
+                        // alert(resultData)
+                        console.log(resultData);
+                        if (resultData == "success") {
+                            console.log("sdasd");
+                            $('a.wishlist_call[data-id = ' + id + ']').addClass('wishlist_active');
+                        } else {
+                            console.log("erere");
+                            $('a.wishlist_call[data-id = ' + id + ']').removeClass("wishlist_active");
+                            // alert("Something went wrong")
+                        }
+                        // alert("Save Complete")
+                    }
+                });
+            }
+        });
+
+        var host = window.location.origin;
+        $(document).on('click', '.single_add_to_cart_button', function () {
+            // alert(9)
+            var id = $(this).attr('id');
+            var price = $(this).attr('data-price');
+            var product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+            if (parseInt(product_stock_quantity_check) != 0) {
+
+                $.ajax({
+
+                    type: 'POST',
+                    url: host + "/addtocart_get",
+                    data: { id: id, product_price: price },
+
+
+                    success: function (resultData) {
+                        // alert(resultData)
+                        console.log("vhjrreurttrytry============", resultData);
+                        if (resultData == "success") {
+                            console.log("sdasd");
+                            setTimeout(function () {
+                                swal({
+                                    title: "Success!",
+                                    text: "Add to cart Sucessfully.",
+                                    type: "success"
+                                }, function () {
+                                    // window.location = "/contact";
+                                    location.reload();
+                                });
+                            }, 500);
+                        } else {
+                            setTimeout(function () {
+                                swal({
+                                    title: "Warning!",
+                                    text: "Sorry, We don't have enough stock on hand for the quantity you selected, Please select a lower quantity.",
+                                    type: "warning"
+                                }, function () {
+                                    // window.location = "/contact";
+                                    location.reload();
+                                });
+                            }, 500);
+            
+                            // console.log("erere");
+
+                            // alert("Something went wrong")
+                        }
+                        // alert("Save Complete")
+                    }
+                });
+            }
+        });
+
+        $(".listItem").css("display", "none");
+
+        $("#listproducts").click(function () {
+
+            $(".listItem").css("display", "block");
+            $(".gridItem").css("display", "none");
+
+        });
+        $("#gridproducts").click(function () {
+            $(".listItem").css("display", "none");
+            $(".gridItem").css("display", "block");
+
+        });
+
+
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        var host = window.location.origin;
+
+
+        $('body').on('click', '.openModel', function (e) {
+            var deleteid = $(this).attr("data-id");
+            // var id = $('#productdeleteid').val();
+
+            // $('.loop-form-add-to-cart').css({ 'display': 'none' });
+
+
+            var model_price;
+
+
+            $.ajax({
+                type: 'GET',
+                url: host + "/productsModel/" + deleteid,
+                success: function (data) {
+
+                    model_price = data.productDataModel[0].GST_rate;
+
+                    let productName = data.productDataModel[0].product_name
+                    let defaultImg;
+                    let makeHtmlSlider = '';
+
+                    if (data.productDataModel[0].product_defaultImg) {
+                        defaultImg = data.productDataModel[0].product_defaultImg[0].path
+                    } else {
+                        defaultImg = "/assets/images/no_image.jpg"
+                    }
+
+                    makeHtmlSlider += '<div class="details-item"><img src="' + defaultImg + '" alt="img"></div>'
+
+                    for (let i = 0; i < data.productDataModel[0].product_image.length; i++) {
+                        if (data.productDataModel[0].product_image[i].is_deleted == "0") {
+                            let imgSrc = data.productDataModel[0].product_image[i].path
+                            makeHtmlSlider += '<div class="details-item"><img src="' + imgSrc + '" alt="img"></div>'
+                        }
+                    }
+
+
+                    let html = ` 
+                            <h1 class="product-title">
+                                `+ productName + `
+                            </h1>
+                            <div class="stars-rating">
+                                <div class="star-ratingD">`
+
+                    if (data.productDataModel[0].product_rating_num == undefined) {
+                        html += ` <span class="starD-0"></span>`
+
+                    } else {
+                        html += ` <span class="starD-` + data.productDataModel[0].product_rating_num + `"></span>`
+
+                    }
+                    html += ` </div>
+                                <div class="count-starD">`
+                    if (data.productDataModel[0].product_rating != 0 && data.productDataModel[0].product_rating != undefined) {
+
+                        html += `<span>` + data.productDataModel[0].product_rating + `</span>`
+                    }
+                    html += `</div>
+                            </div>
+                         
+                            <div class="availability">
+                                <span> `+ data.productDataModel[0].product_description + `</span>
+                            </div>
+
+                            <div class="price priceaftermodel">`
+
+                    if (data.productDataModel[0].is_discount == 1 && data.productDataModel[0].discount_start == "true") {
+                        html += `<span> &#8377;` + (data.productDataModel[0].discount_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `</span> `
+                    } else {
+                        html += `<span> &#8377;` + (data.productDataModel[0].product_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `</span> `
+                    }
+
+
+                    html += `</div>
+                           
+
+                            <div class="availability" id="productDis">
+                                SKU :`+ data.productDataModel[0].product_sku + `
+                            </div>
+
+                            <div class="availability" id="productDis">
+                                Sold By :`+ data.productDataModel[0].venodor_name + `
+                            </div>
+
+                            <div class="availability">
+                                availability : <span class="product_stock_quantity"
+                                                        data-product_stock_quantity=`+ data.productDataModel[0].product_stock_quantity + `
+                                                        >`+ data.productDataModel[0].product_stock_status + `</span>
+                            </div>
+                           
+                            <div class="group-button">
+                                <div class="yith-wcwl-add-to-wishlist">
+                                    <div class="yith-wcwl-add-button">`
+                    if (data.productDataModel[0].wishlist_arr != null || data.productDataModel[0].wishlist_arr != undefined) {
+                        if (data.productDataModel[0].wishlist_arr == data.productDataModel[0]._id.toString()) {
+                            html += `<a href="javascript:void(0)" class="wishlist_fun wishlist_active" data= "` + data.productDataModel[0].wishlist_arr + `" data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `" data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+                        } else {
+                            html += `<a href="javascript:void(0)" class="wishlist_fun" data= "` + data.productDataModel[0].wishlist_arr + `"  data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `"    data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+                        }
+                    } else {
+                        html += `<a href="javascript:void(0)" class="wishlist_fun" data=` + data.productDataModel[0].wishlist_arr + `"  data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `"   data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+                    }
+                    html += `</div>
+                                </div>
+                                <div class="size-chart-wrapp">
+                                    <div class="btn-size-chart">
+                                      
+                                    </div>
+                                </div>
+                                <div class="quantity-add-to-cart">`
+                    // <div class="quantity">
+                    //     <div class="control">
+                    //         <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                    //         <input type="text" data-step="1" data-min="0" value="1" title="Qty"
+                    //             class="input-qty qty" size="4">
+                    //         <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                    //     </div>
+                    // </div>
+                    html += `<button class="single_add_to_cart_button button" id="` + data.productDataModel[0]._id + `" data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `"  data-price="` + data.productDataModel[0].product_price + `">Add to cart</button>
+                                </div>
+                            </div>`;
+
+
+
+                    let htmlSrc = '<div class="kt-popup-quickview"><div class="details-thumb"><div class="slider-product slider-for">' + makeHtmlSlider + '</div><div class="slider-product-button slider-nav nav-center">' + makeHtmlSlider + '</div></div><div class="details-infor">' + html + '</div></div>'
+
+                    quickview_popup2(htmlSrc);
+
+
+                }
+            })
+                .done(function (data) {
+                    // var html = $(data);
+                    // html.find('#loading').addClass('hidden');
+                    // $('document').append(html);
+                    let user_login = $('#user_login').attr('value');
+                    if (user_login != "user") {
+                        $('.yith-wcwl-add-to-wishlist').hide();
+                        $('.review_form_wrapper').hide();
+                        $('.loop-form-add-to-cart').css({ 'display': 'none' });
+                        $('.single_add_to_cart_button').css({ 'display': 'none' });
+
+                    }
+
+                    $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+
+                    $(".product_stock_quantity").each(function () {
+                        let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                        var isnan = isNaN(product_stock_quantity);
+                        if (isnan == false) {
+                            if (product_stock_quantity.length >= 1 && product_stock_quantity <= 5) {
+                                $(this).text('(only ' + product_stock_quantity + " left)")
+                            }
+                        }
+
+                    });
+
+                    $(".product_stock_quantity").each(function () {
+
+                        let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                        var isnan = isNaN(product_stock_quantity);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                                $(this).text("(only " + product_stock_quantity + " left)");
+                                $(this).attr('style', 'color:red');
+
+
+                                // $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+                            } else {
+                                if (parseInt(product_stock_quantity) == 0) {
+                                    $(this).text("out of stock");
+                                    $(this).attr('style', 'color:red');
+
+
+                                    // $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+                                }
+                            }
+                        } else {
+
+                            // $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+                        }
+                    });
+
+                    $(".single_add_to_cart_button").each(function () {
+                        let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                        var isnan = isNaN(product_stock_quantity_check);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity_check) == 0) {
+                                $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                            }
+                        }
+                    });
+
+                    $(".wishlist_call").each(function () {
+                        let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                        var isnan = isNaN(product_stock_quantity_check);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity_check) == 0) {
+                                $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                            }
+                        }
+                    });
+
+                    $(".wishlist_fun").each(function () {
+                        let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                        var isnan = isNaN(product_stock_quantity_check);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity_check) == 0) {
+                                $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                            }
+                        }
+                    });
+
+                }
+                );
+
+
+        });
+
+        var host = window.location.origin;
+        $(document).on('click', '.wishlist_fun', function () {
+            var id = $(this).attr('data-id');
+            var product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+            if (parseInt(product_stock_quantity_check) != 0) {
+                $.ajax({
+                    type: 'POST',
+                    url: host + "/wishlist_call",
+                    data: { id: id },
+                    success: function (resultData) {
+                        // alert(resultData)
+                        console.log(resultData);
+                        if (resultData == "success") {
+                            console.log("sdasd");
+                            $('a.wishlist_fun[data-id = ' + id + ']').addClass('wishlist_active');
+                            $('a.wishlist_call[data-id = ' + id + ']').addClass('wishlist_active');
+                        } else {
+                            console.log("erere");
+                            $('a.wishlist_fun[data-id = ' + id + ']').removeClass("wishlist_active");
+                            $('a.wishlist_call[data-id = ' + id + ']').removeClass('wishlist_active');
+                            // alert("Something went wrong")
+                        }
+                        // alert("Save Complete")
+                    }
+                });
+            }
+        });
+
+    });
+
+    function quickview_popup2(htmlSrc) {
+
+        var window_size = parseFloat(jQuery('body').innerWidth());
+        window_size += kt_get_scrollbar_width();
+        if (window_size > 992) {
+            // $(document).on('click', '.popup-button-click', function () {
+            $.magnificPopup.open({
+                items: {
+                    src: htmlSrc,
+                    type: 'inline'
+                }
+            });
+            slick_quickview_popup2();
+            return false;
+            // });
+        }
+    }
+
+    function slick_quickview_popup2() {
+
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: false,
+            focusOnSelect: true,
+            infinite: true,
+            prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+            nextArrow: '<i class="fa fa-angle-right " aria-hidden="true"></i>',
+        });
+    }
+
+    function kt_get_scrollbar_width() {
+        var $inner = jQuery('<div style="width: 100%; height:200px;">test</div>'),
+            $outer = jQuery('<div style="width:200px;height:150px; position: absolute; top: 0; left: 0; visibility: hidden; overflow:hidden;"></div>').append($inner),
+            inner = $inner[0],
+            outer = $outer[0];
+        jQuery('body').append(outer);
+        var width1 = parseFloat(inner.offsetWidth);
+        $outer.css('overflow', 'scroll');
+        var width2 = parseFloat(outer.clientWidth);
+        $outer.remove();
+        return (width1 - width2);
+    }
+
+    $('.owl-slick').not('.slick-initialized').each(function () {
+        var _this = $(this),
+            _responsive = _this.data('responsive'),
+            _config = [];
+
+        if ($('body').hasClass('rtl')) {
+            _config.rtl = true;
+        }
+        if (_this.hasClass('slick-vertical')) {
+            _config.prevArrow = '<span class="pe-7s-angle-up"></span>';
+            _config.nextArrow = '<span class="pe-7s-angle-down"></span>';
+        } else {
+            _config.prevArrow = '<span class="fa fa-angle-left"></span>';
+            _config.nextArrow = '<span class="fa fa-angle-right"></span>';
+        }
+        _config.responsive = _responsive;
+        _config.cssEase = 'linear';
+
+        _this.slick(_config);
+        _this.on('afterChange', function (event, slick, direction) {
+            _this.find('.slick-active:first').addClass('first-slick');
+            _this.find('.slick-active:last').addClass('last-slick');
+        });
+        _this.on('beforeChange', function (event, slick, currentSlide) {
+            _this.find('.slick-slide').removeClass('last-slick');
+            _this.find('.slick-slide').removeClass('first-slick');
+        });
+        if (_this.hasClass('slick-vertical')) {
+            equal_elems();
+            setTimeout(function () {
+                _this.slick('setPosition');
+            }, 0);
+        }
+        _this.find('.slick-active:first').addClass('first-slick');
+        _this.find('.slick-active:last').addClass('last-slick');
+    });
+
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: false,
+        focusOnSelect: true,
+        infinite: true,
+        prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        nextArrow: '<i class="fa fa-angle-right " aria-hidden="true"></i>',
+    });
+
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        var liText = '', liList = $('#categoryId li'), listForRemove = [];
+        brandList = $('#brandList li'), listForRemove = [];
+        modelList = $('#modelList li'), listForRemove = [];
+        sealList = $('#sealList li'), listForRemove = [];
+        seriesList = $('#seriesList li'), listForRemove = [];
+        shaftList = $('#shaftList li'), listForRemove = [];
+
+        $(liList).each(function () {
+
+            var text = $(this).text();
+
+            var textlower = $(this).text().toLocaleLowerCase();
+
+            if (liText.indexOf('|' + textlower + '|') == -1)
+                liText += '|' + textlower + '|';
+            else
+                listForRemove.push($(this));
+
+
+
+            if (liText.indexOf('|' + text + '|') == -1)
+                liText += '|' + text + '|';
+            else
+                listForRemove.push($(this));
+
+        });
+
+        $(brandList).each(function () {
+
+            var text = $(this).text();
+
+            var textlower = $(this).text().toLocaleLowerCase();
+
+            if (liText.indexOf('|' + textlower + '|') == -1)
+                liText += '|' + textlower + '|';
+            else
+                listForRemove.push($(this));
+
+
+
+            if (liText.indexOf('|' + text + '|') == -1)
+                liText += '|' + text + '|';
+            else
+                listForRemove.push($(this));
+
+        });
+
+        $(modelList).each(function () {
+
+            var text = $(this).text();
+
+            var textlower = $(this).text().toLocaleLowerCase();
+
+            if (liText.indexOf('|' + textlower + '|') == -1)
+                liText += '|' + textlower + '|';
+            else
+                listForRemove.push($(this));
+
+
+
+            if (liText.indexOf('|' + text + '|') == -1)
+                liText += '|' + text + '|';
+            else
+                listForRemove.push($(this));
+
+        });
+
+        $(sealList).each(function () {
+
+            var text = $(this).text();
+
+            var textlower = $(this).text().toLocaleLowerCase();
+
+            if (liText.indexOf('|' + textlower + '|') == -1)
+                liText += '|' + textlower + '|';
+            else
+                listForRemove.push($(this));
+
+
+
+            if (liText.indexOf('|' + text + '|') == -1)
+                liText += '|' + text + '|';
+            else
+                listForRemove.push($(this));
+
+        });
+
+        $(seriesList).each(function () {
+
+            var text = $(this).text();
+
+            var textlower = $(this).text().toLocaleLowerCase();
+
+            if (liText.indexOf('|' + textlower + '|') == -1)
+                liText += '|' + textlower + '|';
+            else
+                listForRemove.push($(this));
+
+
+
+            if (liText.indexOf('|' + text + '|') == -1)
+                liText += '|' + text + '|';
+            else
+                listForRemove.push($(this));
+
+        });
+
+        $(shaftList).each(function () {
+
+            var text = $(this).text();
+
+            var textlower = $(this).text().toLocaleLowerCase();
+
+            if (liText.indexOf('|' + textlower + '|') == -1)
+                liText += '|' + textlower + '|';
+            else
+                listForRemove.push($(this));
+
+
+
+            if (liText.indexOf('|' + text + '|') == -1)
+                liText += '|' + text + '|';
+            else
+                listForRemove.push($(this));
+
+        });
+
+        $(listForRemove).each(function () { $(this).remove(); });
+    });
+</script>
+
+
+<script>
+
+    var catName = [];
+    var finalcategoryData = [];
+    var filterbrandData = [];
+    var filtermodelData = [];
+    var filtersealData = [];
+    var filterseriesData = [];
+    var filtershaftData = [];
+    var filterPriceData = [];
+
+    var sortValue;
+
+    var combinedArray;
+
+
+    $(document).ready(function () {
+
+        $("#selectPrice").hide();
+        var currentPage = 1
+
+        var reset_currentpage = 1;
+        createPagination(reset_currentpage)
+        let maxPrice = $(".price-slider-amount span:last").text();
+        let minPrice = $(".price-slider-amount span:first").text();
+
+        let htmlmx = '&#8377;' + maxPrice + ' '
+        let htmmin = '&#8377;' + minPrice + ' '
+        $(".price-slider-amount .to").html(htmlmx);
+        $(".price-slider-amount .from").html(htmmin);
+
+
+        combinedArray = [].concat(...finalcategoryData)
+
+        $(".main_price").each(function () {
+            let main_price = $(this).attr('data-main_price');
+            main_price = (main_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+            $(this).text(main_price)
+
+            $(".product_stock_quantity").each(function () {
+                let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                var isnan = isNaN(product_stock_quantity);
+                if (isnan == false) {
+                    if (product_stock_quantity.length >= 1 && product_stock_quantity <= 5) {
+                        $(this).text('(only ' + product_stock_quantity + " left)")
+                    }
+                }
+
+            });
+
+            $(".product_stock_quantity").each(function () {
+                let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                var isnan = isNaN(product_stock_quantity);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                        $(this).text("(only " + product_stock_quantity + " left)");
+                    } else {
+                        if (parseInt(product_stock_quantity) == 0) {
+                            $(this).text("out of stock");
+                        }
+                    }
+                }
+            });
+
+            $(".single_add_to_cart_button").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_call").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_fun").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+        });
+
+        $(".dis_price").each(function () {
+            let dis_price = $(this).attr('data-dis_price');
+            dis_price = (dis_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+            $(this).text(dis_price)
+
+
+        });
+
+        var filterSort = localStorage.getItem('sortValue')
+        filterSort = JSON.parse(filterSort);
+
+        let optionsSort
+        if (filterSort) {
+            optionsSort = filterSort.split(',');
+
+
+
+            if (optionsSort != '') {
+
+
+                if (optionsSort.toString() === '1') {
+                    $('#sort_idPrice_chosen .chosen-single span').html('Sort by price: Low to High')
+                }
+                if (optionsSort.toString() === '-1') {
+                    $('#sort_idPrice_chosen .chosen-single span').html('Sort by price: High to Low')
+                }
+                if (optionsSort.toString() === '3') {
+                    $('#sort_idPrice_chosen .chosen-single span').html('Sort by average rating')
+                }
+                let name = $("#product__name").val();
+
+
+                sortValue = filterSort;
+
+                // $("#sort_idPrice")
+                if (optionsSort != '') {
+
+                    optionsSort.forEach(function (e) {
+                        $("#sort_idPrice option[value=" + e + "]").prop('selected', true);
+                    });
+
+                }
+
+
+            }
+
+        }
+
+
+        let name = $("#product__name").val();
+
+        let filterObj1 = localStorage.getItem('filterObj')
+
+        filterObj1 = JSON.parse(filterObj1)
+
+        $(".categoryBtn").each(function () {
+            let ctName = $(this).attr('data-name');
+            ctName = ctName.split(' ').join('_');
+            ctName = ctName.split(" ");
+            let newPrCt
+            if (filterObj1) {
+                newPrCt = [].concat(...filterObj1.product_category)
+            }
+
+            if (newPrCt) {
+                for (const item of newPrCt) {
+                    if (item == ctName) {
+                        $(this).prop('checked', true);
+                        finalcategoryData.push(ctName);
+                    }
+
+                }
+
+            }
+
+
+        });
+
+        $(".brandBtn").each(function () {
+            let brName = $(this).attr('data-brand');
+            // brName = brName.split(' ').join('_');
+            // brName = brName.split(" ");
+
+            console.log("brName---->", brName);
+
+            if (filterObj1) {
+                for (const item of filterObj1.product_brand) {
+                    if (item == brName) {
+                        $(this).prop('checked', true);
+                        filterbrandData.push(brName);
+                    }
+
+                }
+
+            }
+
+
+        });
+
+        $(".modelBtn").each(function () {
+            let moName = $(this).attr('data-model');
+
+            if (filterObj1) {
+                for (const item of filterObj1.model_Number) {
+                    if (item == moName) {
+                        $(this).prop('checked', true);
+                        filtermodelData.push(moName);
+                    }
+                }
+            }
+        });
+
+        $(".sealBtn").each(function () {
+            let seName = $(this).attr('data-seal');
+
+            if (filterObj1) {
+                for (const item of filterObj1.seal_Type) {
+                    if (item == seName) {
+                        $(this).prop('checked', true);
+                        filtersealData.push(seName);
+                    }
+                }
+            }
+        });
+
+        $(".seriesBtn").each(function () {
+            let seiName = $(this).attr('data-series');
+
+            if (filterObj1) {
+                for (const item of filterObj1.series_Type) {
+                    if (item == seiName) {
+                        $(this).prop('checked', true);
+                        filterseriesData.push(seiName);
+                    }
+                }
+            }
+        });
+
+        $(".shaftBtn").each(function () {
+            let shName = $(this).attr('data-shaft');
+
+            if (filterObj1) {
+                for (const item of filterObj1.shaft_Sleeve) {
+                    if (item == shName) {
+                        $(this).prop('checked', true);
+                        filtershaftData.push(shName);
+                    }
+                }
+            }
+        });
+
+        if (filterObj1) {
+
+            let htmlmx = '&#8377;' + filterObj1.max_price + ' '
+
+            let htmmin = '&#8377;' + filterObj1.min_price + ' '
+
+            $(".price-slider-amount .to").html(htmlmx);
+            $(".price-slider-amount .from").html(htmmin);
+            $(".slider-range-price ").attr("data-value-min", filterObj1.min_price);
+            $(".slider-range-price ").attr("data-value-max", filterObj1.max_price);
+
+        }
+
+        if (filterObj1) {
+            $.ajax({
+                type: 'POST',
+                url: host + "/filterData",
+                data: { filterObj: filterObj1, filterName: name, sortValue: sortValue },
+                success: function (data) {
+                    $("#totalRecord1").val(data.length)
+                    generateView(data)
+                    createPagination()
+                }
+            }).done(function (data) {
+                let user_login = $('#user_login').attr('value');
+                if (user_login != "user") {
+                    $('.yith-wcwl-add-to-wishlist').hide();
+                    $('.review_form_wrapper').hide();
+                    $('.loop-form-add-to-cart').css({ 'display': 'none' });
+                }
+
+
+
+                $(".product_stock_quantity").each(function () {
+                    let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                    var isnan = isNaN(product_stock_quantity);
+                    console.log("done -----------------", isnan);
+
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                            $(this).text("(only " + product_stock_quantity + " left)");
+                        } else {
+                            if (parseInt(product_stock_quantity) == 0) {
+                                $(this).text("out of stock");
+                            }
+                        }
+                    }
+                });
+
+                $(".single_add_to_cart_button").each(function () {
+                    let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                    var isnan = isNaN(product_stock_quantity_check);
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity_check) == 0) {
+                            $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                        }
+                    }
+                });
+
+                $(".wishlist_call").each(function () {
+                    let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                    var isnan = isNaN(product_stock_quantity_check);
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity_check) == 0) {
+                            $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                        }
+                    }
+                });
+
+                $(".wishlist_fun").each(function () {
+                    let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                    var isnan = isNaN(product_stock_quantity_check);
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity_check) == 0) {
+                            $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                        }
+                    }
+                });
+            });
+
+
+        }
+
+    });
+
+    var filterObj = {
+        product_category: '',
+        max_price: '',
+        min_price: '',
+        product_brand: '',
+        model_Number: '',
+        seal_Type: '',
+        series_Type: '',
+        shaft_Sleeve: ''
+    };
+
+    let name = $("#product__name").val();
+
+
+    let filterName;
+
+    $(document).ready(function () {
+
+
+        //---------------------------Price filter----------------------
+        $('.slider-range-price').each(function () {
+            var min = $(this).data('min');
+            var max = $(this).data('max');
+            var unit = $(this).data('unit');
+            var value_min = $(this).data('value-min');
+            var value_max = $(this).data('value-max');
+            var label_result = $(this).data('label-result');
+            var t = $(this);
+
+
+            $(this).slider({
+                range: true,
+                min: min,
+                max: max,
+                values: [value_min, value_max],
+                slide: function (event, ui) {
+                    var result = ' <span>' + unit + ui.values[0] + ' </span>  <span> ' + unit + ui.values[1] + '</span>';
+                    // var result = label_result + " <span>" + unit + ui.values[0] + ' </span>  <span> ' + unit + ui.values[1] + '</span>';
+                    t.closest('.price-slider-wrapper').find('.price-slider-amount').html(result);
+
+                    console.log("min and maX", ui.values[0], ui.values[1])
+
+                    maxPr = ui.values[1]
+                    minPr = ui.values[0]
+                    console.log("min---- and maX-----", maxPr, minPr)
+
+
+                    filterObj = {
+                        product_category: combinedArray,
+                        max_price: ui.values[1],
+                        min_price: ui.values[0],
+                        product_brand: filterbrandData,
+                        model_Number: filtermodelData,
+                        seal_Type: filtersealData,
+                        series_Type: filterseriesData,
+                        shaft_Sleeve: filtershaftData
+                    };
+
+                    // if (filterObj.product_category.length == 0 && filterObj.product_brand.length == 0 && filterObj.model_Number.length == 0 && filterObj.seal_Type.length == 0 && filterObj.series_Type.length == 0 && filterObj.shaft_Sleeve.length == 0) {
+                    //     filterName = name;
+                    //     // filterObj.max_price = '';
+                    //     // filterObj.min_price = '';
+                    // }
+
+                    if (filterObj.product_category && filterObj.product_brand && filterObj.model_Number && filterObj.seal_Type && filterObj.series_Type && filterObj.shaft_Sleeve) {
+                        filterName = name;
+                        // filterObj.max_price = '';
+                        // filterObj.min_price = '';
+                    }
+
+
+                    console.log("object 2345566656677------->", filterObj);
+
+                    localStorage.setItem('filterObj', JSON.stringify(filterObj));
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: host + "/filterData",
+                        data: { filterObj: filterObj, filterName: filterName, sortValue: sortValue },
+                        success: function (data) {
+                            $("#totalRecord1").val(data.length)
+                            generateView(data)
+                            var reset_currentpage = 1;
+                            createPagination(reset_currentpage)
+                        }
+                    }).done(function (data) {
+                        let user_login = $('#user_login').attr('value');
+                        if (user_login != "user") {
+                            $('.yith-wcwl-add-to-wishlist').hide();
+                            $('.review_form_wrapper').hide();
+                            $('.loop-form-add-to-cart').css({ 'display': 'none' });
+                        }
+
+                        $(".product_stock_quantity").each(function () {
+                            let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                            var isnan = isNaN(product_stock_quantity);
+                            console.log("done -----------------", isnan);
+
+                            if (isnan == false) {
+                                if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                                    $(this).text("(only " + product_stock_quantity + " left)");
+                                } else {
+                                    if (parseInt(product_stock_quantity) == 0) {
+                                        $(this).text("out of stock");
+                                    }
+                                }
+                            }
+                        });
+
+                        $(".single_add_to_cart_button").each(function () {
+                            let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                            var isnan = isNaN(product_stock_quantity_check);
+                            if (isnan == false) {
+                                if (parseInt(product_stock_quantity_check) == 0) {
+                                    $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                                }
+                            }
+                        });
+
+                        $(".wishlist_call").each(function () {
+                            let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                            var isnan = isNaN(product_stock_quantity_check);
+                            if (isnan == false) {
+                                if (parseInt(product_stock_quantity_check) == 0) {
+                                    $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                                }
+                            }
+                        });
+
+                        $(".wishlist_fun").each(function () {
+                            let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                            var isnan = isNaN(product_stock_quantity_check);
+                            if (isnan == false) {
+                                if (parseInt(product_stock_quantity_check) == 0) {
+                                    $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                                }
+                            }
+                        });
+
+                        $(".paging").removeClass("current");
+                        $(".paginationPage" + 1).addClass("current");
+
+                    });
+                }
+            });
+        });
+
+    });
+
+
+    $(document).on('click', '.categoryBtn', function (e) {
+        // $(".sortby").html('')
+        // let num = "1";
+        // let Country = num.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+
+        // console.log("sortBy ---- >>>", sortBy);
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+
+
+
+
+        let maxPrice = $(".price-slider-amount span:last").text();
+        let minPrice = $(".price-slider-amount span:first").text();
+
+        minPrice = minPrice.trim()
+        minPrice = minPrice.substring(1);
+
+        maxPrice = maxPrice.trim()
+        maxPrice = maxPrice.substring(1);
+
+
+        filterObj = {
+            product_category: '',
+            max_price: maxPrice,
+            min_price: minPrice,
+            product_brand: filterbrandData,
+            model_Number: filtermodelData,
+            seal_Type: filtersealData,
+            series_Type: filterseriesData,
+            shaft_Sleeve: filtershaftData
+        };
+
+
+        let flterCategory = '';
+        if (this.checked) {
+            flterCategory = $(this).attr('data-name');
+            flterCategory = flterCategory.split(' ').join('_');
+            finalcategoryData.push(flterCategory)
+
+        } else {
+            flterCategory = $(this).attr('data-name');
+            flterCategory = flterCategory.split(' ').join('_');
+            let newArray = [].concat(...finalcategoryData)
+            finalcategoryData = newArray.filter(e => e !== flterCategory)
+
+        }
+
+        combinedArray = [].concat(...finalcategoryData)
+
+        if (finalcategoryData.length == 0) {
+            filterObj.product_category = '';
+            // filterObj = name;
+        } else {
+
+            filterObj.product_category = combinedArray;
+
+        }
+
+
+        localStorage.setItem('filterObj', JSON.stringify(filterObj));
+
+
+        if (filterObj.product_category.length == 0 && filterObj.product_brand.length == 0 && filterObj.model_Number.length == 0 && filterObj.seal_Type.length == 0 && filterObj.series_Type.length == 0 && filterObj.shaft_Sleeve.length == 0) {
+            filterName = name;
+            filterObj.product_category = finalcategoryData;
+            filterObj.max_price = '';
+            filterObj.min_price = '';
+        }
+
+        console.log("filterObj ------>", filterObj);
+
+
+        $.ajax({
+            type: 'POST',
+            url: host + "/filterData",
+            data: { filterObj: filterObj, filterName: filterName, sortValue: sortValue },
+            success: function (data) {
+                $("#totalRecord1").val(data.length)
+                generateView(data)
+                var reset_currentpage = 1;
+                createPagination(reset_currentpage)
+            }
+        }).done(function (data) {
+            let user_login = $('#user_login').attr('value');
+            if (user_login != "user") {
+                $('.yith-wcwl-add-to-wishlist').hide();
+                $('.review_form_wrapper').hide();
+                $('.loop-form-add-to-cart').css({ 'display': 'none' });
+            }
+
+            $(".paging").removeClass("current");
+            $(".paginationPage" + 1).addClass("current");
+
+            $(".product_stock_quantity").each(function () {
+                let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                var isnan = isNaN(product_stock_quantity);
+                console.log("done -----------------", isnan);
+
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                        $(this).text("(only " + product_stock_quantity + " left)");
+                    } else {
+                        if (parseInt(product_stock_quantity) == 0) {
+                            $(this).text("out of stock");
+                        }
+                    }
+                }
+            });
+
+            $(".single_add_to_cart_button").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_call").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_fun").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+        });
+    })
+
+
+    let filter_brand;
+    $(document).on('click', '.brandBtn', function (e) {
+
+        // $(".sortby").html('')
+        // let num = "1";
+        // let Country = num.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+        // let sortBy = $("#sort_idPrice option:selected").text()
+
+        // console.log("sortBy ---- >>>", sortBy);
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+
+        let minPrice = $(".price-slider-amount span:first").text();
+        let maxPrice = $(".price-slider-amount span:last").text();
+
+        minPrice = minPrice.substring(1);
+        maxPrice = maxPrice.trim()
+        maxPrice = maxPrice.substring(1);
+
+        combinedArray = [].concat(...finalcategoryData)
+
+
+        filterObj = {
+            product_category: combinedArray,
+            max_price: maxPrice,
+            min_price: minPrice,
+            product_brand: '',
+            model_Number: filtermodelData,
+            seal_Type: filtersealData,
+            series_Type: filterseriesData,
+            shaft_Sleeve: filtershaftData
+        };
+
+        console.log("filterbrandData 11111111--->>", combinedArray);
+
+
+        let filterBrand = '';
+
+        if (this.checked) {
+            filterBrand = $(this).attr('data-brand');
+            filterbrandData.push(filterBrand)
+
+        } else {
+
+            filterBrand = $(this).attr('data-brand');
+            filterbrandData = filterbrandData.filter(e => e !== filterBrand)
+
+        }
+        console.log("finalcategoryData --->>", filterbrandData);
+
+
+        if (filterbrandData.length == 0) {
+            filterObj.product_brand = '';
+
+        } else {
+
+            filterObj.product_brand = filterbrandData;
+        }
+
+        // console.log("filterbrandData --->>",filterObj);
+
+        if (filterObj.product_category.length == 0 && filterObj.product_brand.length == 0 && filterObj.model_Number.length == 0 && filterObj.seal_Type.length == 0 && filterObj.series_Type.length == 0 && filterObj.shaft_Sleeve.length == 0) {
+            filter_brand = name;
+            filterObj.max_price = '';
+            filterObj.min_price = '';
+        } else {
+            filter_brand = name;
+            filterObj.product_brand = filterbrandData;
+
+        }
+
+
+        localStorage.setItem('filterObj', JSON.stringify(filterObj));
+
+
+        // console.log("filterbrandData ---", filterObj);
+
+        $.ajax({
+            type: 'POST',
+            url: host + "/filterData",
+            data: { filterObj: filterObj, filter_brand: filter_brand, sortValue: sortValue },
+            success: function (data) {
+                $("#totalRecord1").val(data.length)
+                var reset_currentpage = 1;
+                createPagination(reset_currentpage)
+                generateView(data)
+
+            }
+        }).done(function (data) {
+            let user_login = $('#user_login').attr('value');
+            if (user_login != "user") {
+                $('.yith-wcwl-add-to-wishlist').hide();
+                $('.review_form_wrapper').hide();
+                $('.loop-form-add-to-cart').css({ 'display': 'none' });
+            }
+
+            $(".paging").removeClass("current");
+            $(".paginationPage" + 1).addClass("current");
+
+
+            $(".product_stock_quantity").each(function () {
+                let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                var isnan = isNaN(product_stock_quantity);
+                console.log("done -----------------", isnan);
+
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                        $(this).text("(only " + product_stock_quantity + " left)");
+                    } else {
+                        if (parseInt(product_stock_quantity) == 0) {
+                            $(this).text("out of stock");
+                        }
+                    }
+                }
+            });
+
+            $(".single_add_to_cart_button").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_call").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_fun").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+        });
+
+        // console.log("flterCategory --->", filterbrandData);
+
+    })
+
+    let filter_model;
+
+    $(document).on('click', '.modelBtn', function (e) {
+
+        // $(".sortby").html('')
+        // let num = "1";
+        // let Country = num.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+        // let sortBy = $("#sort_idPrice option:selected").text()
+
+        // console.log("sortBy ---- >>>", sortBy);
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+
+        let minPrice = $(".price-slider-amount span:first").text();
+        let maxPrice = $(".price-slider-amount span:last").text();
+
+        minPrice = minPrice.substring(1);
+        maxPrice = maxPrice.trim()
+        maxPrice = maxPrice.substring(1);
+
+        combinedArray = [].concat(...finalcategoryData)
+
+
+        filterObj = {
+            product_category: combinedArray,
+            max_price: maxPrice,
+            min_price: minPrice,
+            product_brand: filterbrandData,
+            model_Number: '',
+            seal_Type: filtersealData,
+            series_Type: filterseriesData,
+            shaft_Sleeve: filtershaftData
+        };
+        let filterModel = '';
+        if (this.checked) {
+            filterModel = $(this).attr('data-model');
+            // filterModel = filterModel.split(' ').join('_');
+
+
+            filtermodelData.push(filterModel)
+
+        } else {
+            filterModel = $(this).attr('data-model');
+            // filterModel = filterModel.split(' ').join('_');
+
+
+            filtermodelData = filtermodelData.filter(e => e !== filterModel)
+
+
+        }
+
+        if (filtermodelData.length < 1) {
+            filterObj.model_Number = '';
+
+        } else {
+            filterObj.model_Number = filtermodelData;
+
+        }
+
+        if (filterObj.product_category.length == 0 && filterObj.product_brand.length == 0 && filterObj.model_Number.length == 0 && filterObj.seal_Type.length == 0 && filterObj.series_Type.length == 0 && filterObj.shaft_Sleeve.length == 0) {
+            filter_model = name;
+            filterObj.max_price = '';
+            filterObj.min_price = '';
+
+        } else {
+            filter_model = name;
+            filterObj.model_Number = filtermodelData;
+
+        }
+        localStorage.setItem('filterObj', JSON.stringify(filterObj));
+
+
+        $.ajax({
+            type: 'POST',
+            url: host + "/filterData",
+            data: { filterObj: filterObj, filter_model: filter_model, sortValue: sortValue },
+            success: function (data) {
+                $("#totalRecord1").val(data.length)
+                generateView(data)
+                var reset_currentpage = 1;
+                createPagination(reset_currentpage)
+            }
+        }).done(function (data) {
+            let user_login = $('#user_login').attr('value');
+            if (user_login != "user") {
+                $('.yith-wcwl-add-to-wishlist').hide();
+                $('.review_form_wrapper').hide();
+                $('.loop-form-add-to-cart').css({ 'display': 'none' });
+            }
+
+            $(".paging").removeClass("current");
+            $(".paginationPage" + 1).addClass("current");
+
+
+            $(".product_stock_quantity").each(function () {
+                let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                var isnan = isNaN(product_stock_quantity);
+                console.log("done -----------------", isnan);
+
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                        $(this).text("(only " + product_stock_quantity + " left)");
+                    } else {
+                        if (parseInt(product_stock_quantity) == 0) {
+                            $(this).text("out of stock");
+                        }
+                    }
+                }
+            });
+
+            $(".single_add_to_cart_button").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_call").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_fun").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+        });
+
+
+
+        // console.log("filtermodelData --->", filtermodelData);
+    })
+
+    let filter_seal;
+    $(document).on('click', '.sealBtn', function (e) {
+
+        // $(".sortby").html('')
+        // let num = "1";
+        // let Country = num.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+        // let sortBy = $("#sort_idPrice option:selected").text()
+
+        // console.log("sortBy ---- >>>", sortBy);
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+
+        let minPrice = $(".price-slider-amount span:first").text();
+        let maxPrice = $(".price-slider-amount span:last").text();
+
+        minPrice = minPrice.substring(1);
+        maxPrice = maxPrice.trim()
+        maxPrice = maxPrice.substring(1);
+
+        combinedArray = [].concat(...finalcategoryData)
+
+
+        filterObj = {
+            product_category: combinedArray,
+            max_price: maxPrice,
+            min_price: minPrice,
+            product_brand: filterbrandData,
+            model_Number: filtermodelData,
+            seal_Type: '',
+            series_Type: filterseriesData,
+            shaft_Sleeve: filtershaftData
+        };
+        let flterSeal = '';
+
+        if (this.checked) {
+            flterSeal = $(this).attr('data-seal');
+            // flterSeal = flterSeal.split(' ').join('_');
+            filtersealData.push(flterSeal)
+
+        } else {
+            flterSeal = $(this).attr('data-seal');
+            // flterSeal = flterSeal.split(' ').join('_');
+            filtersealData = filtersealData.filter(e => e !== flterSeal)
+
+        }
+
+        if (filtersealData.length < 1) {
+            filterObj.seal_Type = '';
+
+        } else {
+            filterObj.seal_Type = filtersealData;
+
+        }
+
+        if (filterObj.product_category.length == 0 && filterObj.product_brand.length == 0 && filterObj.model_Number.length == 0 && filterObj.seal_Type.length == 0 && filterObj.series_Type.length == 0 && filterObj.shaft_Sleeve.length == 0) {
+            filter_seal = name;
+            filterObj.max_price = '';
+            filterObj.min_price = '';
+        }
+        else {
+            filter_seal = name;
+            filterObj.seal_Type = filtersealData;
+
+        }
+
+        localStorage.setItem('filterObj', JSON.stringify(filterObj));
+
+        $.ajax({
+            type: 'POST',
+            url: host + "/filterData",
+            data: { filterObj: filterObj, filter_seal: filter_seal, sortValue: sortValue },
+            success: function (data) {
+                $("#totalRecord1").val(data.length)
+                generateView(data)
+                var reset_currentpage = 1;
+                createPagination(reset_currentpage)
+
+            }
+        }).done(function (data) {
+            let user_login = $('#user_login').attr('value');
+            if (user_login != "user") {
+                $('.yith-wcwl-add-to-wishlist').hide();
+                $('.review_form_wrapper').hide();
+                $('.loop-form-add-to-cart').css({ 'display': 'none' });
+            }
+
+            $(".paging").removeClass("current");
+            $(".paginationPage" + 1).addClass("current");
+
+
+            $(".product_stock_quantity").each(function () {
+                let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                var isnan = isNaN(product_stock_quantity);
+                console.log("done -----------------", isnan);
+
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                        $(this).text("(only " + product_stock_quantity + " left)");
+                    } else {
+                        if (parseInt(product_stock_quantity) == 0) {
+                            $(this).text("out of stock");
+                        }
+                    }
+                }
+            });
+
+            $(".single_add_to_cart_button").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_call").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_fun").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+        });
+
+
+        // console.log("filtersealData --->", filtersealData);
+    })
+
+    let filter_series;
+
+    $(document).on('click', '.seriesBtn', function (e) {
+
+        // $(".sortby").html('')
+        // let num = "1";
+        // let Country = num.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+        // let sortBy = $("#sort_idPrice option:selected").text()
+
+        // console.log("sortBy ---- >>>", sortBy);
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+
+        let minPrice = $(".price-slider-amount span:first").text();
+        let maxPrice = $(".price-slider-amount span:last").text();
+
+        minPrice = minPrice.substring(1);
+        maxPrice = maxPrice.trim()
+        maxPrice = maxPrice.substring(1);
+
+
+        combinedArray = [].concat(...finalcategoryData)
+
+        filterObj = {
+            product_category: combinedArray,
+            max_price: maxPrice,
+            min_price: minPrice,
+            product_brand: filterbrandData,
+            model_Number: filtermodelData,
+            seal_Type: filtersealData,
+            series_Type: '',
+            shaft_Sleeve: filtershaftData
+        };
+        let flterSeries = '';
+
+        if (this.checked) {
+            flterSeries = $(this).attr('data-series');
+            // flterSeries = flterSeries.split(' ').join('_');
+            filterseriesData.push(flterSeries)
+
+        } else {
+            flterSeries = $(this).attr('data-series');
+
+            // flterSeries = flterSeries.split(' ').join('_');
+            filterseriesData = filterseriesData.filter(e => e !== flterSeries)
+
+        }
+        if (filterseriesData.length < 1) {
+            filterObj.series_Type = '';
+
+        } else {
+            filterObj.series_Type = filterseriesData;
+
+        }
+        if (filterObj.product_category.length == 0 && filterObj.product_brand.length == 0 && filterObj.model_Number.length == 0 && filterObj.seal_Type.length == 0 && filterObj.series_Type.length == 0 && filterObj.shaft_Sleeve.length == 0) {
+            filter_series = name;
+            filterObj.max_price = '';
+            filterObj.min_price = '';
+
+        } else {
+            filter_series = name;
+            filterObj.series_Type = filterseriesData;
+
+
+        }
+
+        localStorage.setItem('filterObj', JSON.stringify(filterObj));
+
+        $.ajax({
+            type: 'POST',
+            url: host + "/filterData",
+            data: { filterObj: filterObj, filter_series: filter_series, sortValue: sortValue },
+            success: function (data) {
+                $("#totalRecord1").val(data.length)
+                generateView(data)
+                var reset_currentpage = 1;
+                createPagination(reset_currentpage)
+            }
+        }).done(function (data) {
+            let user_login = $('#user_login').attr('value');
+            if (user_login != "user") {
+                $('.yith-wcwl-add-to-wishlist').hide();
+                $('.review_form_wrapper').hide();
+                $('.loop-form-add-to-cart').css({ 'display': 'none' });
+            }
+
+            $(".paging").removeClass("current");
+            $(".paginationPage" + 1).addClass("current");
+
+
+            $(".product_stock_quantity").each(function () {
+                let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                var isnan = isNaN(product_stock_quantity);
+                console.log("done -----------------", isnan);
+
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                        $(this).text("(only " + product_stock_quantity + " left)");
+                    } else {
+                        if (parseInt(product_stock_quantity) == 0) {
+                            $(this).text("out of stock");
+                        }
+                    }
+                }
+            });
+
+            $(".single_add_to_cart_button").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_call").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_fun").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+        });
+
+        // console.log("filterseriesData --->", filterseriesData);
+    })
+
+
+    let filter_shaft;
+
+    $(document).on('click', '.shaftBtn', function (e) {
+
+        // $(".sortby").html('')
+        // let num = "1";
+        // let Country = num.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+        // let sortBy = $("#sort_idPrice option:selected").text()
+
+        // console.log("sortBy ---- >>>", sortBy);
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+
+        let minPrice = $(".price-slider-amount span:first").text();
+        let maxPrice = $(".price-slider-amount span:last").text();
+
+        minPrice = minPrice.substring(1);
+        maxPrice = maxPrice.trim()
+        maxPrice = maxPrice.substring(1);
+
+        combinedArray = [].concat(...finalcategoryData)
+
+
+        filterObj = {
+            product_category: combinedArray,
+            max_price: maxPrice,
+            min_price: minPrice,
+            product_brand: filterbrandData,
+            model_Number: filtermodelData,
+            seal_Type: filtersealData,
+            series_Type: filterseriesData,
+            shaft_Sleeve: ''
+        };
+        let flterShaft = '';
+
+        if (this.checked) {
+            flterShaft = $(this).attr('data-shaft');
+            // flterShaft = flterShaft.split(' ').join('_');
+
+            filtershaftData.push(flterShaft)
+
+        } else {
+            flterShaft = $(this).attr('data-shaft');
+            // flterShaft = flterShaft.split(' ').join('_');
+            filtershaftData = filtershaftData.filter(e => e !== flterShaft)
+
+        }
+
+        if (filtershaftData.length < 1) {
+            filterObj.shaft_Sleeve = '';
+
+        } else {
+            filterObj.shaft_Sleeve = filtershaftData;
+
+        }
+        if (filterObj.product_category.length == 0 && filterObj.product_brand.length == 0 && filterObj.model_Number.length == 0 && filterObj.seal_Type.length == 0 && filterObj.series_Type.length == 0 && filterObj.shaft_Sleeve.length == 0) {
+            filter_shaft = name;
+            filterObj.max_price = '';
+            filterObj.min_price = '';
+
+        } else {
+            filter_shaft = name;
+            filterObj.shaft_Sleeve = filtershaftData;
+
+
+        }
+
+        localStorage.setItem('filterObj', JSON.stringify(filterObj));
+
+        $.ajax({
+            type: 'POST',
+            url: host + "/filterData",
+            data: { filterObj: filterObj, filter_shaft: filter_shaft, sortValue: sortValue },
+            success: function (data) {
+                $("#totalRecord1").val(data.length)
+                generateView(data)
+                var reset_currentpage = 1;
+                createPagination(reset_currentpage)
+            }
+        }).done(function (data) {
+            let user_login = $('#user_login').attr('value');
+            if (user_login != "user") {
+                $('.yith-wcwl-add-to-wishlist').hide();
+                $('.review_form_wrapper').hide();
+                $('.loop-form-add-to-cart').css({ 'display': 'none' });
+            }
+
+            $(".paging").removeClass("current");
+            $(".paginationPage" + 1).addClass("current");
+
+
+            $(".product_stock_quantity").each(function () {
+                let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                var isnan = isNaN(product_stock_quantity);
+                console.log("done -----------------", isnan);
+
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                        $(this).text("(only " + product_stock_quantity + " left)");
+                    } else {
+                        if (parseInt(product_stock_quantity) == 0) {
+                            $(this).text("out of stock");
+                        }
+                    }
+                }
+            });
+
+            $(".single_add_to_cart_button").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_call").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_fun").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+        });
+
+        // console.log("filtershaftData --->", filtershaftData);
+    })
+
+
+    $('#sort_idPrice').on('change', function () {
+
+        sortValue = this.value;
+
+        var optionName;
+        if (sortValue == 3) {
+            optionName = 'null'
+        } else {
+            optionName = name;
+        }
+
+
+        // alert(sortValue);
+
+        localStorage.setItem('sortValue', JSON.stringify(sortValue));
+
+        let dataobject = { filterObj: filterObj, sortValue: sortValue, filterName: optionName }
+
+        $.ajax({
+            type: 'POST',
+            url: host + "/filterData",
+            data: dataobject,
+            success: function (data) {
+                $("#totalRecord1").val(data.length)
+                generateView(data)
+                var reset_currentpage = 1;
+                createPagination(reset_currentpage)
+
+            }
+        }).done(function (data) {
+            let user_login = $('#user_login').attr('value');
+            if (user_login != "user") {
+                $('.yith-wcwl-add-to-wishlist').hide();
+                $('.review_form_wrapper').hide();
+                $('.loop-form-add-to-cart').css({ 'display': 'none' });
+            }
+
+            $(".paging").removeClass("current");
+            $(".paginationPage" + 1).addClass("current");
+
+        });
+
+    });
+    let currentPage = 1
+    var countfinal;
+    function createPagination(reset_currentpage) {
+        $(".newpage").html('')
+        // console.log("current == >>", currentPage);
+
+        let total = $("#totalRecord1").val();
+        let length = 9;
+
+        console.log("total kiran", total);
+
+        let count = total / length
+
+        countfinal = Math.ceil(count);
+
+        console.log("count", countfinal);
+        let current = currentPage - 1
+
+        for (let q = 0; q < countfinal; q++) {
+
+            let curr = q === current ? 'current' : ''
+
+            // let curr = q === q ? 'current' : ''
+
+
+            let cp = q + 1
+
+            let html = '<a href="javascript:void(0)" class="page-numbers paging ' + curr + ' paginationPage' + cp + '" onClick = "pagination(' + cp + ');">' + cp + '</a>'
+
+            $(".newpage").append(html)
+        }
+        if (reset_currentpage == 1) {
+            currentPage = 1
+        }
+        console.log("countfinal cc", countfinal);
+        console.log("currentPage cc", currentPage);
+
+    }
+
+    $(".prev__Page").click(function () {
+        // $(".sortby").html('')
+        // let num = "1";
+        // let Country = num.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+
+        if (currentPage !== 1) {
+            let cp = currentPage - 1
+            pagination(cp)
+            $(".paging").removeClass("current");
+            $(".paginationPage" + cp).addClass("current");
+
+        }
+    });
+
+    $(".paging").click(function () {
+        $(this).removeClass("current");
+        $(this).toggleClass("current");
+    });
+
+    $(".next__Page").click(function () {
+        // $(".sortby").html('')
+        // let num = "1";
+        // let Country = num.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+        console.log("countfinal", countfinal);
+        console.log("currentPage", currentPage);
+
+
+        if (currentPage !== countfinal) {
+
+            let cp = currentPage + 1
+
+            console.log("cp --->", cp);
+
+            pagination(cp)
+            $(".paging").removeClass("current");
+            $(".paginationPage" + cp).addClass("current");
+
+        }
+
+    });
+
+
+    // if (currentPage !== 1) {
+
+    //     let cp = 1;
+    //     $(".paging").removeClass("current");
+    //     $(".paginationPage" + 1).addClass("current");
+
+    // }
+
+
+    var host = window.location.origin;
+
+    scrollToTop = () => {
+        window.scrollTo({
+            top: 350,
+            behavior: "smooth"
+        });
+    }
+
+    function pagination(num) {
+
+        console.log("-----num---------", num);
+
+        // $(".sortby").html('')
+        // let numCt = "1";
+        // let Country = numCt.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+
+        currentPage = num
+        // if (num == 1) {
+        //     $(".page-numbers").addClass("current");
+        // }
+
+        let id = $("#product__id").val();
+        let name = $("#product__name").val();
+
+        let ctOption = $('#categoryId').find(":selected").val();
+
+        let length = 9;
+
+        let start;
+        if (num == 1) {
+            start = 0;
+        } else {
+            start = ((num - 1) * length)
+        }
+
+        console.log("start", start);
+
+        if (ctOption != 0) {
+
+            name = ctOption
+
+        } else {
+            if (filterObj.product_category != '' || filterObj.product_brand != '' || filterObj.model_Number != '' || filterObj.seal_Type != '' || filterObj.series_Type != '' || filterObj.shaft_Sleeve != '') {
+                name = filterObj;
+            }
+        }
+
+
+        // console.log("filterData -name-- >>", ctOption);
+
+        // $.ajax({
+        //     type: 'GET',
+        //     url: host + "/productsfilter/" + id + '/' + name + '/' + start,
+        //     success: function (data) {
+        //         generateView(data)
+        //         createPagination()
+        //         scrollToTop();
+        //     }
+        // }).done(function (data) {
+        //     let user_login = $('#user_login').attr('value');
+        //     if (user_login != "user") {
+        //         $('.yith-wcwl-add-to-wishlist').hide();
+        //         $('.review_form_wrapper').hide();
+        //         $('.loop-form-add-to-cart').css({ 'display': 'none' });
+        //     }
+        // });
+
+        $.ajax({
+            type: 'POST',
+            url: host + "/filterData",
+            data: { name: name, start: start, sortValue: sortValue },
+            success: function (data) {
+                // $("#totalRecord1").val(data.length)
+
+                // console.log("datatat---->>", data);
+                generateView(data)
+                createPagination()
+                scrollToTop();
+            }
+        }).done(function (data) {
+            let user_login = $('#user_login').attr('value');
+            if (user_login != "user") {
+                $('.yith-wcwl-add-to-wishlist').hide();
+                $('.review_form_wrapper').hide();
+                $('.loop-form-add-to-cart').css({ 'display': 'none' });
+            }
+
+            $(".product_stock_quantity").each(function () {
+                let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                var isnan = isNaN(product_stock_quantity);
+                console.log("done -----------------", isnan);
+
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                        $(this).text("(only " + product_stock_quantity + " left)");
+                    } else {
+                        if (parseInt(product_stock_quantity) == 0) {
+                            $(this).text("out of stock");
+                        }
+                    }
+                }
+            });
+
+            $(".single_add_to_cart_button").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_call").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+
+            $(".wishlist_fun").each(function () {
+                let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                var isnan = isNaN(product_stock_quantity_check);
+                if (isnan == false) {
+                    if (parseInt(product_stock_quantity_check) == 0) {
+                        $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    }
+                }
+            });
+        });
+
+    }
+
+
+    function generateView(data) {
+        $("#newGrid").html('')
+
+        let html = `
+        <div class="gridItem" id="new__Grid">
+
+        <ul class="row list-products auto-clear equal-container  product-grid">`
+
+        if (data) {
+
+            for (let i = 0; i < data.length; i++) {
+                if (i <= 8) {
+
+                    html += `<li class="product-item  col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12 style-1">
+                    <div class="product-inner">
+                        <div class="product-top">
+                            <div class="flash">
+                                <span class="onnew">
+                                    <span class="text">
+                                        new
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="product-thumb">`
+
+                    if (data[i].product_defaultImg.length > 0) {
+
+                        for (let ii = 0; ii < data[i].product_defaultImg.length; ii++) {
+
+                            html += `<div class="thumb-inner">
+                        <a href="/productDetails/`+ data[i]._id + `/` + data[i].product_name + `">
+                        <img src="`+ data[i].product_defaultImg[ii].path + `" alt="img" class="imageSize">
+                    </a>
+                                <div class="thumb-group">
+                                    <div class="yith-wcwl-add-to-wishlist">
+                                        <div class="yith-wcwl-add-button">`
+                            if (data[i].wishlist_arr != null || data[i].wishlist_arr != undefined) {
+                                if (data[i].wishlist_arr == data[i]._id.toString()) {
+                                    html += `<a href="javascript:void(0)" class="wishlist_fun wishlist_active" data="` + data[i].wishlist_arr + `" data-product_stock_quantity_check="` + data[i].product_stock_quantity + `" data-id=` + data[i]._id + `>Add to Wishlist</a>`;
+                                } else {
+                                    html += `<a href="javascript:void(0)" class="wishlist_fun" data="` + data[i].wishlist_arr + `" data-product_stock_quantity_check="` + data[i].product_stock_quantity + `" data-id=` + data[i]._id + `>Add to Wishlist</a>`;
+                                }
+                            } else {
+                                html += `<a href="javascript:void(0)" class="wishlist_fun" data="` + data[i].wishlist_arr + `" data-product_stock_quantity_check="` + data[i].product_stock_quantity + `" data-id=` + data[i]._id + `>Add to Wishlist</a>`;
+                            }
+                            html += ` </div>
+                                    </div>
+                                    <a href="javascript:void(0)"
+                                        class="button quick-wiew-button popup-button-click  openModel"
+                                        data-id="`+ data[i]._id + `">Quick View</a>
+                                    <div class="loop-form-add-to-cart">
+                                        <button class="single_add_to_cart_button button" id="`+ data[i]._id + `"  data-product_stock_quantity_check="` + data[i].product_stock_quantity + `"  data-price="` + data[i].product_price + `" >Add to cart
+                                        </button>
+                                    </div>
+                                </div>`
+                        }
+
+
+                    } else {
+
+                        html += `<div class="thumb-inner">
+                    <a href="/productDetails/`+ data[i]._id + `/` + data[i].product_name + `">
+
+                        <img src="/assets/images/no_image.jpg" alt="img" class="imageSize">
+
+                    </a>
+
+
+                    <div class="thumb-group">
+                                    <div class="yith-wcwl-add-to-wishlist">
+                                        <div class="yith-wcwl-add-button">`
+                        if (data[i].wishlist_arr != null || data[i].wishlist_arr != undefined) {
+                            if (data[i].wishlist_arr == data[i]._id.toString()) {
+                                html += `<a href="javascript:void(0)" class="wishlist_call wishlist_active" data=` + data[i].wishlist_arr + `data-product_stock_quantity_check=` + data[i].product_stock_quantity + ` data-id=` + data[i]._id + `>Add to Wishlist</a>`;
+                            } else {
+                                html += `<a href="javascript:void(0)" class="wishlist_call" data=` + data[i].wishlist_arr + `data-product_stock_quantity_check=` + data[i].product_stock_quantity + ` data-id=` + data[i]._id + `>Add to Wishlist</a>`;
+                            }
+                        } else {
+                            html += `<a href="javascript:void(0)" class="wishlist_call" data=` + data[i].wishlist_arr + `data-product_stock_quantity_check=` + data[i].product_stock_quantity + ` data-id=` + data[i]._id + `>Add to Wishlist</a>`;
+                        }
+                        html += ` </div>
+                                    </div>
+                                    <a href="javascript:void(0)"
+                                        class="button quick-wiew-button popup-button-click  openModel"
+                                        data-id="`+ data[i]._id + `">Quick View</a>
+                                    <div class="loop-form-add-to-cart">
+                                        <button class="single_add_to_cart_button button" id="`+ data[i]._id + `"  data-product_stock_quantity_check="` + data[i].product_stock_quantity + `"  data-price="` + data[i].product_price + `">Add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                    </div>`
+
+                
+                    }
+                    let newname = data[i].product_name.length > 20 ? data[i].product_name.substring(0, 20) + '...' : data[i].product_name;
+                    
+                    html += ` <div class="product-info pb_10">
+                            <h5 class="product-name product_title">
+                                <a href="/productDetails/`+ data[i]._id + `/` + data[i].product_name + `">`+ newname +`</a>
+                            </h5>
+                            <div class="group-info">
+                                <div class="stars-rating">
+                    <div class="star-ratingD">
+                        <span class="starD-`+ data[i].product_rating_num + `"></span>
+
+                        <span class="starD-0">`
+                    if (data[i].product_rating != 0 && data[i].product_rating != undefined) {
+                        html += `<span>` + data[i].product_rating + `</span>`
+
+                    }
+                    html += ` </span>
+                    </div>
+                    <div class="count-starD"></div>
+                </div>
+                                <div class="price">`
+                    if (data[i].is_discount == "1" && data[i].discount_start == "true") {
+                        html += `<del>
+                                &#8377;`+ (data[i].product_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `
+                        </del>
+                        <ins>
+                            &#8377;`+ (data[i].discount_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `
+                        </ins> 
+                        <span class="product_stock_quantity"
+                                                        data-product_stock_quantity=`+ data[i].product_stock_quantity + `
+                                                        style="color: red;"></span>`
+                    } else {
+
+                        html += `<ins>
+                            &#8377;`+ (data[i].product_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `
+                        </ins>
+                        <span class="product_stock_quantity"
+                                                        data-product_stock_quantity=`+ data[i].product_stock_quantity + `
+                                                        style="color: red;"></span> 
+                        `
+                    }
+                    html += `</div>
+                            </div>
+                        </div>
+        </li>`
+                }
+            }
+        } else {
+
+            html += `<div class="productnot_found">
+                    <h1>
+                        Product not found !
+                    </h1>
+                </div>`
+
+        }
+        `</ul>
+
+        </div>`;
+
+
+        $("#newGrid").html(html)
+
+
+
+
+
+        let newHtml = ` <ul class="row list-products auto-clear equal-container  product-list">`
+
+        if (data) {
+
+            for (let i = 0; i < data.length; i++) {
+
+                if (i <= 8) {
+
+                    newHtml += `<li
+        class="product-item style-list col-lg-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-ts-12">
+        <div class="product-inner" style="height:264px ;">
+        <div class="product-top">
+        <div class="flash">
+            <span class="onnew">
+                <span class="text">
+                New
+                </span>
+            </span>
+        </div>
+        </div>
+        <div class="products-bottom-content">
+        <div class="product-thumb">`
+
+                    if (data[i].product_defaultImg.length > 0) {
+
+                        for (let ii = 0; ii < data[i].product_defaultImg.length; ii++) {
+
+
+
+                            newHtml += ` <div class="thumb-inner">
+        <a href="/productDetails/`+ data[i]._id + `/` + data[i].product_name + `">
+        <img src="`+ data[i].product_defaultImg[ii].path + `" alt="img" class="imageSize">
+        </a>
+        <a href="javascript:void(0)"
+        class="button quick-wiew-button popup-button-click openModel "
+        data-id="`+ data[i]._id + `">Quick View</a> 
+        </div>`
+
+                        }
+                    } else {
+
+                        newHtml +=
+                            ` <div class="thumb-inner">
+        <a href="/productDetails/`+ data[i]._id + `/` + data[i].product_name + `">
+
+        <img src="/assets/images/no_image.jpg" alt="img" class="imageSize">
+
+        </a>
+
+        <a href="javascript:void(0)"
+        class="button quick-wiew-button popup-button-click openModel "
+        data-id="`+ data[i]._id + `">Quick View</a>
+        </div>`
+
+                    }
+
+
+                    newHtml += ` </div >
+        <div class="product-info-left">
+        <div class="yith-wcwl-add-to-wishlist">
+        <div class="yith-wcwl-add-button">`
+                    if (data[i].wishlist_arr != null || data[i].wishlist_arr != undefined) {
+                        if (data[i].wishlist_arr == data[i]._id.toString()) {
+                            newHtml += `<a href="javascript:void(0)" class="wishlist_call wishlist_popup_active" data=` + data[i].wishlist_arr + `data-product_stock_quantity_check=` + data[i].product_stock_quantity + ` data-id=` + data[i]._id + `>Add to Wishlist</a>`;
+                        } else {
+                            newHtml += `<a href="javascript:void(0)" class="wishlist_call" data=` + data[i].wishlist_arr + `data-product_stock_quantity_check=` + data[i].product_stock_quantity + ` data-id=` + data[i]._id + `>Add to Wishlist</a>`;
+                        }
+                    } else {
+                        newHtml += `<a href="javascript:void(0)" class="wishlist_call" data=` + data[i].wishlist_arr + `data-product_stock_quantity_check=` + data[i].product_stock_quantity + ` data-id=` + data[i]._id + `>Add to Wishlist</a>`;
+                    }
+                    newHtml += `</div>
+        </div>
+        <h5 class="product-name product_title">
+        <a
+        href="/productDetails/`+ data[i]._id + `/` + data[i].product_name + `">` + data[i].product_name + `</a>
+        </h5>
+        <div class="stars-rating">
+        <div class="star-ratingD">
+        <span class="starD-` + data[i].product_rating_num + `"></span>
+
+        </div>
+        <div class="count-starD">`
+
+
+                    if (data[i].product_rating != 0 && data[i].product_rating != undefined) {
+                        newHtml += `<span>` + data[i].product_rating + `</span>`
+
+                    }
+
+                    newHtml += `</div>
+        </div>
+        <ul class="product-attributes">
+        <li>
+        Brand: `+ data[i].product_brand + `
+        </li>
+
+        </ul>
+        <ul class="attributes-display">
+        <li class="swatch-color">
+        SKU: `+ data[i].product_sku + `
+        </li>
+
+        </ul>
+        <ul class="attributes-display">
+        <li class="swatch-text-label">
+        Sold By: `+ data[i].venodor_name + `
+        </li>
+
+        </ul>
+        </div >
+        <div class="product-info-right">
+        <div class="price">`
+                    if (data[i].is_discount == "1" && data[i].discount_start == "true") {
+                        newHtml += `<del>
+                &#8377;`+ (data[i].product_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `
+        </del>
+        <ins>
+            &#8377;`+ (data[i].discount_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `
+        </ins> 
+        <span class="product_stock_quantity"
+                                                        data-product_stock_quantity=`+ data[i].product_stock_quantity + `
+                                                        style="color: red;"></span>`
+                    } else {
+
+                        newHtml += `<ins>
+            &#8377;`+ (data[i].product_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `
+        </ins> 
+        <span class="product_stock_quantity"
+                                                        data-product_stock_quantity=`+ data[i].product_stock_quantity + `
+                                                        style="color: red;"></span>`
+                    }
+
+                    newHtml +=
+                        `</div>
+        <!-- <div class="product-list-message">
+        <i class="icon fa fa-truck" aria-hidden="true"></i>
+        UK Free Delivery
+        </div> -->
+        <form class="cart">
+        <div class="single_variation_wrap">`
+                    // <div class="quantity">
+                    //     <div class="control">
+                    //         <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                    //         <input type="text" data-step="1" data-min="0" value="1"
+                    //             title="Qty" class="input-qty qty" size="4">
+                    //             <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                    //     </div>
+                    // </div>`
+                    newHtml += `<button class="single_add_to_cart_button button" id="` + data[i]._id + `" data-product_stock_quantity_check="` + data[i].product_stock_quantity + `"  data-price="` + data[i].product_price + `">Add to
+                cart</button>
+        </div>
+                    </form>
+                            </div>
+        </div >
+        </div >
+        </li > `
+                }
+
+            }
+
+        } else {
+
+
+            newHtml +=
+                `< div class="productnot_found" >
+                <h1>
+                    Product not found !
+                </h1>
+        </div > `
+
+        }
+
+        newHtml += `</ul >`
+
+
+        $("#listView").html(newHtml)
+
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        $(".proName").each(function () {
+            let productName = $(this).attr('data-proName');
+
+            // alert(productName.length)
+
+            if (productName.length > 20) {
+
+                productName = productName.substring(0, 20) + '...';
+
+            }
+
+
+            $(this).text(productName);
+
+
+        });
+    });
+</script>
+
+
+
+
+{% endblock %}

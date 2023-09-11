@@ -1,0 +1,259 @@
+{% extends "backend/partition/layout.html" %}
+
+{% block body %}
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Vendor Table</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Vendor</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<input id="vendorApproval_val" type="hidden" value="vendorApproval">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<h6 class="panel-title txt-dark">Vendor</h6>
+							</div>
+							<div class="pull-right">
+								<!-- <a href="/backend/addProduct"><button type="button" class="btn btn-primary btn-md"><i
+											class="fa fa-plus"></i> Add Vendor</button></a> -->
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										<input type="hidden" id="gameType" name="gameType">
+										<table id="myTable" class="table table-hover display  pb-30">
+											<thead>
+												<tr>
+													<th>Vendor Name</th>
+													<th>Vendor Email</th>
+													<th>Action</th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script>
+	$(document).ready(function () {
+		var host = window.location.origin;
+		$('#myTable').DataTable({
+				// "oLanguage": {
+			// 	"sSearch": "Search Username"
+			// },
+			// "scrollX": true,
+			"processing": true,
+			"serverSide": true,
+			"searching": false,
+			"ordering": false,
+			"autoWidth": false,
+			"pageLength": 25,
+			"ajax": host + "/backend/getVendor",
+			"columns": [
+				{ "data": "vendor_company" },
+				{ "data": "vendor_email" },
+				{
+					"data": "action",
+					render: function (data, type, row) {
+						return '<div class="vendorApproval" id="' + row.vendorApproval + '" style="display:none;"></div> <a href="/vendor_Profile/' + row._id + '"> <button type="button" class="btn btn-warning btn-xs btn-rounded" name="edit"> <i class="fa fa-edit" aria-hidden="true"></i></button></a> <a href="/vendor_email_verity/' + row._id + '"> <button type="button" name="approve" id="' + row._id + '" data-temp="' + row.vendorApproval + '" class="btn btn-success btn-xs approve btn-rounded"> <i class="fa fa-check" aria-hidden="true"></i></button> </a> <button type="button" name="deny" id="' + row._id + '" data-temp="' + row.vendorApproval + '" class="btn btn-danger btn-xs deny mr-1 btn-rounded" ><i class="fa fa-close" aria-hidden="true"></i></button></a>'
+					}
+
+				}
+			]
+		});
+
+
+		$(function () {
+			"use strict";
+
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.approve', function (e) {
+					var id = $(this).attr('id');
+					var approve_value = $(this).attr('data-temp');
+					console.log("approve_value", approve_value);
+
+					if (approve_value == 'true') {
+						swal({
+							// title: "Are you sure?",
+							// text: "You will not be able to recover this Vendor!",
+							type: "warning",
+							showCancelButton: true,
+							confirmButtonColor: "#e69a2a",
+							// confirmButtonText: "Yes, approve it!",
+							// cancelButtonText: "No, cancel plx!",
+							closeOnConfirm: false,
+							closeOnCancel: false
+						},
+							swal("Alredy Approved!", "Vendor Alredy Approved.", "success")
+						);
+						return false;
+					} else {
+
+						var thisElement = this;
+						swal({
+							title: "Are you sure?",
+							text: "You will not be able to recover this Vendor!",
+							type: "warning",
+							showCancelButton: true,
+							confirmButtonColor: "#e69a2a",
+							confirmButtonText: "Yes, approve it!",
+							cancelButtonText: "No, cancel plx!",
+							closeOnConfirm: false,
+							closeOnCancel: false
+						}, function (isConfirm) {
+							if (isConfirm) {
+
+								$.ajax({
+									type: 'POST',
+									url: host + "/approvedByAdmin",
+									data: { id: id },
+									success: function (resultData) {
+										// alert(resultData)
+										console.log(resultData);
+
+
+										console.log(resultData.vendorDetail.status);
+										if (resultData.vendorDetail.status == 'active') {
+											// $(thisElement).parent().parent().hide(700);
+											swal("Approved!", "Your imaginary file has been approve.", "success");
+											location.reload();
+										} else {
+											alert("Something went wrong")
+										}
+										// alert("Save Complete")
+									}
+								});
+								swal("Approved!", "Vendor Approved Succesfully.", "success");
+							} else {
+								swal("Cancelled", "Vendor Not Approved)", "error");
+							}
+						});
+						return false;
+					}
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+		$(function () {
+			"use strict";
+
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.deny', function (e) {
+					var id = $(this).attr('id');
+					var approve_value = $(this).attr('data-temp');
+
+					console.log("approve_value", approve_value);
+
+
+					if (approve_value == 'false') {
+						swal({
+							// title: "Are you sure?",
+							// text: "You will not be able to recover this Vendor!",
+							type: "warning",
+							showCancelButton: true,
+							confirmButtonColor: "#e69a2a",
+							// confirmButtonText: "Yes, approve it!",
+							// cancelButtonText: "No, cancel plx!",
+							closeOnConfirm: false,
+							closeOnCancel: false
+						},
+							swal("Alredy Deny!", "Vendor Alredy Deny.", "success")
+						);
+						return false;
+					} else {
+
+						var thisElement = this;
+						swal({
+							title: "Are you sure?",
+							text: "You will not be able to recover this Vendor!",
+							type: "warning",
+							showCancelButton: true,
+							confirmButtonColor: "#e69a2a",
+							confirmButtonText: "Yes, deny it!",
+							cancelButtonText: "No, cancel plx!",
+							closeOnConfirm: false,
+							closeOnCancel: false
+						}, function (isConfirm) {
+							if (isConfirm) {
+								$.ajax({
+									type: 'POST',
+									url: host + "/denyByAdmin",
+									data: { id: id },
+									success: function (resultData) {
+										// alert(resultData)
+										console.log(resultData);
+										if (resultData.vendorDetail.status == 'active') {
+											// $(thisElement).parent().parent().hide(700);
+											swal("Denyed!", "Your imaginary file has been deny.", "success");
+											location.reload();
+										} else {
+											alert("Something went wrong")
+										}
+										// alert("Save Complete")
+									}
+								});
+								swal("Denyed!", "Vendor Denyed Succesfully.", "success");
+							} else {
+								swal("Cancelled", "Vendor Not Denyed)", "error");
+							}
+						});
+						return false;
+					}
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+
+
+	});
+
+
+
+</script>
+{% endblock %}

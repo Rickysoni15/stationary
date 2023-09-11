@@ -1,0 +1,583 @@
+{% extends "frontend/affiliate/partitions/layout.html" %}
+{% block body %}
+
+
+
+        <section class="affiliate-dasboard-section" data-aos="fade-in" data-aos-offset="0">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="cstm-tab">
+                        <div class="top-yellow-strip">
+                            <div class="container">
+                                <div class="row align-items-center pr-md-5 pl-md-5 pr-0 pl-0">
+                                    <div class="col-md-12 ">
+                                        <ul id="tabs" class="nav nav-tabs" role="tablist">
+                                            <li class="nav-item">
+                                                <a id="tab-affiliate-dasboard" href="#pane-affiliate-dasboard" class="nav-link active" data-toggle="tab" role="tab">Dashboard</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a id="tab-usermanagement" href="#pane-usermanagement" class="nav-link" data-toggle="tab" role="tab">User Management</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="container">
+                            <div class="row align-items-center pr-md-5 pl-md-5 pr-0 pl-0">
+                                <div class="col-md-12 ">
+                                    <div id="content" class="tab-content" role="tablist">
+                                        <div id="pane-affiliate-dasboard" class="card tab-pane fade show active affiliate-dasboard-tab" role="tabpanel" aria-labelledby="tab-affiliate-dasboard">
+                                            <div class="card-header" role="tab" id="heading-affiliate-dasboard">
+                                                <h5 class="mb-0">
+
+                                                    <a data-toggle="collapse" href="#collapse-affiliate-dasboard" aria-expanded="true" aria-controls="collapse-affiliate-dasboard">
+                                                        Dashboard
+                                        </a>
+                                                </h5>
+                                            </div>
+
+
+                                            <div id="collapse-affiliate-dasboard" class="collapse show" data-parent="#content" role="tabpanel" aria-labelledby="heading-affiliate-dasboard">
+                                                <div class="card-body">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-md-6 p-lg-0 mr-lg-4">
+                                                                <div class="card card-info">
+                                                                    <div class="left-icon-wrp">
+                                                                        <img src="/affiliate/img/dashboard-user-icon.png" alt="">
+                                                                    </div>
+                                                                    <div class="right-info-wrap">
+                                                                        <p class="p-text">Student Registered </p>
+                                                                        <h5 class="counter"> {{ parentAffiliateCount }}</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-6 p-lg-0">
+                                                                <div class="card card-info">
+                                                                    <div class="left-icon-wrp">
+                                                                        <img src="/affiliate/img/dashboard-user-icon.png" alt="">
+                                                                    </div>
+                                                                    <div class="right-info-wrap">
+                                                                        <p class="p-text">Student Applied for course </p>
+                                                                        <h5 class="counter">{{ appliedCount }}</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="">
+                                                      <h3>Your Affiliate Code: {{ affiliateCode }}</h3>
+
+                                                    </div>
+                                                    <div class="col-md-12 text-right foot-img">
+                                                        <img src="/affiliate/img/affiliate-dasboard-footer-img.png" class="img-fluid" alt="">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="pane-usermanagement" class="card tab-pane fade usermanagement-tab" role="tabpanel" aria-labelledby="tab-usermanagement">
+                                            <div class="card-header" role="tab" id="heading-usermanagement">
+                                                <h5 class="mb-0">
+                                                    <a class="collapsed" data-toggle="collapse" href="#collapse-usermanagement" aria-expanded="false" aria-controls="collapse-usermanagement">
+                                                        User Management  </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse-usermanagement" class="collapse" data-parent="#content" role="tabpanel" aria-labelledby="heading-usermanagement">
+                                                <div class="card-body">
+
+                                                    <!-- Login Siginup Button Section  -->
+                                                    <div class="login-signnup-section d-none">
+                                                        <div class="login-signup-button-style">
+                                                            <div class="btn-wrap">
+                                                                <a href="#" class="box-btn">
+                                                                    <div class="icon-box">
+                                                                        <img src="/affiliate/img/user-white-icon.png" alt="">
+                                                                    </div>
+                                                                    Log in
+                                                                </a>
+                                                                <a href="#" class="box-btn">
+                                                                    <div class="icon-box">
+                                                                        <img src="/affiliate/img/user-white-icon.png" alt="">
+                                                                    </div>
+                                                                    Sign up
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 text-right foot-img">
+                                                            <img src="/affiliate/img/affiliate-dasboard-login-signup-footer-img.png" class="img-fluid" alt="">
+                                                        </div>
+
+                                                    </div>
+
+                                                    <!-- User Management-detail Section  -->
+
+                                                    <div class="usermanagement-detail-section ">
+                                                        <div class="col-md-9 p-0">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped table-hover table-sm cstm-table bg-transparent table-bordered">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="f-400 text-center">Sr. No.</th>
+                                                                            <th class="f-400 text-left">Name</th>
+                                                                            <th class="f-400 text-left">Email</th>
+                                                                            <th class="f-400 text-left">Number</th>
+                                                                            <th class="f-400 text-left">Action</th>
+
+
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="userTableContent" class="f-500 text-blue text-left w-25">
+                                                                        <!-- <tr>
+                                                                            <td class="">1</td>
+                                                                            <td class=""> Sheldon</td>
+                                                                            <td class="">Shelly@gmail.com</td>
+                                                                            <td class="">1234567890</td>
+                                                                            <td class="">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#detailModal" data-toggle="modal"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="">1</td>
+                                                                            <td class=""> Sheldon</td>
+                                                                            <td class="">Shelly@gmail.com</td>
+                                                                            <td class="">1234567890</td>
+                                                                            <td class="">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#detailModal" data-toggle="modal"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="">1</td>
+                                                                            <td class=""> Sheldon</td>
+                                                                            <td class="">Shelly@gmail.com</td>
+                                                                            <td class="">1234567890</td>
+                                                                            <td class="">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#detailModal" data-toggle="modal"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="">1</td>
+                                                                            <td class=""> Sheldon</td>
+                                                                            <td class="">Shelly@gmail.com</td>
+                                                                            <td class="">1234567890</td>
+                                                                            <td class="">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#detailModal" data-toggle="modal"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="">1</td>
+                                                                            <td class=""> Sheldon</td>
+                                                                            <td class="">Shelly@gmail.com</td>
+                                                                            <td class="">1234567890</td>
+                                                                            <td class="">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#detailModal" data-toggle="modal"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr> -->
+                                                                        <!-- <tr>
+                                                                            <td class="text-center text-blue w-cstm">1</td>
+                                                                            <td class="f-500 text-blue text-left w-25"> Sheldon
+                                                                            </td>
+                                                                            <td class="f-500 text-blue text-left w-25">Shelly@gmail.com </td>
+                                                                            <td class="f-500 text-blue text-left w-25">1234567890</td>
+                                                                            <td class="f-500 text-blue text-left w-20">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-blue w-cstm">1</td>
+                                                                            <td class="f-500 text-blue text-left w-25"> Sheldon
+                                                                            </td>
+                                                                            <td class="f-500 text-blue text-left w-25">Shelly@gmail.com </td>
+                                                                            <td class="f-500 text-blue text-left w-25">1234567890</td>
+                                                                            <td class="f-500 text-blue text-left w-20">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-blue w-cstm">1</td>
+                                                                            <td class="f-500 text-blue text-left w-25"> Sheldon
+                                                                            </td>
+                                                                            <td class="f-500 text-blue text-left w-25">Shelly@gmail.com </td>
+                                                                            <td class="f-500 text-blue text-left w-25">1234567890</td>
+                                                                            <td class="f-500 text-blue text-left w-20">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-blue w-cstm">1</td>
+                                                                            <td class="f-500 text-blue text-left w-25"> Sheldon
+                                                                            </td>
+                                                                            <td class="f-500 text-blue text-left w-25">Shelly@gmail.com </td>
+                                                                            <td class="f-500 text-blue text-left w-25">1234567890</td>
+                                                                            <td class="f-500 text-blue text-left w-20">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-blue w-cstm">1</td>
+                                                                            <td class="f-500 text-blue text-left w-25"> Sheldon
+                                                                            </td>
+                                                                            <td class="f-500 text-blue text-left w-25">Shelly@gmail.com </td>
+                                                                            <td class="f-500 text-blue text-left w-25">1234567890</td>
+                                                                            <td class="f-500 text-blue text-left w-20">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-blue w-cstm">1</td>
+                                                                            <td class="f-500 text-blue text-left w-25"> Sheldon
+                                                                            </td>
+                                                                            <td class="f-500 text-blue text-left w-25">Shelly@gmail.com </td>
+                                                                            <td class="f-500 text-blue text-left w-25">1234567890</td>
+                                                                            <td class="f-500 text-blue text-left w-20">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-blue w-cstm">1</td>
+                                                                            <td class="f-500 text-blue text-left w-25"> Sheldon
+                                                                            </td>
+                                                                            <td class="f-500 text-blue text-left w-25">Shelly@gmail.com </td>
+                                                                            <td class="f-500 text-blue text-left w-25">1234567890</td>
+                                                                            <td class="f-500 text-blue text-left w-20">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-blue w-cstm">1</td>
+                                                                            <td class="f-500 text-blue text-left w-25"> Sheldon
+                                                                            </td>
+                                                                            <td class="f-500 text-blue text-left w-25">Shelly@gmail.com </td>
+                                                                            <td class="f-500 text-blue text-left w-25">1234567890</td>
+                                                                            <td class="f-500 text-blue text-left w-20">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-blue w-cstm">1</td>
+                                                                            <td class="f-500 text-blue text-left w-25"> Sheldon
+                                                                            </td>
+                                                                            <td class="f-500 text-blue text-left w-25">Shelly@gmail.com </td>
+                                                                            <td class="f-500 text-blue text-left w-25">1234567890</td>
+                                                                            <td class="f-500 text-blue text-left w-20">
+                                                                                <div class="action-btns-group">
+                                                                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                                                                    <a href="#"><i class="fa fa-edit"></i></a>
+
+                                                                                    <a href="#"><i class="fa fa-trash"></i></a>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr> -->
+
+
+                                                                    </tbody>
+
+                                                                </table>
+                                                            </div>
+                                                            <nav aria-label="Page navigation" class="cstm-pagignation">
+                                                                <ul class="pagination">
+                                                                    <!-- <li class="page-next-prev">
+                                                                        <a href="#" class="link-nxt-prev"><i class="fa fa-angle-left"></i></a>
+                                                                    </li> -->
+                                                                    {% for i in range(0, pagination) -%}
+                                                                    <li class="page-item getAffliateUsersPagination" id="allPage{{i+1}}" page="{{ i + 1 }}" aria-current="page">
+                                                                        <a class="page-link" href="javascript:void(0)">{{ i + 1 }}</a>
+                                                                    </li>
+                                                                    {%- endfor %}
+
+                                                                    <!-- <li class="page-item getAffliateUsersPagination">
+                                                                        <a class="page-link" href="#">2</a>
+                                                                    </li> -->
+
+                                                                    <!-- <li class="page-next-prev">
+                                                                        <a href="#" class="link-nxt-prev"><i class="fa fa-angle-right"></i></a>
+                                                                    </li> -->
+                                                                </ul>
+                                                            </nav>
+                                                        </div>
+
+
+                                                        <div class="col-md-12 text-right foot-img">
+                                                            <img src="/affiliate/img/affiliate-dasboard-management-footer-img.png" class="img-fluid" alt="">
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    <!-- Detail Modal  -->
+    <div class="modal fade affiliate-detail-modal" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <img src="/affiliate/img/pop-up-close-btn.png" alt="">
+                        </button>
+                    <div class="row-d">
+                        <div class="left-d">Name</div>
+                        <div class="right-d affiliateName"></div>
+                    </div>
+                    <div class="row-d">
+                        <div class="left-d">Email</div>
+                        <div class="right-d affiliateEmail"></div>
+                    </div>
+                    <div class="row-d">
+                        <div class="left-d">Number</div>
+                        <div class="right-d affiliateMobile"></div>
+                    </div>
+                    <div class="row-d">
+                        <div class="left-d">First Form Completed</div>
+                        <div class="right-d affiliateFirstForm"></div>
+                    </div>
+                    <div class="row-d">
+                        <div class="left-d">Second Form Completed</div>
+                        <div class="right-d affiliateSecondForm"></div>
+                    </div>
+                    <div class="row-d">
+                        <div class="left-d">Third Form Completed</div>
+                        <div class="right-d affiliateThirdForm"></div>
+                    </div>
+                    <div class="row-d">
+                        <div class="left-d">Collegename</div>
+                        <div class="right-d affiliateCollege"></div>
+                    </div>
+                    <div class="row-d">
+                        <div class="left-d">Course name</div>
+                        <div class="right-d affiliateCourse"></div>
+                    </div>
+                    <div class="row-d">
+                        <div class="left-d">Paid Amount</div>
+                        <div class="right-d affiliateTotalAmount"></div>
+                    </div>
+                    <div class="row-d">
+                        <div class="left-d">Pending Amount</div>
+                        <div class="right-d affiliatePendingAmount"></div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Detail Modal  End-->
+
+{% endblock %} {% block Jscript %}
+    <script>
+        $(document).ready(function() {
+            // $('#detailModal').modal('show')
+
+            AOS.init({
+                // startEvent: 'load',
+                offset: 250,
+                duration: 1000,
+                easing: 'ease-in-sine',
+                delay: 50,
+                disableMutationObserver: true,
+                throttleDelay: 0,
+                debounceDelay: 0,
+                once: false,
+                mirror: true,
+                // startEvent: 'DOMContentLoaded'
+            });
+
+
+
+            // ~~~~~~~~~~~~~~~~~~~
+
+
+            getAffliateUsers(1);
+            $('#allPage1').addClass('active');
+            $('.getAffliateUsersPagination').click(function() {
+              let currentClass = $(this).attr('class');
+              var str_pos = currentClass.indexOf("active");
+              if (str_pos > -1) {
+                // do nothing
+              } else {
+                let page = $(this).attr('page')
+                $('.getAffliateUsersPagination').attr('class', 'page-item getAffliateUsersPagination');
+                $(this).addClass('active');
+                getAffliateUsers(page);
+              }
+            });
+            function getAffliateUsers(pageNo) {
+              $.ajax({
+                type: "post",
+                url: "/getAfflicateUser",
+                data: { pageNo : pageNo },
+                success: function(responseData) {
+                  // alert(responseData.message)
+                  if (responseData.status == 'success') {
+                    let htmlData= '';
+                    for (var i = 0; i < responseData.data.length; i++) {
+                      htmlData += '<tr>\
+                          <td class="">'+parseInt(pageNo-1)+''+parseInt(i+1)+'</td>\
+                          <td class=""> '+responseData.data[i].firstName+' '+responseData.data[i].lastName+'</td>\
+                          <td class="">'+responseData.data[i].email+'</td>\
+                          <td class="">'+responseData.data[i].mobile+'</td>\
+                          <td class="" >\
+                              <div class="action-btns-group studentData" studentId="'+responseData.data[i]._id+'" name="'+responseData.data[i].firstName+' '+responseData.data[i].lastName+'" email="'+responseData.data[i].email+'" mobile="'+responseData.data[i].mobile+'">\
+                                  <a href="#detailModal" data-toggle="modal"><i class="fa fa-eye"></i></a>\
+                              </div>\
+                          </td>\
+                      </tr>'
+                    }
+                    $('#userTableContent').html(htmlData)
+                  }
+                  else {
+                    alert("Something went Wrong, Please refresh Page")
+                  }
+                }
+              })
+
+            }
+
+
+            // ~~~~~~~~~~~~~~~~~~~
+
+
+
+            $('body').on('click', '.studentData', function(e){
+              let studentId = $(this).attr('studentId');
+              let name = $(this).attr('name');
+              let email = $(this).attr('email');
+              let mobile = $(this).attr('mobile');
+              $.ajax({
+                type: "post",
+                url: "/getUserRecords",
+                data: { id : studentId },
+                success: function(responseData) {
+                  // alert(responseData.message)
+                  if (responseData.status == 'success') {
+                    // console.log("responseData", responseData);
+                    $('.affiliateName').html(name)
+                    $('.affiliateEmail').html(email)
+                    $('.affiliateMobile').html(mobile)
+                    $('.affiliateTotalAmount').html(responseData.data.totalAmount)
+                    $('.affiliatePendingAmount').html(responseData.data.pendingFees)
+                    $('.affiliateFirstForm').html(responseData.data.completedFirstForm)
+                    $('.affiliateSecondForm').html(responseData.data.completedSecondForm)
+                    $('.affiliateThirdForm').html(responseData.data.completedFullForm)
+                    if ( responseData.data.studentCourse != '' ) {
+                      $('.affiliateCollege').html(responseData.data.studentCourse.collegeName)
+                      $('.affiliateCourse').html(responseData.data.studentCourse.courseName)
+                    }else {
+                      $('.affiliateCollege').html('--')
+                      $('.affiliateCourse').html('--')
+                    }
+                  }
+                  else {
+                    alert("Something went Wrong, Please refresh Page")
+                  }
+                }
+              })
+            });
+
+
+
+
+
+        });
+    </script>
+{% endblock %}

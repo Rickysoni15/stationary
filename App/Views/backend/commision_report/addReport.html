@@ -1,0 +1,760 @@
+{% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+<style>
+  .switch_vendorGst {
+    position: relative;
+    display: inline-block;
+    width: 47px;
+    height: 24px;
+    margin-bottom: 0 !important;
+    margin-left: 10px;
+  }
+
+  .switch_vendorGst input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider_vendorGst {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider_vendorGst:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 3px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked+.slider_vendorGst {
+    background-color: #3c8dbc;
+    ;
+  }
+
+  input:focus+.slider_vendorGst {
+    box-shadow: 0 0 1px #3c8dbc;
+    ;
+  }
+
+  input:checked+.slider_vendorGst:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider_vendorGst.round {
+    border-radius: 34px;
+  }
+
+  .slider_vendorGst.round:before {
+    border-radius: 50%;
+  }
+
+  select:required:invalid {
+    color: gray;
+  }
+
+  option[value=""][disabled] {
+    display: none;
+  }
+
+  option {
+    color: black;
+  }
+
+  .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #e4e4e4;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 0 5px;
+    color: black;
+  }
+
+  .detailsBtn {
+    text-align: end;
+    cursor: pointer;
+    color: #3c8dbc;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 10px 10px;
+    font-weight: 600;
+  }
+</style>
+<!-- Main Content
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		Title -->
+<section class="content-header">
+  <h1>Order Details</h1>
+  <!-- Breadcrumb -->
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Order Management</a></li>
+    <li class="active">Order Details</li>
+  </ol>
+  <!-- /Breadcrumb -->
+</section>
+<!-- /Title -->
+{% include "backend/partition/notification.html" %}
+<!-- Row -->
+
+<section class="content">
+
+  <div class="detailsBtn  invoice_pdf" id="invoice_pdf" data-id="{{ordertData.order_id}}pdf">
+    Invoice
+  </div>
+
+  <span style="display: none ;">
+    <div class="invoice" id="invoice_download{{ordertData.order_id}}pdf" style="font-family: 'Jost', sans-serif;">
+
+      <div class="col-lg-12 text-center"
+        style="text-transform: uppercase; text-align: center; margin-bottom: 30px; font-size: 50px;">
+
+        <caption>
+          <strong>
+            Invoice
+          </strong>
+        </caption>
+      </div>
+
+
+      <table style="table-layout: fixed; width: 100%; ">
+
+        <tbody>
+          <tr>
+            <td class="">
+              <div>
+                <img src="/assets/images/logo.png" alt="oemOne" style="max-width: 50%; ">
+              </div>
+            </td>
+            <!-- <td width="15%">
+
+                </td> -->
+            <td>
+              <table class="tbl-padded">
+
+                <tbody>
+                  <tr>
+                    <td style="padding:5px; width: 30%;">
+                      <strong>Customer Name</strong>
+                    </td>
+                    <td style="padding:5px;">
+                      <div>
+                        {{customerAdd.fullname}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px; width: 30%;">
+                      <strong>Customer Email</strong>
+                    </td>
+                    <td style="padding:5px;">
+                      <div>
+                        {{ordertData.payment_details[0].email}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px; width: 30%;">
+                      <strong>Order Status</strong>
+                    </td>
+                    <td style="padding:5px;">
+                      <div>
+                        {{ordertData.status}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+
+                    <td style="padding:5px; width: 30%;">
+                      <strong> Order Date</strong>
+                    </td>
+
+                    <td style="padding:5px;">
+                      <span>{{orderDate}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+
+        <br>
+      </table>
+
+      <div style="padding-top: 1cm; padding-bottom: 1cm;">
+        <table style="table-layout: fixed; width: 100%;">
+          <tbody>
+            <tr>
+              <td>
+                <div style="padding-bottom: 10px;">
+                  <strong style="text-transform: uppercase;">FROM</strong>
+                </div>
+                <div>
+                  <strong>{{vendor.vendor_company}}</strong><br>
+                  <span>{{vendor.vendor_flatNo}}</span> ,<span>{{vendor.vendor_Landmark}}</span> ,
+                 <span>{{vendor.vendor_area}}</span> <br><span>{{vendor.vendor_town}}</span>
+                  <br><span>{{vendor.vendor_pin}}</span><br><span>{{vendor.vendor_state}}</span>
+
+                </div>
+              </td>
+
+              <td>
+                <div style="padding-bottom: 10px;">
+                  <strong style="text-transform: uppercase;">Bill To</strong>
+                </div>
+                <div>
+                  <strong>{{customerAdd.fullname}}</strong><br>
+                  <span>{{customerAdd.addresstext_no}}</span> , <span>{{customerAdd.landmark}}</span> ,
+                  <span>{{customerAdd.addresstext_name}}</span> <br><span>{{customerAdd.city}}</span> ,
+                  <span>{{customerAdd.pincode}}</span><br><span>{{customerAdd.state}}</span><br><span>{{customerAdd.mobile}}</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <table style="table-layout: fixed; width: 100%;">
+        <thead>
+          <tr>
+            <th width="20%" style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Product
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Price
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Quantity
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Subtotal
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Discount
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Tax Amount
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              CGST
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              SGST
+            </th>
+
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              IGST
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Raw Total
+            </th>
+          </tr>
+        </thead>
+      
+
+        <tbody>
+
+          {% if newOrderList %}
+
+          {% for item in newOrderList %}
+          <tr>
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              {{item.product_name}}
+            </td>
+            
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.product_price}}
+            </td>
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              {{item.product_quantity}}
+            </td>
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.subTotal}}
+            </td>
+            
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.discount_amount}}
+            </td>
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.tax_amount}}
+            </td>
+            
+          
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.cgst}}
+            </td>
+           
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.sgst}}
+            </td>
+           
+          
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.igst}}
+            </td>
+            
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.rawTotal}}
+            </td>
+            
+
+          </tr> 
+          
+          {% endfor %}
+
+          {% endif %}
+
+        </tbody>
+        
+
+      </table>
+
+
+
+
+      <br>
+
+      <div style="border-top: 1px solid #eee;">
+        <table style="table-layout: fixed; width: 100%; border-collapse: collapse;">
+          <tbody>
+
+            <tr>
+              <td align="right" style="border-top: 2px solid #eee; padding: 8px;">
+                <span style="font-size: 16pt;">
+                  Total Amount :
+                </span>
+                <strong style="font-size: 16pt;">
+                  &#8377;{{priceFinal}}
+                </strong>
+              </td>
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div style="padding-top:1cm; padding-bottom: 1cm;">
+          <div>
+            <strong>Note</strong>
+          </div>
+          <p style="font-size: 10pt; line-height: 14pt;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget
+            placerat turpis, in vehicula elit. Pellentesque id pharetra ligula, sit
+            amet
+            interdum erat. Integer id lectus pulvinar, maximus urna quis, accumsan
+            lacus. Etiam ac quam magna. Fusce ex lectus, pretium id commodo sit
+            amet,
+            egestas mattis lectus. Vestibulum id libero fringilla magna tincidunt
+            egestas. Nam lacinia sollicitudin ante sed auctor. Suspendisse potenti.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </span>
+  <div class="row" >
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title pull-left">
+            <strong>Order & Account Information : {{ordertData.order_id}}</strong>
+          </h3>
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="col-sm-6">
+            <table id="userTable" class="table table-bordered table-striped">
+              <tbody>
+                <tr>
+                  <th>Order Date</th>
+                  <td>{{orderDate}}</td>
+                </tr>
+                <tr>
+                  <th>Order Status</th>
+                  <td>{{ordertData.status}}</td>
+                </tr>
+                <tr>
+                  <th>Purchased From</th>
+                  <td>{{game.game_hash}}</td>
+                </tr>
+                <!-- <tr>
+                    <th>Game Status</th>
+                    <td>{{game.game_status}}</td>
+                  </tr>
+                  <tr>
+                    <th>Game completed Date</th>
+                    <td>{{creDate}}</td>
+                  </tr> -->
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-6">
+            <table id="userTable" class="table table-bordered table-striped">
+              <tbody>
+                <tr>
+                  <th>Customer Name</th>
+                  <td>{{customerAdd.fullname}}</td>
+                </tr>
+                <tr>
+                  <th>Customer Email</th>
+                  <td>{{ordertData.payment_details[0].email}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="box ">
+        <div class="box-header with-border">
+          <h3 class="box-title pull-left">
+            <strong>Address Information</strong>
+          </h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td>
+                  <strong>Billing Address</strong>
+                </td>
+                <td>
+                  <strong>Shipping Address</strong>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div>
+                    <strong>{{vendor.vendor_company}}</strong><br>
+                    <span>{{vendor.vendor_flatNo}}</span><br> <span>{{vendor.vendor_Landmark}}</span>
+                    <br><span>{{vendor.vendor_area}}</span> <br><span>{{vendor.vendor_town}}</span>
+                    <br><span>{{vendor.vendor_pin}}</span><br><span>{{vendor.vendor_state}}</span>
+                  </div>
+                </td>
+                <td> <strong>{{customerAdd.fullname}}</strong><br>
+                  <span>{{customerAdd.addresstext_no}}</span><br> <span>{{customerAdd.landmark}}</span>
+                  <br><span>{{customerAdd.addresstext_name}}</span> <br><span>{{customerAdd.city}}</span>
+                  <br><span>{{customerAdd.pincode}}</span><br><span>{{customerAdd.state}}</span><br><span>{{customerAdd.mobile}}</span>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="box ">
+        <div class="box-header with-border">
+          <h3 class="box-title pull-left">
+            <strong>Payment & Shipping Method</strong>
+          </h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td>
+                  <strong>Payment Information</strong>
+                  <span style="margin-left:20px ;">{{ordertData.payment_details[0].method}}</span>
+                </td>
+                <td>
+                  <strong>Shipping & Handling Information</strong>
+                </td>
+                <!-- <td>
+                    <strong>High Point</strong>
+                  </td>
+                  <td>
+                    <strong>Low Point</strong>
+                  </td> -->
+              </tr>
+            </thead>
+            <tbody>
+              <!-- {{game.HighLowHistory}} -->
+              {% for HighLowHistory in game.HighLowHistory%}
+              <tr>
+                <td>
+                  <img class="procards"
+                    src="/frontend/upload/newcards/{{HighLowHistory.card_type_id}}_{{HighLowHistory.card_id}}.png">
+                </td>
+                <td>
+                  {% if HighLowHistory.predicted_card == 0 %}
+                  <span>High or Same</span>
+                  {% elseif HighLowHistory.predicted_card == 1 %}
+                  <span>Low or Same</span>
+                  {% elseif HighLowHistory.predicted_card == 3 %}
+                  <span>Same</span>
+                  {% elseif HighLowHistory.predicted_card == 6 %}
+                  <span>High</span>
+                  {% elseif HighLowHistory.predicted_card == 7 %}
+                  <span>Low</span>
+                  {% endif %}
+
+                  {% if HighLowHistory.predicted_card == 4 %}
+                  <span>Cashout</span>
+                  {% elseif HighLowHistory.predicted_card == 5 %}
+                  <span>Busted</span>
+                  {% endif %}
+                </td>
+                <td>{{HighLowHistory.high_point}}</td>
+                <td>{{HighLowHistory.low_point}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="box ">
+        <div class="box-header with-border">
+          <h3 class="box-title pull-left">
+            <strong>Items Ordered</strong>
+          </h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td>
+                  <strong>Product</strong>
+                </td>
+                <td>
+                  <strong>Price</strong>
+                </td>
+                <td>
+                  <strong>Quantity</strong>
+                </td>
+                <td>
+                  <strong>Subtotal</strong>
+                </td>
+                <td>
+                  <strong>Discount Amount</strong>
+                </td>
+                <td>
+                  <strong>Tax Amount</strong>
+                </td>
+                <td>
+                  <strong>CGST</strong>
+                </td>
+                <td>
+                  <strong>SGST</strong>
+                </td>
+                <td>
+                  <strong>IGST</strong>
+                </td>
+                <td>
+                  <strong>Raw Total</strong>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              {% if newOrderList %}
+
+              {% for item in newOrderList %}
+
+              <tr>
+                <td>
+
+                  <div>
+                    <strong>{{item.product_name}}</strong>
+                  </div>
+                  {% if item.question_form %}
+                  <a href="/backend/question_Show/{{item.id}}/{{item.order_id}}">
+                    Question form
+
+                  </a>
+                  <!-- <div class="btn btn-primary question_form" data-id="{{item.id}}" data-orderid="{{item.order_id}}">
+                    Question form</div> -->
+                  {% endif %}
+                </td>
+                <td>
+                  <strong>{{item.product_price}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.product_quantity}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.subTotal}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.discount_amount}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.tax_amount}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.cgst}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.sgst}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.igst}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.rawTotal}}</strong>
+                </td>
+              </tr>
+
+              {% endfor %}
+              {% endif %}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="box ">
+        <div class="box-header with-border">
+          <h3 class="box-title pull-left">
+            <strong>Order Total</strong>
+          </h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td>
+                  <strong>Notes for this Order</strong>
+                </td>
+                <td>
+                  <strong>Order Totals</strong>
+                  <span style="margin-left:20px ;">{{priceFinal}}</span>
+
+
+                </td>
+                <!-- <td>
+                      <strong>High Point</strong>
+                    </td>
+                    <td>
+                      <strong>Low Point</strong>
+                    </td> -->
+              </tr>
+            </thead>
+            <tbody>
+              <!-- {{game.HighLowHistory}} -->
+              {% for HighLowHistory in game.HighLowHistory%}
+              <tr>
+                <td>
+                  <img class="procards"
+                    src="/frontend/upload/newcards/{{HighLowHistory.card_type_id}}_{{HighLowHistory.card_id}}.png">
+                </td>
+                <td>
+                  {% if HighLowHistory.predicted_card == 0 %}
+                  <span>High or Same</span>
+                  {% elseif HighLowHistory.predicted_card == 1 %}
+                  <span>Low or Same</span>
+                  {% elseif HighLowHistory.predicted_card == 3 %}
+                  <span>Same</span>
+                  {% elseif HighLowHistory.predicted_card == 6 %}
+                  <span>High</span>
+                  {% elseif HighLowHistory.predicted_card == 7 %}
+                  <span>Low</span>
+                  {% endif %}
+
+                  {% if HighLowHistory.predicted_card == 4 %}
+                  <span>Cashout</span>
+                  {% elseif HighLowHistory.predicted_card == 5 %}
+                  <span>Busted</span>
+                  {% endif %}
+                </td>
+                <td>{{HighLowHistory.high_point}}</td>
+                <td>{{HighLowHistory.low_point}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block Jscript %}
+
+<script>
+
+  var host = window.location.origin;
+
+
+
+  // $(".question_form").each(function () {
+
+  //   let order_id = $(this).attr('data-orderid');
+  //   let id = $(this).attr('data-id')
+
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: host + "/backend/question_Show",
+  //     data: { id: id ,order_id : order_id},
+  //     success: function (resultData) {
+  //       // alert(resultData)
+  //       console.log(resultData);
+
+
+  //     }
+  //   });
+  // });
+
+
+
+  $('.invoice_pdf').click(function () {
+
+    var dataid = $(this).attr('data-id');
+
+    var idd = "invoice_download" + dataid;
+
+    var printContents = document.getElementById(idd).outerHTML;
+    w = window.open();
+
+    w.document.write(printContents);
+
+    w.document.write('<scr' + 'ipt type="text/javascript">' + 'window.onload = function() { window.print(); window.close(); };' + '</sc' + 'ript>');
+
+    w.document.close();
+    w.focus();
+    return true;
+
+  });
+</script>
+
+
+{% endblock %}

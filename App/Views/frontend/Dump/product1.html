@@ -1,0 +1,929 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+<div class="main-content main-content-product left-sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="trail-item trail-end active">
+                            Grid Products
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="content-area shop-grid-content no-banner col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="site-main">
+
+                    <div class="shop-top-control">
+                        <form class="select-item select-form">
+                            <span class="title">Sort</span>
+                            <select title="sort" data-placeholder="12 Products/Page" class="chosen-select">
+                                <option value="1">12 Products/Page</option>
+                                <option value="2">9 Products/Page</option>
+                                <option value="3">10 Products/Page</option>
+                                <option value="4">8 Products/Page</option>
+                                <option value="5">6 Products/Page</option>
+                            </select>
+                        </form>
+                        <form class="filter-choice select-form">s
+                            <span class="title">Sort by</span>
+                            <select title="sort-by" data-placeholder="Price: Low to High" class="chosen-select">
+                                <option value="1">Price: Low to High</option>
+                                <option value="2">Sort by popularity</option>
+                                <option value="3">Sort by average rating</option>
+                                <option value="4">Sort by newness</option>
+                                <option value="5">Sort by price: low to high</option>
+                            </select>
+                        </form>
+                        <div class="grid-view-mode">
+                            <div class="inner">
+                                <!-- <a href="/listproducts" class="modes-mode mode-list">
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <a href="/gridproducts" class="modes-mode mode-grid  active">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a> -->
+
+                                <a href="javascript:void(0)" id="listproducts" class="modes-mode mode-list">
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <a href="javascript:void(0)" id="gridproducts" class="modes-mode mode-grid ">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div id="gridItem"> -->
+
+                    <h3 class="custom_blog_title gridItem ">
+                        Grid Products
+                    </h3>
+                    <div class="gridItem" id="new__Grid">
+
+                        <ul class="row list-products auto-clear equal-container  product-grid">
+
+                            {% if productfilterData.length %}
+
+                            {% for item in productfilterData %}
+
+                            <li class="product-item  col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                <div class="product-inner">
+                                    <div class="product-top">
+                                        <div class="flash">
+                                            <span class="onnew">
+                                                <span class="text">
+                                                    new
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="product-thumb">
+
+                                        {% if item.product_defaultImg.length %}
+
+                                        {% for img in item.product_defaultImg %}
+
+                                        <div class="thumb-inner">
+
+
+
+                                            <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                <img src="{{img.path}}" alt="img">
+
+
+                                            </a>
+
+
+
+
+                                            <div class="thumb-group">
+                                                <div class="yith-wcwl-add-to-wishlist">
+                                                    <div class="yith-wcwl-add-button">
+                                                        {% if item.wishlist_arr != null %}
+                                                        <a href="javascript:void(0)" {% if
+                                                            item.wishlist_arr==item._id.toString() %}
+                                                            class="wishlist_call wishlist_active" {% else %}
+                                                            class="wishlist_call" {% endif %}
+                                                            data="{{item.wishlist_arr}}" data-id="{{item._id}}">Add to
+                                                            Wishlist</a>
+                                                        {% else %}
+                                                        <a href="javascript:void(0)" class="wishlist_call"
+                                                            data="{{item.wishlist_arr}}" data-id="{{item._id}}">Add to
+                                                            Wishlist</a>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:void(0)"
+                                                    class="button quick-wiew-button popup-button-click  openModel"
+                                                    data-id="{{item._id}}">Quick View</a>
+                                                <div class="loop-form-add-to-cart">
+                                                    <button class="single_add_to_cart_button button">Add to cart
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% endfor %}
+
+
+                                        {% else %}
+
+                                        <div class="thumb-inner">
+                                            <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+
+                                                <img src="/assets/images/no_image.jpg" alt="img">
+
+                                            </a>
+
+
+                                            <div class="thumb-group">
+                                                <div class="yith-wcwl-add-to-wishlist">
+                                                    <div class="yith-wcwl-add-button">
+                                                        {% if item.wishlist_arr != null %}
+                                                        <a href="javascript:void(0)" {% if
+                                                            item.wishlist_arr==item._id.toString() %}
+                                                            class="wishlist_call wishlist_active" {% else %}
+                                                            class="wishlist_call" {% endif %}
+                                                            data="{{item.wishlist_arr}}" data-id="{{item._id}}">Add to
+                                                            Wishlist</a>
+                                                        {% else %}
+                                                        <a href="javascript:void(0)" class="wishlist_call"
+                                                            data="{{item.wishlist_arr}}" data-id="{{item._id}}">Add to
+                                                            Wishlist</a>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <a href="javascript:void(0)"
+                                                    class="button quick-wiew-button popup-button-click  openModel"
+                                                    data-id="{{item._id}}">Quick View</a>
+                                                <div class="loop-form-add-to-cart">
+                                                    <button class="single_add_to_cart_button button">Add to cart
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% endif %}
+                                    </div>
+                                    <div class="product-info">
+                                        <h5 class="product-name product_title">
+                                            <a
+                                                href="/productDetails/{{item._id}}/{{item.product_name}}">{{item.product_name}}</a>
+                                        </h5>
+                                        <div class="group-info">
+                                            <div class="stars-rating">
+                                                <div class="star-rating">
+                                                    <span class="star-3"></span>
+                                                </div>
+                                                <div class="count-star">
+                                                    (3)
+                                                </div>
+                                            </div>
+                                            <div class="price">
+                                                <del>
+                                                    $65
+                                                </del>
+                                                <ins>
+                                                    &#8377;{{item.product_price}}
+                                                </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            {% endfor %}
+
+                            {% else %}
+
+                            <div class="productnot_found">
+                                <h1>
+                                    Product not found !
+                                </h1>
+                            </div>
+
+                            {% endif %}
+                        </ul>
+
+                    </div>
+
+                    <!-- </div> -->
+
+                    <!-- <div id="listItem"> -->
+
+                    <h3 class="custom_blog_title listItem">
+                        List Products
+                    </h3>
+                    <div class="listItem">
+                        <ul class="row list-products auto-clear equal-container  product-list">
+
+                            {% if productfilterData.length %}
+
+                            {% for item in productfilterData %}
+
+
+                            <li
+                                class="product-item style-list col-lg-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-ts-12">
+                                <div class="product-inner" style="height:264px ;">
+                                    <div class="product-top">
+                                        <div class="flash">
+                                            <span class="onnew">
+                                                <span class="text">
+                                                    new
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="products-bottom-content">
+                                        <div class="product-thumb">
+
+                                            {% if item.product_defaultImg %}
+
+                                            {% for img in item.product_defaultImg %}
+                                            <div class="thumb-inner">
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                    <img src="{{img.path}}" alt="img">
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="button quick-wiew-button popup-button-click openModel"
+                                                    data-id="{{item._id}}">Quick View</a>
+                                            </div>
+                                            {% endfor %}
+
+
+                                            {% else %}
+
+                                            <div class="thumb-inner">
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                    <img src="/assets/images/no_image.jpg" alt="img">
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="button quick-wiew-button popup-button-click openModel "
+                                                    data-id="{{item._id}}">Quick View</a>
+                                            </div>
+
+                                            {% endif %}
+
+
+                                        </div>
+                                        <div class="product-info-left">
+                                            <div class="yith-wcwl-add-to-wishlist">
+                                                <div class="yith-wcwl-add-button">
+                                                    {% if item.wishlist_arr != null %}
+                                                    <a href="javascript:void(0)" {% if
+                                                        item.wishlist_arr==item._id.toString() %}
+                                                        class="wishlist_call wishlist_active" {% else %}
+                                                        class="wishlist_call" {% endif %} data="{{item.wishlist_arr}}"
+                                                        data-id="{{item._id}}">Add to Wishlist</a>
+                                                    {% else %}
+                                                    <a href="javascript:void(0)" class="wishlist_call"
+                                                        data="{{item.wishlist_arr}}" data-id="{{item._id}}">Add to
+                                                        Wishlist</a>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <h5 class="product-name product_title">
+                                                <a
+                                                    href="/productDetails/{{item._id}}/{{item.product_name}}">{{item.product_name}}</a>
+                                            </h5>
+                                            <div class="stars-rating">
+                                                <div class="star-rating">
+                                                    <span class="star-3"></span>
+                                                </div>
+                                                <div class="count-star">
+                                                    (3)
+                                                </div>
+                                            </div>
+                                            <ul class="product-attributes">
+                                                <li>
+                                                    Brand: {{item.product_brand}}
+                                                </li>
+
+                                            </ul>
+                                            <ul class="attributes-display">
+                                                <li class="swatch-color">
+                                                    SKU: {{item.product_sku}}
+                                                </li>
+
+                                            </ul>
+                                            <ul class="attributes-display">
+                                                <li class="swatch-text-label">
+                                                    Sold By: {{item.venodor_name}}
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="product-info-right">
+                                            <div class="price">
+                                                <del>
+                                                    $65
+                                                </del>
+                                                <ins>
+                                                    &#8377;{{item.product_price}}
+                                                </ins>
+                                            </div>
+                                            <!-- <div class="product-list-message">
+                                                <i class="icon fa fa-truck" aria-hidden="true"></i>
+                                                UK Free Delivery
+                                            </div> -->
+                                            <form class="cart">
+                                                <div class="single_variation_wrap">
+                                                    <div class="quantity">
+                                                        <div class="control">
+                                                            <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                                            <input type="text" data-step="1" data-min="0" value="1"
+                                                                title="Qty" class="input-qty qty" size="4">
+                                                            <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                                        </div>
+                                                    </div>
+                                                    <button class="single_add_to_cart_button button">Add to
+                                                        cart</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            {% endfor %}
+
+                            {% else %}
+
+                            <div class="productnot_found">
+                                <h1>
+                                    Product not found !
+                                </h1>
+                            </div>
+
+                            {% endif %}
+
+                        </ul>
+
+                    </div>
+
+                    <!-- </div> -->
+
+                    <input type="hidden" value="{{totalRecord}}" id="totalRecord1">
+
+                    <input type="hidden" value="0" name="startNew" id="startNew">
+
+                    <input type="hidden" value="{{productid}}" name="id" id="product__id">
+                    <input type="hidden" value="{{productname}}" name="name" id="product__name">
+
+
+
+
+
+                    <div class="pagination clearfix style3">
+
+                        <div class="nav-link">
+                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-left"
+                                    aria-hidden="true"></i></a>
+                            <span class="newpage">
+                                <!-- <a href="#" class="page-numbers">1</a>
+                                <a href="#" class="page-numbers">2</a>
+                                <a href="#" class="page-numbers current">3</a> -->
+                            </span>
+                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-right"
+                                    aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="wrapper-sidebar shop-sidebar">
+                    <div class="widget woof_Widget">
+                        <div class="widget widget-categories">
+                            <h3 class="widgettitle">Categories</h3>
+                            <ul class="list-categories">
+                                {% for item in product_sub_Category %}
+                                <li>
+                                    <input type="checkbox" id="{{item._id}}">
+                                    <label for="{{item._id}}" class="label-text">
+                                        {{item.productCategoryName}}
+                                    </label>
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                        <div class="widget widget_filter_price">
+                            <h4 class="widgettitle">
+                                Price
+                            </h4>
+                            <div class="price-slider-wrapper">
+                                <div data-label-reasult="Range:" data-min="0" data-max="3000" data-unit="$"
+                                    class="slider-range-price " data-value-min="0" data-value-max="1000">
+                                </div>
+                                <div class="price-slider-amount">
+                                    <span class="from">$45</span>
+                                    <span class="to">$215</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget widget-brand">
+                            <h3 class="widgettitle">Brand</h3>
+                            <ul class="list-brand">
+                                <li>
+                                    <input id="cb7" type="checkbox">
+                                    <label for="cb7" class="label-text">New Arrivals</label>
+                                </li>
+                                <li>
+                                    <input id="cb8" type="checkbox">
+                                    <label for="cb8" class="label-text">Dining</label>
+                                </li>
+                                <li>
+                                    <input id="cb9" type="checkbox">
+                                    <label for="cb9" class="label-text">Desks</label>
+                                </li>
+                                <li>
+                                    <input id="cb10" type="checkbox">
+                                    <label for="cb10" class="label-text">Accents</label>
+                                </li>
+                                <li>
+                                    <input id="cb11" type="checkbox">
+                                    <label for="cb11" class="label-text">Accessories</label>
+                                </li>
+                                <li>
+                                    <input id="cb12" type="checkbox">
+                                    <label for="cb12" class="label-text">Tables</label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget widget_filter_size">
+                            <h4 class="widgettitle">Size</h4>
+                            <ul class="list-brand">
+                                <li>
+                                    <input id="cb13" type="checkbox">
+                                    <label for="cb13" class="label-text">14.0 mm</label>
+                                </li>
+                                <li>
+                                    <input id="cb14" type="checkbox">
+                                    <label for="cb14" class="label-text">14.4 mm</label>
+                                </li>
+                                <li>
+                                    <input id="cb15" type="checkbox">
+                                    <label for="cb15" class="label-text">14.8 mm</label>
+                                </li>
+                                <li>
+                                    <input id="cb16" type="checkbox">
+                                    <label for="cb16" class="label-text">15.2 mm</label>
+                                </li>
+                                <li>
+                                    <input id="cb17" type="checkbox">
+                                    <label for="cb17" class="label-text">15.6 mm</label>
+                                </li>
+                                <li>
+                                    <input id="cb18" type="checkbox">
+                                    <label for="cb18" class="label-text">16.0 mm</label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget widget-color">
+                            <h4 class="widgettitle">
+                                Color
+                            </h4>
+                            <div class="list-color">
+                                <a href="#" class="color1"></a>
+                                <a href="#" class="color2 "></a>
+                                <a href="#" class="color3 active"></a>
+                                <a href="#" class="color4"></a>
+                                <a href="#" class="color5"></a>
+                                <a href="#" class="color6"></a>
+                                <a href="#" class="color7"></a>
+                            </div>
+                        </div>
+                        <p class="form-row">
+                            <input type="submit" class="button-submit" value="Filter">
+                        </p>
+                        <div class="widget widget-tags">
+                            <h3 class="widgettitle">
+                                Popular Tags
+                            </h3>
+                            <ul class="tagcloud">
+                                <li class="tag-cloud-link">
+                                    <a href="#">Office</a>
+                                </li>
+                                <li class="tag-cloud-link">
+                                    <a href="#">Accents</a>
+                                </li>
+                                <li class="tag-cloud-link">
+                                    <a href="#">Flowering</a>
+                                </li>
+                                <li class="tag-cloud-link active">
+                                    <a href="#">Accessories</a>
+                                </li>
+                                <li class="tag-cloud-link">
+                                    <a href="#">Hot</a>
+                                </li>
+                                <li class="tag-cloud-link">
+                                    <a href="#">Tables</a>
+                                </li>
+                                <li class="tag-cloud-link">
+                                    <a href="#">Dining</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget newsletter-widget">
+                        <div class="newsletter-form-wrap ">
+                            <h3 class="title">Subscribe to Our Newsletter</h3>
+                            <div class="subtitle">
+                                More special Deals, Events & Promotions
+                            </div>
+                            <input type="email" class="email" placeholder="Your email letter">
+                            <button type="submit" class="button submit-newsletter">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Model  -->
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block Jscript %}
+
+<script>
+    $(document).ready(function () {
+
+        var host = window.location.origin;
+        $(".wishlist_call").on("click", function () {
+            var id = $(this).attr('data-id');
+            $.ajax({
+                type: 'POST',
+                url: host + "/wishlist_call",
+                data: { id: id },
+                success: function (resultData) {
+                    // alert(resultData)
+                    console.log(resultData);
+                    if (resultData == "success") {
+                        console.log("sdasd");
+                        $('a.wishlist_call[data-id = ' + id + ']').addClass('wishlist_active');
+                    } else {
+                        console.log("erere");
+                        $('a.wishlist_call[data-id = ' + id + ']').removeClass("wishlist_active");
+                        // alert("Something went wrong")
+                    }
+                    // alert("Save Complete")
+                }
+            });
+        });
+
+        $(".listItem").css("display", "none");
+
+        $("#listproducts").click(function () {
+
+            $(".listItem").css("display", "block");
+            $(".gridItem").css("display", "none");
+
+        });
+        $("#gridproducts").click(function () {
+            $(".listItem").css("display", "none");
+            $(".gridItem").css("display", "block");
+
+        });
+
+
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        var host = window.location.origin;
+
+
+        $('body').on('click', '.openModel', function (e) {
+            var deleteid = $(this).attr("data-id");
+            // var id = $('#productdeleteid').val();
+
+
+
+
+            $.ajax({
+                type: 'GET',
+                url: host + "/productsModel/" + deleteid,
+                success: function (data) {
+
+
+
+                    let productName = data.productDataModel[0].product_name
+                    let defaultImg;
+                    let makeHtmlSlider = '';
+
+                    if (data.productDataModel[0].product_defaultImg) {
+                        defaultImg = data.productDataModel[0].product_defaultImg[0].path
+                    } else {
+                        defaultImg = "/assets/images/no_image.jpg"
+                    }
+
+                    makeHtmlSlider += '<div class="details-item"><img src="' + defaultImg + '" alt="img"></div>'
+
+                    for (let i = 0; i < data.productDataModel[0].product_image.length; i++) {
+                        if (data.productDataModel[0].product_image[i].is_deleted == "0") {
+                            let imgSrc = data.productDataModel[0].product_image[i].path
+                            makeHtmlSlider += '<div class="details-item"><img src="' + imgSrc + '" alt="img"></div>'
+                        }
+                    }
+
+
+                    let html = ` 
+                            <h1 class="product-title">
+                                `+ productName + `
+                            </h1>
+                            <div class="stars-rating">
+                                <div class="star-ratingD">
+                                    <span class="starD-`+data.productDataModel[0].rating_avg_num+`"></span>
+                                </div>
+                                <div class="count-starD">`
+                                    if(data.productDataModel[0].rating_avg != 0){
+                                        data.productDataModel[0].rating_avg 
+                                    }
+                            `/div>
+                            </div>
+                         
+                            <div class="availability">
+                                <span> `+ data.productDataModel[0].product_description + `</span>
+                            </div>
+
+                            <div class="price">
+                                <span> &#8377;`+ data.productDataModel[0].product_price + `</span>
+                            </div>
+                           
+
+                            <div class="availability" id="productDis">
+                                SKU :`+ data.productDataModel[0].product_sku + `
+                            </div>
+
+                            <div class="availability" id="productDis">
+                                Sold By :`+ data.productDataModel[0].venodor_name + `
+                            </div>
+
+                            <div class="availability">
+                                availability : `+ data.productDataModel[0].product_stock_status + `
+                            </div>
+                           
+                            <div class="group-button">
+                                <div class="yith-wcwl-add-to-wishlist">
+                                    <div class="yith-wcwl-add-button">
+                                        {% if item.wishlist_arr != null %}
+                                                        <a href="javascript:void(0)" {% if item.wishlist_arr == item._id.toString() %} class="wishlist_call wishlist_active" {% else %} class="wishlist_call" {% endif %} data="{{item.wishlist_arr}}" data-id="{{item._id}}">Add to Wishlist</a>                                         
+                                                    {% else %}
+                                                    <a href="javascript:void(0)" class="wishlist_call" data="{{item.wishlist_arr}}" data-id="{{item._id}}">Add to Wishlist</a>                                         
+                                                    {% endif %}
+                                    </div>
+                                </div>
+                                <div class="size-chart-wrapp">
+                                    <div class="btn-size-chart">
+                                      
+                                    </div>
+                                </div>
+                                <div class="quantity-add-to-cart">
+                                    <div class="quantity">
+                                        <div class="control">
+                                            <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                            <input type="text" data-step="1" data-min="0" value="1" title="Qty"
+                                                class="input-qty qty" size="4">
+                                            <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                        </div>
+                                    </div>
+                                    <button class="single_add_to_cart_button button">Add to cart</button>
+                                </div>
+                            </div>`;
+
+
+
+                    let htmlSrc = '<div class="kt-popup-quickview"><div class="details-thumb"><div class="slider-product slider-for">' + makeHtmlSlider + '</div><div class="slider-product-button slider-nav nav-center">' + makeHtmlSlider + '</div></div><div class="details-infor">' + html + '</div></div>'
+
+                    quickview_popup2(htmlSrc);
+
+
+                }
+            });
+
+
+        });
+
+    });
+
+    function quickview_popup2(htmlSrc) {
+
+        var window_size = parseFloat(jQuery('body').innerWidth());
+        window_size += kt_get_scrollbar_width();
+        if (window_size > 992) {
+            // $(document).on('click', '.popup-button-click', function () {
+            $.magnificPopup.open({
+                items: {
+                    src: htmlSrc,
+                    type: 'inline'
+                }
+            });
+            slick_quickview_popup2();
+            return false;
+            // });
+        }
+    }
+
+    function slick_quickview_popup2() {
+
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: false,
+            focusOnSelect: true,
+            infinite: true,
+            prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+            nextArrow: '<i class="fa fa-angle-right " aria-hidden="true"></i>',
+        });
+    }
+
+    function kt_get_scrollbar_width() {
+        var $inner = jQuery('<div style="width: 100%; height:200px;">test</div>'),
+            $outer = jQuery('<div style="width:200px;height:150px; position: absolute; top: 0; left: 0; visibility: hidden; overflow:hidden;"></div>').append($inner),
+            inner = $inner[0],
+            outer = $outer[0];
+        jQuery('body').append(outer);
+        var width1 = parseFloat(inner.offsetWidth);
+        $outer.css('overflow', 'scroll');
+        var width2 = parseFloat(outer.clientWidth);
+        $outer.remove();
+        return (width1 - width2);
+    }
+
+
+
+    $('.owl-slick').not('.slick-initialized').each(function () {
+        var _this = $(this),
+            _responsive = _this.data('responsive'),
+            _config = [];
+
+        if ($('body').hasClass('rtl')) {
+            _config.rtl = true;
+        }
+        if (_this.hasClass('slick-vertical')) {
+            _config.prevArrow = '<span class="pe-7s-angle-up"></span>';
+            _config.nextArrow = '<span class="pe-7s-angle-down"></span>';
+        } else {
+            _config.prevArrow = '<span class="fa fa-angle-left"></span>';
+            _config.nextArrow = '<span class="fa fa-angle-right"></span>';
+        }
+        _config.responsive = _responsive;
+        _config.cssEase = 'linear';
+
+        _this.slick(_config);
+        _this.on('afterChange', function (event, slick, direction) {
+            _this.find('.slick-active:first').addClass('first-slick');
+            _this.find('.slick-active:last').addClass('last-slick');
+        });
+        _this.on('beforeChange', function (event, slick, currentSlide) {
+            _this.find('.slick-slide').removeClass('last-slick');
+            _this.find('.slick-slide').removeClass('first-slick');
+        });
+        if (_this.hasClass('slick-vertical')) {
+            equal_elems();
+            setTimeout(function () {
+                _this.slick('setPosition');
+            }, 0);
+        }
+        _this.find('.slick-active:first').addClass('first-slick');
+        _this.find('.slick-active:last').addClass('last-slick');
+    });
+
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: false,
+        focusOnSelect: true,
+        infinite: true,
+        prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        nextArrow: '<i class="fa fa-angle-right " aria-hidden="true"></i>',
+    });
+
+</script>
+
+<script>
+    var host = window.location.origin;
+
+
+    function pagination(num) {
+       
+        let id = $("#product__id").val();
+        let name = $("#product__name").val();
+
+        let length = 3;
+
+        let start;
+        if (num == 1) {
+            start = 0;
+        } else {
+            start = ((num - 1) * length) + 1
+        }
+
+        console.log("start", start);
+
+      
+
+        $.ajax({
+            type: 'GET',
+            url: host + "/productsfilter/" + id + '/' + name + '/' + start,
+            success: function (data) {
+                console.log("data === >>>", data);
+
+                let html = '<div>'
+
+                    for (var i in data) {
+                        console.log("data == ",data[i]);
+                        
+                    }
+                    
+                
+                    
+                   ' </div>'
+
+        
+                $("#new__Grid").html(html)
+            
+            } 
+          
+
+        });
+
+      
+
+
+
+      
+
+    }
+
+    $(document).ready(function () {
+
+
+        let total = $("#totalRecord1").val();
+        let length = 3;
+
+        console.log("total", total);
+
+        let count = total / length
+
+        let countfinal = Math.ceil(count);
+
+        // console.log("count", countfinal);
+
+        for (let q = 0; q < countfinal; q++) {
+
+            let html = '<a href="javascript:void(0)" class="page-numbers" onClick = "pagination(' + (q + 1) + ');">' + (q + 1) + '</a>'
+
+            $(".newpage").append(html)
+        }
+
+    });
+</script>
+
+
+
+{% endblock %}

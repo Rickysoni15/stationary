@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "frontend/partitions/head.html" %}
+<body>
+    {% include "frontend/partitions/header.html" %}
+    <main class="investores-pg">
+        <section class="inner-top-banner-sec">
+            <div class="container">
+                <div class="col-md-12 pl-sm-3 pr-sm-3 pl-0 pr-0">
+                    <div class="head-title-wrp text-center" data-aos="fade-in" data-aos-offset="0">
+                        <h1 class="shadow-title " >INVESTORS</h1>
+                                            
+                    </div>
+                    <div class="mid-sap">
+                        <span class="ract-sp animated fadeIn slower"></span>
+                        <span class="eqlip-sp animated infinite slideDown"  data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="1500" data-aos-offset="0"></span>
+                    </div>
+                </div>
+                <div class="investor-tab">
+                    <ul class="nav nav-pills" id="pills-tab" role="tablist" data-aos="fade-up" data-aos-offset="0">
+                        <li class="nav-item">
+                        <a class="nav-link color-bg-1" id="shareholding-tab" data-toggle="tab" href="#pills-shareholding" role="tab" >
+                            <div class="icon-img">
+                                <img src="/front/img/shareholding-icon.png" alt="">
+                            </div>
+                            Shareholding
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link color-bg-2" id="pills-ipo-tab" data-toggle="tab" href="#pills-ipo" role="tab">
+                            <div class="icon-img">
+                                <img src="/front/img/ipo-icon.png" alt="">
+                            </div>
+                            IPO</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link color-bg-3" id="pills-subsidary-tab" data-toggle="tab" href="#pills-subsidary" role="tab" >
+                            <div class="icon-img">
+                                <img src="/front/img/subsidiary-icon.png" alt="">
+                            </div>
+                            Subsidary</a>
+                        </li>
+
+
+
+                        <li class="nav-item">
+                            <a class="nav-link color-bg-4" id="investordetail-tab" data-toggle="tab" href="#pills-investordetail" role="tab" >
+                                <div class="icon-img">
+                                    <img src="/front/img/investor-detail-icon.png" alt="">
+                                </div>
+                                Investor Detail</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link color-bg-5" id="pills-polices-tab" data-toggle="tab" href="#pills-polices" role="tab" >
+                                <div class="icon-img">
+                                    <img src="/front/img/policies-icon.png" alt="">
+                                </div>
+                                Policies </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link color-bg-6" id="pills-directorsprofile-tab" data-toggle="tab" href="#pills-directorsprofile" role="tab" >
+                                <div class="icon-img">
+                                    <img src="/front/img/director-rofile-icon.png" alt="">
+                                </div>
+                                Director's Profile</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link color-bg-7" id="pills-financial-info-tab" data-toggle="tab" href="#pills-financial-info" role="tab" >
+                                <div class="icon-img">
+                                    <img src="/front/img/financial-information-icon.png" alt="">
+                                </div>
+                                Financial Information</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active color-bg-8" id="pills-intanddis-tab" data-toggle="tab" href="#pills-intanddis" role="tab" >  
+                                <div class="icon-img">
+                                    <img src="/front/img/intimation-disclosures-icon.png" alt="">
+                                </div>
+                                Intimation & Disclosures</a>
+                        </li>
+
+
+
+                    </ul>
+                    <div class="vid-wrap">
+                        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                            <source src="/front/video/investors-video.mp4" type="video/mp4">
+                        </video>
+                        <div class="tab-content" id="pills-tabContent">
+
+                        <div class="tab-pane fade" id="pills-shareholding" role="tabpanel">
+                            <div class="tb-detail text-center animated fadeIn slower">
+                                <h2 class="title text-white">Shareholding</h2>               
+                                <p class="p-txt">{{investors.shareholding}}</p>              
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-ipo" role="tabpanel">
+                            <div class="tb-detail text-center animated fadeIn slower">
+                                <h2 class="title text-white">IPO</h2>                             
+                                <p class="p-txt">{{investors.ipo}}</p>              
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-subsidary" role="tabpanel">
+                            <div class="tb-detail text-center animated fadeIn slower">
+                                <h2 class="title text-white">Subsidary</h2>                             
+                                <p class="p-txt">{{investors.subsidary}}</p>              
+                            </div>
+                        </div>
+
+
+                        <div class="tab-pane fade" id="pills-investordetail" role="tabpanel" >
+                            <div class="tb-detail text-center animated fadeIn slower">
+                                <h2 class="title text-white">Investor Detail</h2>                             
+                                <p class="p-txt">{{investors.investorDetail}}</p>              
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-polices" role="tabpanel">
+                            <div class="tb-detail text-center animated fadeIn slower">
+                                <h2 class="title text-white">Policies </h2>                             
+                                <p class="p-txt">{{investors.policies}}</p>              
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-directorsprofile" role="tabpanel" >
+                            <div class="tb-detail text-center animated fadeIn slower">
+                                <h2 class="title text-white">Director's Profile</h2>                             
+                                <p class="p-txt">{{investors.directorProfile}}</p>              
+                            </div>
+                        </div>
+                    
+                        <div class="tab-pane fade" id="pills-financial-info" role="tabpanel" >
+                            <div class="tb-detail text-center animated fadeIn slower">
+                                <h2 class="title text-white">Financial Information</h2>                             
+                                <p class="p-txt">{{investors.financialInfo}}</p>              
+                            </div>
+                        </div>
+                        <div class="tab-pane fade active show" id="pills-intanddis" role="tabpanel" >
+
+                            <div class="tb-detail text-center animated fadeIn slower" >
+                                <h2 class="title text-white">Intimation & Disclosures</h2>
+                                <p class="p-txt">{{investors.intimationDisclouser}}</p>              
+                            </div>
+
+
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    {% include "frontend/partitions/footer.html" %}
+    <script>
+         $(document).ready(function() {
+          AOS.init({
+            offset: 250,
+            duration: 1200,
+            easing: 'ease-in-sine',
+            delay: 150,
+            });
+
+           $('.nav-pills a.nav-link').click(function() {
+                var sectionTo = $(this).attr('href');
+                $('html, body').animate({
+                scrollTop: $(sectionTo).offset().top
+                }, 1500);
+            });
+        });
+        $(window).scroll(function() {
+            // if ($(this).scrollTop() > 250){  
+            //     $('header').addClass("sticky");
+            // }
+            // else{
+            //     $('header').removeClass("sticky");
+            // }
+        });
+    </script>
+</body>
+</html>

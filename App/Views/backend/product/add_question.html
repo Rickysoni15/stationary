@@ -1,0 +1,285 @@
+ {% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+  
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Questionnaire Form</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Add Questionnaire Form</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<!-- <h6 class="panel-title txt-dark">Settings</h6> -->
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										{% if menudata %}
+										<form method="POST" action="/backend/add_question"
+											class="form-horizontal" enctype="multipart/form-data">
+											{% else %}
+											<form id="formdata" method="POST" action="/backend/add_question"
+												class="form-horizontal" enctype="multipart/form-data">
+												{% endif %}
+												<table border="0" class="table display  pb-30">
+													<div class="col-sm-12">
+														<div class="panel-wrapper collapse in">
+															<div class="panel-body">
+																<div class="form-group">
+                                                                    <input type="hidden" class="form-control"
+                                                                        name="id" id="id"
+                                                                        value="{{menudata._id}}" />
+                                                                        <input type="hidden" class="form-control"
+                                                                        name="product_id" id="id"
+                                                                        value="{{product_id}}" />
+                                                                        <input type="hidden" class="form-control"
+                                                                        name="vendor_id" id="id"
+                                                                        value="{{App.id}}" />
+                                                                <div class="form-group">
+                                                                       
+																	<label class="control-label mb-10 col-sm-2"
+																		for="brand_name">Field Label:</label>
+																	    <div class="col-sm-6">
+																		<input type="text" class="form-control"
+																			name="name" id="attribute_name"
+																			value="{{menudata.name}}"/>
+                                                                            </div>
+                                                                        </div>
+                                                                            
+                                                                            <div class="form-group">
+
+                                                                    <label class="control-label mb-10 col-sm-2"
+                                                                            for="attribute_set">Field Type:</label>
+                                                                        <div class="col-sm-6">
+                                                                            <select id="type" name="type">
+                                                                                <option value="" disabled selected>Please Select</option>
+                                                                                 
+                                                                                <option value="text" {% if
+                                                                                    menudata.type=="text" %}
+                                                                                    selected {% endif %}>Text
+                                                                                </option>
+                                                                                <option value="text-area" {% if
+                                                                                    menudata.type=="text-area" %}
+                                                                                    selected {% endif %}>Text Area
+                                                                                </option>
+                                                                                <option value="checkbox" {% if
+                                                                                    menudata.type=="checkbox" %}
+                                                                                    selected {% endif %}>Yes/No
+                                                                                </option>
+                                                                                <option value="select" {% if
+                                                                                    menudata.type=="select" %}
+                                                                                    selected {% endif %}>Dropdown
+                                                                                </option>
+                                                                                <!-- <option value="file" {% if
+                                                                                    menudata.type=="file" %}
+                                                                                    selected {% endif %}>Image
+                                                                                </option> -->
+                                                                              
+                                                                            </select>
+                                                                        </div>        
+                                                                    </div>
+                                                                    <div id="add_field" style="display: none;">
+                                                                       
+                                                                    <div class="form-group">
+                                                                   
+                                                                       
+                                                                        <label class="control-label mb-10 col-sm-2"
+                                                                            for="brand_name">Field Label:</label>
+                                                                            <div class="col-sm-6">
+                                                                            <input type="text" class="form-control"
+                                                                                name="checkbox_name_one" id="attribute_name"
+                                                                                value="{{menudata.checkbox_name_one}}"/>
+                                                                                </div>
+                                                                            </div>
+                                                                    <div class="form-group">
+
+                                                                            <label class="control-label mb-10 col-sm-2"
+                                                                            for="brand_name">Field Label:</label>
+                                                                            <div class="col-sm-6">
+                                                                            <input type="text" class="form-control"
+                                                                                name="checkbox_name_two" id="attribute_name"
+                                                                                value="{{menudata.checkbox_name_two}}"/>
+                                                                                </div>
+                                                                            </div>    
+                                                                    </div>
+                                                                    <div id="get_select">
+                                                                        {% set i = 0 %}
+                 
+                                                                        <input type="hidden" id="len" value="{{menudata.option.length}}" >
+                                                                        {% if menudata.option %}
+                                                                        {% for item in menudata.option %}
+                                                                        {% set i = i + 1 %}
+                                                                        
+                                                                        <div class="form-group"><label class="control-label mb-10 col-sm-2"
+                                                                            for="brand_name">Option{{i}}:</label>
+                                                                            <div class="col-sm-6">
+                                                                            <input type="text" class="form-control"
+                                                                                name="option{{i}}" id="attribute_name"
+                                                                                value="{{item.value}}"/>
+                                                                                </div>
+                                                                            </div>
+                                                                        {% endfor %}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div id="add_select" style="display: none;">
+                                                                        <button type="button" class="btn btn-primary btn-md" id="add_more" style="margin-bottom: 50px;
+                                                                        margin-left: 70px;"> Add More</button>
+                                                                      
+                                                                    </div>
+                                                                    <!-- <div class="form-group">
+                                                                       
+                                                                        <label class="control-label mb-10 col-sm-2"
+                                                                            for="brand_name">Field Label:</label>
+                                                                            <div class="col-sm-6">
+                                                                            <input type="text" class="form-control"
+                                                                                name="checkbox_name_one" id="attribute_name"
+                                                                                value="{{menudata.checkbox_name_one}}"/>
+                                                                                </div>
+                                                                            </div>
+                                                                        
+                                                                    <div class="form-group">
+                                                                       
+                                                                        <div class="col-sm-6">
+                                                                        <label class="control-label mb-10 col-sm-2"
+                                                                            for="brand_name">Field Label:</label>
+                                                                        <input type="text" class="form-control"
+                                                                            name="checkbox_name_two" id="attribute_name"
+                                                                            value="{{menudata.checkbox_name_two}}"/>
+                                                                            </div>
+                                                                        </div> -->
+                                                                 
+                                                                            
+                                                                            <!-- <div class="form-group"> -->
+                                                                            
+                                                                            <!-- </div>  -->
+
+                                                                    <!-- <label class="control-label mb-10 col-sm-2"
+                                                                        for="brand_name">Type:</label>
+                                                                        <div class="col-sm-6">
+                                                                        <input type="text" class="form-control"
+                                                                            name="type" id="attribute_name"
+                                                                            value="{{menudata.type}}"/>
+																	</div> -->
+                                                                </div>                                  
+            
+															</div>
+														</div>
+													</div>
+													<tr>
+														<td colspan="2">
+
+															{% if menudata %}
+															<input type="submit" class="btn btn-success btn-flat"
+																value="Submit">
+
+																 <a   class="btn btn-danger btn-flat" href="/backend/question_form" >Cancel</a>
+															{%else%}
+															<input id="submit" type="submit"
+																class="btn btn-success btn-flat" value="submit">
+																<a   class="btn btn-danger btn-flat" href="/backend/question_form" >Cancel</a>
+
+
+																
+															{% endif %}
+														</td>
+													</tr>
+												</table>
+											</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- /Row -->
+			</div>
+		</section>
+
+		{% endblock %}
+
+		{% block Jscript %}
+        <script>
+        $(document).ready(function () {
+
+            if($('#type').val() == "checkbox"){
+                $('#add_field').show();
+                $('#get_select').hide();
+            }else if($('#type').val() == "select"){
+                $('#add_select').show();
+                $('#get_select').show();
+                $('#add_field').hide();
+            }else{
+                $('#add_select').hide();
+                $('#add_field').hide();
+                $('#get_select').hide();
+
+            }
+            var jj = 0;
+            var i = 0;
+
+            jj = $('#len').attr('value');
+            jj = parseInt(jj);
+            if(isNaN(jj) == false){
+                i = jj;
+            }else{
+                i = 0;
+            }
+            $('#add_more').on('click', function (){
+                i = i + 1; 
+                $('#add_select').append(`<div id="remove_option`+i+`"><div class="form-group"><label class="control-label mb-10 col-sm-2"
+                        for="brand_name">Field Option`+i+`:</label>
+                        <div class="col-sm-6">
+                        <input type="text" class="form-control"
+                            name="option`+i+`"
+                            value=""/>
+                            </div>
+                            <button class="remove btn btn-danger btn-xs delete btn-rounded" data-id="remove_option`+i+`"><i class="fa fa-trash" aria-hidden="true"></i></button></div></div></div>`);
+            });
+
+            $("body").on("click", ".remove", function () {
+                var id = $(this).attr('data-id');
+                $('#'+id).remove();
+                i = i - 1;
+            });
+        
+            $('#type').on('change', function () {
+                if($(this).val() == "checkbox"){
+                    $('#add_field').show();
+                    $('#get_select').hide();
+                }else if($('#type').val() == "select"){
+                    $('#add_select').show();
+                    $('#get_select').show();
+                    $('#add_field').hide();
+                }else{
+                    $('#add_field').hide();
+                    $('#add_field').hide();
+                    $('#get_select').hide();
+                    $('#add_select').hide();
+
+
+                }
+            });
+        });
+        </script>
+
+		{% endblock %}

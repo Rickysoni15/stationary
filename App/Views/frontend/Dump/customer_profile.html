@@ -1,0 +1,397 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+<style>
+    .containerdiv_img { 
+      position:relative;
+      display:inline-block;
+      margin:10px;
+    } 
+    .prev1{
+        height: 200px;
+        max-width: 200px;
+        margin:5px;
+    }
+    .close1 {
+        position: absolute;
+        top: 0;
+        right: 3px;
+        text-align: center;
+        font-size: 25px;
+        width: 28px;
+        color: red;
+        cursor: pointer;      
+    } 
+</style>
+<div class="main-content main-content-login">
+
+    <div class="success_alert">{% include "frontend/partitions/notification.html" %}</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="trail-item trail-end active">
+                            Edit Profile
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="content-area col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="site-main">
+                    <h3 class="custom_blog_title">
+                        Edit Profile
+                    </h3>
+
+
+                    <div class="customer_login">
+                        <div class="row">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="login-item">
+                                    <h5 class="title-login">Profile</h5>
+                                    <form class="register" id="registerSubmit" action="/customer_profile_post" method="post"
+                                        enctype="multipart/form-data">
+
+                                        <!-- <div class="vendor_gstbtn form-row-wide">
+
+                                            <div class="text ">GST</div>
+                                            <div>
+
+                                                <label class="switch_vendorGst">
+                                                    <input name="gstSwitch" class="gstSwitch" type="checkbox"
+                                                        id="switchVal" value="0" hidden>
+                                                    <span class="slider_vendorGst round"></span>
+                                                </label>
+                                            </div>
+                                        </div> -->
+
+                                        <!-- {% if role %}
+
+                                        <span id="gst_invalid" class="hidden  mob-helpers">
+                                            Please enter valid Gst number.
+                                        </span>
+                                        <div class="gst_invlidmsg"> </div>
+                                        <p class="form-row Gst_Hide form-row-wide">
+                                            <label class="text">GST Number</label>
+                                            <input title="gst_number" name="gst_No" id="vendor_gstNo" maxlength="15"
+                                                type="text" class="input_Gst">
+                                        </p>
+                                        {% endif %} -->
+                                        <!-- <p class="form-row form-row-wide">
+                                            <label class="text">User Name</label>
+                                            <input title="username" name="user_name" value="{{user.userName}}" type="text" class="input-text"
+                                                required>
+                                        </p> -->
+
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">First Name</label>
+                                            <input title="name" name="firstname" value="{{user.firstname}}" type="text" class="input-text"
+                                                required>
+                                        </p>
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Last Name</label>
+                                            <input title="name" name="lastname" value="{{user.lastname}}" type="text" class="input-text"
+                                                required>
+                                        </p>
+
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Email</label>
+                                            <input title="email" name="email" type="email" value="{{user.email}}" class="input-text" required>
+                                        </p>
+
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Password</label>
+                                            <input name="password" minlength="6" maxlength="6" type="password" value="{{user.password_string}}"
+                                                class="input-text"
+                                                title="Use 6 or more characters with a mix of letters, numbers & symbols."
+                                                pattern="(?=^.{5,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                                                required>
+                                        </p>
+                                        <p>
+                                            <span id="mobile-valid" class="hidden mob">
+
+                                            </span>
+                                            <span id="folio-invalid" class="hidden  mob-helpers">
+                                                Please enter valid mobile No
+                                            </span>
+                                        </p>
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Mobile </label>
+                                            <input title="Mobile" name="phone" id="mobile-num" type="text" value="{{user.mobile}}"
+                                                class="input-text" pattern="[\+()]*(?:\d[\s\-\.()xX]*){10,14}"  maxlength="10" required>
+                                        </p>
+
+                                        <span id="gst_invalid" class="hidden  mob-helpers">
+                                            Please enter valid Gst number.
+                                        </span>
+                                        <div class="gst_invlidmsg"> </div>
+                                        <p class="form-row  form-row-wide">
+                                            <label class="text">GST Number</label>
+                                            <input title="gst_number" name="gst_No" id="vendor_gstNo" maxlength="15" value="{{user.user_gst_no}}"
+                                                type="text" class="input_Gst" required>
+                                        </p>
+
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Company</label>
+                                            <input title="companyName" name="companyName" type="text" value="{{user.user_gst_companyName}}" class="input-text" required>
+                                        </p>
+
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Profile Image</label>
+											<input type="hidden" name="imagesave"id="imagesave" value="{{user.avatar}}">
+
+                                            <input  type="file" title="ProfileImage" id="avatar" onchange="previewFile(this);" name="avatar" accept="image/*"
+                                                class="input-text">
+                                                {% if user.avatar %}
+                                                <div class="containerdiv_img">  
+                                                    <img 
+                                                    id="previewImg"
+                                                    src="/customer_profile/{{user.avatar}}"
+                                                    height="200px"
+                                                    width="200px" 
+                                                    alt="" />
+                                                    <span class='close1'>&times;</span>
+                                                </div>
+                                                {% endif %}
+                                        </p>
+
+
+                                        <!-- <p class="form-row form-row-wide">
+                                            <label for="myfile">Select a file:</label>
+                                            <input type="file" id="kycImage" name="kycImage"
+                                                accept="image/x-png,image/gif,image/jpeg,.pdf" required>
+                                        </p> -->
+
+                                        <!-- <p class="form-row">
+                                            <span class="inline">
+                                                <input type="checkbox" name="term_and_condition" id="cb2">
+                                                <label for="cb2" class="label-text">I agree to <span>Terms &
+                                                        Conditions</span></label>
+                                            </span>
+                                        </p> -->
+
+                                        <p class="">
+                                            <input type="submit" class="button-submit" value="Submit">
+                                            <button class="button-submit" value="Back" onclick="history.back()">Back</button>
+
+                                        </p>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $(".Gst_Hide").hide();
+        $('#switchVal').click(function () {
+            $('.Gst_Hide').toggle();
+        });
+    });
+
+    $('.close1').click(function(){ 
+			swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel plx!",
+        closeOnConfirm: false,
+        closeOnCancel: false 
+			},
+			function(isConfirm) {
+				if (isConfirm) {
+					$('#previewImg').css({ 'display': 'none' });
+					$('.close1').css({ 'display': 'none' });
+					$('#imagesave').attr('value', "");
+					$('#avatar').val('');	
+					swal("Deleted!", "Your imaginary file has been deleted.", "success");
+				} else {
+					swal("Cancelled", "Your imaginary file is safe :)", "error");
+				}
+			}
+		); 	
+						
+		})
+
+    function previewFile(input) {
+        alert(0)
+			var file = $("input[type=file]").get(0).files[0];
+			if (file) {
+				var reader = new FileReader();
+				reader.onload = function () {
+					$("#previewImg").attr("src", reader.result);
+					$("#previewImg").css({'display':'block'});
+					$(".close1").css({'display':'block'});		
+				}
+				reader.readAsDataURL(file);
+			}
+		}
+
+    var companyName;
+    $("#vendor_gstNo").keyup(function (e) {
+        var gstValue = $("#vendor_gstNo").val();
+        $('.gst_invlidmsg').html('');
+        // console.log(gstValue, "fsfuwehfuwehf");
+
+        e.preventDefault()
+        if ($(this).val().length == 15) {
+            $.ajax({
+                url: "/validationGst",
+                type: "POST",
+                dataType: "json",
+                data: { gstValue },
+                success: function (result) {
+                    companyName = result.data.tradename;
+                    $(".gst_invlidmsg").html(result.data);
+                    // console.log("result", result.data);
+                    $("#vendor_Company").attr('value', result.data.tradename);
+                    $("#vendor_Company").val(result.data.tradename);
+                },
+                error() {
+                    console.log("error");
+                }
+            })
+        } else {
+            // Disable submit button
+        }
+    });
+
+
+
+    $("#registerSubmit").on("submit", function () {
+        $("#vendor_Company").removeAttr("disabled");
+        var form = $('form').serialize();
+        $('input[disabled]').each(function () {
+            form = form + '&' + $(this).attr('name') + '=' + $(this).val();
+        });
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: $("#registerSubmit").serialize(),
+        })
+    });
+
+    $("#switchVal").on("click", function () {
+        if ($("#switchVal").val() == 0) {
+            $("#switchVal").val(1);
+        }
+        else {
+            $("#switchVal").val(0);
+        }
+        // alert($("#switchVal").val());
+        var toggle = $("#vendor_Company").prop("disabled");
+        $("#gst_invalid").addClass("hidden");
+        $("#vendor_Company").prop("disabled", !toggle);
+
+        $(':input[type="submit"]').prop('', false);
+        $("#vendor_Company").val("");
+
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+
+        $("#mobile-num").keyup(function () {
+            var mobNum = $(this).val();
+            var filter = /^\d*(?:\.\d{1,2})?$/;
+
+            if (filter.test(mobNum)) {
+                if (mobNum.length == 10) {
+                    // alert("valid");
+                    $("#mobile-valid").removeClass("hidden");
+                    $("#folio-invalid").addClass("hidden");
+                } else {
+                    //   alert('Please put 10  digit mobile number');
+                    $("#folio-invalid").removeClass("hidden");
+                    $("#mobile-valid").addClass("hidden");
+                    return false;
+                }
+            }
+            else {
+                // alert('Not a valid number');
+                $("#folio-invalid").removeClass("hidden");
+                $("#mobile-valid").addClass("hidden");
+                return false;
+            }
+
+        });
+
+        $("#vendor_gstNo").keyup(function () {
+            var gstNum = $(this).val();
+            if (gstNum.length == 15) {
+
+                $("#mobile-valid").removeClass("hidden");
+                $("#gst_invalid").addClass("hidden");
+            } else {
+
+                $("#gst_invalid").removeClass("hidden");
+                $("#mobile-valid").addClass("hidden");
+                return false;
+            }
+
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#loginSubmit_email").css("display", "block");
+        $("#login_Email").css("background-color", "#7f87ab");
+        $("#login_Email").css("color", "#fff");
+        $("#loginSubmit_mobile").css("display", "none");
+        $(".moblie_otpLogin").css("display", "none");
+        $("#login_Email").click(function () {
+            $("#loginSubmit_email").css("display", "block");
+            $("#loginSubmit_mobile").css("display", "none");
+            $("#login_Phone").css("background-color", "transparent");
+            $("#login_Email").css("color", "#fff");
+            $("#login_Phone").css("color", "#000");
+            $("#login_Email").css("background-color", "#7f87ab");
+
+
+        });
+        $("#login_Phone").click(function () {
+            $("#loginSubmit_email").css("display", "none");
+            $("#loginSubmit_mobile").css("display", "block");
+            $("#login_Email").css("background-color", "transparent");
+            $("#login_Phone").css("color", "#fff");
+            $("#login_Email").css("color", "#000");
+            $("#login_Phone").css("background-color", "#7f87ab");
+             $(".moblie_otpLogin").css("display", "none");
+            $("#otp_Send").css("display", "block");
+
+        });
+
+
+        $("#otp_Send").click(function () {
+            $(".moblie_otpLogin").css("display", "block");
+            $("#otp_Send").css("display", "none");
+
+
+        });
+
+    });
+</script>
+
+{% endblock %}

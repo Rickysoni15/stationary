@@ -1,0 +1,242 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+<div class="main-content main-content-login">
+
+    <div class="success_alert">{% include "frontend/partitions/notification.html" %}</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="trail-item trail-end active">
+                            Close Account
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="content-area col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="site-main">
+                    <h3 class="custom_blog_title">
+                        Close Your Account
+                    </h3>
+
+
+                    <div class="customer_login">
+                        <div class="row">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="login-item">
+                                    <h5 class="title-login">Please read this carefully</h5>
+                                    <p style="padding: 0px 40px;">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+
+There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+
+There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+
+There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.
+                                    </p>
+                                    <form class="register" id="registerSubmit" action="/close_account_post" method="post"
+                                        enctype="multipart/form-data">
+
+
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Please Select The Reason</label>
+                                            <select title="close_reason" class="input-text chosen-select" name="close_reason" id="close_reason"
+                                                tabindex="1" required>
+                                            <option value="" disabled selected>Choose Reason</option>
+                                            <option value="I am not using this account anymore">I am not using this account anymore</option>
+                                            <option value="I have another account">I have another account</option>
+                                            <option value="I want to create a new account">I want to create a new account</option>
+                                            <option value="I have open issue with Oemone">I have open issue with Oemone</option>
+                                            <option value="I do not want to provide a reason">I do not want to provide a reason</option>
+                                            </select>
+                                        </p>
+                                        <p class="form-row">
+                                            <span class="inline">
+                                                <input type="checkbox" name="term_and_condition" id="cb2">
+                                                <label for="cb2" class="input-text label-text">Yes, I want to permanently close my Account.</label>
+                                            </span>
+                                        </p>
+
+                                        <p class="">
+                                            <input type="submit" class="button-submit" value="Submit">
+                                        </p>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $(".Gst_Hide").hide();
+        $('#switchVal').click(function () {
+            $('.Gst_Hide').toggle();
+        });
+    });
+
+    var companyName;
+    $("#vendor_gstNo").keyup(function (e) {
+        var gstValue = $("#vendor_gstNo").val();
+        $('.gst_invlidmsg').html('');
+        // console.log(gstValue, "fsfuwehfuwehf");
+
+        e.preventDefault()
+        if ($(this).val().length == 15) {
+            $.ajax({
+                url: "/validationGst",
+                type: "POST",
+                dataType: "json",
+                data: { gstValue },
+                success: function (result) {
+                    companyName = result.data.tradename;
+                    $(".gst_invlidmsg").html(result.data);
+                    // console.log("result", result.data);
+                    $("#vendor_Company").attr('value', result.data.tradename);
+                    $("#vendor_Company").val(result.data.tradename);
+                },
+                error() {
+                    console.log("error");
+                }
+            })
+        } else {
+            // Disable submit button
+        }
+    });
+
+    $("#registerSubmit").on("submit", function () {
+        $("#vendor_Company").removeAttr("disabled");
+        var form = $('form').serialize();
+        $('input[disabled]').each(function () {
+            form = form + '&' + $(this).attr('name') + '=' + $(this).val();
+        });
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: $("#registerSubmit").serialize(),
+        })
+    });
+
+    $("#switchVal").on("click", function () {
+        if ($("#switchVal").val() == 0) {
+            $("#switchVal").val(1);
+        }
+        else {
+            $("#switchVal").val(0);
+        }
+        // alert($("#switchVal").val());
+        var toggle = $("#vendor_Company").prop("disabled");
+        $("#gst_invalid").addClass("hidden");
+        $("#vendor_Company").prop("disabled", !toggle);
+
+        $(':input[type="submit"]').prop('', false);
+        $("#vendor_Company").val("");
+
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+
+        $("#mobile-num").keyup(function () {
+            var mobNum = $(this).val();
+            var filter = /^\d*(?:\.\d{1,2})?$/;
+
+            if (filter.test(mobNum)) {
+                if (mobNum.length == 10) {
+                    // alert("valid");
+                    $("#mobile-valid").removeClass("hidden");
+                    $("#folio-invalid").addClass("hidden");
+                } else {
+                    //   alert('Please put 10  digit mobile number');
+                    $("#folio-invalid").removeClass("hidden");
+                    $("#mobile-valid").addClass("hidden");
+                    return false;
+                }
+            }
+            else {
+                // alert('Not a valid number');
+                $("#folio-invalid").removeClass("hidden");
+                $("#mobile-valid").addClass("hidden");
+                return false;
+            }
+
+        });
+
+        $("#vendor_gstNo").keyup(function () {
+            var gstNum = $(this).val();
+            if (gstNum.length == 15) {
+
+                $("#mobile-valid").removeClass("hidden");
+                $("#gst_invalid").addClass("hidden");
+            } else {
+
+                $("#gst_invalid").removeClass("hidden");
+                $("#mobile-valid").addClass("hidden");
+                return false;
+            }
+
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#loginSubmit_email").css("display", "block");
+        $("#login_Email").css("background-color", "#7f87ab");
+        $("#login_Email").css("color", "#fff");
+        $("#loginSubmit_mobile").css("display", "none");
+        $(".moblie_otpLogin").css("display", "none");
+        $("#login_Email").click(function () {
+            $("#loginSubmit_email").css("display", "block");
+            $("#loginSubmit_mobile").css("display", "none");
+            $("#login_Phone").css("background-color", "transparent");
+            $("#login_Email").css("color", "#fff");
+            $("#login_Phone").css("color", "#000");
+            $("#login_Email").css("background-color", "#7f87ab");
+
+
+        });
+        $("#login_Phone").click(function () {
+            $("#loginSubmit_email").css("display", "none");
+            $("#loginSubmit_mobile").css("display", "block");
+            $("#login_Email").css("background-color", "transparent");
+            $("#login_Phone").css("color", "#fff");
+            $("#login_Email").css("color", "#000");
+            $("#login_Phone").css("background-color", "#7f87ab");
+             $(".moblie_otpLogin").css("display", "none");
+            $("#otp_Send").css("display", "block");
+
+        });
+
+
+        $("#otp_Send").click(function () {
+            $(".moblie_otpLogin").css("display", "block");
+            $("#otp_Send").css("display", "none");
+
+
+        });
+
+    });
+</script>
+
+{% endblock %}

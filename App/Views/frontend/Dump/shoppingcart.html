@@ -1,0 +1,663 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+<style>
+    #overlay {
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .cv-spinner {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spinner {
+        width: 80px;
+        height: 80px;
+        border: 4px #ddd solid;
+        border-top: 4px #7f87ab solid;
+        border-radius: 50%;
+        animation: sp-anime 0.8s infinite linear;
+    }
+
+    @keyframes sp-anime {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .is-hide {
+        display: none;
+    }
+</style>
+
+<div class="site-content">
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+    <main class="site-main  main-container no-sidebar">
+        <div class="container">
+            <div class="breadcrumb-trail breadcrumbs">
+                <ul class="trail-items breadcrumb">
+                    <li class="trail-item trail-begin">
+                        <a href="#">
+                            <span>
+                                Home
+                            </span>
+                        </a>
+                    </li>
+                    <li class="trail-item trail-end active">
+                        <span>
+                            Shopping Cart
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="main-content-cart main-content col-sm-12">
+                    <h3 class="custom_blog_title">
+                        Shopping Cart
+                    </h3>
+
+                    <div class="page-main-content">
+                        <div class="shoppingcart-content">
+                            <form action="http://ledthanhdat.vn/html/oemone/shoppingcart.html" class="cart-form">
+                                <table class="shop_table">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-remove"></th>
+                                            <th class="product-thumbnail"></th>
+                                            <th class="product-name"></th>
+                                            <th class="product-price"></th>
+                                            <th class="product-quantity"></th>
+                                            <th class="product-subtotal"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% set i = 0 %}
+                                        {% if addtocartdata.length > 0 %}
+                                        {% for item in addtocartdata %}
+                                        {% set i = i + 1 %}
+                                        {% if item.product_stock_status == "Out Of Stock" %}
+                                        {% set flag = 1 %}
+                                        <tr class="cart_item">
+                                            <td class="product-remove">
+                                                <a href="#" class="remove_addtocart" id="{{item._id}}"></a>
+                                            </td>
+                                            <td class="product-thumbnail" style="pointer-events: none;opacity: 0.4;">
+                                                <a href="#">
+                                                    <img src="{{item.product_defaultImg[0].path}}" alt="img"
+                                                        class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                                </a>
+                                            </td>
+                                            <td class="product-name" data-title="Product"
+                                                style="pointer-events: none;opacity: 0.4;">
+                                                <a href="" class="title">{{item.product_name}}</a>
+                                                <input type="hidden" name="product_id" class="product_id"
+                                                    value="{{item._id}}">
+
+                                                <input type="hidden" name="product_quantity" class="product_quantity"
+                                                    value="{{item.product_quantity}}">
+                                                <span class="attributes-select attributes-color">SKU :
+                                                    {{item.product_sku}}</span>
+                                                <span class="attributes-select attributes-size">Sold By :
+                                                    {{item.venodor_name}}</span>
+                                            </td>
+                                            <td class="product-quantity" data-title="Quantity"
+                                                style="pointer-events: none;opacity: 0.4; width: 15% !important ">
+                                                <div class="quantity">
+                                                    <div class="control">
+                                                        <a class="btn-number qtyminus quantity-minus"
+                                                            data-id="{{item._id}}" id="{{item.product_price}}"
+                                                            data-price="{{item.product_price}}" href="#"
+                                                            style="font-size: 35px !important;font-weight: 500 !important;padding-bottom: 3px !important;">-</a>
+                                                            <input type="text" data-step="1"
+                                                            data-num="{{item.product_quantity}}" id="id{{item._id}}"
+                                                            min="1" data-min="1" data-stockno="{{item.product_stock_quantity}}" value="{{item.product_quantity}}"
+                                                            title="Qty" class="input-qty qty stock_quantity" size="4"
+                                                            readonly>
+                                                          
+                                                        <!--{{item.product_quantity}}-->
+                                                        {% if item.product_quantity == item.product_stock_quantity %}
+                                                            <a href="#" class="btn-number qtyplus quantity-plus"
+                                                            data-id="{{item._id}}" data-price="{{item.product_price}}"
+                                                            data-quantity="{{item.product_quantity}}"
+                                                            id="{{item.product_price}}" style="pointer-events: none;
+                                                            cursor: default;">+</a>
+                                                        {% else %}
+                                                            <a href="#" class="btn-number qtyplus quantity-plus"
+                                                            data-id="{{item._id}}" data-price="{{item.product_price}}"
+                                                            data-quantity="{{item.product_quantity}}"
+                                                            id="{{item.product_price}}">+</a>
+                                                        {% endif %}
+
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="product-price" data-title="Price"
+                                                style="pointer-events: none;opacity: 0.4; width: 15% !important ">
+                                                <span>&#8377;</span>
+                                                <span class="woocommerce-Price-amount_outofstock amount"
+                                                    data-id="{{item._id}}" id="{{item.product_price}}"
+                                                    data-total_quantity="{{item.product_quantity_price}}">
+                                                    <span class="woocommerce-Price-currencySymbol">
+                                                        &#8377;
+                                                    </span>
+                                                    {% if item.product_quantity_price == "0" %} {{item.product_price}}
+                                                    {% else %} {{item.product_quantity_price}} {% endif %}
+                                                </span>
+                                            </td>
+                                            {% if item.product_stock_status == "Out Of Stock" %}
+                                            <td class="text title" style=" pointer-events: none;opacity: 0.4; width: 15% !important; color: red;font-size: 20px;
+                                                    font-weight: 500;">
+                                                Out Of Stock
+                                            </td>
+                                            {% endif %}
+                                        </tr>
+                                        {% else %}
+                                        <tr class="cart_item">
+                                            <td class="product-remove">
+                                                <a href="#" class="remove_addtocart" id="{{item._id}}"></a>
+                                            </td>
+                                            <td class="product-thumbnail">
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                    <img src="{{item.product_defaultImg[0].path}}" alt="img"
+                                                        class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                                </a>
+                                            </td>
+                                            <td class="product-name" data-title="Product">
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}"
+                                                    class="title">{{item.product_name}}</a>
+                                                <span class="attributes-select attributes-color">SKU :
+                                                    {{item.product_sku}}</span>
+                                                <span class="attributes-select attributes-size">Sold By :
+                                                    {{item.venodor_name}}</span>
+                                            </td>
+                                            <td class="product-quantity" data-title="Quantity"
+                                                style="width: 15% !important">
+                                                <div class="quantity">
+                                                    <div class="control">
+                                                        {% if item.is_discount == "1" and item.discount_start == "true"
+                                                        %}
+                                                        <a class="btn-number qtyminus quantity-minus"
+                                                            data-id="{{item._id}}" id="{{item.product_price}}"
+                                                            data-price="{{item.discount_price}}" href="#"
+                                                            style="font-size: 35px !important;font-weight: 500 !important;padding-bottom: 3px !important;">-</a>
+
+                                                        {% else %}
+
+                                                        <a class="btn-number qtyminus quantity-minus"
+                                                            data-id="{{item._id}}" id="{{item.product_price}}"
+                                                            data-price="{{item.product_price}}" href="#"
+                                                            style="font-size: 35px !important;font-weight: 500 !important;padding-bottom: 3px !important;">-</a>
+                                                        {% endif %}
+
+                                                        <input type="text" data-step="1"
+                                                            data-num="{{item.product_quantity}}" id="id{{item._id}}"
+                                                            min="1" data-min="1" value="{{item.product_quantity}}"
+                                                            title="Qty" class="input-qty qty" size="4" data-stockno="{{item.product_stock_quantity}}" readonly>
+                                                        <!--{{item.product_quantity}}-->
+                                                        {% if item.is_discount == "1" and item.discount_start == "true"
+                                                        %}
+                                                            {% if item.product_quantity == item.product_stock_quantity %}
+                                                            <a href="#" class="btn-number qtyplus quantity-plus"
+                                                            data-id="{{item._id}}" data-price="{{item.discount_price}}"
+                                                            data-quantity="{{item.product_stock_quantity}}"
+                                                            id="{{item.product_price}}" style="pointer-events: none;cursor: default;">+</a>
+                                                            {% else %}
+                                                            <a href="#" class="btn-number qtyplus quantity-plus"
+                                                            data-id="{{item._id}}" data-price="{{item.discount_price}}"
+                                                            data-quantity="{{item.product_stock_quantity}}"
+                                                            id="{{item.product_price}}">+</a>
+                                                            {% endif %}
+
+                                                        {% else %}
+                                                        {% if item.product_quantity == item.product_stock_quantity %}
+                                                            <a href="#" class="btn-number qtyplus quantity-plus"
+                                                            data-id="{{item._id}}" data-price="{{item.product_price}}"
+                                                            data-quantity="{{item.product_stock_quantity}}"
+                                                            id="{{item.product_price}}" style="pointer-events: none;cursor: default;">+</a>
+                                                            {% else %}
+                                                            <a href="#" class="btn-number qtyplus quantity-plus"
+                                                            data-id="{{item._id}}" data-price="{{item.product_price}}"
+                                                            data-quantity="{{item.product_stock_quantity}}"
+                                                            id="{{item.product_price}}">+</a>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="product-price" data-title="Price" style="width: 15% !important">
+                                                <span>&#8377;</span><span class="woocommerce-Price-amount amount" data-id="{{item._id}}"
+                                                    id="{{item.product_price}}"
+                                                    data-total_quantity="{{item.product_quantity_price}}">
+                                                    <span class="woocommerce-Price-currencySymbol">
+
+                                                    </span>
+                                                    {% if item.product_quantity_price == "0" %}
+                                                    {{item.product_price}}
+                                                    {% else %}
+                                                    {{item.product_quantity_price}} {% endif %}
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                        <tr>
+                                            <td class="actions">
+                                                <!-- <div class="coupon">
+                                                    <label class="coupon_code">Coupon Code:</label>
+                                                    <input type="text" class="input-text"
+                                                        placeholder="Promotion code here">
+                                                    <a href="#" class="button"></a>
+                                                </div> -->
+                                                <div class="order-total">
+                                                    <span class="title">
+                                                        Total Price:
+                                                    </span>
+                                                    <span>&#8377;</span><span class="total-price"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% else %}
+                                        <div class="productnot_found">
+                                            <h1>
+                                                Product not found !
+                                            </h1>
+                                        </div>
+                                        {% endif %}
+                                    </tbody>
+                                </table>
+                            </form>
+                            {% if addtocartdata.length > 0 %}
+                            <div class="control-cart">
+
+                                <a href="/">
+                                    <button class="button btn-continue-shopping" style="background-color: #7dd857;
+                                    color: #fff;">
+                                        Continue Shopping
+                                    </button>
+                                </a>
+
+                                {% if flag == 1 and addtocartdata.length == 1 %}
+                                <button class="button btn-cart-to-checkout" style="pointer-events: none;opacity: 0.4;" style="background-color: #7dd857;
+                                color: #fff;">
+                                    <a href="javascript:void(0)">Checkout</a>
+
+                                </button>
+                                {% else %}
+
+                                <a href="/checkout"> <button class="button btn-cart-to-checkout" style="background-color: #7dd857;
+                                    color: #fff;">Checkout</button></a>
+                                {% endif %}
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+
+<script>
+   
+  $(window).load(function() {
+    
+            // $("#overlay").fadeIn(100);
+            // setTimeout(function () {
+            //     $("#overlay").fadeOut(100);
+            // }, 500);
+           
+
+  });
+
+    $(document).ready(function () {
+
+
+        $(".amount").each(function () {
+            let dis_price = $(this).attr('data-total_quantity');
+
+            console.log("data-outofstock -->>", dis_price);
+            dis_price = (dis_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+            console.log("data-outofstock -->>", dis_price);
+
+            $(this).text(dis_price)
+
+
+        });
+
+        var host = window.location.origin;
+
+        $(function () {
+            "use strict";
+
+            var SweetAlert = function () { };
+
+            SweetAlert.prototype.init = function () {
+
+                //Parameter
+                var host = window.location.origin;
+                $('body').on('click', '.remove_addtocart', function (e) {
+                    var id = $(this).attr('id');
+                    var thisElement = this;
+                    swal({
+                        title: "Are you sure?",
+                        text: "You will not be able to recover this item!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#e69a2a",
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "No, cancel plx!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    }, function (isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                type: 'POST',
+                                url: host + "/addtocart_remove",
+                                data: { id: id },
+                                success: function (resultData) {
+                                    // alert(resultData)
+                                    console.log(resultData);
+                                    if (resultData == 'success') {
+                                        swal("Deleted!", "Your item has been deleted.", "success");
+                                        location.reload();
+                                    } else {
+                                        swal("Deleted!", "Your item has been deleted.", "success");
+                                        location.reload();
+                                    }
+                                    // alert("Save Complete")
+                                }
+                            });
+                            swal("Deleted!", "Item Deleted Succesfully.", "success");
+                        } else {
+                            swal("Cancelled", "Item Not Deleted", "error");
+                        }
+                    });
+                    return false;
+                });
+
+            },
+                $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+            $.SweetAlert.init();
+        });
+
+        $(document).ajaxSend(function () {
+            $("#overlay").fadeIn(300);
+        });
+
+        let finaltotal = 0;
+        $(".woocommerce-Price-amount").each(function () {
+            let amount = $(this).text();
+
+            amount = amount.replace(/,/g, '');
+            console.log("am", amount);
+            console.log("am", parseFloat(amount));
+            finaltotal = parseFloat(finaltotal) + parseFloat(amount);
+            console.log("fn", finaltotal);
+
+
+        });
+
+        let finaltotalNew = (finaltotal).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+        $(".total-price").text(finaltotalNew)
+
+        $(".total-price").attr('data-id', finaltotal)
+        let ii = 1;
+        let plustot = 0;
+        $(".quantity-plus").on("click", function () {
+            // if(ii >= 1){
+            let dataid = $(this).attr('data-id');
+            let quantity = $(this).attr('data-quantity');
+            quantity = parseInt(quantity);
+
+
+            let idnum = $('#id' + dataid + '.input-qty').attr('data-num');
+            console.log("ccccccccccccc", idnum);
+
+
+
+
+            if (idnum == 0) {
+                ii = 1;
+            }
+
+            // ii = parseInt(ii);
+
+
+
+
+       
+               console.log("test-------------");
+
+                // let amount = $(this).attr('id');
+                let amount = $('.woocommerce-Price-amount[data-id=' + dataid + ']').text();
+                // if(total_quantity){
+                //     amount = total_quantity
+                // }
+                amount = amount.replace(/,/g, "");
+                // amount = amount.replace(/,/g , '');
+                amount = parseFloat(amount);
+
+
+                // console.log("am", amount);
+                console.log("ccccccccccccc", ii);
+                ii = parseInt(idnum) + 1;
+                console.log("ccccccccccccc 1231232323", ii, quantity);
+
+                if (ii > quantity) {
+                ii = ii;
+                $('#id' + dataid + '.input-qty').attr('data-num', ii);
+            
+    
+                return false;
+
+            }
+
+
+                $('#id' + dataid + '.input-qty').attr('data-num', ii);
+
+
+                // $('#id' + dataid + '.input-qty').attr('data-num', ii);
+
+                $(".quantity-plus").attr("disabled", true);
+                console.log("ccccccc++cccccc", ii);
+                
+
+                let oldamttt = $(this).attr('data-price');
+                oldamttt = oldamttt.replace(/,/g, "");
+
+                if (idnum == 1) {
+                    amount = oldamttt;
+                    ii = 1;
+                }
+
+
+
+                console.log(" parseFloat(oldamttt) + parseFloat(amount);", idnum, parseFloat(oldamttt), parseFloat(amount));
+                plustot = parseFloat(oldamttt) + parseFloat(amount);
+                let plustotNew = (plustot).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+
+                console.log("am", plustotNew);
+
+                $('.woocommerce-Price-amount[data-id=' + dataid + ']').text(plustotNew);
+                $(this).attr('id', plustot);
+
+                // console.log("iiiiiiiiiiiiiiiiiii",ii);
+                // $('#id'+dataid+'.input-qty').attr('data-num',ii);   
+
+
+                var subtotal = 0;
+                $('.woocommerce-Price-amount').each(function () {
+                    var price = $(this).text();
+                    price = price.replace(/,/g, "");
+
+                    subtotal = parseFloat(subtotal) + parseFloat(price)
+
+                    // subtotal = subtotal.replace(/,/g, "");
+
+                    console.log("sssssssssssss", subtotal);
+                });
+                console.log("subbbb", subtotal);
+
+                // let totalupdt = $(".total-price").attr('data-id')
+                // let oldamt = $('.quantity-plus').attr('data-price');
+                // let total_update = parseFloat(totalupdt) + parseFloat(oldamt);
+                $(".total-price").attr('data-id', subtotal)
+
+                let subtotalNew = (subtotal).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+                $(".total-price").text(subtotalNew)
+
+                let objii = $('#id' + dataid + '.input-qty').attr('data-num');
+                let product_price = $(this).attr('id');
+                // product_price = product_price.replace(/,/g, "");
+
+                let product_basic_price = $(this).attr('data-price');
+
+                // product_basic_price = product_basic_price.replace(/,/g, "");
+
+                $.ajax({
+                    type: 'POST',
+                    url: host + "/product_quantity",
+                    data: { id: dataid, quantity: objii, product_price: product_price, product_basic_price: product_basic_price },
+                    success: function (resultData) {
+                        // alert(resultData)
+                        console.log(resultData);
+                        if (resultData == "success") {
+                            console.log("sdasd");
+                            location.reload();
+
+                        } else {
+                            console.log("erere");
+                            // alert("Something went wrong")
+                        }
+
+                        // alert("Save Complete")
+                    }
+                    // });
+                })
+                .done(function () {
+                    setTimeout(function () {
+                        $("#overlay").fadeOut(300);
+                    }, 500);
+                });
+
+            
+
+        });
+        let minustot = 0;
+        let jj = 0
+        $(".quantity-minus").on("click", function () {
+            let datasid = $(this).attr('data-id');
+            // let qty = $('.input-qty[id'+datasid+']').attr('data-num');
+            var qty = $('#id' + datasid + '.input-qty').attr('data-num');
+            if (qty == 0) {
+                ii = 1;
+            }
+
+            jj = qty - 1;
+            console.log("jjjjjjjjjjjjjj", jj);
+            $('#id' + datasid + '.input-qty').attr('data-num', jj);
+            console.log("qty", jj);
+            if (jj >= 1) {
+                let amt = $('.woocommerce-Price-amount[data-id=' + datasid + ']').text();
+
+                amt = amt.replace(/,/g, "");
+
+                let oldamt = $(this).attr('data-price');
+                oldamt = oldamt.replace(/,/g, "");
+
+                console.log("minus", amt, oldamt);
+                let amount = $(this).attr('id');
+                console.log("am", amount);
+                if (qty == 1) {
+                    oldamt = amount;
+                }
+                minustot = parseFloat(amt) - parseFloat(oldamt);
+                console.log("am", minustot);
+                let minustotNew = (minustot).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+
+                $('.woocommerce-Price-amount[data-id=' + datasid + ']').text(minustotNew);
+                $(this).attr('id', minustot);
+                $('.quantity-plus[data-id=' + datasid + ']').attr('id', minustot);
+
+                // var subtotal = 0;
+                // $('.woocommerce-Price-amount').each(function() {
+                //     var price = $(this).text();
+                //     subtotal = parseFloat(price) - parseFloat(subtotal)
+                //     console.log("sssssssssssss",subtotal);
+                // });
+                // console.log("subbbb",subtotal);
+
+                let totalupdt = $(".total-price").attr('data-id')
+                totalupdt = totalupdt.replace(/,/g, "");
+
+                let total_update = parseFloat(totalupdt) - parseFloat(oldamt);
+                $(".total-price").attr('data-id', total_update)
+
+                let total_updateNew = (total_update).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+                $(".total-price").text(total_updateNew)
+
+                // $(".total-price").attr('data-id',subtotal)
+                // $(".total-price").text(subtotal)
+
+                let objii = $('#id' + datasid + '.input-qty').attr('data-num');
+                let product_price = $(this).attr('id');
+                // product_price = product_price.replace(/,/g, "");
+
+                let product_basic_price = $(this).attr('data-price');
+                // product_basic_price = product_basic_price.replace(/,/g, "");
+
+                $.ajax({
+                    type: 'POST',
+                    url: host + "/product_quantity",
+                    data: { id: datasid, quantity: objii, product_price: product_price, product_basic_price: product_basic_price },
+                    success: function (resultData) {
+                        // alert(resultData)
+                        console.log(resultData);
+                        if (resultData == "success") {
+                            console.log("sdasd");
+                            location.reload();
+
+                        } else {
+                            console.log("erere");
+                            // alert("Something went wrong")
+                        }
+                        // alert("Save Complete")
+                    }
+                    // });
+                })
+                .done(function () {
+                    setTimeout(function () {
+                        $("#overlay").fadeOut(300);
+                    }, 500);
+                });
+            }
+        });
+
+    });
+</script>
+
+{% endblock %}

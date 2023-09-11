@@ -1,0 +1,1894 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+<style>
+    #overlay {
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .cv-spinner {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spinner {
+        width: 80px;
+        height: 80px;
+        border: 4px #ddd solid;
+        border-top: 4px #7dd857 solid;
+        border-radius: 50%;
+        animation: sp-anime 0.8s infinite linear;
+    }
+
+
+    @keyframes sp-anime {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .is-hide {
+        display: none;
+    }
+
+    .productDetails {
+        border: 1px #ddd solid;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .orderHeading {
+        background-color: #f0f0f0;
+        padding: 15px;
+
+    }
+
+    .mainOrder {
+        border: 1px #ddd solid;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .orderAdd {
+        padding: 20px 40px;
+    }
+
+    .productOrderImg {
+        padding-left: 40px;
+        width: 200px;
+        position: relative;
+        height: 200px;
+        display: flex;
+        align-items: center;
+    }
+
+    .detailsBtn {
+        color: #7dd857;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    .getDate {
+        text-align: right;
+        float: right;
+        position: relative;
+        right: 0;
+    }
+
+    .byDate {
+        color: white;
+        background-color: #7dd857;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .alertMsg {
+        text-align: right;
+        float: right;
+        position: relative;
+        right: -150px;
+        top: 37px;
+        color: red;
+    }
+
+
+    .alertMsgend {
+        text-align: right;
+        float: right;
+        position: relative;
+        right: -298px;
+        top: 37px;
+        color: red;
+    }
+
+    .alertMsgboth {
+        text-align: right;
+        float: right;
+        position: relative;
+        right: -166px;
+        top: 37px;
+        color: red;
+    }
+
+/* track order css start */
+
+    .root {
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+    }
+
+    .order-track {
+    margin-top: 2rem;
+    padding: 0 1rem;
+    border-top: 1px dashed #2c3e50;
+    padding-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    }
+    .order-track-step {
+    display: flex;
+    height: 7rem;
+    }
+    .order-track-step:last-child {
+    overflow: hidden;
+    height: 4rem;
+    }
+    .order-track-step:last-child .order-track-status span:last-of-type {
+    display: none;
+    }
+    .order-track-status {
+    margin-right: 1.5rem;
+    position: relative;
+    }
+    .order-track-status-dot {
+    display: block;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: #f05a00;
+    }
+    .order-track-status-line {
+    display: block;
+    margin: 0 auto;
+    width: 2px;
+    height: 7rem;
+    background: #f05a00;
+    }
+    .order-track-status-dot_del {
+    display: block;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: #f4f4f4;
+    }
+    .order-track-status-line_del {
+    display: block;
+    margin: 0 auto;
+    width: 2px;
+    height: 7rem;
+    background: #f4f4f4;
+    }
+    .order-track-text-stat {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 3px;
+    }
+    .order-track-text-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    }
+
+    .order-track {
+    transition: all .3s height 0.3s;
+    transform-origin: top center;
+    }
+
+/* track order css end */
+
+</style>
+
+<div class="site-content">
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+    <main class="site-main  main-container no-sidebar">
+        <div class="container">
+            <div class="breadcrumb-trail breadcrumbs">
+                <ul class="trail-items breadcrumb">
+                    <li class="trail-item trail-begin">
+                        <a href="#">
+                            <span>
+                                Home
+                            </span>
+                        </a>
+                    </li>
+                    <li class="trail-item trail-end active">
+                        <span>
+                            Your Orders
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+
+
+                <div class="main-content-cart main-content col-sm-12">
+
+                    <span class="getDate">
+
+                        <input type="date" id="startDate" placeholder="Start Date" name="startDate" required>
+                        <input type="date" id="endDate" placeholder="End Date" name="endDate" required>
+
+                        <span class="byDate" id="byDate">Search</span>
+
+                    </span>
+                    <span class="alertMsgboth" id="alertMsgboth"></span>
+                    <span class="alertMsg" id="alertMsg"></span>
+                    <span class="alertMsgend" id="alertMsgend"></span>
+
+
+
+
+
+                    <h3 class="custom_blog_title">
+                        Order List
+                    </h3>
+
+
+                    <input type="hidden" value="{{totalRecord}}" id="totalRecord">
+
+                    <div class="page-main-content">
+                        <div class="shoppingcart-content" id="newGrid">
+
+                            {% if finalSuccessData.length > 0 %}
+                            {% set i = 0 %}
+                            {% for itemss in finalSuccessData %}
+                            {% set i = i + 1 %}
+                            {% if (loop.index <= 5) %} <span style="display: none;">
+                                <div class="invoice" id="invoice_download{{i}}pdf"
+                                    style="font-family: 'Jost', sans-serif;">
+
+                                    <div class="col-lg-12 text-center"
+                                        style="text-transform: uppercase; text-align: center; margin-bottom: 30px; font-size: 50px;">
+
+                                        <caption>
+                                            <strong>
+                                                Invoice
+                                            </strong>
+                                        </caption>
+                                    </div>
+                                    {% for invo in finalInvoiceData %}
+                                    {% if itemss.order_id == invo.order_id %}
+
+                                    <table style="table-layout: fixed; width: 100%; ">
+
+                                        <tbody>
+                                            <tr>
+                                                <td class="">
+                                                    <div>
+                                                        <img src="/assets/images/logo.png" alt="oemOne"
+                                                            style="max-width: 50%; ">
+                                                    </div>
+                                                </td>
+                                                <!-- <td width="15%">
+
+                                            </td> -->
+                                                <td>
+                                                    <table class="tbl-padded">
+
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding:5px; width: 30%;">
+                                                                    <strong>Invoice No.</strong>
+                                                                </td>
+                                                                <td style="padding:5px;">
+                                                                    <div>
+                                                                        {{invo.invoice_id}}
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td style="padding:5px; width: 30%;">
+                                                                    <strong> Order Date</strong>
+                                                                </td>
+
+                                                                <td style="padding:5px;">
+                                                                    <span class="orderDate"
+                                                                        data-orderD="{{invo.updatedAt}}"></span>
+
+                                                                    <!-- <span class="invDate"></span> -->
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                        <br>
+                                    </table>
+
+
+
+
+                                    <div style="padding-top: 1cm; padding-bottom: 1cm;">
+                                        <table style="table-layout: fixed; width: 100%;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div style="padding-bottom: 10px;">
+                                                            <strong style="text-transform: uppercase;">FROM</strong>
+                                                        </div>
+                                                        <div>
+                                                            {% for addre in invo.shipping_details %}
+
+                                                            <span>{{addre.name}}</span><br>
+                                                            <span>{{addre.flatNo}}</span>,
+                                                            <span>{{addre.area}}</span>,
+                                                            <span>{{addre.landmark}}</span><br>
+                                                            <span>{{addre.town}}</span>,
+                                                            <span>{{addre.pinCode}}</span><br>
+                                                            <span>{{addre.phNo}}</span><br>
+                                                            <span>{{addre.state}}</span>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div style="padding-bottom: 10px;">
+                                                            <strong style="text-transform: uppercase;">Bill
+                                                                To</strong>
+                                                        </div>
+                                                        <div>
+                                                            {% for addre in itemss.customer_Address %}
+
+                                                            <span>{{addre.fullname}}</span><br>
+                                                            <span>{{addre.addresstext_no}}</span>,
+                                                            <span>{{addre.addresstext_name}}</span>,
+                                                            <span>{{addre.landmark}}</span><br>
+                                                            <span>{{addre.city}}</span>,
+                                                            <span>{{addre.state}}</span>,
+                                                            <span>{{addre.pincode}}</span><br>
+
+                                                            <span>{{addre.addresstype}}</span><br>
+                                                            <span>{{addre.mobileno}}</span><br>
+
+
+                                                            {% endfor %}
+                                                        </div>
+                                                    </td>
+
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+
+
+                                    <table style="table-layout: fixed; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th width="30%"
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    Product
+                                                </th>
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    Unit Price
+                                                </th>
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    Discount
+                                                </th>
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    Quantity
+                                                </th>
+
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    CGST
+                                                </th>
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    SGST
+                                                </th>
+
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    IGST
+                                                </th>
+                                               
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    Amount
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        {% for item in invo.product_id %}
+
+                                        <tbody>
+                                            <tr>
+                                                <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    {{item.product_name}}
+                                                </td>
+
+                                                {% if item.is_discount == "1" and item.discount_start == "true" %}
+                                                <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;{{item.discount_price}}
+                                                </td>
+                                                {% else %}
+                                                <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;{{item.product_price}}
+                                                </td>
+
+                                                {% endif %}
+
+
+
+                                                {% if item.is_discount == "1" and item.discount_start == "true" %}
+
+                                                <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;{{item.discount_value}}
+                                                </td>
+
+                                                {% else %}
+                                                <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377; 0
+                                                </td>
+
+                                                {% endif %}
+
+
+                                                {% for pro in invo.product_info %}
+                                                {% if pro.id == item._id %}
+
+                                                <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    {{pro.quantity}}
+                                                </td>
+                                                {% endif %}
+                                                {% endfor %}
+
+                                                {% for pro in invo.product_invoice %}
+
+                                                <!-- <p>{{pro.product_id}}</p> -->
+                                                <!-- {% if pro.product_id == item._id %} -->
+
+                                                <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;{{pro.cgst}}
+                                                </td>
+                                                <!-- {% endif %} -->
+                                                {% endfor %}
+
+
+                                                {% for pro in invo.product_invoice %}
+                                                <!-- {% if pro.product_id == item._id %} -->
+
+                                                <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;{{pro.sgst}}
+                                                </td>
+                                                <!-- {% endif %} -->
+                                                {% endfor %}
+
+                                                {% for pro in invo.product_invoice %}
+                                                <!-- {% if pro.product_id == item._id %} -->
+
+                                                <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;{{pro.igst}}
+                                                </td>
+                                                <!-- {% endif %} -->
+                                                {% endfor %}
+
+                                                {% for pro in invo.product_invoice %}
+                                                <!-- {% if pro.product_id == item._id %} -->
+
+                                                <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;{{pro.withTax_amount}}
+                                                </td>
+                                                <!-- {% endif %} -->
+                                                {% endfor %}
+
+                                            </tr>
+
+
+                                        </tbody>
+                                        {% endfor %}
+
+                                    </table>
+
+
+
+                                    {% endif %}
+
+                                    {% endfor %}
+
+                                    <br>
+
+                                    <div style="border-top: 1px solid #eee;">
+                                        <table style="table-layout: fixed; width: 100%; border-collapse: collapse;">
+                                            <tbody>
+
+                                                <tr>
+                                                    <td align="right" style="border-top: 2px solid #eee; padding: 8px;">
+                                                        {% if itemss.coupon_amount %}
+                                                        <span style="font-size: 16pt;">
+                                                            Coupon Discount :
+                                                        </span>
+                                                        <strong style="font-size: 16pt;">
+                                                            &#8377;-{{itemss.coupon_amount}}
+                                                        </strong><br />
+                                                        {% endif %}
+                                                        <span style="font-size: 16pt;">
+                                                            Delhivery Charge :
+                                                        </span>
+                                                        <strong style="font-size: 16pt;">
+                                                            &#8377;{{itemss.shipping_charge}}
+                                                        </strong><br />
+                                                        <span style="font-size: 16pt;">
+                                                            Total Amount :
+                                                        </span>
+                                                        <strong style="font-size: 16pt;">
+                                                            &#8377;{{itemss.amount}}
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div>
+                                        <div style="padding-top:1cm; padding-bottom: 1cm;">
+                                            <div>
+                                                <strong>Note</strong>
+                                            </div>
+                                            <p style="font-size: 10pt; line-height: 14pt;">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget
+                                                placerat turpis, in vehicula elit. Pellentesque id pharetra ligula,
+                                                sit
+                                                amet
+                                                interdum erat. Integer id lectus pulvinar, maximus urna quis,
+                                                accumsan
+                                                lacus. Etiam ac quam magna. Fusce ex lectus, pretium id commodo sit
+                                                amet,
+                                                egestas mattis lectus. Vestibulum id libero fringilla magna
+                                                tincidunt
+                                                egestas. Nam lacinia sollicitudin ante sed auctor. Suspendisse
+                                                potenti.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                </span>
+
+
+                                <div class="productDetails hideDetails{{i}}">
+
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-4 orderAdd">
+                                            <strong>Shipping Address</strong><br>
+                                            {% for addre in itemss.customer_Address %}
+                                            <span>{{addre.fullname}}</span><br>
+                                            <span>{{addre.addresstext_no}}</span>,
+                                            <span>{{addre.addresstext_name}}</span>,
+                                            <span>{{addre.landmark}}</span><br>
+                                            <span>{{addre.city}}</span>,
+                                            <span>{{addre.state}}</span>,
+                                            <span>{{addre.pincode}}</span><br>
+
+                                            <span>{{addre.addresstype}}</span><br>
+                                            <span>{{addre.mobileno}}</span><br>
+
+                                            <!-- <span>Ahemdabad</span><br>
+                                        <span>95959595959</span> -->
+                                            {% endfor %}
+
+                                        </div>
+                                        <div class="col-lg-4 orderAdd">
+                                            <strong>Payment Method</strong><br>
+
+                                            {% for method in itemss.payment_details %}
+
+
+                                            <span>{{method.method}}</span>
+
+                                            {% endfor %}
+
+                                        </div>
+                                        <div class="col-lg-4 orderAdd">
+                                            <strong>Order Summary</strong><br>
+
+                                            <input type="hidden" id="totalPrice" value="{{price.amount}}">
+                                            <span>Sub Total : </span><span>&#8377;{{itemss.amount}}</span><br>
+                                            {% if itemss.coupon_name %}
+                                            <span>Coupon - ({{itemss.coupon_name}}) : </span><span>&#8377;-{{itemss.coupon_amount}}</span><br>
+                                            {% endif %}
+                                            <span>Shipping :</span><span> &#8377;{{itemss.shipping_charge}}</span> <br>
+                                            <span>Total :</span> <span>&#8377;{{itemss.amount}}</span><br>
+                                            <b><span>Grand Total :</span></b> <span>&#8377;{{itemss.amount}}</span><br>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="productDetails track_orderDetails{{i}}">
+
+                                    <div class="row align-items-center">
+                                        <section class="root">
+                                            <h4 style="padding-left: 20px;">Tracking Details</h4>
+                                            <div class="order-track" style="margin-left: 15px;">
+                                               {% if itemss.track_order_data %}
+                                               {% for item in itemss.track_order_data %}
+                                               {% if itemss.order_id == item.id %}
+                                              <div class="order-track-step">
+                                                <div class="order-track-status {{item.order_id}}">
+                                                  {% if item.shipment_status == 3 %}
+                                                  <span class="order-track-status-dot"></span>
+                                                  <span class="order-track-status-line"></span>
+                                                  {% else %}
+                                                  <span class="order-track-status-dot_del"></span>
+                                                  <span class="order-track-status-line_del"></span>
+                                                  {% endif %}
+                                                </div>
+                                                <div class="order-track-text">
+                                                  <p class="order-track-text-stat">Order Processed</p>
+                                                  <!-- <span class="order-track-text-sub">1st November, 2019</span> -->
+                                                </div>
+                                              </div>
+                                              <div class="order-track-step">
+                                                <div class="order-track-status">
+                                                  {% if item.shipment_status == 6 %}
+                                                  <span class="order-track-status-dot"></span>
+                                                  <span class="order-track-status-line"></span>
+                                                  {% else %}
+                                                  <span class="order-track-status-dot_del"></span>
+                                                  <span class="order-track-status-line_del"></span>
+                                                  {% endif %}
+                                                </div>
+                                                <div class="order-track-text">
+                                                  <p class="order-track-text-stat">Order Shipped</p>
+                                                  <!-- <span class="order-track-text-sub">1st November, 2019</span> -->
+                                                </div>
+                                              </div>
+                                          
+                                              <div class="order-track-step">
+                                                <div class="order-track-status">
+                                                  {% if item.shipment_status == 17 %}
+                                                  <span class="order-track-status-dot"></span>
+                                                  <span class="order-track-status-line"></span>
+                                                  {% else %}
+                                                  <span class="order-track-status-dot_del"></span>
+                                                  <span class="order-track-status-line_del"></span>
+                                                  {% endif %}
+                                                </div>
+                                                <div class="order-track-text">
+                                                  <p class="order-track-text-stat">Order En Route</p>
+                                                  <!-- <span class="order-track-text-sub">3rd November, 2019</span> -->
+                                                </div>
+                                              </div>
+                                            
+                                              <div class="order-track-step">
+                                                <div class="order-track-status">
+                                                  {% if item.shipment_status == 7 %}
+                                                  <span class="order-track-status-dot"></span>
+                                                  <span class="order-track-status-line"></span>
+                                                  {% else %}
+                                                  <span class="order-track-status-dot_del"></span>
+                                                  <span class="order-track-status-line_del"></span>
+                                                  {% endif %}
+                                                </div>
+                                                <div class="order-track-text">
+                                                  <p class="order-track-text-stat">Order Arrived</p>
+                                                  <!-- <span class="order-track-text-sub">3rd November, 2019</span> -->
+                                                </div>
+                                              </div>
+                                              {% endif %}
+                                              {% endfor %}
+                                              {% endif %}
+                                            </div>
+                                          </section>
+                                    </div>
+
+                                </div>
+
+                                <div class="mainOrder">
+
+                                    <div class="row orderHeading mb-1">
+                                        <div class="col-lg-9">
+                                            <div class="col-lg-3">
+                                                <div>ORDER PLACED</div>
+                                                <div>
+                                                    <span class="orderPlace" data-orderP="{{itemss.updatedAt}}"></span>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div>TOTAL</div>
+                                                <div>&#8377;{{itemss.amount}}</div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div>SHOP TO</div>
+                                                {% for addre in itemss.customer_Address %}
+
+                                                <div>{{addre.fullname}}</div>
+                                                {% endfor %}
+
+
+                                            </div>
+                                           
+                                            <div class="col-lg-3 detailsBtn track_order" onclick="track_order_fun('{{i}}')" id="track_order"
+                                                    data-id="track_order{{i}}">Track Order
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            {% for orderno in itemss.payment_details %}
+                                            <span>{{orderno.order_id}}</span>
+
+
+                                            {% endfor %}
+
+                                            <div id="editor"></div>
+
+                                            <div class="row">
+                                                <div class="col-lg-6 detailsBtn " onclick="del('{{i}}')">View order
+                                                    details
+                                                </div>
+                                                <div class="col-lg-6 detailsBtn invoice_pdf" id="invoice_pdf"
+                                                    data-id="{{i}}pdf">Invoice</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    {% if itemss.product_id.length > 0 %}
+                                    {% for item in itemss.product_id %}
+
+
+                                    {% set flag = 1 %}
+
+
+                                    <div class="row align-items-center orderDetails">
+                                        <div class="col-lg-6 productOrderImg">
+                                            <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                <img src="{{item.product_defaultImg[0].path}}" alt="img"
+                                                    class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-6 " style="line-height:200px; color: black;">
+
+                                            <a href="/productDetails/{{item._id}}/{{item.product_name}}"
+                                                class="title">{{item.product_name}}</a>
+                                            <input type="hidden" name="product_id" class="product_id"
+                                                value="{{item._id}}">
+                                        </div>
+                                    </div>
+
+
+
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+
+
+                                {% endif %}
+
+                                {% endfor %}
+
+
+
+                                {% else %}
+                                <div class="productnot_found">
+                                    <h1>
+                                        Product not found !
+                                    </h1>
+                                </div>
+                                {% endif %}
+
+
+                        </div>
+                    </div>
+
+                    <div class="pagination clearfix style3">
+                        <div class="nav-link">
+                            <a href="javascript:void(0)" class="page-numbers prev__Page"><i
+                                    class="icon fa fa-angle-left" aria-hidden="true"></i></a>
+
+                            <span class="newpage"></span>
+                            <!-- <a href="#" class="page-numbers">1</a>
+                        <a href="#" class="page-numbers">2</a>
+                        <a href="#" class="page-numbers current">3</a> -->
+                            <a href="javascript:void(0)" class="page-numbers next__Page "><i
+                                    class="icon fa fa-angle-right" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+<script>
+     $(window).load(function () {
+        $("#overlay").fadeIn(1000);
+    });
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#overlay").fadeOut(1000);
+        }, 500);
+        var host = window.location.origin;
+        $('.productDetails').hide()
+
+
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            return [day, month, year].join('-');
+        }
+
+
+        $(".orderDate").each(function () {
+            let orderD = $(this).attr('data-orderD');
+
+            $(this).text(formatDate(orderD));
+
+
+        });
+
+        $(".orderPlace").each(function () {
+            let orderP = $(this).attr('data-orderP');
+
+            $(this).text(formatDate(orderP));
+
+
+        });
+
+
+
+
+    });
+
+
+    function del(index) {
+        $('.hideDetails' + index).toggle();
+    }
+
+    function track_order_fun(index) {
+        $('.track_orderDetails' + index).toggle();
+    }
+
+
+    $(document).on('click', '.invoice_pdf', function () {
+
+        // $('.invoice_pdf').click(function () {
+
+        var dataid = $(this).attr('data-id');
+
+        var idd = "invoice_download" + dataid;
+
+        var printContents = document.getElementById(idd).outerHTML;
+        w = window.open();
+
+        w.document.write(printContents);
+
+        w.document.write('<scr' + 'ipt type="text/javascript">' + 'window.onload = function() { window.print(); window.close(); };' + '</sc' + 'ript>');
+
+        w.document.close();
+        w.focus();
+        return true;
+
+    });
+
+
+//  function pdfDown(index){
+
+
+//     var doc = new jsPDF();
+//     var specialElementHandlers = {
+//         '#editor': function (element, renderer) {
+//             return true;
+//         }
+//     };
+
+
+//   let html =   $('#invoice_download' + index).html();
+
+//   console.log("html --->",html);
+//     // $('#invoice_download' + index).click(function () {
+//         doc.fromHTML(html, 15, 15, {
+//             'width': 170,
+//                 'elementHandlers': specialElementHandlers
+//         });
+//         doc.save('order_invoice.pdf');
+//     // });
+
+//  }
+
+</script>
+
+<script>
+
+    var currentPage = 1
+    var countfinal;
+
+    $(document).ready(function () {
+
+        createPagination();
+
+    });
+
+
+    function createPagination() {
+        $(".newpage").html('')
+        console.log("current == >>", currentPage);
+
+        let total = $("#totalRecord").val();
+        let length = 5;
+
+        console.log("total kiran", total);
+
+        let count = total / length
+
+        countfinal = Math.ceil(count);
+
+        console.log("count", countfinal);
+        let current = currentPage - 1
+
+        for (let q = 0; q < countfinal; q++) {
+
+            let curr = q === current ? 'current' : ''
+
+            // let curr = q === q ? 'current' : ''
+
+
+            let cp = q + 1
+
+            let html = '<a href="javascript:void(0)" class="page-numbers paging ' + curr + ' paginationPage' + cp + '" onClick = "pagination(' + cp + ');">' + cp + '</a>'
+
+            $(".newpage").append(html)
+        }
+        // if (reset_currentpage == 1) {
+        //     currentPage = 1
+        // }
+        // console.log("countfinal cc", countfinal);
+        // console.log("currentPage cc", currentPage);
+
+    }
+
+    $(".prev__Page").click(function () {
+        // $(".sortby").html('')
+        // let num = "1";
+        // let Country = num.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+
+        if (currentPage !== 1) {
+            let cp = currentPage - 1
+            pagination(cp)
+            $(".paging").removeClass("current");
+            $(".paginationPage" + cp).addClass("current");
+
+        }
+    });
+
+    $(".paging").click(function () {
+        $(this).removeClass("current");
+        $(this).toggleClass("current");
+    });
+
+    $(".next__Page").click(function () {
+        // $(".sortby").html('')
+        // let num = "1";
+        // let Country = num.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+        console.log("countfinal", countfinal);
+        console.log("currentPage", currentPage);
+
+
+        if (currentPage !== countfinal) {
+
+            let cp = currentPage + 1
+
+            console.log("cp --->", cp);
+
+            pagination(cp)
+            $(".paging").removeClass("current");
+            $(".paginationPage" + cp).addClass("current");
+
+        }
+
+    });
+
+
+    // if (currentPage !== 1) {
+
+    //     let cp = 1;
+    //     $(".paging").removeClass("current");
+    //     $(".paginationPage" + 1).addClass("current");
+
+    // }
+
+
+    var host = window.location.origin;
+
+    scrollToTop = () => {
+        window.scrollTo({
+            top: 350,
+            behavior: "smooth"
+        });
+    }
+
+    function pagination(num) {
+
+        let statDate = $("#startDate").val();
+        let endDate = $("#endDate").val();
+        console.log("-----num---------", num);
+
+        // $(".sortby").html('')
+        // let numCt = "1";
+        // let Country = numCt.split(',');
+
+        // let sortBy;
+        // if (Country != '') {
+        //     Country.forEach(function (e) {
+        //         sortBy = $("#sort_idPrice option[value= " + e + "]").text();
+        //     });
+
+        // }
+
+        // $(".sortby").html('<a class="chosen-single sortby chosen-default" tabindex="-1"><span>' + sortBy + '</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" /></div><ul class="chosen-results"></ul></div>')
+
+        currentPage = num
+        // if (num == 1) {
+        //     $(".page-numbers").addClass("current");
+        // }
+
+        let id = $("#product__id").val();
+        let name = $("#product__name").val();
+
+        let ctOption = $('#categoryId').find(":selected").val();
+
+        let length = 5;
+
+        let start;
+        if (num == 1) {
+            start = 0;
+        } else {
+            start = ((num - 1) * length)
+        }
+
+
+        $.ajax({
+            type: 'POST',
+            url: host + "/ordersFilter",
+            data: { start: start, statDate: statDate, endDate: endDate },
+            success: function (data) {
+                // $("#totalRecord1").val(data.length)
+
+                console.log("datatat---->>", data);
+                generateView(data)
+                createPagination()
+                scrollToTop();
+            }
+        }).done(function (data) {
+            $('.productDetails').hide();
+
+
+            $(".orderDate").each(function () {
+                let orderD = $(this).attr('data-orderD');
+
+
+                var d = new Date(orderD),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2)
+                    month = '0' + month;
+                if (day.length < 2)
+                    day = '0' + day;
+
+                let dateorderN = [day, month, year].join('-');
+
+                $(this).text(dateorderN);
+
+
+            });
+
+            $(".orderPlace").each(function () {
+                let orderP = $(this).attr('data-orderp');
+
+                // alert(orderP)
+                var date = orderP;
+                var d = new Date(date),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2)
+                    month = '0' + month;
+                if (day.length < 2)
+                    day = '0' + day;
+
+                let dateorder = [day, month, year].join('-');
+
+                // alert(dateorder)
+
+                $(this).text(dateorder);
+
+
+
+            });
+
+
+        });
+
+
+    }
+
+
+    $(document).on('click', '.byDate', function (e) {
+
+        let statDate = $("#startDate").val();
+        let endDate = $("#endDate").val();
+
+        // if (statDate != '') {
+        //     $("#endDate").focus();
+        //     $("#alertMsg").text(" ");
+
+        // }
+
+        // if (endDate != '') {
+        //     $("#startDate").focus();
+        //     $("#alertMsg").text(" ");
+
+        // }
+
+        setTimeout(function () {
+            $("#alertMsg").text(" ");
+            $("#alertMsgend").text(" ");
+            $("#alertMsgboth").text(" ");
+        }, 3000);
+
+        if (statDate != '' && endDate != '') {
+            $("#alertMsg").text(" ");
+            $("#alertMsgend").text(" ");
+            $("#alertMsgboth").text(" ");
+
+
+            $.ajax({
+                type: 'POST',
+                url: host + "/ordersFilter",
+                data: { statDate: statDate, endDate: endDate },
+                success: function (data) {
+                    $("#totalRecord").val(data.finalSuccessData.length)
+                    generateView(data)
+                    createPagination()
+                }
+            }).done(function (data) {
+                $('.productDetails').hide();
+                $(".orderDate").each(function () {
+                let orderD = $(this).attr('data-orderD');
+
+
+                var d = new Date(orderD),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2)
+                    month = '0' + month;
+                if (day.length < 2)
+                    day = '0' + day;
+
+                let dateorderN = [day, month, year].join('-');
+
+                $(this).text(dateorderN);
+
+
+            });
+
+            $(".orderPlace").each(function () {
+                let orderP = $(this).attr('data-orderp');
+
+                // alert(orderP)
+                var date = orderP;
+                var d = new Date(date),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2)
+                    month = '0' + month;
+                if (day.length < 2)
+                    day = '0' + day;
+
+                let dateorder = [day, month, year].join('-');
+
+                // alert(dateorder)
+
+                $(this).text(dateorder);
+
+
+
+            });
+
+
+            });
+
+        } else {
+            console.log("date is required !");
+            let endDate = $("#endDate").val();
+            let statDate = $("#startDate").val();
+
+            if (statDate == '' && endDate == '') {
+                $("#startDate").focus();
+                $("#alertMsgend").text(" ");
+                $("#alertMsg").text(" ");
+                $("#alertMsgboth").text(" ");
+                $("#alertMsgboth").text("Please select both date !");
+
+
+
+
+            } else {
+                if (statDate == '') {
+                    $("#startDate").focus();
+                    $("#alertMsgend").text(" ");
+                    $("#alertMsgboth").text(" ");
+                    $("#alertMsg").text(" ");
+
+                    $("#alertMsg").text("Start Date is required !");
+
+
+                } else {
+                    if (endDate == '') {
+                        $("#endDate").focus();
+                        $("#alertMsg").text(" ");
+                        $("#alertMsgend").text(" ");
+                        $("#alertMsgboth").text(" ");
+
+                        $("#alertMsgend").text("End Date is required !");
+
+                    }
+                }
+
+            }
+
+
+
+            // $("#alertMsg").text("Date is required !");
+        }
+
+
+    });
+
+    function generateView(data) {
+        $("#newGrid").html('')
+
+        var html = '';
+        if (data.finalSuccessData.length) {
+            console.log("uurueu====>>", data);
+
+            for (let i = 0; i < data.finalSuccessData.length; i++) {
+           
+                if (i <= 4) {
+
+                    html += `<span style="display: none;">
+                                <div class="invoice" id="invoice_download`+ i + `pdf"
+                                    style="font-family: 'Jost', sans-serif;">
+
+                                    <div class="col-lg-12 text-center"
+                                        style="text-transform: uppercase; text-align: center; margin-bottom: 30px; font-size: 50px;">
+
+                                        <caption>
+                                            <strong>
+                                                Invoice
+                                            </strong>
+                                        </caption>
+                                    </div>`
+
+                    for (let j = 0; j < data.finalInvoiceData.length; j++) {
+
+
+                        if (data.finalSuccessData[i].order_id == data.finalInvoiceData[j].order_id) {
+
+
+
+                            html += `<table style="table-layout: fixed; width: 100%; ">
+
+                                        <tbody>
+                                            <tr>
+                                                <td class="">
+                                                    <div>
+                                                        <img src="/assets/images/logo.png" alt="oemOne"
+                                                            style="max-width: 50%; ">
+                                                    </div>
+                                                </td>
+                                                <!-- <td width="15%">
+
+                                            </td> -->
+                                                <td>
+                                                    <table class="tbl-padded">
+
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding:5px; width: 30%;">
+                                                                    <strong>Invoice No.</strong>
+                                                                </td>
+                                                                <td style="padding:5px;">
+                                                                    <div>
+                                                                        `+ data.finalInvoiceData[j].invoice_id + `
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td style="padding:5px; width: 30%;">
+                                                                    <strong> Order Date</strong>
+                                                                </td>
+
+                                                                <td style="padding:5px;">
+                                                                    <span class="orderDate"
+                                                                        data-orderD="`+ data.finalInvoiceData[j].updatedAt + `"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                        <br>
+                                     </table>
+
+
+
+
+                                     <div style="padding-top: 1cm; padding-bottom: 1cm;">
+                                        <table style="table-layout: fixed; width: 100%;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div style="padding-bottom: 10px;">
+                                                            <strong style="text-transform: uppercase;">FROM</strong>
+                                                        </div>
+                                                        <div>`
+
+                            for (let jj = 0; jj < data.finalInvoiceData[j].shipping_details.length; jj++) {
+
+
+                                html += ` <span>` + data.finalInvoiceData[j].shipping_details[jj].name + `</span><br>
+                                                            <span>`+ data.finalInvoiceData[j].shipping_details[jj].flatNo + `</span>,
+                                                            <span>`+ data.finalInvoiceData[j].shipping_details[jj].area + `</span>,
+                                                            <span>`+ data.finalInvoiceData[j].shipping_details[jj].landmark + `</span><br>
+                                                            <span>`+ data.finalInvoiceData[j].shipping_details[jj].town + `</span>,
+                                                            <span>`+ data.finalInvoiceData[j].shipping_details[jj].pinCode + `</span><br>
+                                                            <span>`+ data.finalInvoiceData[j].shipping_details[jj].phNo + `</span><br>
+                                                            <span>`+ data.finalInvoiceData[j].shipping_details[jj].state + `</span>`
+                            }
+                            html += `</div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div style="padding-bottom: 10px;">
+                                                            <strong style="text-transform: uppercase;">Bill
+                                                                To</strong>
+                                                        </div>
+                                                        <div>`
+                            for (let c = 0; c < data.finalSuccessData[i].customer_Address.length; c++) {
+
+                                html += `<span>` + data.finalSuccessData[i].customer_Address[c].fullname + `</span><br>
+                                                            <span>`+ data.finalSuccessData[i].customer_Address[c].addresstext_no + `</span>,
+                                                            <span>` + data.finalSuccessData[i].customer_Address[c].addresstext_name + `</span>,
+                                                            <span>`+ data.finalSuccessData[i].customer_Address[c].landmark + `</span><br>
+                                                            <span>`+ data.finalSuccessData[i].customer_Address[c].city + `</span>,
+                                                            <span> `+ data.finalSuccessData[i].customer_Address[c].state + `</span>,
+                                                            <span>`+ data.finalSuccessData[i].customer_Address[c].pincode + `</span><br>
+
+                                                            <span> `+ data.finalSuccessData[i].customer_Address[c].addresstype + `</span><br>
+                                                            <span>`+ data.finalSuccessData[i].customer_Address[c].mobileno + `</span><br>`
+
+
+                            }
+
+                            html += ` </div>
+                                                    </td>
+
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                     </div>
+
+
+
+
+                                     <table style="table-layout: fixed; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th width="30%"
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    Product
+                                                </th>
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    Unit Price
+                                                </th>
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    Discount
+                                                </th>
+                                               
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    Quantity
+                                                </th>
+
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    CGST
+                                                </th>
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    SGST
+                                                </th>
+
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    IGST
+                                                </th>
+                                                <th
+                                                    style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+                                                    Amount
+                                                </th>
+                                            </tr>
+                                        </thead>`
+
+                            for (let ip = 0; ip < data.finalInvoiceData[j].product_invoice.length; ip++) {
+
+
+
+
+                                html += ` <tbody>
+                                            <tr>
+                                                <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    `+ data.finalInvoiceData[j].product_invoice[ip].product_name + `
+                                                </td>`
+
+                                                
+                                           
+                                                    html += `<td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;`+ data.finalInvoiceData[j].product_invoice[ip].product_price + `
+                                                     </td>`
+             
+
+
+
+                                if (data.finalInvoiceData[j].product_invoice[ip].is_discount == "1" && data.finalInvoiceData[j].product_invoice[ip].discount_start == "true") {
+                                    html += `<td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;`+ data.finalInvoiceData[j].product_invoice[ip].discount_value + `
+                                                </td>`
+                                } else {
+                                    html += `<td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377; 0
+                                                </td>`
+                                }
+
+
+                                // for (let io = 0; io < data.finalInvoiceData[j].product_info.length; io++) {
+                                    // if (data.finalInvoiceData[j].product_info[io].id == data.finalInvoiceData[j].product_id[io]._id) {
+
+                                        html += ` <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    `+ data.finalInvoiceData[j].product_invoice[ip].product_quantity + `
+                                                </td>`
+                                    // }
+                                // }
+
+                                // for (let pi = 0; pi < data.finalInvoiceData[j].product_invoice.length; pi++) {
+
+
+                                    html += ` <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;`+ data.finalInvoiceData[j].product_invoice[ip].cgst + `
+                                                   </td>`
+                                // }
+
+
+                                // for (let pi = 0; pi < data.finalInvoiceData[j].product_invoice.length; pi++) {
+
+                                    html += ` <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;` + data.finalInvoiceData[j].product_invoice[ip].sgst + `
+                                                </td>`
+
+                                // }
+
+                                // for (let pi = 0; pi < data.finalInvoiceData[j].product_invoice.length; pi++) {
+
+
+                                    html += ` <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;`+ data.finalInvoiceData[j].product_invoice[ip].igst + `
+                                                </td>`
+                                // }
+                  
+                                // for (let pi = 0; pi < data.finalInvoiceData[j].product_invoice.length; pi++) {
+
+
+                                    html += ` <td
+                                                    style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                                                    &#8377;`+ data.finalInvoiceData[j].product_invoice[ip].withTax_amount + `
+                                                </td>`
+                                // }
+
+                                html += `</tr>
+
+
+                                        </tbody>`
+                            }
+
+                            html += `</table>`
+
+
+                        }
+                    }
+
+
+
+                    html += `<br>
+
+                                    <div style="border-top: 1px solid #eee;">
+                                        <table style="table-layout: fixed; width: 100%; border-collapse: collapse;">
+                                            <tbody>
+
+                                                <tr>
+                                                    <td align="right" style="border-top: 2px solid #eee; padding: 8px;">`
+                                                        if(data.finalSuccessData[i].coupon_amount){
+                                                            html+= `<span style="font-size: 16pt;">
+                                                                Coupon Discount :
+                                                            </span>
+                                                            <strong style="font-size: 16pt;">
+                                                                &#8377;-`+ data.finalSuccessData[i].coupon_amount + `
+                                                            </strong><br />`
+                                                        }
+                                                        html+= `<span style="font-size: 16pt;">
+                                                            Delhivery Charge :
+                                                        </span>
+                                                        <strong style="font-size: 16pt;">
+                                                            &#8377;`+ data.finalSuccessData[i].shipping_charge + `
+                                                        </strong><br />
+                                                        <span style="font-size: 16pt;">
+                                                            Total Amount :
+                                                        </span>
+                                                        <strong style="font-size: 16pt;">
+                                                            &#8377;`+ data.finalSuccessData[i].amount + `
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div>
+                                        <div style="padding-top:1cm; padding-bottom: 1cm;">
+                                            <div>
+                                                <strong>Note</strong>
+                                            </div>
+                                            <p style="font-size: 10pt; line-height: 14pt;">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget
+                                                placerat turpis, in vehicula elit. Pellentesque id pharetra ligula,
+                                                sit
+                                                amet
+                                                interdum erat. Integer id lectus pulvinar, maximus urna quis,
+                                                accumsan
+                                                lacus. Etiam ac quam magna. Fusce ex lectus, pretium id commodo sit
+                                                amet,
+                                                egestas mattis lectus. Vestibulum id libero fringilla magna
+                                                tincidunt
+                                                egestas. Nam lacinia sollicitudin ante sed auctor. Suspendisse
+                                                potenti.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                 </span>
+
+                                  <div class="productDetails hideDetails` + i + `">
+
+                                   <div class="row align-items-center">
+                                     <div class="col-lg-4 orderAdd">
+                                       <strong>Shipping Address</strong><br>`
+
+                    for (let ii = 0; ii < data.finalSuccessData[i].customer_Address.length; ii++) {
+
+                        html += ` <span>` + data.finalSuccessData[i].customer_Address[ii].fullname + `</span><br>
+                              <span>`+ data.finalSuccessData[i].customer_Address[ii].addresstext_no + `</span>,
+                            <span>` + data.finalSuccessData[i].customer_Address[ii].addresstext_name + `</span>,
+                             <span>`+ data.finalSuccessData[i].customer_Address[ii].landmark + `</span><br>
+                            <span>`+ data.finalSuccessData[i].customer_Address[ii].city + `</span>,
+                            <span>`+ data.finalSuccessData[i].customer_Address[ii].state + `</span>,
+                            <span>` + data.finalSuccessData[i].customer_Address[ii].pincode + `</span><br>
+
+                            <span>`+ data.finalSuccessData[i].customer_Address[ii].addresstype + `</span><br>
+                            <span>`+ data.finalSuccessData[i].customer_Address[ii].mobileno + `</span><br>`
+
+
+                    }
+
+
+                    html += ` </div>
+                        <div class="col-lg-4 orderAdd">
+                            <strong>Payment Method</strong><br>`
+
+                    for (let p = 0; p < data.finalSuccessData[i].payment_details.length; p++) {
+                        html += `<span>` + data.finalSuccessData[i].payment_details[p].method + `</span> `
+
+                    }
+
+
+
+                    html += `</div>
+                        <div class="col-lg-4 orderAdd">
+                            <strong>Order Summary</strong><br>
+
+                            <input type="hidden" id="totalPrice" value="{{price.amount}}">
+                            <span>Sub Total : </span><span>&#8377;`+ data.finalSuccessData[i].amount + `</span><br>`
+                            if(data.finalSuccessData[i].coupon_amount){
+                                html += `<span>Coupon - (`+data.finalSuccessData[i].coupon_name+`) : </span><span>&#8377;-`+ data.finalSuccessData[i].coupon_amount + `</span><br>`
+                            }
+                            html += `<span>Shipping :</span><span> &#8377;`+ data.finalSuccessData[i].shipping_charge + `</span> <br>
+                            <span>Total :</span> <span>&#8377; `+ data.finalSuccessData[i].amount + `</span><br>
+                            <b><span>Grand Total :</span></b> <span>&#8377;`+ data.finalSuccessData[i].amount + `</span><br>
+
+
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="productDetails track_orderDetails`+i+`">
+
+                        <div class="row align-items-center">
+                            <section class="root">
+                                <h4 style="padding-left: 20px;">Tracking Details</h4>
+                                <div class="order-track" style="margin-left: 15px;">`
+                                if(data.finalSuccessData[i].track_order_data){
+
+                                for (let it = 0; it < data.finalSuccessData[i].track_order_data.length; it++) {
+                            
+                                if(data.finalSuccessData[i].order_id == data.finalSuccessData[i].track_order_data[it].id){
+                               
+                                    html+= `<div class="order-track-step `+data.finalSuccessData[i].track_order_data[it].id+`">
+                                    <div class="order-track-status">`;
+                                    if(data.finalSuccessData[i].track_order_data[it].shipment_status == 3){
+                                        html+= `<span class="order-track-status-dot"></span>
+                                    <span class="order-track-status-line"></span>`
+                                    }else{
+                                        html+= `<span class="order-track-status-dot_del"></span>
+                                    <span class="order-track-status-line_del"></span>`
+                                    }
+                                    html+= `</div>
+                                    <div class="order-track-text">
+                                    <p class="order-track-text-stat">Order Processed</p>
+                                    </div>
+                                </div>
+                                <div class="order-track-step">
+                                    <div class="order-track-status">`
+                                    if(data.finalSuccessData[i].track_order_data[it].shipment_status == 6){
+                                    html+= `<span class="order-track-status-dot"></span>
+                                    <span class="order-track-status-line"></span>`;
+                                    }else{
+                                    html+= `<span class="order-track-status-dot_del"></span>
+                                    <span class="order-track-status-line_del"></span>`
+                                    }
+                                    html+= `</div>
+                                    <div class="order-track-text">
+                                    <p class="order-track-text-stat">Order Shipped</p>
+                                    </div>
+                                </div>
+                            
+                                <div class="order-track-step">
+                                    <div class="order-track-status">`;
+                                    if(data.finalSuccessData[i].track_order_data[it].shipment_status == 17){
+                                    html+= `<span class="order-track-status-dot"></span>
+                                    <span class="order-track-status-line"></span>`
+                                    }else{
+                                    html+= `<span class="order-track-status-dot_del"></span>
+                                    <span class="order-track-status-line_del"></span>`
+                                    }
+                                    html+= `</div>
+                                    <div class="order-track-text">
+                                    <p class="order-track-text-stat">Order En Route</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="order-track-step">
+                                    <div class="order-track-status">`
+                                    if(data.finalSuccessData[i].track_order_data[it].shipment_status == 7){
+                                    html+= `<span class="order-track-status-dot"></span>
+                                    <span class="order-track-status-line"></span>`
+                                    }else{
+                                    html+= `<span class="order-track-status-dot_del"></span>
+                                    <span class="order-track-status-line_del"></span>`
+                                    }
+                                    html+= `</div>
+                                    <div class="order-track-text">
+                                    <p class="order-track-text-stat">Order Arrived</p>
+                                    </div>
+                                </div>`
+                                }
+                                }
+                                }
+                                html+= `</div>
+                            </section>
+                        </div>
+
+                        </div>
+
+                 <div class="mainOrder">
+
+                    <div class="row orderHeading  mb-1">
+                        <div class="col-lg-9">
+                            <div class="col-lg-3">
+                                <div>ORDER PLACED</div>
+                                <div>
+                                    <span class="orderPlace" data-orderp="`+ data.finalSuccessData[i].updatedAt + `"></span>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3">
+                                <div>TOTAL</div>
+                                <div>&#8377;`+ data.finalSuccessData[i].amount + `</div></div>
+                          
+                            <div class="col-lg-3">
+                                <div>SHOP TO</div>`
+                    for (let ii = 0; ii < data.finalSuccessData[i].customer_Address.length; ii++) {
+
+
+                        html += ` <div>` + data.finalSuccessData[i].customer_Address[ii].fullname + `</div>`
+                    }
+                    html += `</div>`;
+                    html +=`<div class="col-lg-3 detailsBtn track_order" onclick="track_order_fun(`+ i + `)" id="track_order"
+                                        data-id="track_order`+ i + `">Track Order</div></div>
+
+
+                                    <div class="col-lg-3">`
+                    for (let pd = 0; pd < data.finalSuccessData[i].payment_details.length; pd++) {
+
+                        html += ` <span>` + data.finalSuccessData[i].payment_details[pd].order_id + `</span>`
+
+
+                    }
+
+
+                    html += ` <div id="editor"></div>
+
+                                    <div class="row">
+                                        <div class="col-lg-6 detailsBtn " onclick="del(`+ i + `)">View order
+                                            details
+                                    </div>
+                                <div class="col-lg-6 detailsBtn invoice_pdf" id="invoice_pdf"
+                                    data-id="`+ i + `pdf">Invoice</div>
+
+                            </div>
+                        </div>
+
+                       </div>`
+
+                    for (let pi = 0; pi < data.finalSuccessData[i].product_id.length; pi++) {
+
+
+
+                        html += `<div class="row align-items-center orderDetails">
+                                <div class="col-lg-6 productOrderImg">
+                                    <a href="/productDetails/`+ data.finalSuccessData[i].product_id[pi]._id + `/ ` + data.finalSuccessData[i].product_id[pi].product_name + `">
+                                        <img src="`+ data.finalSuccessData[i].product_id[pi].product_defaultImg[0].path + `" alt="img"
+                                            class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                    </a>
+                                </div>
+                                <div class="col-lg-6 " style="line-height:200px; color: black;">
+
+                                    <a href="/productDetails/`+ data.finalSuccessData[i].product_id[pi]._id + `/` + data.finalSuccessData[i].product_id[pi].product_name + `"
+                                        class="title">`+ data.finalSuccessData[i].product_id[pi].product_name + `</a>
+                                    <input type="hidden" name="product_id" class="product_id"
+                                        value="`+ data.finalSuccessData[i].product_id[pi]._id + `">
+                                </div>
+                                </div>`
+
+
+
+                    }
+                    html += `</div> </div> `
+
+                }
+            }
+        }else{
+            html += `<div class="productnot_found">
+                    <h1>
+                        Product not found !
+                    </h1>
+                </div>`
+        }
+        // console.log("36363636", html);
+
+        $("#newGrid").html(html);
+
+    }
+
+
+</script>
+
+{% endblock %}

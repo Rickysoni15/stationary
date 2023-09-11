@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "frontend/partitions/head.html" %}
+<body>
+    <main>
+        <section class="auth-section h-100">
+            <div class="container-fluid h-100">
+                <div class="row h-100">
+                    <div class="col-md-12 top-logo">
+
+                        <img src="/front/img/det-logo.png" alt="">
+
+                    </div>
+                    <div class="col-md-6 p-0 ">
+                        <div class="login-wrp-main signup-wrp">
+                            <form>
+                                <div class="form-group">
+                                    <label class="label text-blue" for="FirstName">First Name*</label>
+                                    <input id="firstName" class="form-control" onkeypress="return /[a-z]/i.test(event.key)" type="text" name="firstName" required value="{{userData.firstName}}" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="label text-blue" for="LastName">Last Name*</label>
+                                    <input id="lastName" class="form-control" onkeypress="return /[a-z]/i.test(event.key)" type="text" name="lastName" required value="{{userData.lastName}}" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="label text-blue" for="mobNum">Email*</label>
+                                    <input id="email" class="form-control" type="email" name="email" value="{{userData.email}}" required >
+                                </div>
+                                <div class="form-group">
+                                    <label class="label text-blue" for="mobNum">Mobile Number</label>
+                                    <input id="mobile" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "10" name="mobile" value="{{userData.mobile}}" required >
+                                </div>
+                                <div class="form-group">
+                                    <label class="label text-blue" for="affiliate">Affiliate Code </label>
+                                    <input id="affiliate" class="form-control" type="text" name="affiliate" {{ "readonly" if userData }} value="{{userData.parentAffiliateCode}}">
+                                    <span id="affiliator"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label text-blue" for="passwrd">Password</label>
+                                    <input id="password" class="form-control" type="password" name="password">
+                                </div>
+                                <div class="form-group">
+                                    <label class="label text-blue" for="confirmpasswrd">Confirm Password</label>
+                                    <input id="confirmpassword" class="form-control" type="password" name="confirmpassword">
+                                </div>
+                                <div class="form-group mt-5">
+                                  <button class="btn btn-rounded btn-primary cstm-btn" id="signUpButton" type="button">Sign Up</button>
+                                  <button type="button" data-target="#OtpModal" id="optPopup" style="display:none;" data-toggle="modal"></button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-0 bg-pitch right-bg">
+                        <div class="login-wrp-main">
+                            <div class="form-group">
+                                <label class="label text-blue">Already have an account?</label>
+                                <a href="/userLogin" class="btn btn-rounded btn-primary cstm-btn">Log In</a>
+
+                            </div>
+                            <div class="img-bootom">
+                                <img src="/front/img/login-img.png" class="img-fluid d-block d-md-none" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+
+    <!-- OTP Veryfy Modal -->
+    <div class="modal fade home-modal modal-style-2 modal-otp" id="OtpModal" tabindex="-1" role="dialog" aria-labelledby="OtpModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="get" action="">
+                        <div class="header-logo">
+                            <img src="/front/img/det-logo.png" alt="" class="logo-img">
+                        </div>
+                        <div class="inner-mid">
+
+
+                            <div id="carouselslideOtp" class="carousel slide" data-ride="carousel">
+
+                                <div class="carousel-inner">
+                                    <!-- <div class="carousel-item active">
+                                        <div class="inner-space">
+                                            <div class="form-group text-center">
+                                                <label class="label text-blue" for=""> <b>We need to text you the OTP to authenticate your account</b>    </label>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <label class="label text-blue" for=""> <b>Enter your mobile number</b>    </label>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <input id="mobileNo" class="form-control" placeholder="Enter Your Mobile Number" type="phone" name="">
+                                            </div>
+
+
+                                            <div class="form-group text-center mt-md-2">
+                                                <a class="btn btn-outlined btn-rounded btn-primary cstm-btn" href="#carouselslideOtp" role="button" data-slide="next">Send OTP</a>
+
+
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="carousel-item active">
+
+                                        <div class="inner-space veryfy-number">
+                                            <div class="form-group text-center">
+                                                <label class="label text-blue" for="yourname"> <b>Verifying your number!</b>    </label>
+                                            </div>
+                                            <div class="form-group text-center mb-0">
+                                                <label class="label text-blue" for="yourname"> <b>We have sent an OTP on your number</b>    </label>
+                                            </div>
+                                            <div class="form-group text-center ">
+                                                <input id="otptxt" class="form-control" placeholder="- - - -" type="text" name="">
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <p class="text-gray p-txt">Your OTP expires in 2:30 mins</p>
+                                            </div>
+
+                                            <div class="form-group text-center mt-md-2">
+                                              <a class="btn btn-outlined btn-rounded btn-primary cstm-btn" id="confirmOtp" role="button" data-slide="next">Confirm OTP</a>
+                                                <!-- <a class="btn blue-link-btn" href="#">Resend OTP?</a> -->
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- <ol class="carousel-indicators">
+                                    <li data-target="#carouselslideOtp" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselslideOtp" data-slide-to="1"></li>
+
+                                </ol> -->
+
+                            </div>
+
+
+
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"> </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/front/js/jquery.min.js"></script>
+    <script src="/front/js/bootstrap.min.js"></script>
+    <script src="/front/js/popper.min.js"></script>
+    <script src="/front/js/aos.js"></script>
+    <script src="/front/js/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        $('.carousel').carousel({
+            interval: false,
+        });
+    </script>
+    <script>
+        $('.client-list-slider').owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplaySpeed: 1200,
+            margin: 0,
+            nav: true,
+            dots: false,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                420: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 3
+                },
+                1024: {
+                    items: 3
+                }
+            }
+        })
+
+        $(document).ready(function() {
+
+
+            AOS.init({
+                // startEvent: 'load',
+                offset: 250,
+                duration: 1000,
+                easing: 'ease-in-sine',
+                delay: 50,
+                disableMutationObserver: true,
+                throttleDelay: 0,
+                debounceDelay: 0,
+                once: false,
+                mirror: true,
+                // startEvent: 'DOMContentLoaded'
+            });
+
+
+            $('#affiliate').keyup(function(){
+              let value = $(this).val();
+              if (value.length > 2) {
+                console.log("val", value.length);
+                $.ajax({
+                  type: "post",
+                  url: "/getAfflicate",
+                  data: { value: value },
+                  success: function(responseData) {
+                    // console.log("responseData", responseData);
+                    console.log("responseData", responseData);
+                    if (responseData.status == 'success') {
+                      $('#affiliator').text("You are registering with "+responseData.data+" as affiliator")
+                    }else {
+                      $('#affiliator').text("");
+                    }
+                  }
+                })
+
+              }else {
+                $('#affiliator').text("");
+              }
+            });
+
+          $('#signUpButton').click(function(){
+            alert();
+
+            $('#firstName, #lastName, #email, #mobile, #password, #confirmpassword').each(function() {
+              if ($(this).val() == '') {
+                // $(this).attr('style', 'border: 1px solid #d24855 !important')
+                let attr = $(this).attr('id')
+                alert(attr+" cannot be empty")
+                return false;
+              }
+            });
+
+              $.ajax({
+                type: "post",
+                url: "/saveUserSignUpData",
+                data: { firstName: $('#firstName').val(), lastName: $('#lastName').val(), email: $('#email').val(), mobile: $('#mobile').val(), password: $('#password').val(), confirmpassword: $('#confirmpassword').val() },
+                success: function(responseData) {
+                  alert(responseData.message)
+                  console.log("responseData", responseData);
+                  if (responseData.status == 'success') {
+                    $('#optPopup').click();
+                    // window.location();
+                  }else {
+                    alert(responseData.message)
+                  }
+                }
+              })
+
+
+
+          });
+
+          $('#confirmOtp').click(function(){
+            let otpTxt = $('#otptxt').val();
+            if (otpTxt == '') {
+              alert('Please Enter OTP')
+            }else {
+
+
+              $.ajax({
+                type: "post",
+                url: "/verifyUserOtp",
+                data: { otpTxt: otpTxt },
+                success: function(responseData) {
+                  alert(responseData.message)
+                  console.log("responseData", responseData);
+                  if (responseData.status == 'success') {
+                    window.location.reload();
+                  }else {
+                    alert(responseData.message)
+                  }
+                }
+              })
+
+
+            }
+          });
+
+        });
+    </script>
+</body>
+
+</html>

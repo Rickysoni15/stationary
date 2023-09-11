@@ -1,0 +1,2 @@
+Part Description,Product Group,Unit of Measurement,is_procured,freeText,Default Storage Location,minQuantity,maxQuantity,itemCode,cadno,hsCode,tax,is_sellablePrice,Selling Price
+motor,products,pcs,yes,testing,bakrol,10,20,AS009,345.87,ER34,18,no,

@@ -1,0 +1,95 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "Log/.ad6a7a28a1732acaafcee0063f14a509433740af-audit.json",
+    "files": [
+        {
+<<<<<<< HEAD
+            "date": 1584608552633,
+            "name": "Log/game-19-03-2020.log",
+            "hash": "6180d502363131886e93d8c9aac1a12f"
+        },
+        {
+            "date": 1584951261172,
+            "name": "Log/game-23-03-2020.log",
+            "hash": "8ddcdcb4f18efdd6990940983ab3ae6d"
+        },
+        {
+            "date": 1585025256688,
+            "name": "Log/game-24-03-2020.log",
+            "hash": "dd8ac12c073176252f8a5c3a086fceba"
+        },
+        {
+            "date": 1585116777356,
+            "name": "Log/game-25-03-2020.log",
+            "hash": "6b20db343fb4a3d72f805251373b6b01"
+        },
+        {
+            "date": 1585206502083,
+            "name": "Log/game-26-03-2020.log",
+            "hash": "49f16452af92d0da1bab6c8648ce1546"
+        },
+        {
+            "date": 1585557943381,
+            "name": "Log/game-30-03-2020.log",
+            "hash": "556579e245dd3e37ec7dc9887d23f0f9"
+        },
+        {
+            "date": 1585636438305,
+            "name": "Log/game-31-03-2020.log",
+            "hash": "836ee2f6b99fd59d329d1d97416a0ecd"
+=======
+            "date": 1584507295643,
+            "name": "Log/game-18-03-2020.log",
+            "hash": "04cbb15a9c0c6af6098c3b318362fbbb"
+        },
+        {
+            "date": 1584592925903,
+            "name": "Log/game-19-03-2020.log",
+            "hash": "4a63a13d8011afc659e39a8f5c3bc437"
+        },
+        {
+            "date": 1584679308427,
+            "name": "Log/game-20-03-2020.log",
+            "hash": "24f3d23b9c9adbb8dc924ba992e7c778"
+        },
+        {
+            "date": 1584766498953,
+            "name": "Log/game-21-03-2020.log",
+            "hash": "ab3e00e8b3f794a4b88e5fddaad1ae21"
+        },
+        {
+            "date": 1584943355389,
+            "name": "Log/game-23-03-2020.log",
+            "hash": "7d0bfcc8bbe16ba28279d1c897ee65b8"
+        },
+        {
+            "date": 1585026712445,
+            "name": "Log/game-24-03-2020.log",
+            "hash": "c4951805dbfad04707fd470c1da894f4"
+        },
+        {
+            "date": 1585114593610,
+            "name": "Log/game-25-03-2020.log",
+            "hash": "a67a846cfd2341df6d3119e8e2f174f6"
+        },
+        {
+            "date": 1585199300410,
+            "name": "Log/game-26-03-2020.log",
+            "hash": "e99c58d592a46326631ea3d7039509ed"
+        },
+        {
+            "date": 1585288571236,
+            "name": "Log/game-27-03-2020.log",
+            "hash": "f7d2674cc98863ee6d774aefc8ea250a"
+        },
+        {
+            "date": 1585715076918,
+            "name": "Log/game-01-04-2020.log",
+            "hash": "f1a9e40ed0bdfeebfe39abe7b6d7e49e"
+>>>>>>> ac0c0597f1746eb85c38b795d1b592146efd0d27
+        }
+    ]
+}

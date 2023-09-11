@@ -1,0 +1,333 @@
+{% extends "backend/partition/layout.html" %}
+
+{% block body %}
+
+<style>
+	#reportFilter {
+		color: white;
+		padding: 6px 10px;
+		margin-left: 5px;
+		background-color: #3c8dbc;
+		z-index: 7000;
+		border-radius: 5px 5px;
+		cursor: pointer;
+	}
+</style>
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Commision Report Table</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Commision Report Management</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<h6 class="panel-title txt-dark">Commision Report Management</h6>
+							</div>
+							<!-- <div class="pull-right">
+									<a href="/backend/addProduct"><button type="button" class="btn btn-primary btn-md"><i class="fa fa-plus"></i> Add Product</button></a>
+								</div> -->
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										<input type="hidden" id="gameType" name="gameType">
+										<input type="hidden" id="sessionId" value="{{App.id}}">
+
+										<div class="text-right">
+											<label>Start date:</label>
+											<input type="date" id="startdate" class="datepicker"></input>
+											<label>End date:</label>
+											<input type="date" id="enddate" class="datepicker"></input>
+
+											<sapa id="reportFilter"> Get Report</sapa>
+                                        <button onClick="window.location.reload();">Clear Filter</button>
+
+										</div>
+
+                                        <!-- <div>Total Commision Amount:{{tot_commision_amt}}</div> -->
+										<table id="myTable" class="table table-hover display  pb-30" style="width:100%">
+											<thead>
+												<tr>
+													<th>Product</th>
+													<th>Product Sale Price</th>
+													<th>Order Date</th>
+													<th>Commision(%)</th>
+													<th>Commision Price</th>
+													<!-- <th>Action</th> -->
+												</tr>
+											</thead>
+											<tbody class="newTable">
+											</tbody>
+
+											<tfoot>
+												<tr>
+													<th colspan="4" style="text-align:right">Total:</th>
+													<th id="remove_total"></th>
+													
+												</tr>
+											</tfoot>
+										</table>
+
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+<!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+<script>
+
+	var host = window.location.origin;
+
+	$(document).ready(function () {
+
+		let sessionId = $("#sessionId").val();
+		var myDataTable = $('#myTable').DataTable({
+			// "oLanguage": {
+			// 	"sSearch": "Search Username"
+			// },
+			// "scrollX": true,
+            dom: 'Bfrtip',
+        buttons: [
+        {
+              "extend": 'pdfHtml5',
+              "className": 'btn btn-table-pdf',
+              "init": function( api, node, config) {
+                       $(node).removeClass('dt-button')
+              },
+              "title": 'Commission Report',//exportTitle,
+            //   "messageTop": exportMessageTop,
+            //   "messageBottom": exportMessageBottom
+       }
+            // 'pdf'
+            // {
+                // extend: 'pdfHtml5',
+                // messageTop: 'Commission Report'
+            // }
+        ],
+			"processing": true,
+			"serverSide": true,
+			"searching": false,
+			"ordering": false,
+			"autoWidth": false,
+			"pageLength": 25,
+            // dom: 'Bfrtip',
+
+			"ajax": host + "/backend/commision/getReport",
+
+			"columns": [
+				{ "data": "productName" },
+				{ "data": "withTax_amount" },
+				{ "data": "orderDated_show"},
+				{ "data": "commision",},
+				{ "data": "withcommision_amount" },
+
+
+			],
+			footerCallback: function (row, data, start, end, display) {
+            var api = this.api();
+ 
+            // Remove the formatting to get integer data for summation
+            var intVal = function (i) {
+                return typeof i === 'string' ? i.replace(/[\$,]/g, '') * 1 : typeof i === 'number' ? i : 0;
+            };
+ 
+            // Total over all pages
+            total = api
+                .column(4)
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+ 
+            // Total over this page
+            pageTotal = api
+                .column(4, { page: 'current' })
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+ 
+            // Update footer
+            $(api.column(4).footer()).html('<span>&#8377;</span>' + pageTotal );
+        },
+
+		});
+
+
+
+
+		$(function () {
+			"use strict";
+
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.delete', function (e) {
+					var id = $(this).attr('id');
+					var thisElement = this;
+					swal({
+						title: "Are you sure?",
+						text: "You will not be able to recover this Project!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#e69a2a",
+						confirmButtonText: "Yes, delete it!",
+						cancelButtonText: "No, cancel plx!",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					}, function (isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type: 'POST',
+								url: host + "/backend/OrderDelete",
+								data: { id: id },
+								success: function (resultData) {
+									// alert(resultData)
+									console.log(resultData);
+									if (resultData == 'success') {
+										$(thisElement).parent().parent().hide(700);
+										swal("Deleted!", "Your imaginary file has been deleted.", "success");
+									} else {
+										alert("Something went wrong")
+									}
+									// alert("Save Complete")
+								}
+							});
+							swal("Deleted!", "Order Deleted Succesfully.", "success");
+						} else {
+							swal("Cancelled", "Order Not Deleted)", "error");
+						}
+					});
+					return false;
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+
+		// var seen = {};
+		// $(' tbody.newTable').each(function () {
+		// 	var txt = $(this).find("td");
+
+		// 	console.log("texrt tetret  ===>>> ",txt);
+
+		// 	if (seen[txt])
+		// 		$(this).remove();
+		// 	else
+		// 		seen[txt] = true;
+		// });
+
+
+
+	});
+
+
+	$(document).on('click', '#reportFilter', function () {
+
+		$("#remove_total").attr('text','');
+	
+		
+		let startDate = $("#startdate").val();
+		let endDate = $("#enddate").val();
+
+		var myDataTable = $('#myTable').DataTable({
+			// "oLanguage": {
+			// 	"sSearch": "Search Username"
+			// },
+			// "scrollX": true,
+			"processing": true,
+			"serverSide": true,
+			"searching": false,
+			"ordering": false,
+			"autoWidth": false,
+			"pageLength": 25,
+			 destroy: true,
+
+			"ajax": host + "/backend/commision/getReport/" + startDate + '/' + endDate,
+
+			"columns": [
+            { "data": "productName" },
+				{ "data": "withTax_amount" },
+				{ "data": "orderDated_show" },
+				{ "data": "commision",},
+				{ "data": "withcommision_amount" },
+			],
+			footerCallback: function (row, data, start, end, display) {
+            var api = this.api();
+ 
+            // Remove the formatting to get integer data for summation
+            var intVal = function (i) {
+                return typeof i === 'string' ? i.replace(/[\$,]/g, '') * 1 : typeof i === 'number' ? i : 0;
+            };
+ 
+            // Total over all pages
+            total = api
+                .column(4)
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+ 
+            // Total over this page
+            pageTotal = api
+                .column(4, { page: 'current' })
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+ 
+            // Update footer
+            // $(api.column(3).footer()).html('');
+            $(api.column(4).footer()).html('<span>&#8377;</span>' + pageTotal );
+        },
+
+		});
+
+
+
+
+	});
+
+
+
+
+</script>
+{% endblock %}

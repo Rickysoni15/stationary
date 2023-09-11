@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "frontend/partitions/head.html" %}
+<body>
+    {% include "frontend/partitions/header.html" %}
+    <main>
+        <section class="inner-top-banner-sec">
+            <div class="container">
+                <div class="col-md-12 pl-sm-3 pr-sm-3 pl-0 pr-0">
+                   <div class="blog-detail-pg">
+                       <a href="newsEvents" class="backlink" data-aos="fade-right" data-aos-offset="0">Back</a>
+
+                       <div class="blog-img" data-aos="fade-in">
+                           <img src="/front/img/blog-photo.png" class="img-fluid w-100" alt="">
+                       </div>
+                       <div class="blog-desc text-center">
+                           <div class="heading" data-aos="zoom-in" data-aos-offset="0">{{blog.heading}}</div>
+                           <p class="p-txt" data-aos="zoom-in" data-aos-offset="0">{{blog.content}}</p>
+                       </div>
+                   </div>
+                </div>
+                
+            </div>
+        </section>
+        
+    </main>
+   {% include "frontend/partitions/footer.html" %}
+    <script>
+         $(document).ready(function() {
+          AOS.init({
+            offset: 250,
+            duration: 1200,
+            easing: 'ease-in-sine',
+            delay: 150,
+            });
+
+           $('.nav-pills a.nav-link').click(function() {
+                var sectionTo = $(this).attr('href');
+                $('html, body').animate({
+                scrollTop: $(sectionTo).offset().top
+                }, 1500);
+            });
+        });
+        
+    </script>
+</body>
+</html>

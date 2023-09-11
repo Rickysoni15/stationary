@@ -1,0 +1,203 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+        <section class="courceas-section-1" data-aos="fade-in" data-aos-offset="0">
+            <div class="container">
+                <div class="row align-items-center pr-md-5 pl-md-5 pr-0 pl-0">
+                    <div class="col-md-12 text-center pb-4">
+                        <h1 class="title text-blue title-text-with-circle" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                            COURSES <span class="big-yellow-circle"></span><span class="big-gry-circle"></span>
+                        </h1>
+                    </div>
+
+
+                    <ul class="nav nav-pills cstm-nv-tab mb-3 w-100" id="pills-cources" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-top-cources-tab" data-toggle="pill" href="#pills-top-cources" role="tab" aria-controls="pills-top-cources" aria-selected="true">Top Courses        </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-all-cources-tab" data-toggle="pill" href="#pills-all-cources" role="tab" aria-controls="pills-all-cources" aria-selected="false">All Courses</a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active " id="pills-top-cources" role="tabpanel" aria-labelledby="pills-top-cources-tab">
+                            <div class="row courceas-box-list" id="topCourses">
+
+                            </div>
+
+                            <div class="text-center">
+                                <nav aria-label="Page navigation" class="cstm-pagignation">
+                                    <ul class="pagination" id="topCoursesPagination">
+                                        <li class="page-next-prev">
+                                            <a href="#" class="link-nxt-prev"><i class="fa fa-angle-left"></i></a>
+                                        </li>
+                                        {% for i in range(0, topCourses) -%}
+                                        <li class="page-item otpCoursesPagination" id="topPage{{i+1}}" page="{{ i + 1 }}" aria-current="page">
+                                            <a class="page-link" href="javascript:void(0)">{{ i + 1 }}</a>
+                                        </li>
+                                        {%- endfor %}
+                                        <li class="page-next-prev">
+                                            <a href="#" class="link-nxt-prev"><i class="fa fa-angle-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-all-cources" role="tabpanel" aria-labelledby="pills-all-cources-tab">
+
+                            <div class="row courceas-box-list" id="allCourses">
+
+                            </div>
+
+                            <div class="text-center">
+                                <nav aria-label="Page navigation" class="cstm-pagignation">
+                                    <ul class="pagination">
+                                        <li class="page-next-prev">
+                                            <a href="#" class="link-nxt-prev"><i class="fa fa-angle-left"></i></a>
+                                        </li>
+                                        {% for i in range(0, courses) -%}
+                                        <li class="page-item allCoursesPagination" id="allPage{{i+1}}" page="{{ i + 1 }}" aria-current="page">
+                                            <a class="page-link" href="javascript:void(0)">{{ i + 1 }}</a>
+                                        </li>
+                                        {%- endfor %}
+                                        <li class="page-next-prev">
+                                            <a href="#" class="link-nxt-prev"><i class="fa fa-angle-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="courses-section-second">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 pl-0 pr-0">
+                        <div class="container">
+                            <ul class="counter-list list-unstyled">
+                                <li data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                                    <h3 class="text-big">500+</h3>
+                                    <p class="text-small">STUDENTS</p>
+
+                                </li>
+                                <li data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                                    <h3 class="text-big">50</h3>
+                                    <p class="text-small">COLLEGES</p>
+
+                                </li>
+                                <li data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                                    <h3 class="text-big">315+</h3>
+                                    <p class="text-small">COURSES</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-0 text-center bottom-img">
+                            <img src="/front/img/footer-cource-img.png" class="img-fluid w-100" alt="">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    {% endblock %} {% block Jscript %}
+
+    <script>
+        $(document).ready(function() {
+
+
+            AOS.init({
+                // startEvent: 'load',
+                offset: 250,
+                duration: 1000,
+                easing: 'ease-in-sine',
+                delay: 50,
+                disableMutationObserver: true,
+                throttleDelay: 0,
+                debounceDelay: 0,
+                once: false,
+                mirror: true,
+                // startEvent: 'DOMContentLoaded'
+            });
+
+
+
+
+            getCourse('all', 1);
+            getCourse('top', 1);
+            $('#allPage1').addClass('active');
+            $('#topPage1').addClass('active');
+            $('.allCoursesPagination').click(function() {
+              let currentClass = $(this).attr('class');
+              var str_pos = currentClass.indexOf("active");
+              if (str_pos > -1) {
+                // do nothing
+              } else {
+                let page = $(this).attr('page')
+                $('.allCoursesPagination').attr('class', 'page-item allCoursesPagination');
+                $(this).addClass('active');
+                getCourse('all', page);
+              }
+            });
+            $('.topCoursesPagination').click(function() {
+              let currentClass = $(this).attr('class');
+              var str_pos = currentClass.indexOf("active");
+              if (str_pos > -1) {
+                // do nothing
+              } else {
+                let page = $(this).attr('page')
+                $('.topCoursesPagination').attr('class', 'page-item topCoursesPagination');
+                $(this).addClass('active');
+                getCourse('top', page);
+              }
+            });
+
+        function getCourse(type, pageNo) {
+          $.ajax({
+            type: "post",
+            url: "/getCourseData",
+            data: { type : type, pageNo : pageNo },
+            success: function(responseData) {
+              // alert(responseData.message)
+              // console.log("responseData", responseData);
+              if (responseData.status == 'success') {
+                let htmlData= '';
+                for (var i = 0; i < responseData.data.length; i++) {
+                  htmlData += '<a href="/courseDetail/'+responseData.data[i]._id+'"> <div class="col-md-4">\
+                      <div class="card">\
+                          <div class="blog-img">\
+                              <img class="img-circle" src="/front/img/blog-d-1-img.png" alt="">\
+                          </div>\
+                          <p class="text-blue p-txt b-title">'+responseData.data[i].name+'</p>\
+                          <p class="text-blue p-txt b-desc m-0">'+responseData.data[i].collegeName+'</p>\
+                          <p class="text-blue p-txt b-desc">Fees: '+responseData.data[i].fees+'</p>\
+                          <a href="" class="btn btn-outlined btn-rounded btn-outline-primary cstm-btn">Read More</a>\
+                      </div>\
+                  </div> </a>'
+                }
+                if (type == 'all') {
+                  console.log("htmlData",htmlData);
+                  $('#allCourses').html(htmlData);
+                }else if ( type == 'top') {
+                  $('#topCourses').html(htmlData);
+                }
+
+              }
+              else {
+                alert(responseData.message)
+              }
+            }
+          })
+
+        }
+
+        });
+    </script>
+{% endblock %}

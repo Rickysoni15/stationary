@@ -1,0 +1,142 @@
+<!-- <footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 col-md-6">
+                <img src="/front/image/logo.png" class="mb-4 footer-logo">
+                
+            <div class="col-lg-9 col-sm-12 col-md-12">
+                <h3 class="footer-title">Useful Links</h3>
+                <ul class="footer-menu">
+                    <li><a href="/home" class="active">Home</a></li>
+                    <li><a href="javascript:void(0)">About Us</a>
+                        <ul class="footer-submenu">
+                            <li><a href="/aboutus">Introduction </a></li>
+                            <li><a href="/ourTeam">Our Team</a></li>
+                            <li><a href="/researchDevelopment">R&D</a></li>
+                            <li><a href="/ourTestimonials">Our Testimonials</a></li>
+                            <li><a href="/factory-tour">Factory Tour</a></li>
+
+                        </ul>
+                    </li>
+                    <li><a href="javascript:void(0)">Products</a>
+                        <ul class="footer-sublist">
+                            <li><a href="javascript:void(0)">Horizontal Mechanical Sealed Pump</a></li>
+                            <ul class="footer-submenu">
+                                <li><a href="product.html">NK Series</a></li>
+                                <li><a href="#">NK-C</a></li>
+                                <li><a href="#">NK-P</a></li>
+                                <li><a href="#">NKP-C</a></li>
+                                <li><a href="#">ECO</a></li>
+                            </ul>
+                        </ul>
+                        <ul class="footer-sublist">
+                            <li><a href="javascript:void(0)">Vertical cantilever type pump</a></li>
+                            <ul class="footer-submenu">
+                                <li><a href="#">TNP Series</a></li>
+                                <li><a href="#">VGP Series</a></li>
+                            </ul>
+                        </ul>
+                        <ul class="footer-sublist">
+                            <li><a href="#">Accessories</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/application">Application</a></li>
+                    <li><a href="/project">Projects</a></li>
+                    <li><a href="/caseStudies">Case studies</a></li>
+                    <li><a href="shop.html">shop</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer> -->
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nav-item-inner"> © Copyright 2021. All Rights Reserved. </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 col-md-6">
+                <img src="/front/image/logo.png" class="mb-4 footer-logo">
+
+            </div>
+            <div class="col-lg-9 col-sm-12 col-md-12">
+                <h3 class="footer-title">Useful Links</h3>
+                <ul class="footer-menu">
+                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="javascript:void(0)">About Us</a>
+                        <ul class="footer-submenu">
+                            <li><a href="/aboutus">Introduction </a></li>
+                            <li><a href="/ourTeam">Our Team</a></li>
+                            <li><a href="/researchDevelopment">R&D</a></li>
+                            <li><a href="/ourTestimonials">Our Testimonials</a></li>
+                            <li><a href="/factory-tour">Factory Tour</a></li>
+
+                        </ul>
+                    </li>
+                    
+                    <li><a href="javascript:void(0)">Products</a>
+                        {% for productCategory in productCategoryData %}
+                        <ul class="footer-sublist">                            
+                            <li><a href="javascript:void(0)"> {{productCategory.productCategoryName}} </a></li>
+                            {% for product in productData %}
+                            {% if (productCategory._id == product.product_id)%}
+                            <ul class="footer-submenu">
+                                <li><a href="/productDetails/{{product._id}}"> {{product.product_name}} </a></li>
+                                <!-- <li><a href="javascript:void(0)">NK-C</a></li>
+                                <li><a href="javascript:void(0)">NK-P</a></li>
+                                <li><a href="javascript:void(0)">NKP-C</a></li>
+                                <li><a href="javascript:void(0)">ECO</a></li> -->
+                            </ul>
+                        {% endif %}
+                        {% endfor %}
+                        </ul>
+                        {% endfor %}
+                        <!-- <ul class="footer-sublist">
+                            <li><a href="javascript:void(0)">Vertical cantilever type pump</a></li>
+                            <ul class="footer-submenu">
+                                <li><a href="javascript:void(0)">TNP Series</a></li>
+                                <li><a href="javascript:void(0)">VGP Series</a></li>
+                            </ul>
+                        </ul>
+                        <ul class="footer-sublist">
+                            <li><a href="javascript:void(0)">Accessories</a></li>
+                        </ul> -->
+                    </li>
+                    
+                    <li><a href="/application">Application</a></li>
+                    <li><a href="/project">Projects</a></li>
+                    <li><a href="/caseStudies">Case studies</a></li>
+                    <li><a href="shop.html">shop</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nav-item-inner"> © Copyright 2020. All Rights Reserved. </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/front/js/indexNews.js"></script>
+<script src="/front/js/jquery.js"></script>
+<script src="/front/js/popper.js"></script>
+<script src="/front/js/bootstrap.js"></script>
+<script src="/front/js/owl.carousel.js"></script>
+<script src="/front/js/slider.js"></script>
+<!-- <script src="/front/js/r_and_d_slide.js"></script> -->
+<script src="/front/js/custom.js"></script>
+<script src="/front/js/chart.js"></script>
+
+

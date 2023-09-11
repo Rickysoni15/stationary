@@ -1,0 +1,329 @@
+<!-- {% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Product Setting</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Product Setting</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<!-- <h6 class="panel-title txt-dark">Settings</h6> -->
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										{% if menudata %}
+										<form method="POST" action="/backend/add_setting_menu_post"
+											class="form-horizontal" enctype="multipart/form-data">
+											{% else %}
+											<form id="formdata" method="POST" action="/backend/add_setting_menu_post"
+												class="form-horizontal" enctype="multipart/form-data">
+												{% endif %}
+												<table border="0" class="table display  pb-30">
+													<div class="col-sm-12">
+														<div class="panel-wrapper collapse in">
+															<div class="panel-body">
+																<div class="form-group">
+																	<input type="hidden" class="form-control"
+																		name="menu_id" id="menu_id"
+																		value="{{menudata._id}}" />
+
+																	<label class="control-label mb-10 col-sm-2"
+																		for="brand_name">Setting Name:</label>
+																	<div class="col-sm-6">
+																		<input type="text" class="form-control"
+																			name="menu_name" id="menu_name"
+																			value="{{menudata.menu_name}}" />
+																	</div>
+																</div>
+
+															</div>
+														</div>
+													</div>
+													<tr>
+														<td colspan="2">
+
+															{% if menudata %}
+															<input type="submit" class="btn btn-success btn-flat"
+																value="Submit">
+
+															<a class="btn btn-danger btn-flat"
+																href="/backend/product_setting">Cancel</a>
+
+															{%else%}
+															<input id="submit" type="submit"
+																class="btn btn-success btn-flat" value="submit">
+
+															<a class="btn btn-danger btn-flat"
+																href="/backend/product_setting">Cancel</a>
+
+															{% endif %}
+														</td>
+													</tr>
+												</table>
+											</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- /Row -->
+			</div>
+		</section>
+
+		{% endblock %}
+
+		{% block Jscript %}
+		<script>
+			var intWorkProcessTextBox = 0;
+
+			function addWorkProcess() {
+				intWorkProcessTextBox++;
+				var objNewDiv = document.createElement('div');
+				objNewDiv.setAttribute('id', 'div_' + intWorkProcessTextBox);
+
+
+				//by kiran sir
+				var textArea = document.createElement('textarea')
+				textArea.setAttribute('id', 'description_');
+				textArea.setAttribute('name', 'description');
+				textArea.setAttribute('rows', '10');
+				textArea.setAttribute('cols', '70');
+
+				// textArea.setAttribute('style','resize:none;')
+
+
+				objNewDiv.innerHTML = '<div class="form-group">\
+								<div class="form-group">\
+									<label class="control-label mb-10 col-sm-2" for="heading" id="heading">Heading:</label>\
+									<div class="col-sm-6">\
+										<input type="text" class="form-control" name="heading" id="heading"/>\
+									</div>\
+									<div class="col-sm-1">\
+										<div class="" style="float: right;">\
+											<i class="fa fa-trash fa-2x removeAddressTextaready_'+ intWorkProcessTextBox + '"  ></i> </div>\
+										</div>\
+									</div>\
+								</div>\
+									<div class="form-group">\
+										<label class="control-label mb-10 col-sm-2" for="description" id="description">Description:</label>\
+										<div class="col-sm-6"  id="_new_textArea_div_'+ intWorkProcessTextBox + '">\
+									</div>\
+								</div>'
+
+				document.getElementById('moreWorkProcess').appendChild(objNewDiv);
+				document.getElementById("_new_textArea_div_" + intWorkProcessTextBox).appendChild(textArea);
+
+				new nicEditor().panelInstance(textArea);
+				// var edit_content = $('#formdata').find('.nicEdit-main').html();
+				// console.log("edit_content",edit_content);				
+				$('.removeAddressTextaready_' + intWorkProcessTextBox).click(function () {
+					// $(this).hide();
+					let parent = $(this).parent().parent().parent().parent().parent().html('');
+				});
+
+
+			}
+
+			$('.removeAddressTextarea').click(function () {
+				// $(this).hide();
+				let parent = $(this).parent().parent().parent().parent().html('');
+				console.log("parent", parent);
+			});
+
+
+			$('.removePdf').click(function () {
+				var host = window.location.origin;
+
+				let id = $(this).attr('id'); //product's id
+
+
+				let _id = $(this).attr('name'); //pdf's id
+				var thisElement = this;
+
+				// let parent = $(this).parent().parent().parent().html('');
+
+
+				$.ajax({
+					type: 'POST',
+					url: host + "/backend/pdfDelete",
+					data: { id: id, _id: _id },
+					success: function (resultData) {
+
+						// alert(data);
+						if (resultData == 'success') {
+							$(thisElement).parent().parent().parent().hide();
+
+						} else {
+							alert("Something went wrong")
+						}
+						// alert("Save Complete")
+					}
+				});
+
+
+			});
+
+			function del(index) {
+				$('div.img_' + index).remove();
+				updateFiles();
+			}
+
+			function updateFiles() {
+				var fileIndexes = $('#imgs > div').map(function () {
+					return $(this).data('index');
+				}).get().join(",");
+				$('#files_selected').val(fileIndexes);
+			}
+
+			// $(document).ready(function () {
+			$("#productImage").on('change', function () {
+				var fileList = this.files;
+				$('#imgs').empty();
+				for (var i = 0; i < fileList.length; i++) {
+					var t = window.URL || window.webkitURL;
+					var objectUrl = t.createObjectURL(fileList[i]);
+					$('.removeimg').fadeIn();
+					$('#imgs').append('<div data-index="' + i + '" class="img_' + i + '"><span class="img_' + i + '" onclick="del(' + i + ')" style="cursor:pointer; margin-right: 3px ;font-size: 30px;position: absolute;right: 245px;color: red ;"><b>x</b></span><img class="img_' + i + '" src="' + objectUrl + '" width="200px" height="200px" style="margin-right: 3px;"></div>');
+					j = i + 1;
+					// if (j % 2 == 0) {
+					// 	$('#imgs').append('<br>');
+					// }
+				}
+				updateFiles();
+			});
+			// });
+
+
+			// function del(index) {
+			// 	alert('yes its')
+			// 	$('img_preview.prev1' + index).remove();
+			// 	preview_image();
+			// }
+
+			// function preview_image() {
+			// 	var modalImg = document.getElementsByClassName("img_preview");
+			// 	var total_file = document.getElementById("productImage").files;
+			// 	// alert(total_file)
+			// 	for (var i = 0; i < total_file.length; i++) {
+			// 		var pathpreview = URL.createObjectURL(total_file[i]);
+			// 		// alert(pathpreview)													
+			// 		let demo = URL.createObjectURL(total_file[i])
+
+			// 		let appendstring = '<img class="prev1" src="'+demo+'" ><span class="close1" onclick="del(' + i + ')" style="cursor:pointer; margin-right: 3px;"><b>x</b></span>'
+
+			// 		$('.img_preview').append(appendstring);		
+
+			// 		// $('.img_preview').append("<img class='prev1' src='" + URL.createObjectURL(total_file[i]) + "'><span class='close1'>&times;</span>");
+			// 		// $('#prev1').attr('src',pathpreview)	;    	
+			// 	}
+			// }
+
+
+			$(document).ready(function () {
+				var host = window.location.origin;
+				$(function () {
+					"use strict";
+					var SweetAlert = function () { };
+
+					SweetAlert.prototype.init = function () {
+
+						//Parameter
+						$('body').on('click', '.close_img', function (e) {
+							var deleteid = $('#productImgId').val();
+							var id = $('#productdeleteid').val();
+							console.log(id, "id");
+							var thisElement = this;
+							swal({
+								title: "Are you sure?",
+								text: "You will not be able to recover this Project!",
+								type: "warning",
+								showCancelButton: true,
+								confirmButtonColor: "#e69a2a",
+								confirmButtonText: "Yes, delete it!",
+								cancelButtonText: "No, cancel plx!",
+								closeOnConfirm: false,
+								closeOnCancel: false
+							}, function (isConfirm) {
+								if (isConfirm) {
+									$.ajax({
+										type: 'GET',
+										url: host + "/backend/productImageDelete/" + id + "/" + deleteid,
+										success: function (resultData) {
+											//  alert(resultData)
+											console.log(resultData);
+											if (resultData == 'success') {
+												$(thisElement).parent().hide(700);
+												swal("Deleted!", "Your imaginary file has been deleted.", "success");
+											} else {
+												alert("Something went wrong")
+											}
+											// alert("Save Complete")
+										}
+									});
+									swal("Deleted!", "productImage Deleted Succesfully.", "success");
+
+								} else {
+									swal("Cancelled", "productImage Not Deleted)", "error");
+								}
+							});
+							return false;
+						});
+
+					},
+						$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+					$.SweetAlert.init();
+				});
+
+			});
+		</script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script>
+		<script type="text/javascript">
+
+			bkLib.onDomLoaded(function () { nicEditors.allTextAreas() });
+			$(document).ready(function () {
+				$('#submit').click(function () {
+					var edit_content = $('#formdata').find('.nicEdit-main').text();
+					var new_des = $('#copyText').prop('value', edit_content);
+					// console.log(edit_content);
+					// alert(new_des);
+
+				});
+
+				// $('#menu_name').keyup(function () {
+				// 	var caps = jQuery('#menu_name').val();
+				// 	caps = caps.charAt(0).toUpperCase() + caps.slice(1);
+				// 	jQuery('#menu_name').val(caps);
+				// });
+				
+			});
+		</script>
+
+		{% endblock %}

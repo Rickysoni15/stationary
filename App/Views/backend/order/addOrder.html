@@ -1,0 +1,1880 @@
+{% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+<style>
+  .switch_vendorGst {
+    position: relative;
+    display: inline-block;
+    width: 47px;
+    height: 24px;
+    margin-bottom: 0 !important;
+    margin-left: 10px;
+  }
+
+  .switch_vendorGst input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider_vendorGst {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider_vendorGst:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 3px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked+.slider_vendorGst {
+    background-color: #3c8dbc;
+    ;
+  }
+
+  input:focus+.slider_vendorGst {
+    box-shadow: 0 0 1px #3c8dbc;
+    ;
+  }
+
+  input:checked+.slider_vendorGst:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider_vendorGst.round {
+    border-radius: 34px;
+  }
+
+  .slider_vendorGst.round:before {
+    border-radius: 50%;
+  }
+
+  select:required:invalid {
+    color: gray;
+  }
+
+  option[value=""][disabled] {
+    display: none;
+  }
+
+  option {
+    color: black;
+  }
+
+  .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #e4e4e4;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 0 5px;
+    color: black;
+  }
+
+  .detailsBtn {
+    float: right;
+    cursor: pointer;
+    color: #3c8dbc;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 10px 10px;
+    font-weight: 600;
+
+  }
+
+  .waves-effect {
+    color: white;
+    background-color: #3c8dbc;
+  }
+  .order-track {
+    margin-top: 2rem;
+    padding: 0 1rem;
+    border-top: 1px dashed #2c3e50;
+    padding-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    }
+    .order-track-step {
+    display: flex;
+    height: 7rem;
+    }
+    .order-track-step:last-child {
+    overflow: hidden;
+    height: 4rem;
+    }
+    .order-track-step:last-child .order-track-status span:last-of-type {
+    display: none;
+    }
+    .order-track-status {
+    margin-right: 1.5rem;
+    position: relative;
+    }
+    .order-track-status-dot {
+    display: block;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: #f05a00;
+    }
+    .order-track-status-line {
+    display: block;
+    margin: 0 auto;
+    width: 2px;
+    height: 7rem;
+    background: #f05a00;
+    }
+    .order-track-status-dot_del {
+    display: block;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: #f4f4f4;
+    }
+    .order-track-status-line_del {
+    display: block;
+    margin: 0 auto;
+    width: 2px;
+    height: 7rem;
+    background: #f4f4f4;
+    }
+    .order-track-text-stat {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 3px;
+    }
+    .order-track-text-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    }
+
+    .order-track {
+    transition: all .3s height 0.3s;
+    transform-origin: top center;
+    }
+
+</style>
+<!-- Main Content
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		Title -->
+<section class="content-header">
+  <h1>Order Details</h1>
+  <!-- Breadcrumb -->
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Order Management</a></li>
+    <li class="active">Order Details</li>
+  </ol>
+  <!-- /Breadcrumb -->
+</section>
+<!-- /Title -->
+{% include "backend/partition/notification.html" %}
+<!-- Row -->
+
+<section class="content">
+
+  <div class="pull-right" style="margin-left:3px;">
+    <button id="back_btn" class="btn waves-effect waves-light" name="action">Back
+    </button>
+  </div>
+    {% if ordertData.order_type == "Pickup Order" %}
+
+        {% if ordertData.status == "Delivered" %}
+            {% if ordertData.e_invoice_flag == "false" %}
+                <a href="/backend/genrate_e_invoice/{{ordertData._id}}"><div class="btn btn-primary pull-right" id="e_invoice" style="margin-left:3px;">
+                E-Invoice Generate
+                </div></a>
+            {% endif %}
+        {% endif %}
+
+    {% else %} 
+
+        {% if ordertData.e_invoice_flag == "false" %}
+            <a href="/backend/genrate_e_invoice/{{ordertData._id}}"><div class="btn btn-primary pull-right" id="e_invoice" style="margin-left:3px;">
+            E-Invoice Generate
+            </div></a>
+        {% endif %}
+
+    {% endif %}
+
+    {% if ordertData.e_invoice_flag == "true" %}
+    <div class="btn btn-primary pull-right e_invoice_pdf" id="e_invoice_pdf" data-id="{{ordertData.order_id}}pdf" style="margin-left:3px;">
+    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> E-Invoice
+    </div>
+    {% endif %}
+
+    <div class="btn btn-primary pull-right invoice_pdf" id="invoice_pdf" data-id="{{ordertData.order_id}}pdf" style="margin-left:3px;">
+    Invoice
+    </div>
+
+    {% if ordertData.order_type == "Pickup Order" %}
+    
+        {% if ordertData.status == "Delivered" %}
+            {% if ordertData.e_way_bill_flag == "false" %}
+                <a href="/backend/genrate_e_way_bill/{{ordertData._id}}"><div class="btn btn-primary pull-right" id="e_way_bill" style="margin-left:3px;">
+                E-Way-Bill Generate
+                </div></a>
+            {% endif %}
+        {% endif %}
+
+    {% else %} 
+
+        <a href="/backend/genrate_e_way_bill/{{ordertData._id}}"><div class="btn btn-primary pull-right" id="e_way_bill" style="margin-left:3px;">
+        E-Way-Bill Generate
+        </div></a>
+
+    {% endif %}
+
+    {% if ordertData.e_way_bill_flag == "true" %}
+    <div class="btn btn-primary pull-right e_way_bill_pdf" id="e_way_bill_pdf" data-id="{{ordertData.order_id}}pdf" style="margin-left:3px;">
+        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> E-Way-Bill
+    </div>
+    {% endif %}
+
+    {% if ordertData.shiprocket_order_label %}
+    <div class="pull-right label_pdf" id="label_pdf">
+        <a class="btn btn-primary" href="{{ordertData.shiprocket_order_label}}" download>
+            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+        Download Label
+        </a>
+    </div>
+    {% endif %}
+  <span style="display: none ;">
+    <div class="invoice" id="invoice_download{{ordertData.order_id}}pdf" style="font-family: 'Jost', sans-serif;">
+
+      <div class="col-lg-12 text-center"
+        style="text-transform: uppercase; text-align: center; margin-bottom: 30px; font-size: 50px;">
+
+        <caption>
+          <strong>
+            Invoice
+          </strong>
+        </caption>
+      </div>
+
+
+      <table style="table-layout: fixed; width: 100%; ">
+
+        <tbody>
+          <tr>
+            <td class="">
+              <div>
+                <img src="/assets/images/logo.png" alt="oemOne" style="max-width: 50%; ">
+              </div>
+            </td>
+            <!-- <td width="15%">
+
+                </td> -->
+            <td>
+                
+              <table class="tbl-padded">
+
+                <tbody>
+                  <tr>
+                    <td style="padding:5px; width: 30%;">
+                      <strong>Customer Name</strong>
+                    </td>
+                    <td style="padding:5px;">
+                      <div>
+                        {{customerAdd.fullname}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px; width: 30%;">
+                      <strong>Customer Email</strong>
+                    </td>
+                    <td style="padding:5px;">
+                      <div>
+                        {{ordertData.payment_details[0].email}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px; width: 30%;">
+                      <strong>Order Status</strong>
+                    </td>
+                    <td style="padding:5px;">
+                      <div>
+                        {{ordertData.status}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+
+                    <td style="padding:5px; width: 30%;">
+                      <strong> Order Date</strong>
+                    </td>
+
+                    <td style="padding:5px;">
+                      <span>{{orderDate}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+
+        <br>
+      </table>
+
+
+      <div style="padding-top: 1cm; padding-bottom: 1cm;">
+        <table style="table-layout: fixed; width: 100%;">
+          <tbody>
+            <tr>
+              <td>
+                <div style="padding-bottom: 10px;">
+                  <strong style="text-transform: uppercase;">FROM</strong>
+                </div>
+                <div>
+                  <strong>{{vendor.vendor_company}}</strong><br>
+                  <span>{{vendor.vendor_flatNo}}</span> ,<span>{{vendor.vendor_Landmark}}</span> ,
+                  <span>{{vendor.vendor_area}}</span> <br><span>{{vendor.vendor_town}}</span>
+                  <br><span>{{vendor.vendor_pin}}</span><br><span>{{vendor.vendor_state}}</span>
+
+                </div>
+              </td>
+
+              <td>
+                <div style="padding-bottom: 10px;">
+                  <strong style="text-transform: uppercase;">Bill To</strong>
+                </div>
+                <div>
+                  <strong>{{customerAdd.fullname}}</strong><br>
+                  <span>{{customerAdd.addresstext_no}}</span> , <span>{{customerAdd.landmark}}</span> ,
+                  <span>{{customerAdd.addresstext_name}}</span> <br><span>{{customerAdd.city}}</span> ,
+                  <span>{{customerAdd.pincode}}</span><br><span>{{customerAdd.state}}</span><br><span>{{customerAdd.mobileno}}</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <table style="table-layout: fixed; width: 100%;">
+        <thead>
+          <tr>
+            <th width="20%" style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Product
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Price
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Quantity
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Subtotal
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Discount
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Tax Amount
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              CGST
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              SGST
+            </th>
+
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              IGST
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Raw Total
+            </th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+
+          {% if newOrderList %}
+
+          {% for item in newOrderList %}
+          <tr>
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              {{item.product_name}}
+            </td>
+
+            {% if item.is_discount == "1" and item.discount_start == "true" %}
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.discount_price}}
+            </td>
+            {% else %}
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                &#8377;{{item.product_price}}
+              </td>
+            {% endif %}
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              {{item.product_quantity}}
+            </td>
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.subTotal}}
+            </td>
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.discount_amount}}
+            </td>
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.tax_amount}}
+            </td>
+
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.cgst}}
+            </td>
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.sgst}}
+            </td>
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.igst}}
+            </td>
+            
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.rawTotal}}
+            </td>
+
+
+          </tr>
+
+          {% endfor %}
+
+          {% endif %}
+
+        </tbody>
+
+
+      </table>
+
+
+
+
+      <br>
+
+      <div style="border-top: 1px solid #eee;">
+        <table style="table-layout: fixed; width: 100%; border-collapse: collapse;">
+          <tbody>
+
+            <tr>
+              <td align="right" style="border-top: 2px solid #eee; padding: 8px;">
+                {% if ordertData.coupon_amount %}
+                <span style="font-size: 16pt;">
+                    Coupon Discount :
+                </span>
+                <strong style="font-size: 16pt;">
+                    &#8377;-{{ordertData.coupon_amount}}
+                </strong><br />
+                {% endif %}
+                <span style="font-size: 16pt;">
+                    Delhivery Charge :
+                </span>
+                <strong style="font-size: 16pt;">
+                    &#8377;{{ordertData.shipping_charge}}
+                </strong><br />
+                <span style="font-size: 16pt;">
+                  Total Amount :
+                </span>
+                <strong style="font-size: 16pt;">
+                  &#8377;{{ordertData.amount}}
+                </strong>
+              </td>
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div style="padding-top:1cm; padding-bottom: 1cm;">
+          <div>
+            <strong>Note</strong>
+          </div>
+          <p style="font-size: 10pt; line-height: 14pt;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget
+            placerat turpis, in vehicula elit. Pellentesque id pharetra ligula, sit
+            amet
+            interdum erat. Integer id lectus pulvinar, maximus urna quis, accumsan
+            lacus. Etiam ac quam magna. Fusce ex lectus, pretium id commodo sit
+            amet,
+            egestas mattis lectus. Vestibulum id libero fringilla magna tincidunt
+            egestas. Nam lacinia sollicitudin ante sed auctor. Suspendisse potenti.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </span>
+  <span style="display: none ;">
+    <div class="invoice" id="e_invoice_download{{ordertData.order_id}}pdf" style="font-family: 'Jost', sans-serif;">
+
+      <div class="col-lg-12 text-center"
+        style="text-transform: uppercase; text-align: center; margin-bottom: 30px; font-size: 50px;">
+
+        <caption>
+          <strong>
+            Invoice
+          </strong>
+        </caption>
+      </div>
+
+
+      <table style="table-layout: fixed; width: 100%; ">
+
+        <tbody>
+          <tr>
+            <td class="">
+              <div>
+                <img src="/assets/images/logo.png" alt="oemOne" style="max-width: 50%; ">
+              </div>
+            </td>
+            <!-- <td width="15%">
+
+                </td> -->
+            <td>
+                
+              <table class="tbl-padded">
+
+                <tbody>
+                  <tr>
+                    <td style="padding:5px; width: 30%;">
+                      <strong>Customer Name</strong>
+                    </td>
+                    <td style="padding:5px;">
+                      <div>
+                        {{customerAdd.fullname}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px; width: 30%;">
+                      <strong>Customer Email</strong>
+                    </td>
+                    <td style="padding:5px;">
+                      <div>
+                        {{ordertData.payment_details[0].email}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px; width: 30%;">
+                      <strong>Order Status</strong>
+                    </td>
+                    <td style="padding:5px;">
+                      <div>
+                        {{ordertData.status}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+
+                    <td style="padding:5px; width: 30%;">
+                      <strong> Order Date</strong>
+                    </td>
+
+                    <td style="padding:5px;">
+                      <span>{{orderDate}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+
+        <br>
+      </table>
+
+      <div class="col-lg-12">
+
+       
+        <div class="col-md-9" style="margin-top: 10%;">
+            
+                <div class="col-md-1" style="padding:5px; width: 10%;">
+                        <strong>IRN</strong>
+                </div>
+                <div class="col-md-7" style="padding:5px; width: 90%;">
+                    <div>
+                      {{ordertData.irn}}
+                    </div>
+                </div>
+           
+           
+                <div class="col-md-1" style="padding:5px; width: 10%;">
+                    <strong>Ack No</strong>
+                </div>
+                <div class="col-md-7" style="padding:5px; width: 90%;">
+                    <div>
+                      {{ordertData.ackNo}}
+                    </div>
+                </div>
+           
+
+        </div>
+        
+        <div class="col-md-3" style="margin-top: -15%;">
+       
+            <img src="{{ordertData.qrCodeImage}}" alt="oemOne" style="max-width: 20%; float:right;">
+        </div>  
+      </div>
+
+      <div style="padding-top: 1cm; padding-bottom: 1cm;">
+        <table style="table-layout: fixed; width: 100%;">
+          <tbody>
+            <tr>
+              <td>
+                <div style="padding-bottom: 10px;">
+                  <strong style="text-transform: uppercase;">FROM</strong>
+                </div>
+                <div>
+                  <strong>{{vendor.vendor_company}}</strong><br>
+                  <span>{{vendor.vendor_flatNo}}</span> ,<span>{{vendor.vendor_Landmark}}</span> ,
+                  <span>{{vendor.vendor_area}}</span> <br><span>{{vendor.vendor_town}}</span>
+                  <br><span>{{vendor.vendor_pin}}</span><br><span>{{vendor.vendor_state}}</span>
+
+                </div>
+              </td>
+
+              <td>
+                <div style="padding-bottom: 10px;">
+                  <strong style="text-transform: uppercase;">Bill To</strong>
+                </div>
+                <div>
+                  <strong>{{customerAdd.fullname}}</strong><br>
+                  <span>{{customerAdd.addresstext_no}}</span> , <span>{{customerAdd.landmark}}</span> ,
+                  <span>{{customerAdd.addresstext_name}}</span> <br><span>{{customerAdd.city}}</span> ,
+                  <span>{{customerAdd.pincode}}</span><br><span>{{customerAdd.state}}</span><br><span>{{customerAdd.mobileno}}</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <table style="table-layout: fixed; width: 100%;">
+        <thead>
+          <tr>
+            <th width="20%" style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Product
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Price
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Quantity
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Subtotal
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Discount
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Tax Amount
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              CGST
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              SGST
+            </th>
+
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              IGST
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Raw Total
+            </th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+
+          {% if newOrderList %}
+
+          {% for item in newOrderList %}
+          <tr>
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              {{item.product_name}}
+            </td>
+
+            {% if item.is_discount == "1" and item.discount_start == "true" %}
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.discount_price}}
+            </td>
+            {% else %}
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                &#8377;{{item.product_price}}
+              </td>
+            {% endif %}
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              {{item.product_quantity}}
+            </td>
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.subTotal}}
+            </td>
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.discount_amount}}
+            </td>
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.tax_amount}}
+            </td>
+
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.cgst}}
+            </td>
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.sgst}}
+            </td>
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.igst}}
+            </td>
+            
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.rawTotal}}
+            </td>
+
+
+          </tr>
+
+          {% endfor %}
+
+          {% endif %}
+
+        </tbody>
+
+
+      </table>
+
+
+
+
+      <br>
+
+      <div style="border-top: 1px solid #eee;">
+        <table style="table-layout: fixed; width: 100%; border-collapse: collapse;">
+          <tbody>
+
+            <tr>
+              <td align="right" style="border-top: 2px solid #eee; padding: 8px;">
+                {% if ordertData.coupon_amount %}
+                <span style="font-size: 16pt;">
+                    Coupon Discount :
+                </span>
+                <strong style="font-size: 16pt;">
+                    &#8377;-{{ordertData.coupon_amount}}
+                </strong><br />
+                {% endif %}
+                <span style="font-size: 16pt;">
+                    Delhivery Charge :
+                </span>
+                <strong style="font-size: 16pt;">
+                    &#8377;{{ordertData.shipping_charge}}
+                </strong><br />
+                <span style="font-size: 16pt;">
+                  Total Amount :
+                </span>
+                <strong style="font-size: 16pt;">
+                  &#8377;{{ordertData.amount}}
+                </strong>
+              </td>
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div style="padding-top:1cm; padding-bottom: 1cm;">
+          <div>
+            <strong>Note</strong>
+          </div>
+          <p style="font-size: 10pt; line-height: 14pt;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget
+            placerat turpis, in vehicula elit. Pellentesque id pharetra ligula, sit
+            amet
+            interdum erat. Integer id lectus pulvinar, maximus urna quis, accumsan
+            lacus. Etiam ac quam magna. Fusce ex lectus, pretium id commodo sit
+            amet,
+            egestas mattis lectus. Vestibulum id libero fringilla magna tincidunt
+            egestas. Nam lacinia sollicitudin ante sed auctor. Suspendisse potenti.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </span>
+  <span style="display: none ;">
+    <div class="invoice" id="e_way_bill_download{{ordertData.order_id}}pdf" style="font-family: 'Jost', sans-serif;">
+
+      <div class="col-lg-12 text-center"
+        style="text-transform: uppercase; text-align: center; margin-bottom: 30px;">
+        <div style="float: left;"><h4>{{today_date}}</h4></div>
+        <h1>
+          <!-- <center> -->
+            E-Way Bill System
+          <!-- </center> -->
+        </h1>
+      </div>
+
+
+      <table style="table-layout: fixed; width: 100%; ">
+        <h2><center>Part - A Slip</center></h2>
+        <tbody>
+          <tr>
+            <!-- <td class="">
+              <div>
+                <img src="/assets/images/logo.png" alt="oemOne" style="max-width: 50%; ">
+              </div>
+            </td> -->
+            <!-- <td width="15%">
+
+                </td> -->
+            <td>
+                
+              <table class="tbl-padded">
+                
+                <tbody>
+                  <tr>
+                    <td style="padding:10px; width: 30%;">
+                      <strong>E-Way Bill No</strong>
+                    </td>
+                    <td style="padding:10px;">
+                      <div>
+                        {{ordertData.ewbNo}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:10px; width: 30%;">
+                      <strong>Entered Date</strong>
+                    </td>
+                    <td style="padding:10px;">
+                      <div>
+                        {{ordertData.ewbDate}}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> Valid From:</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>{{ordertData.ewbValidTill}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> IRN</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>{{ordertData.irn}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> Generated By</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>{{ordertData.eWayBillRequestDetail[0].fromGstin}},{{ordertData.eWayBillRequestDetail[0].fromTrdName}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> GSTIN Of Supplier</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>{{ordertData.eWayBillRequestDetail[0].fromGstin}},{{ordertData.eWayBillRequestDetail[0].fromTrdName}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> Place Of Dispatch</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>{{ordertData.eWayBillRequestDetail[0].fromAddr1}}{{ordertData.eWayBillRequestDetail[0].fromAddr2}}{{ordertData.eWayBillRequestDetail[0].fromPlace}}-{{ordertData.eWayBillRequestDetail[0].fromPincode}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> GSTIN Of Recipient</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>{{ordertData.eWayBillRequestDetail[0].toGstin}},{{ordertData.eWayBillRequestDetail[0].toTrdName}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> Place Of Delhivery</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>{{ordertData.eWayBillRequestDetail[0].toAddr1}}{{ordertData.eWayBillRequestDetail[0].toAddr2}}{{ordertData.eWayBillRequestDetail[0].toPlace}}-{{ordertData.eWayBillRequestDetail[0].toPincode}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> Document No</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>{{ordertData.eWayBillRequestDetail[0].docNo}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> Document Date</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>{{ordertData.eWayBillRequestDetail[0].docDate}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> Transaction Type</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                        <!-- transactionType: 1]regular,2]bill to -ship to,3] bill from - dispatch from,4]combination of 2 end 3 -->
+                        {% if ordertData.eWayBillRequestDetail[0].transactionType == "1" %}
+                            <span>Regular</span>
+                        {% endif %}
+                        {% if ordertData.eWayBillRequestDetail[0].transactionType == "2" %}
+                            <span>Bill to Ship to</span>
+                        {% endif %}
+                        {% if ordertData.eWayBillRequestDetail[0].transactionType == "3" %}
+                            <span>Bill From - Dispatch From</span>
+                        {% endif %}
+                        {% if ordertData.eWayBillRequestDetail[0].transactionType == "4" %}
+                            <span>Combination of 2 and 3</span>
+                        {% endif %}
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> Value of Goods</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>{{ordertData.eWayBillRequestDetail[0].totInvValue}}</span>
+
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> HSN Code</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>{{ordertData.eWayBillRequestDetail[0].itemList[0].hsnCode}},{{ordertData.eWayBillRequestDetail[0].itemList[0].productName}}</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> Reason for Transportation</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                        {% if ordertData.eWayBillRequestDetail[0].supplyType == "O" %}
+                        <span>Outward,{{ordertData.eWayBillRequestDetail[0].subSupplyType}}-{{ordertData.eWayBillRequestDetail[0].subSupplyDesc}}</span>
+                        {% endif %}
+                        {% if ordertData.eWayBillRequestDetail[0].supplyType == "I" %}
+                        <span>Inward,{{ordertData.eWayBillRequestDetail[0].subSupplyType}}-{{ordertData.eWayBillRequestDetail[0].subSupplyDesc}}</span>
+                        {% endif %}
+                    </td>
+                  </tr>
+
+                  <tr>
+
+                    <td style="padding:10px; width: 30%;">
+                      <strong> Transporter</strong>
+                    </td>
+
+                    <td style="padding:10px;">
+                      <span>
+                        {% if ordertData.eWayBillRequestDetail[0].transporterId != "" %}
+                            {{ordertData.eWayBillRequestDetail[0].transporterId}},{{ordertData.eWayBillRequestDetail[0].transporterName}}</span>
+                        {% endif %}
+                      <!-- <span class="invDate"></span> -->
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+
+        <br>
+      </table>
+
+      <!-- <div class="col-lg-12">
+
+       
+        <div class="col-md-9" style="margin-top: 10%;">
+            
+                <div class="col-md-1" style="padding:5px; width: 10%;">
+                        <strong>IRN</strong>
+                </div>
+                <div class="col-md-7" style="padding:5px; width: 90%;">
+                    <div>
+                      {{ordertData.irn}}
+                    </div>
+                </div>
+           
+           
+                <div class="col-md-1" style="padding:5px; width: 10%;">
+                    <strong>Ack No</strong>
+                </div>
+                <div class="col-md-7" style="padding:5px; width: 90%;">
+                    <div>
+                      {{ordertData.ackNo}}
+                    </div>
+                </div>
+           
+
+        </div>
+        
+        <div class="col-md-3" style="margin-top: -15%;">
+       
+            <img src="{{ordertData.qrCodeImage}}" alt="oemOne" style="max-width: 20%; float:right;">
+        </div>  
+      </div>
+
+      <div style="padding-top: 1cm; padding-bottom: 1cm;">
+        <table style="table-layout: fixed; width: 100%;">
+          <tbody>
+            <tr>
+              <td>
+                <div style="padding-bottom: 10px;">
+                  <strong style="text-transform: uppercase;">FROM</strong>
+                </div>
+                <div>
+                  <strong>{{vendor.vendor_company}}</strong><br>
+                  <span>{{vendor.vendor_flatNo}}</span> ,<span>{{vendor.vendor_Landmark}}</span> ,
+                  <span>{{vendor.vendor_area}}</span> <br><span>{{vendor.vendor_town}}</span>
+                  <br><span>{{vendor.vendor_pin}}</span><br><span>{{vendor.vendor_state}}</span>
+
+                </div>
+              </td>
+
+              <td>
+                <div style="padding-bottom: 10px;">
+                  <strong style="text-transform: uppercase;">Bill To</strong>
+                </div>
+                <div>
+                  <strong>{{customerAdd.fullname}}</strong><br>
+                  <span>{{customerAdd.addresstext_no}}</span> , <span>{{customerAdd.landmark}}</span> ,
+                  <span>{{customerAdd.addresstext_name}}</span> <br><span>{{customerAdd.city}}</span> ,
+                  <span>{{customerAdd.pincode}}</span><br><span>{{customerAdd.state}}</span><br><span>{{customerAdd.mobileno}}</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <table style="table-layout: fixed; width: 100%;">
+        <thead>
+          <tr>
+            <th width="20%" style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Product
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Price
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Quantity
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Subtotal
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Discount
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Tax Amount
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              CGST
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              SGST
+            </th>
+
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              IGST
+            </th>
+            <th style="border-top: 1px solid #eee; padding: 5px; text-align: center;">
+              Raw Total
+            </th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+
+          {% if newOrderList %}
+
+          {% for item in newOrderList %}
+          <tr>
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              {{item.product_name}}
+            </td>
+
+            {% if item.is_discount == "1" and item.discount_start == "true" %}
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.discount_price}}
+            </td>
+            {% else %}
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+                &#8377;{{item.product_price}}
+              </td>
+            {% endif %}
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              {{item.product_quantity}}
+            </td>
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.subTotal}}
+            </td>
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.discount_amount}}
+            </td>
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.tax_amount}}
+            </td>
+
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.cgst}}
+            </td>
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.sgst}}
+            </td>
+
+
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.igst}}
+            </td>
+            
+            <td style="border-top: 1px solid #eee; padding: 5px;  text-align: center;">
+              &#8377;{{item.rawTotal}}
+            </td>
+
+
+          </tr>
+
+          {% endfor %}
+
+          {% endif %}
+
+        </tbody>
+
+
+      </table> -->
+
+
+
+
+      <!-- <br> -->
+
+      <!-- <div style="border-top: 1px solid #eee;">
+        <table style="table-layout: fixed; width: 100%; border-collapse: collapse;">
+          <tbody>
+
+            <tr>
+              <td align="right" style="border-top: 2px solid #eee; padding: 8px;">
+                {% if ordertData.coupon_amount %}
+                <span style="font-size: 16pt;">
+                    Coupon Discount :
+                </span>
+                <strong style="font-size: 16pt;">
+                    &#8377;-{{ordertData.coupon_amount}}
+                </strong><br />
+                {% endif %}
+                <span style="font-size: 16pt;">
+                    Delhivery Charge :
+                </span>
+                <strong style="font-size: 16pt;">
+                    &#8377;{{ordertData.shipping_charge}}
+                </strong><br />
+                <span style="font-size: 16pt;">
+                  Total Amount :
+                </span>
+                <strong style="font-size: 16pt;">
+                  &#8377;{{ordertData.amount}}
+                </strong>
+              </td>
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div style="padding-top:1cm; padding-bottom: 1cm;">
+          <div>
+            <strong>Note</strong>
+          </div>
+          <p style="font-size: 10pt; line-height: 14pt;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget
+            placerat turpis, in vehicula elit. Pellentesque id pharetra ligula, sit
+            amet
+            interdum erat. Integer id lectus pulvinar, maximus urna quis, accumsan
+            lacus. Etiam ac quam magna. Fusce ex lectus, pretium id commodo sit
+            amet,
+            egestas mattis lectus. Vestibulum id libero fringilla magna tincidunt
+            egestas. Nam lacinia sollicitudin ante sed auctor. Suspendisse potenti.
+          </p>
+        </div>
+      </div> -->
+
+    </div>
+  </span>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title pull-left">
+            <strong>Order & Account Information : {{ordertData.order_id}}</strong>
+          </h3>
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="col-sm-6">
+            <table id="userTable" class="table table-bordered table-striped">
+              <tbody>
+                <tr>
+                  <th>Order Date</th>
+                  <td>{{orderDate}}</td>
+                </tr>
+                <tr>
+                  <th>Payment Status</th>
+                  <td>{{ordertData.payment_status}}</td>
+                </tr>
+                <tr>
+                  <th>Order Status</th>
+
+                  {% if ordertData.order_type == "Pickup Order" %}
+                  <td>
+
+                    <input type="hidden" value="{{ordertData.order_id}}" id="orderId">
+                    <input type="hidden" value="{{ordertData.order_status}}" id="finalCategory">
+                    <select name="cars" id="orderStatus">
+                      <option value="Processing">Processing</option>
+                      <option value="OrderPlaced">Order Placed</option>
+                      <option value="Shipped">Ready for Pickup</option>
+                      <option value="Delivered">Order Delivered</option>
+                      <!-- <option value="Processing">Processing</option>
+                      <option value="Shipped">Shipped</option>
+                      <option value="Delivered">Delivered</option> -->
+                      <!-- <option value="audi">Audi</option> -->
+                    </select>
+                  </td>
+
+                  {% else %}
+                  <td>
+                    {{ordertData.order_status}}
+                    
+                  </td>
+
+
+                  {% endif %}
+                </tr>
+
+                <tr>
+                    <th>Pickup Order Scheduled Date By Shiprocket</th>
+  
+                    {% if ordertData.shiprocket_generate_pickup %}
+                    <td>
+                      {{ordertData.shiprocket_generate_pickup[0].response.pickup_scheduled_date}}
+                      
+                    </td>
+                    {% endif %}
+                  </tr>
+                  <tr>
+                    <th>Pickup Order Status</th>
+  
+                    {% if ordertData.shiprocket_generate_pickup %}
+                    <td>
+                      {{ordertData.shiprocket_generate_pickup[0].response.status}}
+                      
+                    </td>
+                    {% endif %}
+                  </tr>
+                <!-- <tr>
+                    <th>Game Status</th>
+                    <td>{{game.game_status}}</td>
+                  </tr>
+                  <tr>
+                    <th>Game completed Date</th>
+                    <td>{{creDate}}</td>
+                  </tr> -->
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-6">
+            <table id="userTable" class="table table-bordered table-striped">
+              <tbody>
+                <tr>
+                  <th>Customer Name</th>
+                  <td>{{customerAdd.fullname}}</td>
+                </tr>
+                <tr>
+                  <th>Customer Email</th>
+                  <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <th>Shiprocket Order Id</th>
+                    <td>{{ordertData.shiprocket_orderId}}</td>
+                </tr>
+                <tr>
+                    <th>Shiprocket Shipment Id</th>
+                    <td>{{ordertData.shiprocket_shipmentId}}</td>
+                </tr>
+                <tr>
+                    <th>Shiprocket AWB Code</th>
+                    <td>{{ordertData.shiprocket_awb_code}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="box ">
+        <div class="box-header with-border">
+          <h3 class="box-title pull-left">
+            <strong>Address Information</strong>
+          </h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td>
+                  <strong>Billing Address</strong>
+                </td>
+                <td>
+                  <strong>Shipping Address</strong>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div>
+                    <strong>{{vendor.vendor_company}}</strong><br>
+                    <span>{{vendor.vendor_flatNo}}</span><br> <span>{{vendor.vendor_Landmark}}</span>
+                    <br><span>{{vendor.vendor_area}}</span> <br><span>{{vendor.vendor_town}}</span>
+                    <br><span>{{vendor.vendor_pin}}</span><br><span>{{vendor.vendor_state}}</span>
+                  </div>
+                </td>
+                <td> <strong>{{customerAdd.fullname}}</strong><br>
+                  <span>{{customerAdd.addresstext_no}}</span><br> <span>{{customerAdd.landmark}}</span>
+                  <br><span>{{customerAdd.addresstext_name}}</span> <br><span>{{customerAdd.city}}</span>
+                  <br><span>{{customerAdd.pincode}}</span><br><span>{{customerAdd.state}}</span><br><span>{{customerAdd.mobileno}}</span>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="box ">
+        <div class="box-header with-border">
+          <h3 class="box-title pull-left">
+            <strong>Payment & Shipping Method</strong>
+          </h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td>
+                  <strong>Payment Information</strong>
+                 
+                </td>
+                <td>
+                  <strong>Shipping & Handling Information</strong>
+                </td>
+                <!-- <td>
+                    <strong>High Point</strong>
+                  </td>
+                  <td>
+                    <strong>Low Point</strong>
+                  </td> -->
+              </tr>
+            </thead>
+            <tbody>
+              <!-- {{game.HighLowHistory}} -->
+            
+              <tr>
+                <td>
+                    <span style="margin-left:20px ;">{{ordertData.payment_details[0].method}}</span>
+                  
+                </td>
+                <td>
+                   
+                        {% if ordertData.track_order_data %}
+                        {% for item in ordertData.track_order_data %}
+                        {% if ordertData.order_id == item.id %}
+                    
+                           {% if item.shipment_status == 3 %}
+                           <span>Order Processed</span>
+                          
+                           {% endif %}
+                        
+                           {% if item.shipment_status == 6 %}
+                           <span>Order Shipped</span>
+                           
+                           {% endif %}
+                       
+                           {% if item.shipment_status == 7 %}
+                           <span>Order En Route</span>
+                        
+                           {% endif %}
+                      
+                           {% if item.shipment_status == 17 %}
+                           <span>Order Arrived</span>
+                     
+                           {% endif %}
+                        
+                       {% endif %}
+                       {% endfor %}
+                       {% endif %}
+                    
+                </td>
+              
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="box ">
+        <div class="box-header with-border">
+          <h3 class="box-title pull-left">
+            <strong>Items Ordered</strong>
+          </h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td>
+                  <strong>Product</strong>
+                </td>
+                <td>
+                  <strong>Price</strong>
+                </td>
+                <td>
+                  <strong>Quantity</strong>
+                </td>
+                <td>
+                  <strong>Subtotal</strong>
+                </td>
+                <td>
+                  <strong>Discount Amount</strong>
+                </td>
+                <td>
+                  <strong>Tax Amount</strong>
+                </td>
+                <td>
+                  <strong>CGST</strong>
+                </td>
+                <td>
+                  <strong>SGST</strong>
+                </td>
+                <td>
+                  <strong>IGST</strong>
+                </td>
+                {% if ordertData.coupon_amount %}
+                <td>
+                    <strong>Coupon(%)</strong>
+                </td>
+                {% endif %}
+                <td>
+                    <strong>Delhivery Charge</strong>
+                </td>
+                <td>
+                  <strong>Raw Total</strong>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              {% if newOrderList %}
+
+              {% for item in newOrderList %}
+
+              <tr>
+                <td>
+
+                  <div>
+                    <strong>{{item.product_name}}</strong>
+                  </div>
+                  {% if item.question_form %}
+                  <a href="/backend/question_Show/{{item.id}}/{{item.order_id}}">
+                    Question form
+
+                  </a>
+                  <!-- <div class="btn btn-primary question_form" data-id="{{item.id}}" data-orderid="{{item.order_id}}">
+                    Question form</div> -->
+                  {% endif %}
+                </td>
+                {% if item.is_discount == "1" and item.discount_start == "true" %}
+                <td>
+                    <strong>{{item.discount_price}}</strong>
+                  </td>
+                {% else %}
+                <td>
+                    <strong>{{item.product_price}}</strong>
+                  </td>
+                {% endif %}
+                <td>
+                  <strong>{{item.product_quantity}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.subTotal}}</strong>
+                </td>
+                <td>
+                    <strong>{{item.discount_amount}}</strong>
+                  </td>
+                <td>
+                  <strong>{{item.tax_amount}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.cgst}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.sgst}}</strong>
+                </td>
+                <td>
+                  <strong>{{item.igst}}</strong>
+                </td>
+                {% if ordertData.coupon_amount %}
+                <td>
+                    <strong>-{{item.coupon_amount}}</strong>
+                </td>
+                {% endif %}
+                <td>
+                    <strong>{{item.shipping_charge}}</strong>
+                  </td>
+                <td>
+                  <strong>{{item.total_amt}}</strong>
+                </td>
+              </tr>
+
+              {% endfor %}
+              {% endif %}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="box ">
+        <div class="box-header with-border">
+          <h3 class="box-title pull-left">
+            <strong>Order Total</strong>
+          </h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td>
+                  <strong>Notes for this Order</strong>
+                </td>
+                <td>
+                  <strong>Order Totals</strong>
+                  <span style="margin-left:20px ;">{{ordertData.product_id.length}}</span>
+
+
+                </td>
+                <!-- <td>
+                      <strong>High Point</strong>
+                    </td>
+                    <td>
+                      <strong>Low Point</strong>
+                    </td> -->
+              </tr>
+            </thead>
+            <tbody>
+              <!-- {{game.HighLowHistory}} -->
+              {% for HighLowHistory in game.HighLowHistory%}
+              <tr>
+                <td>
+                  <img class="procards"
+                    src="/frontend/upload/newcards/{{HighLowHistory.card_type_id}}_{{HighLowHistory.card_id}}.png">
+                </td>
+                <td>
+                  {% if HighLowHistory.predicted_card == 0 %}
+                  <span>High or Same</span>
+                  {% elseif HighLowHistory.predicted_card == 1 %}
+                  <span>Low or Same</span>
+                  {% elseif HighLowHistory.predicted_card == 3 %}
+                  <span>Same</span>
+                  {% elseif HighLowHistory.predicted_card == 6 %}
+                  <span>High</span>
+                  {% elseif HighLowHistory.predicted_card == 7 %}
+                  <span>Low</span>
+                  {% endif %}
+
+                  {% if HighLowHistory.predicted_card == 4 %}
+                  <span>Cashout</span>
+                  {% elseif HighLowHistory.predicted_card == 5 %}
+                  <span>Busted</span>
+                  {% endif %}
+                </td>
+                <td>{{HighLowHistory.high_point}}</td>
+                <td>{{HighLowHistory.low_point}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block Jscript %}
+
+<script>
+
+  var host = window.location.origin;
+  $(document).ready(function () {
+
+
+    var arr = $('#finalCategory').val();
+    console.log("arr",arr);
+ 
+    if(arr){
+        let options = arr.split(',');
+
+        if (options != '') {
+
+        console.log("option 1", options);
+
+
+        options.forEach(function (e) {
+            $("#orderStatus option[value=" + e + "]").prop('selected', true);
+        });
+
+        }
+    }
+
+
+
+    // $(".question_form").each(function () {
+
+    $('#orderStatus').on('change', function () {
+      // alert(this.value);
+
+      let order_id = $("#orderId").val();
+      let select = $(this).val();
+
+      $.ajax({
+        type: 'POST',
+        url: host + "/backend/orderStatus",
+        data: { select: select, order_id: order_id },
+        success: function (resultData) {
+          // alert(resultData)
+          console.log(resultData);
+
+
+        }
+      });
+
+    });
+
+    // });
+  });
+
+
+
+
+  $('.invoice_pdf').click(function () {
+
+    var dataid = $(this).attr('data-id');
+
+    var idd = "invoice_download" + dataid;
+
+    var printContents = document.getElementById(idd).outerHTML;
+    w = window.open();
+
+    w.document.write(printContents);
+
+    w.document.write('<scr' + 'ipt type="text/javascript">' + 'window.onload = function() { window.print(); window.close(); };' + '</sc' + 'ript>');
+
+    w.document.close();
+    w.focus();
+    return true;
+
+  });
+
+  
+  $('.e_invoice_pdf').click(function () {
+
+    var dataid = $(this).attr('data-id');
+
+    var idd = "e_invoice_download" + dataid;
+
+    var printContents = document.getElementById(idd).outerHTML;
+    w = window.open();
+
+    w.document.write(printContents);
+
+    w.document.write('<scr' + 'ipt type="text/javascript">' + 'window.onload = function() { window.print(); window.close(); };' + '</sc' + 'ript>');
+
+    w.document.close();
+    w.focus();
+    return true;
+
+    });
+
+    
+$('.e_way_bill_pdf').click(function () {
+
+    var dataid = $(this).attr('data-id');
+
+    var idd = "e_way_bill_download" + dataid;
+
+    var printContents = document.getElementById(idd).outerHTML;
+    w = window.open();
+
+    w.document.write(printContents);
+
+    w.document.write('<scr' + 'ipt type="text/javascript">' + 'window.onload = function() { window.print(); window.close(); };' + '</sc' + 'ript>');
+
+    w.document.close();
+    w.focus();
+    return true;
+
+});
+
+</script>
+
+<script>
+  $("#back_btn").click(function () {
+    window.history.back();
+  });
+</script>
+
+
+{% endblock %}

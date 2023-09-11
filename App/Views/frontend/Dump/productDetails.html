@@ -1,0 +1,2922 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+
+<style>
+    .star-rating {
+        border: solid 1px #ccc;
+        display: flex;
+        flex-direction: row-reverse;
+        font-size: 1.5em;
+        justify-content: space-around;
+        padding: 0 .2em;
+        text-align: center;
+        width: 5em;
+    }
+
+    .star-rating input {
+        display: none;
+    }
+
+    .star-rating label {
+        color: #ccc;
+        cursor: pointer;
+    }
+
+    .star-rating :checked~label {
+        color: #f90;
+    }
+
+    .star-rating label:hover,
+    .star-rating label:hover~label {
+        color: #fc0;
+    }
+
+    #containerNews {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        display: grid;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+
+
+    #slider-container {
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+
+    }
+
+    .Newsbtn {
+        position: absolute;
+        top: calc(50%);
+        height: 35px;
+        width: 35px;
+        color: #aaaaaa;
+        background-color: #ffffff;
+        border-radius: 35px;
+        border: solid 1px #aaaaaa;
+        z-index: 10;
+        text-align: center;
+        cursor: pointer;
+
+    }
+
+    .Newsbtn:first-of-type {
+        padding: 4px 0px;
+        left: 0px;
+        font-size: 18px;
+    }
+
+    .Newsbtn:last-of-type {
+        padding: 4px 0px;
+        right: 0px;
+        font-size: 18px;
+    }
+
+    #slider-container #sliderNews {
+        display: flex;
+        width: 1000%;
+        height: 100%;
+        transition: all .5s;
+    }
+
+    #slider-container #sliderNews .slideNews {
+        margin: auto 10px;
+        display: grid;
+        place-items: center;
+    }
+
+    /* #slider-container #sliderNews .slideNews span {
+        color: white;
+    } */
+
+    @media only screen and (min-width: 1100px) {
+
+        #slider-container #sliderNews .slideNews {
+            width: calc(2.5% - 20px);
+        }
+
+    }
+
+    @media only screen and (max-width: 1100px) {
+
+        #slider-container #sliderNews .slideNews {
+            width: calc(3.3333333% - 20px);
+        }
+
+    }
+
+    @media only screen and (max-width: 900px) {
+
+        #slider-container #sliderNews .slideNews {
+            width: calc(5% - 20px);
+        }
+
+    }
+
+    @media only screen and (max-width: 550px) {
+
+        #slider-container #sliderNews .slideNews {
+            width: calc(10% - 20px);
+        }
+
+    }
+
+
+    #containerNews1 {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        display: grid;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+
+
+    #slider-container1 {
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+
+    }
+
+    .Newsbtn1 {
+        position: absolute;
+        top: calc(50%);
+        height: 35px;
+        width: 35px;
+        color: #aaaaaa;
+        background-color: #ffffff;
+        border-radius: 35px;
+        border: solid 1px #aaaaaa;
+        z-index: 10;
+        text-align: center;
+        cursor: pointer;
+
+    }
+
+    .Newsbtn1:first-of-type {
+        padding: 4px 0px;
+        left: 0px;
+        font-size: 18px;
+    }
+
+    .Newsbtn1:last-of-type {
+        padding: 4px 0px;
+        right: 0px;
+        font-size: 18px;
+    }
+
+    #slider-container1 #sliderNews1 {
+        display: flex;
+        width: 1000%;
+        height: 100%;
+        transition: all .5s;
+    }
+
+    #slider-container1 #sliderNews1 .slideNews1 {
+        margin: auto 10px;
+        display: grid;
+        place-items: center;
+    }
+
+    /* #slider-container #sliderNews .slideNews span {
+        color: white;
+    } */
+
+    @media only screen and (min-width: 1100px) {
+
+        #slider-container1 #sliderNews1 .slideNews1 {
+            width: calc(2.5% - 20px);
+        }
+
+    }
+
+    @media only screen and (max-width: 1100px) {
+
+        #slider-container1 #sliderNews1 .slideNews1 {
+            width: calc(3.3333333% - 20px);
+        }
+
+    }
+
+    @media only screen and (max-width: 900px) {
+
+        #slider-container1 #sliderNews1 .slideNews1 {
+            width: calc(5% - 20px);
+        }
+
+    }
+
+    @media only screen and (max-width: 550px) {
+
+        #slider-container1 #sliderNews1 .slideNews1 {
+            width: calc(10% - 20px);
+        }
+
+    }
+
+
+    #containerRelated {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        display: grid;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    #slider-containerRelated {
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+
+    }
+
+    .Relatebtn {
+        position: absolute;
+        top: calc(50% + 40px);
+        height: 35px;
+        width: 35px;
+        color: #aaaaaa;
+        background-color: #ffffff;
+        border-radius: 35px;
+        border: solid 1px #aaaaaa;
+        z-index: 10;
+        text-align: center;
+        cursor: pointer;
+
+    }
+
+    .Relatebtn:first-of-type {
+        padding: 4px 0px;
+        left: 0px;
+        font-size: 18px;
+    }
+
+    .Relatebtn:last-of-type {
+        padding: 4px 0px;
+        right: 0px;
+        font-size: 18px;
+    }
+
+
+
+    #slider-containerRelated #sliderRelated {
+        display: flex;
+        width: 1000%;
+        height: 100%;
+        transition: all .5s;
+    }
+
+    #slider-containerRelated #sliderRelated .slideRelated {
+        margin: auto 10px;
+        display: grid;
+        place-items: center;
+    }
+
+    /* #slider-containerRelated #sliderRelated .slideRelated span {
+        color: white;
+    } */
+
+    @media only screen and (min-width: 1100px) {
+
+        #slider-containerRelated #sliderRelated .slideRelated {
+            width: calc(2.5% - 20px);
+        }
+
+    }
+
+    @media only screen and (max-width: 1100px) {
+
+        #slider-containerRelated #sliderRelated .slideRelated {
+            width: calc(3.3333333% - 20px);
+        }
+
+    }
+
+    @media only screen and (max-width: 900px) {
+
+        #slider-containerRelated #sliderRelated .slideRelated {
+            width: calc(5% - 20px);
+        }
+
+    }
+
+    @media only screen and (max-width: 550px) {
+
+        #slider-containerRelated #sliderRelated .slideRelated {
+            width: calc(10% - 20px);
+        }
+
+    }
+
+    .priceafter:after {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .priceaftermodel:after {
+        font-size: 14px;
+        font-weight: bold;
+    }
+</style>
+
+
+<div class="main-content main-content-details single no-sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="trail-item">
+                            <a href="#">Accents</a>
+                        </li>
+                        {% if productData %}
+
+                        {% for item in productData %}
+                        <li class="trail-item trail-end active">
+                            {{item.product_name}}
+
+                        </li>
+
+                        {% endfor %}
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <input type="hidden" id="user_login" value="{{App.role}}">
+            {% if productData %}
+
+            {% for item in productData %}
+            <div class="content-area content-details full-width col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                <div class="site-main">
+                    <div class="details-product">
+                        <div class="details-thumd">
+                            <div class="image-preview-container image-thick-box image_preview_container">
+                                {% if item.product_defaultImg %}
+                                <!-- <div class="image_pop_up_container"> -->
+                                {% for img in item.product_defaultImg %}
+                                <img id="img_zoom" data-zoom-image="{{img.path}}" class="img_zoom" src="{{img.path}}"
+                                    alt="img" style="height: 400px; width: 100%;">
+
+                                {% endfor %}
+                                <!-- </div> -->
+                                <div class="video_pop_up_container">
+
+                                </div>
+                                {% else %}
+
+
+
+                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+
+                                    <img src="/assets/images/no_image.jpg" alt="img">
+
+                                </a>
+
+
+                                {% endif %}
+
+
+                                <a href="#" class="btn-zoom open_qv"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="product-preview image-small product_preview">
+                                <div id="thumbnails" class="thumbnails_carousel owl-carousel" data-nav="true"
+                                    data-autoplay="false" data-dots="false" data-loop="false" data-margin="10"
+                                    data-responsive='{"0":{"items":3},"480":{"items":3},"600":{"items":3},"1000":{"items":3}}'>
+                                    {% for img in item.product_defaultImg %}
+
+                                    <a href="#" data-image="{{img.path}}" data-zoom-image="{{img.path}}"
+                                        class="active prImg">
+                                        <img src="{{img.path}}" data-large-image="{{img.path}}" alt="img">
+                                    </a>
+
+                                    {% endfor %}
+
+
+                                    {% for img in item.product_image %}
+
+
+                                    {% if img.is_deleted == 0 %}
+
+                                    {% if img.type == "image"%}
+
+
+                                    <a href="#" data-image="{{img.path}}" data-zoom-image="{{img.path}}"
+                                        class="active prImg">
+                                        <img src="{{img.path}}" data-large-image="{{img.path}}" alt="img" style="width: 500px; height: 500px;">
+                                    </a>
+
+                                    {% else %}
+
+                                    <div class="active" onclick="playvideo('{{img.path}}')">
+                                        <video width="100%" height="164">
+                                            <source src="{{img.path}}">
+                                        </video>
+                                    </div>
+
+
+
+                                    {% endif %}
+
+                                    {% endif %}
+
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="details-infor">
+                            <h1 class="product-title">
+                                {{item.product_name}}
+                            </h1>
+                            <div class="stars-rating">
+                                <div class="star-ratingD">
+                                    {% if item.product_rating_num == null%}
+                                    <span class="starD-0"></span>
+
+                                    {% else %}
+
+                                    <span class="starD-{{item.product_rating_num}}"></span>
+
+                                    {% endif %}
+                                </div>
+                                <div class="count-starD">
+                                    {% if item.product_rating != 0 %} {{item.product_rating}} {% endif %}
+                                </div>
+                            </div>
+                            <input type="hidden" id="decShow" value="{{item.product_description}}">
+
+                            <div class="availability">
+                                <span> {{item.product_description | safe}}</span>
+                            </div>
+
+                            <!-- <div class="price col-lg-12 text-start">
+                                <div class="col-lg-2 text-start" style="margin-left:-32px ;">
+                                    &#8377;{{item.product_price}}
+                                </div>
+
+                                <div class=" col-lg-6 text-start">
+                                    Tax exclude ( {{item.GST_rate}} %)
+                                </div>
+
+                            </div> -->
+                            <input type="hidden" id="after_price" value="{{item.GST_rate}}">
+
+                            <div class="price priceafter">
+
+                                {% if item.is_discount == "1" and item.discount_start == "true" %}
+                                <span>&#8377;</span>
+                                <span id="product_dis" data-product_dis="{{item.discount_price}}">
+                                    {{item.discount_price}}
+                                </span>
+
+
+
+                                {% else %}
+                                <span>&#8377;</span><span id="product_main" data-product_main="{{item.product_price}}">{{item.product_price}}</span>
+                                <!-- <span class="product_stock_quantity"
+                                    data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                    style="color: red;"></span> -->
+
+                                {% endif %}
+                            </div>
+                            <!-- <div class="product-details-description">
+                                <ul>
+                                    <li>Vestibulum tortor quam</li>
+                                    <li>Imported</li>
+                                    <li>Art.No. 06-7680</li>
+                                </ul>
+                            </div> -->
+
+
+                            <div class="availability" id="productDis">
+                                SKU : {{item.product_sku}}
+                            </div>
+
+                            <div class="availability" id="productDis">
+                                Sold By : {{item.venodor_name}}
+                            </div>
+
+                            <div class="availability">
+
+                                <input type="hidden" id="inStock" value="{{item.product_stock_status}}">
+                                <!-- availability : {{item.product_stock_status}} -->
+                                availability :
+                                <span class="product_stock_quantity1"
+                                    data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                    style="color: red;"></span>
+                            </div>
+                            <!-- <div class="variations">
+                                <div class="attribute attribute_color">
+                                    <div class="color-text text-attribute">
+                                        Color:
+                                    </div>
+                                    <div class="list-color list-item">
+                                        <a href="#" class="color1"></a>
+                                        <a href="#" class="color2"></a>
+                                        <a href="#" class="color3 active"></a>
+                                        <a href="#" class="color4"></a>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="attribute attribute_size">
+                                    <div class="size-text text-attribute">
+                                        Size:
+                                    </div>
+                                    <div class="list-size list-item">
+
+                                        {% for size in item.product_size %}
+
+                                        <a href="#" class="">{{size}}</a>
+
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="group-button">
+                                <div class="yith-wcwl-add-to-wishlist">
+                                    <div class="yith-wcwl-add-button">
+                                        {% if item.wishlist_arr != null %}
+                                        <a href="javascript:void(0)" {% if item.wishlist_arr==item._id.toString() %}
+                                            class="wishlist_call wishlist_details_active" {% else %}
+                                            class="wishlist_call" {% endif %} data-id="{{item._id}}"
+                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add to
+                                            Wishlist</a>
+                                        {% else %}
+                                        <a href="javascript:void(0)" class="wishlist_call" data-id="{{item._id}}"
+                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add to
+                                            Wishlist</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="size-chart-wrapp">
+                                    <div class="btn-size-chart">
+                                        <!-- <a id="size_chart" href="/assets/images/size-chart.jpg" class="fancybox">View
+                                            Size Chart</a> -->
+                                    </div>
+                                </div>
+                                <div class="quantity-add-to-cart">
+                                    <!-- <div class="quantity">
+                                        <div class="control">
+                                            <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                            <input type="text" data-step="1" data-min="0" value="1" title="Qty"
+                                                class="input-qty qty" size="4">
+                                            <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                        </div>
+                                    </div> -->
+                                    {% if App %}
+                                        {% if questionData.length == 0 %}
+                                        <button class="single_add_to_cart_button button" id="{{item._id}}"
+                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}"
+                                            data-price="{{item.product_price}} ">Add to cart</button>
+                                        {% else %}
+
+                                        <button class="new_to_cart_button button" data-toggle="modal"
+                                            data-target="#largeModal"
+                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}"
+                                            id="{{item._id}}" data-price="{{item.product_price}} ">Add to cart</button>
+
+                                        {% endif %}
+                                    {% else %}
+                                        <button class="button"><a href="/user_login">Add to cart</a></button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="tab-details-product">
+                        <ul class="tab-link">
+                            <li class="active">
+                                <a data-toggle="tab" aria-expanded="true" href="#information">Specification </a>
+                            </li>
+                            <li class="">
+                                <a data-toggle="tab" aria-expanded="true" href="#spare-accessories">Spares </a>
+                            </li>
+
+                            <li class="">
+                                <a data-toggle="tab" aria-expanded="true" href="#product-accessories">Accessories </a>
+                            </li>
+                            <li class="">
+                                <a data-toggle="tab" aria-expanded="true" href="#product-descriptions">Documentation
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a data-toggle="tab" aria-expanded="true" href="#reviews">Reviews</a>
+                            </li>
+
+                        </ul>
+                        <div class="tab-container">
+                            <div id="product-descriptions" class="tab-panel mb-5 ">
+
+                                <div class="mb-5" style="width:100%;">
+                                    <hr>
+                                </div>
+                                {% for file in item.product_pdf %}
+
+                                <!-- {{file.heading}} -->
+
+                                {% if file.is_deleted == 0 %}
+
+
+
+                                <table class="table table-bordered text-center" style="width: 60%;margin-left: auto; margin-right: auto;">
+                                    <tr>
+                                        <td>{{file.heading}}</td>
+                                        
+                                        <td><a href="{{file.path}}" download="{{file.fileName}}" style="color: #7068eb;">
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                            {{file.fileName}}</a></td>
+
+                                        
+                                    </tr>
+                                </table>
+
+                                {% endif %}
+
+
+                                {% endfor %}
+
+                            </div>
+
+                            <div id="product-accessories" class="tab-panel ">
+                                {% if newAccessories.length > 0 %}
+                                <div class="container" id="containerNews">
+
+                                    <div onclick="slideRight()" class="Newsbtn"><i class="fa fa-angle-left"></i>
+                                    </div>
+
+                                    <div id="slider-container">
+
+                                        <div id="sliderNews">
+
+
+                                            {% for item in newAccessories %}
+                                            <div class="product-item style-1 slideNews">
+                                                <div class="product-inner equal-element" style="height: 400px;">
+                                                    <div class="product-top">
+                                                        <div class="flash">
+                                                            <span class="onnew">
+                                                                <span class="text">
+                                                                    new
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-thumb">
+
+                                                        {% if item.product_defaultImg.length > 0 %}
+
+                                                        {% for img in item.product_defaultImg %}
+
+                                                        <div class="thumb-inner">
+
+
+                                                            <a
+                                                                href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                                <img src="{{img.path}}" alt="img"
+                                                                    style="width:250px; height: 250px;">
+                                                            </a>
+
+
+
+
+                                                            <div class="thumb-group">
+                                                                <div class="yith-wcwl-add-to-wishlist">
+                                                                    <div class="yith-wcwl-add-button">
+                                                                        {% if item.wishlist_arr != null %}
+                                                                        <a href="javascript:void(0)" {% if
+                                                                            item.wishlist_arr==item._id.toString() %}
+                                                                            class="wishlist_call wishlist_active" {%
+                                                                            else %} class="wishlist_call" {% endif %}
+                                                                            data="{{item.wishlist_arr}}"
+                                                                            data-id="{{item._id}}"
+                                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                            to
+                                                                            Wishlist</a>
+                                                                        {% else %}
+                                                                        <a href="javascript:void(0)"
+                                                                            class="wishlist_call"
+                                                                            data="{{item.wishlist_arr}}"
+                                                                            data-id="{{item._id}}"
+                                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                            to
+                                                                            Wishlist</a>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+
+                                                                <a href="javascript:void(0)"
+                                                                    class="button quick-wiew-button popup-button-click  openModel"
+                                                                    data-id="{{item._id}}">Quick View</a>
+                                                                <div class="loop-form-add-to-cart">
+                                                                    <button class="single_add_to_cart_button button"
+                                                                        id="{{item._id}}"
+                                                                        data-price="{{item.product_price}}"
+                                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                        to
+                                                                        cart
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {% endfor %}
+
+
+                                                        {% else %}
+                                                        <div class="thumb-inner">
+
+
+
+                                                            <a
+                                                                href="/productDetails/{{item._id}}/{{item.product_name}}">
+
+                                                                <img src="/assets/images/no_image.jpg" alt="img">
+
+                                                            </a>
+
+
+                                                            <div class="thumb-group">
+                                                                <div class="yith-wcwl-add-to-wishlist">
+                                                                    <div class="yith-wcwl-add-button">
+                                                                        {% if item.wishlist_arr != null %}
+                                                                        <a href="javascript:void(0)" {% if
+                                                                            item.wishlist_arr==item._id.toString() %}
+                                                                            class="wishlist_call wishlist_active" {%
+                                                                            else %} class="wishlist_call" {% endif %}
+                                                                            data="{{item.wishlist_arr}}"
+                                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}"
+                                                                            data-id="{{item._id}}"
+                                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                            to
+                                                                            Wishlist</a>
+                                                                        {% else %}
+                                                                        <a href="javascript:void(0)"
+                                                                            class="wishlist_call"
+                                                                            data="{{item.wishlist_arr}}"
+                                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}"
+                                                                            data-id="{{item._id}}"
+                                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                            to
+                                                                            Wishlist</a>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                                <a href="javascript:void(0)"
+                                                                    class="button quick-wiew-button popup-button-click  openModel"
+                                                                    data-id="{{item._id}}">Quick View</a>
+                                                                <div class="loop-form-add-to-cart">
+                                                                    <button class="single_add_to_cart_button button"
+                                                                        id="{{item._id}}"
+                                                                        data-price="{{item.product_price}}"
+                                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                        to
+                                                                        cart
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <h5 class="product-name product_title">
+                                                            <a
+                                                                href="/productDetails/{{item._id}}/{{item.product_name}}">{{item.product_name}}</a>
+                                                        </h5>
+                                                        <div class="group-info">
+                                                            <div class="stars-rating">
+                                                                <div class="star-ratingD">
+                                                                    {% if item.product_rating_num == null%}
+                                                                    <span class="starD-0"></span>
+
+                                                                    {% else %}
+
+                                                                    <span
+                                                                        class="starD-{{item.product_rating_num}}"></span>
+
+                                                                    {% endif %}
+                                                                </div>
+                                                                <div class="count-starD">
+                                                                    {% if item.product_rating != 0 %}
+                                                                    {{item.product_rating}} {%
+                                                                    endif %}
+                                                                </div>
+                                                            </div>
+                                                            <div class="price">
+                                                                {% if item.is_discount == "1" and item.discount_start ==
+                                                                "true" %}
+
+
+                                                                <del>
+                                                                    &#8377;<span class="main_priceacc"
+                                                                        data-main_priceacc="{{item.product_price}}"></span>
+                                                                </del>
+                                                                <ins>
+                                                                    &#8377;<span class="dis_priceacc"
+                                                                        data-dis_priceacc="{{item.discount_price}}"></span>
+                                                                    <span class="product_stock_quantity"
+                                                                        data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                                        style="color: red;"></span>
+                                                                </ins>
+
+                                                                {% else %}
+
+
+                                                                <ins>
+
+                                                                    &#8377;<span class="main_price"
+                                                                        data-main_price="{{item.product_price}}"></span>
+                                                                    <span class="product_stock_quantity"
+                                                                        data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                                        style="color: red;"></span>
+                                                                </ins>
+
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% endfor %}
+
+
+                                        </div>
+
+                                    </div>
+                                    <div onclick="slideLeft()" class="Newsbtn "><i class="fa fa-angle-right"></i></div>
+                                </div>
+
+                                {% endif %}
+
+                                <div class="clear-fix"></div>
+
+
+                            </div>
+                            <div id="information" class="tab-panel active" style="padding-left: 20%;
+                            padding-right: 20%;">
+                                <table class="table table-bordered text-center">
+                                   
+
+                                    {% if item.attribute %}
+                                    {% for itemm in item.attribute %}
+                                    <tr>
+                                        <td style="text-align: start;">{{itemm.name}}</td>
+                                        {% if itemm.val %}
+                                        <td style="text-align: start;">{{itemm.val}}</td>
+                                        {% else %}
+                                        <td> - - - -</td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                </table>
+                            </div>
+                            <div id="reviews" class="tab-panel">
+                                <div class="reviews-tab">
+                                    <div class="comments">
+                                        {% if reviewData.length %}
+                                        <h2 class="reviews-title">
+                                            {{reviewData.length}} review for
+                                            <span>{{item.product_name}}</span>
+                                        </h2>
+                                        {% for item in reviewData%}
+                                        <ol class="commentlist">
+                                            <li class="conment">
+                                                <div class="conment-container">
+                                                    <a href="#" class="avatar">
+                                                        <!-- <img src="{{item.customer_pic}}" alt="img" style="border-radius: 50%;
+                                                        height: 60px;
+                                                        width: 59px;"> -->
+
+                                                        {% if item.customer_img %}
+                                                        <img src="/customer_profile/{{item.customer_img}}" alt="img"
+                                                            style="border-radius: 50%;
+                                                        height: 60px;
+                                                        width: 59px;">
+                                                        {% else %}
+                                                        <img src="/assets/images/no_image.jpg" alt="img" style="border-radius: 50%;
+                                                        height: 60px;
+                                                        width: 59px;">
+                                                        {% endif %}
+                                                    </a>
+                                                    <div class="comment-text">
+                                                        <div class="stars-rating">
+                                                            <div class="star-ratingD">
+                                                                <span class="starD-{{item.rating}}"></span>
+                                                            </div>
+                                                            <div class="count-starD">
+                                                                {% if item.rating != 0 %} ({{item.rating}}) {%
+                                                                endif
+                                                                %}
+                                                            </div>
+                                                        </div>
+                                                        <p class="meta">
+                                                            <strong class="author">{{item.customer_name}}</strong>
+                                                            <span>-</span>
+                                                            <span class="time">{{item.review_date}}</span>
+                                                        </p>
+                                                        <div class="description">
+                                                            <p>{{item.comment}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                        {% endfor %}
+                                        {% else %}
+
+                                        {% endif %}
+                                    </div>
+                                    <div class="review_form_wrapper">
+                                        <div class="review_form">
+                                            <div class="comment-respond">
+                                                <span class="comment-reply-title">Add a review </span>
+                                                <!-- <form class="comment-form-review">
+                                                    <p class="comment-notes">
+                                                        <span class="email-notes">Your email address will not be
+                                                            published.</span>
+                                                        Required fields are marked
+                                                        <span class="required">*</span>
+                                                    </p>
+                                                    <div class="comment-form-rating">
+                                                        <label>Your rating</label>
+                                                        <div class="star-rating">
+                                                            <input type="radio" id="5-stars" name="rating" value="5" />
+                                                            <label for="5-stars" class="star">&#9733;</label>
+                                                            <input type="radio" id="4-stars" name="rating" value="4" />
+                                                            <label for="4-stars" class="star">&#9733;</label>
+                                                            <input type="radio" id="3-stars" name="rating" value="3" />
+                                                            <label for="3-stars" class="star">&#9733;</label>
+                                                            <input type="radio" id="2-stars" name="rating" value="2" />
+                                                            <label for="2-stars" class="star">&#9733;</label>
+                                                            <input type="radio" id="1-star" name="rating" value="1" />
+                                                            <label for="1-star" class="star">&#9733;</label>
+                                                          </div>
+                           condition                         </div>
+                                                    <p class="comment-form-comment">
+                                                        <label>
+                                                            Your review
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <textarea title="review" id="comment" name="comment" cols="45"
+                                                            rows="8"></textarea>
+                                                    </p>
+                                                    <p class="comment-form-author">
+                                                        <label>
+                                                            Name
+                                                            <span class="">*</span>
+                                                        </label>
+                                                        <input title="author" id="author" name="author" type="text"
+                                                            value="">
+                                                    </p>
+                                                    <p class="comment-form-email">
+                                                        <label>
+                                                            Email
+                                                            <span class="">*</span>
+                                                        </label>
+                                                        <input title="email" id="email" name="email" type="email"
+                                                            value="">
+                                                    </p>
+                                                    <p class="form-submit">
+                                                        <input name="submit" type="submit" id="submit" class="submit"
+                                                            value="Submit">
+                                                    </p>
+                                                </form> -->
+                                                <form class="comment-form-review">
+                                                    <p class="comment-notes">
+                                                        <span class="email-notes">Your email address will not be
+                                                            published.</span>
+                                                        Required fields are marked
+                                                        <span class="required">*</span>
+                                                    </p>
+                                                    <input type="hidden" id="product_id" value="{{productid}}">
+                                                    <input type="hidden" id="product_name" value="{{product_name}}">
+
+                                                    <div class="comment-form-rating">
+                                                        <label>Your rating</label>
+                                                        <div class="star-rating">
+                                                            <input type="radio" id="5-stars" name="rating" value="5" />
+                                                            <label for="5-stars" class="star">&#9733;</label>
+                                                            <input type="radio" id="4-stars" name="rating" value="4" />
+                                                            <label for="4-stars" class="star">&#9733;</label>
+                                                            <input type="radio" id="3-stars" name="rating" value="3" />
+                                                            <label for="3-stars" class="star">&#9733;</label>
+                                                            <input type="radio" id="2-stars" name="rating" value="2" />
+                                                            <label for="2-stars" class="star">&#9733;</label>
+                                                            <input type="radio" id="1-star" name="rating" value="1" />
+                                                            <label for="1-star" class="star">&#9733;</label>
+                                                        </div>
+                                                    </div>
+                                                    <p class="comment-form-comment">
+                                                        <label>
+                                                            Your review
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <textarea title="review" id="comment" name="comment" cols="45"
+                                                            rows="4"></textarea>
+                                                    </p>
+                                                    <!-- <p class="comment-form-author">
+                                                        <label>
+                                                            Name
+                                                            <span class="">*</span>
+                                                        </label>
+                                                        <input title="author" id="author" name="author" type="text"
+                                                            value="">
+                                                    </p>
+                                                    <p class="comment-form-email">
+                                                        <label>
+                                                            Email
+                                                            <span class="">*</span>
+                                                        </label>
+                                                        <input title="email" id="email" name="email" type="email"
+                                                            value="">
+                                                    </p> -->
+                                                    <p class="form-submit">
+                                                        <input name="submit" type="submit" id="submit_review"
+                                                            class="submit" value="Submit">
+                                                    </p>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="spare-accessories" class="tab-panel ">
+                                {% if newSapares.length > 0 %}
+                                <div class="container" id="containerNews1">
+
+                                    <div onclick="slideRightsp()" class="Newsbtn1"><i class="fa fa-angle-left"></i>
+                                    </div>
+
+                                    <div id="slider-container1">
+
+                                        <div id="sliderNews1">
+
+                                            {% for item in newSapares %}
+                                            <div class="product-item style-1 slideNews1">
+                                                <div class="product-inner equal-element" style="height: 400px;">
+                                                    <div class="product-top">
+                                                        <div class="flash">
+                                                            <span class="onnew">
+                                                                <span class="text">
+                                                                    new
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-thumb">
+
+                                                        {% if item.product_defaultImg.length > 0 %}
+
+                                                        {% for img in item.product_defaultImg %}
+
+                                                        <div class="thumb-inner">
+
+
+                                                            <a
+                                                                href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                                <img src="{{img.path}}" alt="img"
+                                                                    style="width:250px; height: 250px;">
+                                                            </a>
+
+
+
+
+                                                            <div class="thumb-group">
+                                                                <div class="yith-wcwl-add-to-wishlist">
+                                                                    <div class="yith-wcwl-add-button">
+                                                                        {% if item.wishlist_arr != null %}
+                                                                        <a href="javascript:void(0)" {% if
+                                                                            item.wishlist_arr==item._id.toString() %}
+                                                                            class="wishlist_call wishlist_active" {%
+                                                                            else %} class="wishlist_call" {% endif %}
+                                                                            data="{{item.wishlist_arr}}"
+                                                                            data-id="{{item._id}}"
+                                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                            to
+                                                                            Wishlist</a>
+                                                                        {% else %}
+                                                                        <a href="javascript:void(0)"
+                                                                            class="wishlist_call"
+                                                                            data="{{item.wishlist_arr}}"
+                                                                            data-id="{{item._id}}"
+                                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                            to
+                                                                            Wishlist</a>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+
+                                                                <a href="javascript:void(0)"
+                                                                    class="button quick-wiew-button popup-button-click  openModel"
+                                                                    data-id="{{item._id}}">Quick View</a>
+                                                                <div class="loop-form-add-to-cart">
+                                                                    <button class="single_add_to_cart_button button"
+                                                                        id="{{item._id}}"
+                                                                        data-price="{{item.product_price}}"
+                                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                        to
+                                                                        cart
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {% endfor %}
+
+
+                                                        {% else %}
+                                                        <div class="thumb-inner">
+
+
+
+                                                            <a
+                                                                href="/productDetails/{{item._id}}/{{item.product_name}}">
+
+                                                                <img src="/assets/images/no_image.jpg" alt="img">
+
+                                                            </a>
+
+
+                                                            <div class="thumb-group">
+                                                                <div class="yith-wcwl-add-to-wishlist">
+                                                                    <div class="yith-wcwl-add-button">
+                                                                        {% if item.wishlist_arr != null %}
+                                                                        <a href="javascript:void(0)" {% if
+                                                                            item.wishlist_arr==item._id.toString() %}
+                                                                            class="wishlist_call wishlist_active" {%
+                                                                            else %} class="wishlist_call" {% endif %}
+                                                                            data="{{item.wishlist_arr}}"
+                                                                            data-id="{{item._id}}"
+                                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                            to
+                                                                            Wishlist</a>
+                                                                        {% else %}
+                                                                        <a href="javascript:void(0)"
+                                                                            class="wishlist_call"
+                                                                            data="{{item.wishlist_arr}}"
+                                                                            data-id="{{item._id}}"
+                                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                            to
+                                                                            Wishlist</a>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                                <a href="javascript:void(0)"
+                                                                    class="button quick-wiew-button popup-button-click  openModel"
+                                                                    data-id="{{item._id}}">Quick View</a>
+                                                                <div class="loop-form-add-to-cart">
+                                                                    <button class="single_add_to_cart_button button"
+                                                                        id="{{item._id}}"
+                                                                        data-price="{{item.product_price}}"
+                                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                        to
+                                                                        cart
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <h5 class="product-name product_title">
+                                                            <a
+                                                                href="/productDetails/{{item._id}}/{{item.product_name}}">{{item.product_name}}</a>
+                                                        </h5>
+                                                        <div class="group-info">
+                                                            <div class="stars-rating">
+                                                                <div class="star-ratingD">
+                                                                    {% if item.product_rating_num == null%}
+                                                                    <span class="starD-0"></span>
+
+                                                                    {% else %}
+
+                                                                    <span
+                                                                        class="starD-{{item.product_rating_num}}"></span>
+
+                                                                    {% endif %}
+                                                                </div>
+                                                                <div class="count-starD">
+                                                                    {% if item.product_rating != 0 %}
+                                                                    {{item.product_rating}} {%
+                                                                    endif %}
+                                                                </div>
+                                                            </div>
+                                                            <div class="price">
+                                                                {% if item.is_discount == "1" and item.discount_start ==
+                                                                "true" %}
+
+
+                                                                <del>
+                                                                    &#8377;<span class="main_priceacc"
+                                                                        data-main_priceacc="{{item.product_price}}"></span>
+                                                                </del>
+                                                                <ins>
+                                                                    &#8377;<span class="dis_priceacc"
+                                                                        data-dis_priceacc="{{item.discount_price}}"></span>
+                                                                    <span class="product_stock_quantity"
+                                                                        data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                                        style="color: red;"></span>
+                                                                </ins>
+
+                                                                {% else %}
+
+
+                                                                <ins>
+
+                                                                    &#8377;<span class="main_price"
+                                                                        data-main_price="{{item.product_price}}"></span>
+                                                                    <span class="product_stock_quantity"
+                                                                        data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                                        style="color: red;"></span>
+                                                                </ins>
+
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% endfor %}
+
+
+                                        </div>
+
+                                    </div>
+                                    <div onclick="slideLeftsp()" class="Newsbtn1 "><i class="fa fa-angle-right"></i>
+                                    </div>
+                                </div>
+
+                                {% endif %}
+
+                                <div class="clear-fix"></div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: left;"></div>
+                    <div class="related products product-grid">
+                        <h2 class="product-grid-title">You may also like</h2>
+                        <div class="product-item style-1">
+
+                            {% if categoryRelatedData.length > 0 %}
+
+                            <div class="container" id="containerRelated">
+
+                                <div onclick="slideRightRe()" class="Relatebtn"><i class="fa fa-angle-left"></i>
+                                </div>
+
+                                <div id="slider-containerRelated">
+
+                                    <div id="sliderRelated">
+
+
+                                        {% for item in categoryRelatedData%}
+                                        <div class="product-item style-1 slideRelated">
+                                            <div class="product-inner equal-element" style="height: 400px;">
+                                                <div class="product-top">
+                                                    <div class="flash">
+                                                        <span class="onnew">
+                                                            <span class="text">
+                                                                new
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="product-thumb">
+
+                                                    {% if item.product_defaultImg.length > 0 %}
+
+                                                    {% for img in item.product_defaultImg %}
+
+                                                    <div class="thumb-inner">
+
+
+                                                        <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                            <img src="{{img.path}}" alt="img"
+                                                                style="width:250px; height: 250px;">
+                                                        </a>
+
+
+
+
+                                                        <div class="thumb-group">
+                                                            <div class="yith-wcwl-add-to-wishlist">
+                                                                <div class="yith-wcwl-add-button">
+
+
+
+                                                                    {% if item.wishlist_arr != null %}
+
+                                                                    <a href="javascript:void(0)" {% if
+                                                                        item.wishlist_arr==item._id.toString() %}
+                                                                        class="wishlist_call wishlist_active" {% else %}
+                                                                        class="wishlist_call" {% endif %}
+                                                                        data="{{item.wishlist_arr}}"
+                                                                        data-id="{{item._id}}"
+                                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                        to
+                                                                        Wishlist</a>
+                                                                    {% else %}
+                                                                    <a href="javascript:void(0)" class="wishlist_call"
+                                                                        data="{{item.wishlist_arr}}"
+                                                                        data-id="{{item._id}}"
+                                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                        to
+                                                                        Wishlist</a>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+
+                                                            <a href="javascript:void(0)"
+                                                                class="button quick-wiew-button popup-button-click  openModel"
+                                                                data-id="{{item._id}}">Quick View</a>
+                                                            <div class="loop-form-add-to-cart">
+                                                                <button class="single_add_to_cart_button button"
+                                                                    id="{{item._id}}"
+                                                                    data-price="{{item.product_price}}"
+                                                                    data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                    to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {% endfor %}
+
+
+                                                    {% else %}
+                                                    <div class="thumb-inner">
+
+
+
+                                                        <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+
+                                                            <img src="/assets/images/no_image.jpg" alt="img"
+                                                                style="width:250px; height: 250px;">
+
+                                                        </a>
+
+
+                                                        <div class="thumb-group">
+                                                            <div class="yith-wcwl-add-to-wishlist">
+                                                                <div class="yith-wcwl-add-button">
+
+
+                                                                    {% if item.wishlist_arr != null %}
+
+                                                                    <a href="javascript:void(0)" {% if
+                                                                        item.wishlist_arr==item._id.toString() %}
+                                                                        class="wishlist_call wishlist_active" {% else %}
+                                                                        class="wishlist_call" {% endif %}
+                                                                        data="{{item.wishlist_arr}}"
+                                                                        data-id="{{item._id}}"
+                                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                        to
+                                                                        Wishlist</a>
+                                                                    {% else %}
+                                                                    <a href="javascript:void(0)" class="wishlist_call"
+                                                                        data="{{item.wishlist_arr}}"
+                                                                        data-id="{{item._id}}"
+                                                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                        to
+                                                                        Wishlist</a>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            <a href="javascript:void(0)"
+                                                                class="button quick-wiew-button popup-button-click  openModel"
+                                                                data-id="{{item._id}}">Quick View</a>
+                                                            <div class="loop-form-add-to-cart">
+                                                                <button class="single_add_to_cart_button button"
+                                                                    id="{{item._id}}"
+                                                                    data-price="{{item.product_price}}"
+                                                                    data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                    to
+                                                                    cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {% endif %}
+                                                </div>
+                                                <div class="product-info">
+                                                    <h5 class="product-name product_title">
+                                                        <a
+                                                            href="/productDetails/{{item._id}}/{{item.product_name}}">{{item.product_name}}</a>
+                                                    </h5>
+                                                    <div class="group-info">
+                                                        <div class="stars-rating">
+                                                            <div class="star-ratingD">
+                                                                {% if item.product_rating_num == null%}
+                                                                <span class="starD-0"></span>
+
+                                                                {% else %}
+
+                                                                <span class="starD-{{item.product_rating_num}}"></span>
+
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="count-starD">
+                                                                {% if item.product_rating != 0 %}
+                                                                {{item.product_rating}} {%
+                                                                endif %}
+                                                            </div>
+                                                        </div>
+                                                        <div class="price">
+                                                            {% if item.is_discount == "1" and item.discount_start ==
+                                                            "true" %}
+
+
+                                                            <del>
+                                                                &#8377;<span class="main_priceacc"
+                                                                    data-main_priceacc="{{item.product_price}}"></span>
+                                                            </del>
+                                                            <ins>
+                                                                &#8377;<span class="dis_priceacc"
+                                                                    data-dis_priceacc="{{item.discount_price}}"></span>
+                                                                <span class="product_stock_quantity"
+                                                                    data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                                    style="color: red;"></span>
+                                                            </ins>
+
+                                                            {% else %}
+
+
+                                                            <ins>
+
+                                                                &#8377;<span class="main_priceacc"
+                                                                    data-main_priceacc="{{item.product_price}}"></span>
+                                                                <span class="product_stock_quantity"
+                                                                    data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                                    style="color: red;"></span>
+                                                            </ins>
+
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div onclick="slideLeftRe()" class="Relatebtn "><i class="fa fa-angle-right"></i></div>
+
+                            {% else %}
+
+                            <div class="container" id="containerRelated">
+
+                                <div onclick="slideRightRe()" class="Relatebtn"><i class="fa fa-angle-left"></i>
+                                </div>
+
+                                <div id="slider-containerRelated">
+
+                                    <div id="sliderRelated">
+
+
+                                        {% for item in relateProduct%}
+
+                                        {% if (loop.index <= 6) %} <div class="product-item style-1 slideRelated">
+                                            <div class="product-inner equal-element" style="height: 400px;">
+                                                <div class="product-top">
+                                                    <div class="flash">
+                                                        <span class="onnew">
+                                                            <span class="text">
+                                                                new
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="product-thumb">
+
+                                                    {% if item.product_defaultImg.length > 0 %}
+
+                                                    {% for img in item.product_defaultImg %}
+
+                                                    <div class="thumb-inner">
+
+
+                                                        <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                            <img src="{{img.path}}" alt="img"
+                                                                style="width:250px; height: 250px;">
+                                                        </a>
+
+
+
+
+                                                        <div class="thumb-group">
+                                                            <div class="yith-wcwl-add-to-wishlist">
+                                                                <div class="yith-wcwl-add-button">
+
+
+
+                                                                    {% if item.wishlist_arr != null %}
+
+                                                                    <a href="javascript:void(0)" {% if
+                                                                        item.wishlist_arr==item._id.toString() %}
+                                                                        class="wishlist_call wishlist_active" {% else %}
+                                                                        class="wishlist_call" {% endif %}
+                                                                        data="{{item.wishlist_arr}}"
+                                                                        data-id="{{item._id}}">Add to
+                                                                        Wishlist</a>
+                                                                    {% else %}
+                                                                    <a href="javascript:void(0)" class="wishlist_call"
+                                                                        data="{{item.wishlist_arr}}"
+                                                                        data-id="{{item._id}}">Add to
+                                                                        Wishlist</a>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+
+                                                            <a href="javascript:void(0)"
+                                                                class="button quick-wiew-button popup-button-click  openModel"
+                                                                data-id="{{item._id}}">Quick View</a>
+                                                            <div class="loop-form-add-to-cart">
+                                                                <button class="single_add_to_cart_button button"
+                                                                    id="{{item._id}}"
+                                                                    data-price="{{item.product_price}}">Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {% endfor %}
+
+
+                                                    {% else %}
+                                                    <div class="thumb-inner">
+
+
+
+                                                        <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+
+                                                            <img src="/assets/images/no_image.jpg" alt="img"
+                                                                style="width:250px; height: 250px;">
+
+                                                        </a>
+
+
+                                                        <div class="thumb-group">
+                                                            <div class="yith-wcwl-add-to-wishlist">
+                                                                <div class="yith-wcwl-add-button">
+
+
+                                                                    {% if item.wishlist_arr != null %}
+
+                                                                    <a href="javascript:void(0)" {% if
+                                                                        item.wishlist_arr==item._id.toString() %}
+                                                                        class="wishlist_call wishlist_active" {% else %}
+                                                                        class="wishlist_call" {% endif %}
+                                                                        data="{{item.wishlist_arr}}"
+                                                                        data-id="{{item._id}}">Add to
+                                                                        Wishlist</a>
+                                                                    {% else %}
+                                                                    <a href="javascript:void(0)" class="wishlist_call"
+                                                                        data="{{item.wishlist_arr}}"
+                                                                        data-id="{{item._id}}">Add to
+                                                                        Wishlist</a>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            <a href="javascript:void(0)"
+                                                                class="button quick-wiew-button popup-button-click  openModel"
+                                                                data-id="{{item._id}}">Quick View</a>
+                                                            <div class="loop-form-add-to-cart">
+                                                                <button class="single_add_to_cart_button button"
+                                                                    id="{{item._id}}"
+                                                                    data-price="{{item.product_price}}">Add
+                                                                    to
+                                                                    cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {% endif %}
+                                                </div>
+                                                <div class="product-info">
+                                                    <h5 class="product-name product_title">
+                                                        <a
+                                                            href="/productDetails/{{item._id}}/{{item.product_name}}">{{item.product_name}}</a>
+                                                    </h5>
+                                                    <div class="group-info">
+                                                        <div class="stars-rating">
+                                                            <div class="star-ratingD">
+                                                                {% if item.product_rating_num == null%}
+                                                                <span class="starD-0"></span>
+
+                                                                {% else %}
+
+                                                                <span class="starD-{{item.product_rating_num}}"></span>
+
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="count-starD">
+                                                                {% if item.product_rating != 0 %}
+                                                                {{item.product_rating}} {%
+                                                                endif %}
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="price">
+                                                            {% if item.is_discount == "1" and item.discount_start ==
+                                                            "true" %}
+
+
+                                                            <del>
+                                                                &#8377;<span class="main_priceacc"
+                                                                    data-main_priceacc="{{item.product_price}}"></span>
+                                                            </del>
+                                                            <ins>
+                                                                &#8377;<span class="dis_priceacc"
+                                                                    data-dis_priceacc="{{item.discount_price}}"></span>
+                                                                <span class="product_stock_quantity"
+                                                                    data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                                    style="color: red;"></span>
+                                                            </ins>
+
+                                                            {% else %}
+
+
+                                                            <ins>
+
+                                                                &#8377;<span class="main_priceacc"
+                                                                    data-main_priceacc="{{item.product_price}}"></span>
+                                                                <span class="product_stock_quantity"
+                                                                    data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                                    style="color: red;"></span>
+                                                            </ins>
+
+                                                            {% endif %}
+                                                        </div>
+
+
+                                                        <!-- <div class="price">
+                                                            {% if item.is_discount == "1" and item.discount_start ==
+                                                            "true" %}
+
+                                                            <del>
+                                                                &#8377;<span class="main_priceacc"
+                                                                    data-main_price="{{item.product_price}}"></span>
+                                                            </del>
+                                                            <ins>
+                                                                &#8377;<span class="dis_priceacc"
+                                                                    data-dis_price="{{item.discount_price}}"></span>
+                                                                    <span class="product_stock_quantity"
+                                                                    data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                                    style="color: red;"></span>
+                                                            </ins>
+
+                                                            {% else %}
+
+
+                                                            <ins>
+
+                                                                &#8377;<span class="main_priceacc"
+                                                                    data-main_price="{{item.product_price}}"></span>
+                                                                    <span class="product_stock_quantity"
+                                                                    data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                                    style="color: red;"></span>
+                                                            </ins>
+
+                                                            {% endif %}
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+
+                                    {% endif %}
+
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div onclick="slideLeftRe()" class="Relatebtn "><i class="fa fa-angle-right"></i></div>
+
+                        {% endif %}
+
+
+
+                    </div>
+
+
+
+
+                    <div class="clear-fix"></div>
+
+
+                    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">QUESTIONNAIRE FORM</h4>
+                                    <button type="button" class="close largeModal" data-dismiss="modal"
+                                        data-product_stock_quantity_check="{{item.product_stock_quantity}}"
+                                        data-priceid="{{item._id}}" data-price="{{item.product_price}}"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- <h3>Modal Body</h3> -->
+                                    <div class="login-item">
+                                        <form class="login" id="question_form" method="post">
+                                            <input type="hidden" name="product_id" value="{{productid}}">
+                                            <input type="hidden" name="vendor_id" value="{{vendor_id}}">
+                                            {% if questionData %}
+                                            {% for itemq in questionData %}
+                                            {% if itemq.type == "text" %}
+                                            <p class="form-row form-row-wide">
+                                                <label class="text">{{itemq.name}}</label>
+                                                <input title="username" name="{{itemq.name}}" type="text"
+                                                    data-layer='layer1' class="input-text popupDiv" value="">
+                                            </p>
+
+                                            {% elif itemq.type == "text-area" %}
+                                            <p class="form-row form-row-wide">
+                                                <label class="text">{{itemq.name}}</label>
+                                                <textarea class="form-control popupDiv" name="{{itemq.name}}"
+                                                    id="introduction" data-layer='layer1' rows="9" style="resize:none;"
+                                                    value=""></textarea>
+                                            </p>
+
+                                            {% elif itemq.type == "select" %}
+                                            <p class="form-row form-row-wide">
+                                                <label class="text">{{itemq.name}}</label>
+                                                <select id="inputtype" name="{{itemq.name}}" data-layer='layer1'
+                                                    class="popupDiv">
+                                                    <option value="" disabled selected>Please Select</option>
+                                                    {% for item_op in itemq.option %}
+                                                    <option value="{{item_op.value}}">{{item_op.value}}
+                                                    </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </p>
+
+                                            {% elif itemq.type == "checkbox" %}
+                                            <p class="form-row form-row-wide">
+                                                <label class="text">{{itemq.name}}</label>
+                                                <input type="radio" id="{{itemq.checkbox_name_one}}" data-layer='layer1'
+                                                    class="default_item popupDiv" name="{{itemq.name}}"
+                                                    value="{{itemq.checkbox_name_one}}">{{itemq.checkbox_name_one}}
+                                                <input type="radio" id="{{itemq.checkbox_name_two}}" data-layer='layer1'
+                                                    class="default_item popupDiv" name="{{itemq.name}}"
+                                                    value="{{itemq.checkbox_name_two}}">{{itemq.checkbox_name_two}}
+                                            </p>
+
+                                            {% else %}
+                                            <p class="form-row form-row-wide">
+                                                <label class="text">{{itemq.name}}</label>
+                                                <input title="username" name="{{itemq.name}}" type="text"
+                                                    data-layer='layer1' class="input-text popupDiv" value="">
+                                            </p>
+                                            {% endif %}
+
+                                            {% endfor %}
+                                            {% endif %}
+                                            <p class="form-row">
+                                                <input type="button" id="question_form_btn"
+                                                    data-product_stock_quantity_check="{{item.product_stock_quantity}}"
+                                                    data-priceid="{{item._id}}" data-price="{{item.product_price}}"
+                                                    class="button-submit question_form_btn" value="Save">
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- <div class="modal-footer"> -->
+                                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button> -->
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% endif %}
+</div>
+</div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script>
+    $(document).ready(function () {
+
+        let product_main = $("#product_main").attr('data-product_main');
+        let product_dis = $("#product_dis").attr('data-product_dis');
+
+        if (product_main != undefined) {
+            product_main = (product_main).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+        }
+
+        if (product_dis != undefined) {
+            product_dis = (product_dis).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+        }
+        $("#product_main").text(product_main)
+        $("#product_dis").text(product_dis)
+
+
+
+
+        $(".main_price").each(function () {
+            let main_price = $(this).attr('data-main_price');
+            main_price = (main_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+            console.log("main price ---->>>", main_price);
+
+
+            $(this).text(main_price)
+
+        });
+
+
+
+
+
+        $(".product_stock_quantity1").each(function () {
+            let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+            var isnan = isNaN(product_stock_quantity);
+
+            if (isnan == false) {
+                if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                    $(this).text("(only " + product_stock_quantity + " left)");
+                } else {
+
+                    if (parseInt(product_stock_quantity) >= 6) {
+
+
+                        let inStock = $("#inStock").val()
+
+                        $(this).text(inStock);
+                        $(this).attr('style', 'color:black');
+                    } else {
+                        if (parseInt(product_stock_quantity) == 0) {
+                            $(this).text("out of stock");
+                        }
+
+                    }
+                }
+            }
+        });
+
+
+
+        $(".new_to_cart_button").each(function () {
+            let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+            var isnan = isNaN(product_stock_quantity_check);
+            if (isnan == false) {
+                if (parseInt(product_stock_quantity_check) == 0) {
+                    $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                    $(this).attr("data-toggle", "");
+                    $(this).attr("data-target", "");
+
+                }
+            }
+        });
+
+
+        $(".wishlist_call").each(function () {
+            let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+            var isnan = isNaN(product_stock_quantity_check);
+            if (isnan == false) {
+                if (parseInt(product_stock_quantity_check) == 0) {
+                    $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                }
+            }
+        });
+
+        $(".wishlist_fun").each(function () {
+            let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+            var isnan = isNaN(product_stock_quantity_check);
+            if (isnan == false) {
+                if (parseInt(product_stock_quantity_check) == 0) {
+                    $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+        $(".dis_price").each(function () {
+            let dis_price = $(this).attr('data-dis_price');
+            dis_price = (dis_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+            console.log("discount price ---->>>", dis_price);
+
+            $(this).text(dis_price)
+
+
+        });
+
+        $(".main_priceacc").each(function () {
+            let main_price = $(this).attr('data-main_priceacc');
+            main_price = (main_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+            console.log("main price ---->>>", main_price);
+
+
+            $(this).text(main_price)
+
+
+
+        });
+
+        $(".product_stock_quantity").each(function () {
+            let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+            var isnan = isNaN(product_stock_quantity);
+            if (isnan == false) {
+                if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                    $(this).text("(only " + product_stock_quantity + " left)");
+                } else {
+                    if (parseInt(product_stock_quantity) == 0) {
+                        $(this).text("out of stock");
+                    }
+                }
+            }
+        });
+
+
+        $(".dis_priceacc").each(function () {
+            let dis_price = $(this).attr('data-dis_priceacc');
+            dis_price = (dis_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+            console.log("discount price ---->>>", dis_price);
+
+            $(this).text(dis_price)
+
+
+        });
+
+
+        let user_login = $('#user_login').attr('value');
+        if (user_login != "user") {
+            $('.yith-wcwl-add-to-wishlist').hide();
+            $('.review_form_wrapper').hide();
+            $('.loop-form-add-to-cart').css({ 'display': 'none' });
+            $('.single_add_to_cart_button').css({ 'display': 'none' });
+            $('.review_form_wrapper').css({ 'display': 'none' });
+        }
+        var host = window.location.origin;
+        $(".wishlist_call").on("click", function () {
+            var id = $(this).attr('data-id');
+            $.ajax({
+                type: 'POST',
+                url: host + "/wishlist_call",
+                data: { id: id },
+                success: function (resultData) {
+                    // alert(resultData)
+                    console.log(resultData);
+                    if (resultData == 'success') {
+                        $('a.wishlist_call[data-id = ' + id + ']').addClass('wishlist_active');
+                    } else {
+                        $('a.wishlist_call[data-id = ' + id + ']').removeClass('wishlist_active');
+                        // alert("Something went wrong")
+                    }
+                    // alert("Save Complete")
+                }
+            });
+        });
+
+
+        $('.largeModal').on("click", function () {
+
+
+            var id = $(this).attr('data-priceid');
+            var price = $(this).attr('data-price');
+
+            var product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+            if (parseInt(product_stock_quantity_check) != 0) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: host + "/addtocart_get",
+                    data: { id: id, product_price: price },
+                    success: function (resultData) {
+                        // alert(resultData)
+                        console.log(resultData);
+                        if (resultData == "success") {
+                            console.log("sdasd");
+                            setTimeout(function () {
+                                swal({
+                                    title: "Success!",
+                                    text: "Add to cart Sucessfully.",
+                                    type: "success"
+                                }, function () {
+                                    // window.location = "/contact";
+                                    location.reload();
+                                });
+                            }, 500);
+                        } else {
+                            console.log("erere");
+
+                            setTimeout(function () {
+                                swal({
+                                    title: "Warning!",
+                                    text: "Sorry, We don't have enough stock on hand for the quantity you selected, Please select a lower quantity.",
+                                    type: "warning"
+                                }, function () {
+                                    // window.location = "/contact";
+                                    location.reload();
+                                });
+                            }, 500);
+
+                            // alert("Something went wrong")
+                        }
+                        // alert("Save Complete")
+                    }
+                });
+            }
+        })
+
+        var formDatalocal = [];
+        $("#question_form_btn").on("click", function () {
+
+            // $('#question_form').each(function(){
+            $('.popupDiv[data-layer]').each(function () {
+                if (this.type == "radio") {
+                    var x = document.getElementById(this.id).checked;
+                    if (x == true) {
+                        formDatalocal.push({ name: this.name, value: this.value });
+                    }
+                } else {
+                    formDatalocal.push({ name: this.name, value: this.value });
+                }
+            });
+
+
+            // var id = $('.single_add_to_cart_button').attr('id');
+            // var price = $('.single_add_to_cart_button').attr('id');
+
+            var id = $(this).attr('data-priceid');
+            var price = $(this).attr('data-price');
+
+            // $('.largeModal').attr('data-priceid',id);
+            // $('.largeModal').attr('data-price',price);
+
+            var product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+            if (parseInt(product_stock_quantity_check) != 0) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: host + "/addtocart_get",
+                    data: { id: id, product_price: price, question_form: formDatalocal },
+                    success: function (resultData) {
+                        // alert(resultData)
+                        console.log(resultData);
+                        if (resultData == "success") {
+                            console.log("sdasd");
+                            $('#largeModal').modal('toggle');
+                            setTimeout(function () {
+                                swal({
+                                    title: "Success!",
+                                    text: "Add to cart Sucessfully.",
+                                    type: "success"
+                                }, function () {
+                                    // window.location = "/contact";
+                                    location.reload();
+                                });
+                            }, 500);
+                        } else {
+                            setTimeout(function () {
+                                swal({
+                                    title: "Warning!",
+                                    text: "Sorry, We don't have enough stock on hand for the quantity you selected, Please select a lower quantity.",
+                                    type: "warning"
+                                }, function () {
+                                    // window.location = "/contact";
+                                    location.reload();
+                                });
+                            }, 500);
+                            // alert("Something went wrong")
+                        }
+                        // alert("Save Complete")
+                    }
+                });
+            }
+        });
+
+        var host = window.location.origin;
+        $(document).on('click', '.single_add_to_cart_button', function () {
+            // alert(9)
+            var id = $(this).attr('id');
+            var price = $(this).attr('data-price');
+
+
+            $.ajax({
+
+                type: 'POST',
+                url: host + "/addtocart_get",
+                data: { id: id, product_price: price },
+
+
+                success: function (resultData) {
+                    // alert(resultData)
+                    // console.log("vhjrreurttrytry============", resultData);
+                    if (resultData == "success") {
+                        console.log("sdasd");
+                        setTimeout(function () {
+                            swal({
+                                title: "Success!",
+                                text: "Add to cart Sucessfully.",
+                                type: "success"
+                            }, function () {
+                                // window.location = "/contact";
+                                location.reload();
+                            });
+                        }, 500);
+                    } else {
+
+                        setTimeout(function () {
+                                swal({
+                                    title: "Warning!",
+                                    text: "Sorry, We don't have enough stock on hand for the quantity you selected, Please select a lower quantity.",
+                                    type: "warning"
+                                }, function () {
+                                    // window.location = "/contact";
+                                    location.reload();
+                                });
+                            }, 500);
+                        // console.log("erere");
+
+                        // alert("Something went wrong")
+                    }
+                    // alert("Save Complete")
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $(".star-rating input:radio").attr("checked", false);
+
+            $('.star-rating input').click(function () {
+                $(".star-rating input").removeClass('checked');
+                $(this).parent().addClass('checked');
+            });
+
+            $('input:radio').change(
+                function () {
+                    userRating = this.value;
+                    // alert(userRating);
+                });
+        });
+
+        // $(document).on('click', '#submit_review', function () {
+
+        //     var form = $('.comment-form-review')[0];
+        //     var data = new FormData(form);
+
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: host + "/review_post",
+        //         data: data,
+        //         processData: false,
+        //         contentType: false,
+        //         cache: false, 
+        //         success: function(resultData) {
+        //             // alert(resultData)
+        //             console.log(resultData);
+
+        //             if (resultData == 'success') {
+        //                location.reload();
+        //             }else {
+        //                 // alert("Something went wrong")
+        //             }
+        //         }
+        //     });
+        // });
+
+
+        $(document).on('click', '#submit_review', function () {
+            let product_id = $('#product_id').attr('value');
+
+            var form = $('.comment-form-review')[0];
+            var data = new FormData(form);
+            data.append('product_id', product_id);
+            $.ajax({
+                type: 'POST',
+                url: host + "/review_post",
+                data: data,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (resultData) {
+                    // alert(resultData)
+                    console.log(resultData);
+
+                    if (resultData == 'success') {
+                        location.reload();
+                    } else {
+                        // alert("Something went wrong")
+                    }
+                }
+            });
+        });
+
+        var decription = $('#decShow').val();
+
+        //  let convert  = windows.decription.text();
+        // console.log("Dsdsdwed",decription);
+    });
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        var host = window.location.origin;
+        $('body').on('click', '.openModel', function (e) {
+            var deleteid = $(this).attr("data-id");
+            // var id = $('#productdeleteid').val();
+
+            var model_price;
+
+            $.ajax({
+                type: 'GET',
+                url: host + "/productsModel/" + deleteid,
+                success: function (data) {
+
+                    model_price = data.productDataModel[0].GST_rate;
+
+                    let productName = data.productDataModel[0].product_name
+                    let defaultImg;
+                    let makeHtmlSlider = '';
+
+                    if (data.productDataModel[0].product_defaultImg) {
+                        defaultImg = data.productDataModel[0].product_defaultImg[0].path
+                    } else {
+                        defaultImg = "/assets/images/no_image.jpg"
+                    }
+
+                    makeHtmlSlider += '<div class="details-item"><img src="' + defaultImg + '" alt="img"></div>'
+
+                    for (let i = 0; i < data.productDataModel[0].product_image.length; i++) {
+                        if (data.productDataModel[0].product_image[i].is_deleted == "0") {
+                            let imgSrc = data.productDataModel[0].product_image[i].path
+                            makeHtmlSlider += '<div class="details-item"><img src="' + imgSrc + '" alt="img"></div>'
+                        }
+                    }
+
+
+                    let html = ` 
+                            <h1 class="product-title">
+                                `+ productName + `
+                            </h1>
+                            <div class="stars-rating">
+                                <div class="star-ratingD">`
+
+                    if (data.productDataModel[0].product_rating_num == undefined) {
+                        html += ` <span class="starD-0"></span>`
+
+                    } else {
+                        html += ` <span class="starD-` + data.productDataModel[0].product_rating_num + `"></span>`
+
+                    }
+                    html += ` </div>
+                                <div class="count-starD">`
+                    if (data.productDataModel[0].product_rating != 0 && data.productDataModel[0].product_rating != undefined) {
+
+                        html += `<span>` + data.productDataModel[0].product_rating + `</span>`
+                    }
+                    html += `</div>
+                            </div>
+                         
+                            <div class="availability">
+                                <span> `+ data.productDataModel[0].product_description + `</span>
+                            </div>
+
+                            <div class="price priceaftermodel">`
+
+                    if (data.productDataModel[0].is_discount == 1 && data.productDataModel[0].discount_start == "true") {
+                        html += `<span> &#8377;` + (data.productDataModel[0].discount_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `</span> `
+                    } else {
+                        html += `<span> &#8377;` + (data.productDataModel[0].product_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `</span> `
+                    }
+
+
+                    html += `</div>
+                           
+
+                            <div class="availability" id="productDis">
+                                SKU :`+ data.productDataModel[0].product_sku + `
+                            </div>
+
+                            <div class="availability" id="productDis">
+                                Sold By :`+ data.productDataModel[0].venodor_name + `
+                            </div>
+
+                            <div class="availability">
+                                availability : <span class="product_stock_quantity"
+                                                        data-product_stock_quantity=`+ data.productDataModel[0].product_stock_quantity + `
+                                                        >`+ data.productDataModel[0].product_stock_status + `</span>
+                            </div>
+                           
+                            <div class="group-button">
+                                <div class="yith-wcwl-add-to-wishlist">
+                                    <div class="yith-wcwl-add-button">`
+                    if (data.productDataModel[0].wishlist_arr != null || data.productDataModel[0].wishlist_arr != undefined) {
+                        if (data.productDataModel[0].wishlist_arr == data.productDataModel[0]._id.toString()) {
+                            html += `<a href="javascript:void(0)" class="wishlist_fun wishlist_active" data= "` + data.productDataModel[0].wishlist_arr + `" data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `" data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+                        } else {
+                            html += `<a href="javascript:void(0)" class="wishlist_fun" data= "` + data.productDataModel[0].wishlist_arr + `"  data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `"    data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+                        }
+                    } else {
+                        html += `<a href="javascript:void(0)" class="wishlist_fun" data=` + data.productDataModel[0].wishlist_arr + `"  data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `"   data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+                    }
+                    html += `</div>
+                                </div>
+                                <div class="size-chart-wrapp">
+                                    <div class="btn-size-chart">
+                                      
+                                    </div>
+                                </div>
+                                <div class="quantity-add-to-cart">`
+                    // <div class="quantity">
+                    //     <div class="control">
+                    //         <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                    //         <input type="text" data-step="1" data-min="0" value="1" title="Qty"
+                    //             class="input-qty qty" size="4">
+                    //         <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                    //     </div>
+                    // </div>
+                    html += `<button class="single_add_to_cart_button button" id="` + data.productDataModel[0]._id + `" data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `"  data-price="` + data.productDataModel[0].product_price + `">Add to cart</button>
+                                </div>
+                            </div>`;
+
+
+
+                    let htmlSrc = '<div class="kt-popup-quickview"><div class="details-thumb"><div class="slider-product slider-for">' + makeHtmlSlider + '</div><div class="slider-product-button slider-nav nav-center">' + makeHtmlSlider + '</div></div><div class="details-infor">' + html + '</div></div>'
+
+                    quickview_popup2(htmlSrc);
+
+
+                }
+            })
+                .done(function (data) {
+                    // var html = $(data);
+                    // html.find('#loading').addClass('hidden');
+                    // $('document').append(html);
+                    let user_login = $('#user_login').attr('value');
+                    if (user_login != "user") {
+                        $('.yith-wcwl-add-to-wishlist').hide();
+                        $('.review_form_wrapper').hide();
+                        $('.loop-form-add-to-cart').css({ 'display': 'none' });
+                        $('.single_add_to_cart_button').css({ 'display': 'none' });
+
+                    }
+
+                    $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+
+                    $(".product_stock_quantity").each(function () {
+                        let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                        var isnan = isNaN(product_stock_quantity);
+                        if (isnan == false) {
+                            if (product_stock_quantity.length >= 1 && product_stock_quantity <= 5) {
+                                $(this).text('(only ' + product_stock_quantity + " left)")
+                            }
+                        }
+
+                    });
+
+                    $(".product_stock_quantity").each(function () {
+
+                        let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                        var isnan = isNaN(product_stock_quantity);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                                $(this).text("(only " + product_stock_quantity + " left)");
+                                $(this).attr('style', 'color:red');
+
+
+                                // $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+                            } else {
+                                if (parseInt(product_stock_quantity) == 0) {
+                                    $(this).text("out of stock");
+                                    $(this).attr('style', 'color:red');
+
+
+                                    // $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+                                }
+                            }
+                        } else {
+
+                            // $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+                        }
+                    });
+
+                    $(".single_add_to_cart_button").each(function () {
+                        let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                        var isnan = isNaN(product_stock_quantity_check);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity_check) == 0) {
+                                $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                            }
+                        }
+                    });
+
+                    $(".wishlist_call").each(function () {
+                        let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                        var isnan = isNaN(product_stock_quantity_check);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity_check) == 0) {
+                                $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                            }
+                        }
+                    });
+
+                    $(".wishlist_fun").each(function () {
+                        let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                        var isnan = isNaN(product_stock_quantity_check);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity_check) == 0) {
+                                $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                            }
+                        }
+                    });
+
+                }
+                );
+
+
+
+
+        });
+
+        var host = window.location.origin;
+        $(document).on('click', '.wishlist_fun', function () {
+            var id = $(this).attr('data-id');
+            $.ajax({
+                type: 'POST',
+                url: host + "/wishlist_call",
+                data: { id: id },
+                success: function (resultData) {
+                    // alert(resultData)
+                    console.log(resultData);
+                    if (resultData == "success") {
+                        console.log("sdasd");
+                        $('a.wishlist_fun[data-id = ' + id + ']').addClass('wishlist_active');
+                        $('a.wishlist_call[data-id = ' + id + ']').addClass('wishlist_active');
+                    } else {
+                        console.log("erere");
+                        $('a.wishlist_fun[data-id = ' + id + ']').removeClass("wishlist_active");
+                        $('a.wishlist_call[data-id = ' + id + ']').removeClass('wishlist_active');
+                        // alert("Something went wrong")
+                    }
+                    // alert("Save Complete")
+                }
+            });
+        });
+
+    });
+
+    function quickview_popup2(htmlSrc) {
+
+        var window_size = parseFloat(jQuery('body').innerWidth());
+        window_size += kt_get_scrollbar_width();
+        if (window_size > 992) {
+            // $(document).on('click', '.popup-button-click', function () {
+            $.magnificPopup.open({
+                items: {
+                    src: htmlSrc,
+                    type: 'inline'
+                }
+            });
+            slick_quickview_popup2();
+            return false;
+            // });
+        }
+    }
+
+    function slick_quickview_popup2() {
+
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: false,
+            focusOnSelect: true,
+            infinite: true,
+            prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+            nextArrow: '<i class="fa fa-angle-right " aria-hidden="true"></i>',
+        });
+    }
+
+    function kt_get_scrollbar_width() {
+        var $inner = jQuery('<div style="width: 100%; height:200px;">test</div>'),
+            $outer = jQuery('<div style="width:200px;height:150px; position: absolute; top: 0; left: 0; visibility: hidden; overflow:hidden;"></div>').append($inner),
+            inner = $inner[0],
+            outer = $outer[0];
+        jQuery('body').append(outer);
+        var width1 = parseFloat(inner.offsetWidth);
+        $outer.css('overflow', 'scroll');
+        var width2 = parseFloat(outer.clientWidth);
+        $outer.remove();
+        return (width1 - width2);
+    }
+
+
+
+    $('.owl-slick').not('.slick-initialized').each(function () {
+        var _this = $(this),
+            _responsive = _this.data('responsive'),
+            _config = [];
+
+        if ($('body').hasClass('rtl')) {
+            _config.rtl = true;
+        }
+        if (_this.hasClass('slick-vertical')) {
+            _config.prevArrow = '<span class="pe-7s-angle-up"></span>';
+            _config.nextArrow = '<span class="pe-7s-angle-down"></span>';
+        } else {
+            _config.prevArrow = '<span class="fa fa-angle-left"></span>';
+            _config.nextArrow = '<span class="fa fa-angle-right"></span>';
+        }
+        _config.responsive = _responsive;
+        _config.cssEase = 'linear';
+
+        _this.slick(_config);
+        _this.on('afterChange', function (event, slick, direction) {
+            _this.find('.slick-active:first').addClass('first-slick');
+            _this.find('.slick-active:last').addClass('last-slick');
+        });
+        _this.on('beforeChange', function (event, slick, currentSlide) {
+            _this.find('.slick-slide').removeClass('last-slick');
+            _this.find('.slick-slide').removeClass('first-slick');
+        });
+        if (_this.hasClass('slick-vertical')) {
+            equal_elems();
+            setTimeout(function () {
+                _this.slick('setPosition');
+            }, 0);
+        }
+        _this.find('.slick-active:first').addClass('first-slick');
+        _this.find('.slick-active:last').addClass('last-slick');
+    });
+
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: false,
+        focusOnSelect: true,
+        infinite: true,
+        prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        nextArrow: '<i class="fa fa-angle-right " aria-hidden="true"></i>',
+    });
+
+</script>
+
+<script>
+    var container = document.getElementById('containerNews');
+    var slider = document.getElementById('sliderNews');
+    var slides = document.getElementsByClassName('slideNews').length;
+    var buttons = document.getElementsByClassName('Newsbtn');
+
+
+    var currentPosition = 0;
+    var currentMargin = 0;
+    var slidesPerPage = 0;
+    var slidesCount = slides - slidesPerPage;
+    var containerWidth = container.offsetWidth;
+    var prevKeyActive = false;
+    var nextKeyActive = true;
+
+    window.addEventListener("resize", checkWidth);
+
+    function checkWidth() {
+        containerWidth = container.offsetWidth;
+        setParams(containerWidth);
+    }
+
+    function setParams(w) {
+        // if (w < 551) {
+        //     slidesPerPage = 1;
+        // } else {
+        //     if (w < 901) {
+        //         slidesPerPage = 2;
+        //     } else {
+        //         if (w < 1101) {
+        //             slidesPerPage = 3;
+        //         } else {
+        //             slidesPerPage = 4;
+        //         }
+        //     }
+        // }
+
+        if (slides >= 4) {
+            slidesPerPage = 4;
+        }
+        slidesCount = slides - slidesPerPage;
+        if (currentPosition > slidesCount) {
+            currentPosition -= slidesPerPage;
+        };
+        currentMargin = - currentPosition * (100 / slidesPerPage);
+        slider.style.marginLeft = currentMargin + '%';
+        if (currentPosition > 0) {
+            buttons[0].classList.remove('inactive');
+        }
+        if (currentPosition < slidesCount) {
+            buttons[1].classList.remove('inactive');
+        }
+        if (currentPosition >= slidesCount) {
+            buttons[1].classList.add('inactive');
+        }
+    }
+
+    setParams();
+
+    function slideRight() {
+        if (currentPosition != 0) {
+            slider.style.marginLeft = currentMargin + (100 / slidesPerPage) + '%';
+            currentMargin += (100 / slidesPerPage);
+            currentPosition--;
+        };
+        if (currentPosition === 0) {
+            buttons[0].classList.add('inactive');
+        }
+        if (currentPosition < slidesCount) {
+            buttons[1].classList.remove('inactive');
+        }
+    };
+
+    function slideLeft() {
+        if (currentPosition != slidesCount) {
+            slider.style.marginLeft = currentMargin - (100 / slidesPerPage) + '%';
+            currentMargin -= (100 / slidesPerPage);
+            currentPosition++;
+        };
+        if (currentPosition == slidesCount) {
+            buttons[1].classList.add('inactive');
+        }
+        if (currentPosition > 0) {
+            buttons[0].classList.remove('inactive');
+        }
+    };
+</script>
+<script>
+    let container2 = document.getElementById('containerNews1');
+    let slider2 = document.getElementById('sliderNews1');
+    let slides2 = document.getElementsByClassName('slideNews1').length;
+    let buttons2 = document.getElementsByClassName('Newsbtn1');
+
+
+    let currentPosition2 = 0;
+    let currentMargin2 = 0;
+    let slidesPerPage2 = 0;
+    let slidesCount2 = slides2 - slidesPerPage2;
+    let containerWidth2 = container2.offsetWidth;
+    // let prevKeyActive = false;
+    // let nextKeyActive = true;
+
+    window.addEventListener("resize", checkWidth1);
+
+    function checkWidth1() {
+        containerWidth2 = container2.offsetWidth;
+        setParams1(containerWidth2);
+    }
+
+    function setParams1(w) {
+        // if (w < 551) {
+        //     slidesPerPage = 1;
+        // } else {
+        //     if (w < 901) {
+        //         slidesPerPage = 2;
+        //     } else {
+        //         if (w < 1101) {
+        //             slidesPerPage = 3;
+        //         } else {
+        //             slidesPerPage = 4;
+        //         }
+        //     }
+        // }
+
+        if (slides2 >= 4) {
+            slidesPerPage2 = 4;
+        }
+        slidesCount2 = slides2 - slidesPerPage2;
+        if (currentPosition2 > slidesCount2) {
+            currentPosition2 -= slidesPerPage2;
+        };
+        currentMargin2 = - currentPosition2 * (100 / slidesPerPage2);
+        slider2.style.marginLeft = currentMargin2 + '%';
+        if (currentPosition2 > 0) {
+            buttons2[0].classList.remove('inactive');
+        }
+        if (currentPosition2 < slidesCount2) {
+            buttons2[1].classList.remove('inactive');
+        }
+        if (currentPosition2 >= slidesCount2) {
+            buttons2[1].classList.add('inactive');
+        }
+    }
+
+    setParams1();
+
+    function slideRightsp() {
+        if (currentPosition2 != 0) {
+            slider2.style.marginLeft = currentMargin2 + (100 / slidesPerPage2) + '%';
+            currentMargin2 += (100 / slidesPerPage2);
+            currentPosition2--;
+        };
+        if (currentPosition2 === 0) {
+            buttons2[0].classList.add('inactive');
+        }
+        if (currentPosition2 < slidesCount2) {
+            buttons2[1].classList.remove('inactive');
+        }
+    };
+
+    function slideLeftsp() {
+        if (currentPosition2 != slidesCount2) {
+            slider2.style.marginLeft = currentMargin2 - (100 / slidesPerPage2) + '%';
+            currentMargin2 -= (100 / slidesPerPage2);
+            currentPosition2++;
+        };
+        if (currentPosition2 == slidesCount2) {
+            buttons2[1].classList.add('inactive');
+        }
+        if (currentPosition2 > 0) {
+            buttons2[0].classList.remove('inactive');
+        }
+    };
+</script>
+
+<script>
+    let container1 = document.getElementById('containerRelated');
+    let slider1 = document.getElementById('sliderRelated');
+    let slides1 = document.getElementsByClassName('slideRelated').length;
+    let buttons1 = document.getElementsByClassName('Relatebtn');
+
+
+    let currentPosition1 = 0;
+    let currentMargin1 = 0;
+    let slidesPerPage1 = 0;
+    let slidesCount1 = slides1 - slidesPerPage1;
+    // let containerWidth1 = container1.offsetWidth;
+    // let prevKeyActive = false;
+    // let nextKeyActive = true;
+
+    window.addEventListener("resize", checkWidth);
+
+    function checkWidth() {
+        containerWidth1 = container1.offsetWidth;
+        setParams(containerWidth1);
+    }
+
+    function setParams(w) {
+        // if (w < 551) {
+        //     slidesPerPage = 1;
+        // } else {
+        //     if (w < 901) {
+        //         slidesPerPage = 2;
+        //     } else {
+        //         if (w < 1101) {
+        //             slidesPerPage = 3;
+        //         } else {
+        //             slidesPerPage = 4;
+        //         }
+        //     }
+        // }
+
+        if (slides1 >= 4) {
+            slidesPerPage1 = 4;
+        }
+        slidesCount1 = slides1 - slidesPerPage1;
+        if (currentPosition1 > slidesCount1) {
+            currentPosition1 -= slidesPerPage1;
+        };
+        currentMargin1 = - currentPosition1 * (100 / slidesPerPage1);
+        slider1.style.marginLeft = currentMargin1 + '%';
+        if (currentPosition1 > 0) {
+            buttons1[0].classList.remove('inactive');
+        }
+        if (currentPosition1 < slidesCount1) {
+            buttons1[1].classList.remove('inactive');
+        }
+        if (currentPosition1 >= slidesCount1) {
+            buttons1[1].classList.add('inactive');
+        }
+    }
+
+    setParams();
+
+    function slideRightRe() {
+        if (currentPosition1 != 0) {
+            slider1.style.marginLeft = currentMargin1 + (100 / slidesPerPage1) + '%';
+            currentMargin1 += (100 / slidesPerPage1);
+            currentPosition1--;
+        };
+        if (currentPosition1 === 0) {
+            buttons1[0].classList.add('inactive');
+        }
+        if (currentPosition1 < slidesCount1) {
+            buttons1[1].classList.remove('inactive');
+        }
+    };
+
+    function slideLeftRe() {
+        if (currentPosition1 != slidesCount1) {
+            slider1.style.marginLeft = currentMargin1 - (100 / slidesPerPage1) + '%';
+            currentMargin1 -= (100 / slidesPerPage1);
+            currentPosition1++;
+        };
+        if (currentPosition1 == slidesCount1) {
+            buttons1[1].classList.add('inactive');
+        }
+        if (currentPosition1 > 0) {
+            buttons1[0].classList.remove('inactive');
+        }
+    };
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        var after_price = $('#after_price').val();
+        $('<style>.priceafter:after{content:" Tax exclude(' + after_price + '%)"}</style>').appendTo('head');
+
+
+        $(".prImg").click(function () {
+            $(".img_zoom").show()
+            $(".video_pop_up_container").hide()
+            $(".zoomContainer").show();
+
+        });
+    });
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "frontend/partitions/head.html" %}
+
+	<body>
+
+    	{% include "frontend/partitions/header.html" %}
+				<!-- Main Content -->
+      {% block body %}{% endblock %}
+
+			{% include "frontend/partitions/footer.html" %}
+			{% block Jscript %}{% endblock %}
+
+	</body>
+
+</html>

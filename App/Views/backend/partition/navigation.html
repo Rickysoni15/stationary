@@ -1,0 +1,367 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                {% if session.role == 'admin'%}
+                <img src="/profile/{{session.avatar}}" class="img-circle" alt="User Image" width="50px" height="50px">
+                {%else%}
+                <img src="/profile/{{session.avatar}}" class="img-circle" alt="Agent Image" width="50px"
+                    height="50px"> {%endif%}
+
+            </div>
+
+            <!-- <div class="pull-left image">
+                {% if session.role == 'vendor'%}
+                <img src="" class="img-circle" alt="User Image" width="50px" height="50px"> {%else%}
+                <img src="" class="img-circle" alt="Agent Image" width="50px" height="50px"> {%endif%}
+
+            </div> -->
+            <div class="pull-left info">
+                <p>{{session.name}}</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+
+
+        <!-- sidebar menu: style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MAIN NAVIGATION</li>
+            {% if session.role == 'admin'%}
+            <!-- <li class="{{classActive}}">
+                <a href="/dashboard">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="{{studentListing}}">
+                <a href="/backend/student">
+                    <i class="fa fa-circle-o"></i> <span>Student List</span>
+                </a>
+            </li>
+            <li class="{{affiliateListing}}">
+                <a href="/backend/affiliate">
+                    <i class="fa fa-circle-o"></i> <span>Affiliate List</span>
+                </a>
+            </li>
+            <li class="{{courseActive}}">
+                <a href="/backend/courses">
+                    <i class="fa fa-circle-o"></i> <span>Course Management</span>
+                </a>
+            </li>
+            <li class="{{pendingInstructors}}">
+                <a href="/backend/pendingInstructors">
+                    <i class="fa fa-circle-o"></i> <span>Instructor Request</span>
+                </a>
+            </li>
+            <li class="{{studentApplicationListing}}">
+                <a href="/backend/applicationRequest">
+                    <i class="fa fa-circle-o"></i> <span>Student Application Request</span>
+                </a>
+            </li>
+            <li class="{{studentApplicationListing}}">
+                <a href="/backend/courseFeesRequest">
+                    <i class="fa fa-circle-o"></i> <span>Course Payment Request</span>
+                </a>
+            </li>
+            <li class="{{blogActive}}">
+                <a href="/backend/blog">
+                    <i class="fa fa-circle-o"></i> <span>Blog</span>
+                </a>
+            </li>   -->
+            <li class="{{home}}">
+                <a href="/backend/addHome">
+                    <i class="fa fa-home"></i> <span>Home</span>
+                </a>
+
+            </li>
+
+            <li class="{{vendorActive}}">
+                <a href="/backend/vendor">
+                    <i class="fa fa-info-circle"></i> <span>Vendor</span>
+                </a>
+            </li>
+
+            <li class="{{customer}}">
+                <a href="/backend/customer">
+                    <i class="fa fa-info-circle"></i> <span>Customer</span>
+                </a>
+            </li>
+            <li class="{{order}}">
+                <a href="/backend/order">
+                    <i class="fa fa-product-hunt"></i> <span>Order Management</span>
+                </a>
+            </li>
+            <li class="{{aboutUs}}">
+                <a href="/backend/addAboutData">
+                    <i class="fa fa-info-circle"></i> <span>About Us</span>
+                </a>
+            </li>
+            <li class="{{privacy}}">
+                <a href="/backend/addPrivacyData">
+                    <i class="fa fa-info-circle"></i> <span>Privacy Policy</span>
+                </a>
+            </li>
+            <li class="{{term}}">
+                <a href="/backend/addTermData">
+                    <i class="fa fa-info-circle"></i> <span>Term & Condition</span>
+                </a>
+            </li>
+           
+            <li class="{{report}}">
+                <a href="/backend/report">
+                    <i class="fa fa-product-hunt"></i> <span>Product Reports </span>
+                </a>
+            </li>
+
+           
+
+
+
+            <!-- <li class="{{product}}">
+                <a href="/backend/product">
+                    <i class="fa fa-product-hunt"></i> <span>Product</span>
+                </a>
+            </li>
+            <li class="{{product_setting}}">
+                <a href="/backend/product_setting">
+                    <i class="fa fa-product-hunt"></i> <span>Product Setting</span>
+                </a>
+            </li>
+            <li class="{{productCategory}}">
+                <a href="/backend/productCategory">
+                    <i class="fa fa-product-hunt"></i> <span>Product Category</span>
+                </a>
+            </li> -->
+
+            <!-- <li class="{{region}}">
+                <a href="/backend/region">
+                    <i class="fa fa-envelope"></i> <span>Contact Us</span>
+                </a>
+            </li>
+            <li class="{{profileType}}">
+                <a href="/backend/profileType">
+                    <i class="fa fa-user"></i> <span>Profile Type</span>
+                </a>
+            </li> -->
+            <!-- <li class="{{roleManagement}}">
+                <a href="/backend/roleManagement">
+                    <i class="fa fa-circle-o"></i> <span>Role Management</span>
+                </a>
+            </li> -->
+            {% endif %}
+
+
+            {% if session.role == 'vendor'%}
+            <li class="{{dashboard}}">
+                <a href="/vendor_dashboard">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+
+            </li>
+
+            <li class="{{home}}">
+                <a href="/backend/addHome">
+                    <i class="fa fa-home"></i> <span>Home</span>
+                </a>
+
+            </li>
+
+            <!-- <li class="{{product}}">
+                <a href="/backend/product">
+                    <i class="fa fa-product-hunt"></i> <span>Product</span>
+                </a>
+            </li> -->
+            <!-- admin -->
+       
+            <li class="{{customer}}">
+                <a href="/backend/customer">
+                    <i class="fa fa-info-circle"></i> <span>Customer</span>
+                </a>
+            </li>
+            <!-- admin -->
+            <!-- <li class="{{product_setting}}">
+                <a href="/backend/product_setting">
+                    <i class="fa fa-product-hunt"></i> <span>Product Setting</span>
+                </a>
+            </li> -->
+            <li class="{{productCategory}}">
+                <a href="/backend/productCategory">
+                    <i class="fa fa-product-hunt"></i> <span>Product Category</span>
+                </a>
+            </li>
+
+            <li class="{{product}}">
+                <a href="/backend/product">
+                    <i class="fa fa-product-hunt"></i> <span>Product</span>
+                </a>
+            </li>
+
+            <li class="{{order}}">
+                <a href="/backend/order">
+                    <i class="fa fa-product-hunt"></i> <span>Order Management</span>
+                </a>
+            </li>
+
+            <li class="{{question}}">
+                <a href="/backend/question_form">
+                    <i class="fa fa-product-hunt"></i> <span>Questionnaire Form</span>
+                </a>
+            </li>
+
+            <li class="{{attributemodel}} treeview {{modelopen}}" style="height: auto;">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Set Attribute</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                {% if modelopen %}
+                <ul class="treeview-menu">
+                    {% else %}
+                    <ul class="treeview-menu" style="display: none;">
+                        {% endif %}
+                        <li class="{{attributeone}}"><a href="/backend/product_setting/list/attribute_set"><i
+                                    class="fa fa-circle-o"></i> Group</a></li>
+                        <li class="{{set_attribute}}"><a href="/backend/list_attribute"><i class="fa fa-circle-o"></i>
+                                Parameter</a></li>
+                    </ul>
+            </li>
+
+
+            <li class="{{report}}">
+                <a href="/backend/report">
+                    <i class="fa fa-product-hunt"></i> <span>Product Reports </span>
+                </a>
+            </li>
+
+            <li class="{{couponcodeActive}}">
+                <a href="/backend/couponcode">
+                    <i class="fa fa-info-circle"></i> <span>Coupon Code</span>
+                </a>
+            </li>
+
+            <li class="{{discountActive}}">
+                <a href="/backend/discount">
+                    <i class="fa fa-info-circle"></i> <span>Discount Apply</span>
+                </a>
+            </li>
+
+            <li class="{{commisionActive}}">
+                <a href="/backend/commision">
+                    <i class="fa fa-info-circle"></i> <span>Commision</span>
+                </a>
+            </li>
+
+            <li class="{{commisionReport}}">
+                <a href="/backend/commision/report">
+                    <i class="fa fa-product-hunt"></i> <span>Commision Reports </span>
+                </a>
+            </li>
+
+            <!-- admin -->
+            <li class="{{aboutUs}}">
+                <a href="/backend/addAboutData">
+                    <i class="fa fa-info-circle"></i> <span>About Us</span>
+                </a>
+            </li>
+            <li class="{{privacy}}">
+                <a href="/backend/addPrivacyData">
+                    <i class="fa fa-info-circle"></i> <span>Privacy Policy</span>
+                </a>
+            </li>
+            <li class="{{term}}">
+                <a href="/backend/addTermData">
+                    <i class="fa fa-info-circle"></i> <span>Term & Condition</span>
+                </a>
+            </li>
+
+
+
+            {% endif %}
+            <!-- {% if session.role == 'custom'%}
+              <li class="{{classActive}}">
+                  <a href="/dashboard">
+                      <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                  </a>
+              </li>
+              {% if session.access.studentList == 'true' %}
+                <li class="{{studentListing}}">
+                    <a href="/backend/student">
+                        <i class="fa fa-circle-o"></i> <span>Student List</span>
+                    </a>
+                </li>
+              {% endif %}
+
+              {% if session.access.affiliateList == 'true' %}
+                <li class="{{affiliateListing}}">
+                    <a href="/backend/affiliate">
+                        <i class="fa fa-circle-o"></i> <span>Affiliate List</span>
+                    </a>
+                </li>
+              {% endif %}
+
+              {% if session.access.courseManagement == 'true' %}
+                <li class="{{courseActive}}">
+                    <a href="/backend/courses">
+                        <i class="fa fa-circle-o"></i> <span>Course Management</span>
+                    </a>
+                </li>
+              {% endif %}
+
+              {% if session.access.instructorRequest == 'true' %}
+                <li class="{{pendingInstructors}}">
+                    <a href="/backend/pendingInstructors">
+                        <i class="fa fa-circle-o"></i> <span>Instructor Request</span>
+                    </a>
+                </li>
+              {% endif %}
+
+              {% if session.access.studentApplicationRequest == 'true' %}
+                <li class="{{studentApplicationListing}}">
+                    <a href="/backend/applicationRequest">
+                        <i class="fa fa-circle-o"></i> <span>Student Application Request</span>
+                    </a>
+                </li>
+              {% endif %}
+
+              {% if session.access.coursePaymentRequest == 'true' %}
+                <li class="{{studentApplicationListing}}">
+                    <a href="/backend/courseFeesRequest">
+                        <i class="fa fa-circle-o"></i> <span>Course Payment Request</span>
+                    </a>
+                </li>
+              {% endif %}
+
+              {% if session.access.blog == 'true' %}
+                <li class="{{blogActive}}">
+                    <a href="/backend/blog">
+                        <i class="fa fa-circle-o"></i> <span>Blog</span>
+                    </a>
+                </li>
+             {% endif %} -->
+
+            {% if session.access.about == 'true' %}
+            <li class="{{aboutUs}}">
+                <a href="/backend/about">
+                    <i class="fa fa-circle-o"></i> <span>About Us</span>
+                </a>
+            </li>
+            {% endif %}
+            {% if session.access.researchAndDevelopment == 'true' %}
+            <li class="{{researchAndDevelopment}}">
+                <a href="/backend/researchAndDevelopment">
+                    <i class="fa fa-circle-o"></i> <span>Research And Development</span>
+                </a>
+            </li>
+            {% endif %}
+
+            {% endif %}
+
+
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

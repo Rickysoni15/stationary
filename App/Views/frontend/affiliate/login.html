@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "frontend/affiliate/partitions/head.html" %}
+
+
+<body>
+    <main class="h-100">
+        <section class="auth-section h-100">
+            <div class="container-fluid h-100">
+                <div class="row align-items-center h-100">
+                    <div class="col-md-12 top-logo">
+
+                        <img src="/affiliate/img/det-logo.png" alt="">
+
+                    </div>
+                    <div class="col-md-6 p-0 h-100 bg-light-blue-shade">
+                        <div class="login-wrp-main">
+                            <form method="post" action="/postLoginAffiliate">
+                                <div class="form-group">
+                                    <label class="label text-blue" for="mobNum">Mobile Number</label>
+                                    <input id="mobNum" class="form-control" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "10"  name="mobNum">
+                                </div>
+                                <div class="form-group">
+                                    <label class="label text-blue" for="password">Password</label>
+                                    <input id="password" class="form-control" type="password" name="password">
+                                </div>
+                                <div class="form-group text-right">
+                                    <a href="#ForgotPasswordModal" data-toggle="modal" class="link-btn blue-link-btn f-500">Forgot Password?</a>
+                                </div>
+                                <div class="form-group mt-3 ">
+                                    <button class="btn btn-rounded btn-primary cstm-btn">Log In</button>
+                                </div>
+
+
+                            </form>
+                            {% if (error.length > 0) %}
+                            <div class="alert alert-danger alert-dismissable notifications">
+                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{{error}}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-0 bg-white right-bg h-100">
+                        <div class="login-wrp-main">
+                            <div class="form-group">
+                                <label class="label text-blue">Don’t have an account?</label>
+                                <a href="/signUpAffiliate" class="btn btn-rounded btn-primary cstm-btn">Sign Up</a>
+
+                            </div>
+                            <div class="img-bootom">
+                                <img src="/affiliate/img/login-img.png" class="img-fluid d-block d-md-none  m-auto" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </section>
+
+
+
+
+    </main>
+    <!-- Forgot Passowrd -->
+    <div class="modal fade home-modal modal-style-2" id="ForgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="ForgotPasswordModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="get" action="">
+                        <div class="header-logo">
+                            <img src="/affiliate/img/det-logo.png" alt="" class="logo-img">
+                        </div>
+                        <div class="inner-mid">
+
+
+                            <div id="carouselslideOne" class="carousel slide" data-ride="carousel">
+
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="inner-space">
+                                            <div class="form-group text-center">
+                                                <label class="label text-blue" for="yourname"> <b>Forgot Your Password?</b>    </label>
+                                            </div>
+                                            <div class="form-group text-center">
+
+                                                <input id="eamil" class="form-control" placeholder="Type Your Email" type="email" name="">
+                                            </div>
+
+
+                                            <div class="form-group text-center mt-md-2">
+                                                <a class="btn btn-outlined btn-rounded btn-primary cstm-btn" href="#carouselslideOne" role="button" data-slide="next">Send</a>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item  ">
+
+                                        <div class="inner-space">
+                                            <div class="form-group text-center">
+                                                <label class="label text-blue" for="yourname"> <b>Reset Your Password?</b>    </label>
+                                            </div>
+                                            <div class="form-group text-center">
+
+                                                <input id="" class="form-control" placeholder="New Password" type="password" name="">
+                                            </div>
+                                            <div class="form-group text-center">
+
+                                                <input id="confirmpasswrd" class="form-control" placeholder="Confirm Password" type="password" name="">
+                                            </div>
+
+                                            <div class="form-group text-center mt-md-2">
+                                                <button class="btn btn-outlined btn-rounded btn-primary cstm-btn">Done</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselslideOne" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselslideOne" data-slide-to="1"></li>
+
+                                </ol>
+
+                            </div>
+
+
+
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"> </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- OTP Veryfy Modal -->
+    <div class="modal fade home-modal modal-style-2 modal-otp" id="OtpModal" tabindex="-1" role="dialog" aria-labelledby="OtpModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="get" action="">
+                        <div class="header-logo">
+                            <img src="/affiliate/img/det-logo.png" alt="" class="logo-img">
+                        </div>
+                        <div class="inner-mid">
+
+
+                            <div id="carouselslideOtp" class="carousel slide" data-ride="carousel">
+
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="inner-space">
+                                            <div class="form-group text-center">
+                                                <label class="label text-blue" for=""> <b>We need to text you the OTP to authenticate your account</b>    </label>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <label class="label text-blue" for=""> <b>Enter your mobile number</b>    </label>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <input id="mobile" class="form-control" placeholder="Enter Your Mobile Number" type="phone" name="">
+                                            </div>
+
+
+                                            <div class="form-group text-center mt-md-2">
+                                                <a class="btn btn-outlined btn-rounded btn-primary cstm-btn" href="#carouselslideOtp" role="button" data-slide="next">Send OTP</a>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item  ">
+
+                                        <div class="inner-space veryfy-number">
+                                            <div class="form-group text-center">
+                                                <label class="label text-blue" for="yourname"> <b>Verifying your number!</b>    </label>
+                                            </div>
+                                            <div class="form-group text-center mb-0">
+                                                <label class="label text-blue" for="yourname"> <b>We have sent an OTP on your number</b>    </label>
+                                            </div>
+                                            <div class="form-group text-center ">
+                                                <input id="otptxt" class="form-control" placeholder="- - - -" type="text" name="">
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <p class="text-gray p-txt">Your OTP expires in 2:30 mins</p>
+                                            </div>
+
+                                            <div class="form-group text-center mt-md-2">
+                                                <a class="btn blue-link-btn" href="#">Resend OTP?</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselslideOtp" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselslideOtp" data-slide-to="1"></li>
+
+                                </ol>
+
+                            </div>
+
+
+
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"> </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="/affiliate/js/jquery.min.js"></script>
+    <script src="/affiliate/js/bootstrap.min.js"></script>
+    <script src="/affiliate/js/popper.min.js"></script>
+    <script src="/affiliate/js/aos.js"></script>
+    <script src="/affiliate/js/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        $('.carousel').carousel({
+            interval: false,
+        });
+    </script>
+
+    <!-- <script type="text/javascript">
+        $(window).on('load', function() {
+            $('#OtpModal').modal('show');
+        }); -->
+    </script>
+
+    <script>
+        $('.client-list-slider').owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplaySpeed: 1200,
+            margin: 0,
+            nav: true,
+            dots: false,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                420: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 3
+                },
+                1024: {
+                    items: 3
+                }
+            }
+        })
+
+        $(document).ready(function() {
+
+
+            AOS.init({
+                // startEvent: 'load',
+                offset: 250,
+                duration: 1000,
+                easing: 'ease-in-sine',
+                delay: 50,
+                disableMutationObserver: true,
+                throttleDelay: 0,
+                debounceDelay: 0,
+                once: false,
+                mirror: true,
+                // startEvent: 'DOMContentLoaded'
+            });
+
+        });
+    </script>
+</body>
+
+</html>

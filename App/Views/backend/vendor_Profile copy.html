@@ -1,0 +1,458 @@
+{% extends "backend/partition/layout.html" %}
+
+{% block body %}
+<style>
+	.containerdiv_img {
+		position: relative;
+		display: inline-block;
+		margin: 10px;
+	}
+
+	.close1 {
+		position: absolute;
+		top: -4px;
+		text-align: center;
+		font-size: 25px;
+		width: 28px;
+		color: red;
+		cursor: pointer;
+		right: 25px;
+	}
+</style>
+
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		<section class="content-header">
+			<h1>Vendor Profile </h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Vendor profile</li>
+			</ol>
+		</section>
+
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="row">
+
+							<div class="col-md-12">
+								<div class="panel panel-default card-view">
+									<div class="panel-heading">
+										<div class="pull-left">
+											<h6 class="panel-title txt-dark">Edit Profile</h6>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div class="panel-wrapper collapse in">
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-sm-12 col-xs-12">
+													<div class="form-wrap">
+														<form class="form-horizontal" id="vendor_updateSubmit"
+															method="post" action="/vendorUpdateProfile"
+															enctype="multipart/form-data">
+															<input type="hidden" name="vendorId" id="vendor_id"
+																value="{{user._id}}">
+															<div class="form-group">
+																<label for="exampleInputuname_3"
+																	class="col-sm-3 control-label">Company</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-user"></i>
+																		</div>
+																		<input type="text" class="form-control"
+																			id="name" placeholder="Enter name" required
+																			name="name" value="{{user.vendor_company}}"
+																			data-validation="length required"
+																			data-validation-length=""
+																			data-validation-error-msg="Username is required">
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="exampleInputuname_3"
+																	class="col-sm-3 control-label">User Name</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-user"></i>
+																		</div>
+																		<input type="text" class="form-control"
+																			id="userName" placeholder="Enter username"
+																			required name="userName"
+																			value="{{user.vendor_username}}"
+																			data-validation="length required"
+																			data-validation-length=""
+																			data-validation-error-msg="Username is required">
+																	</div>
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="exampleInputEmail_3"
+																	class="col-sm-3 control-label">Email*</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-envelope"></i>
+																		</div>
+																		<input type="email" class="form-control"
+																			required name="email" id="email"
+																			value="{{user.vendor_email}}"
+																			data-validation="email">
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="exampleInputEmail_3"
+																	class="col-sm-3 control-label">Mobile*</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-phone"></i>
+																		</div>
+																		<input type="text" class="form-control" required
+																			name="mobile" id="mobile"
+																			value="{{user.vendor_phone}}"
+																			data-validation="number">
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="exampleInputuname_4"
+																	class="col-sm-3 control-label">New Password</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-lock"></i>
+																		</div>
+																		<input type="password" class="form-control"
+																			id="password" placeholder="Enter password"
+																			name="pass_confirmation" maxlength="6"
+																			data-validation="length"
+																			pattern="(?=^.{5,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+																			title="Use 6 or more characters with a mix of letters, numbers & symbols."
+																			data-validation-length="min0">
+
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="exampleInputEmail_4"
+																	class="col-sm-3 control-label">Confirm
+																	Password</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-lock"></i>
+																		</div>
+																		<input type="password" class="form-control"
+																			placeholder="Enter Confirm Password"
+																			maxlength="6" name="pass"
+																			data-validation="confirmation">
+
+																	</div>
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="avatar"
+																	class="col-sm-3 control-label">Profile Image</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<!-- <div class="input-group-addon"><i
+																				class="glyphicon glyphicon-picture"></i>
+																		</div> -->
+																		<div class="row" style="margin-top: 5px;">
+																			<div class="col-lg-6">
+
+																				{% if user %}
+																				<input type="hidden" name="profile_Img"
+																					id="profile_Img" value="">
+
+																				<input type="file" class="form-control"
+																					id="applicationImage"
+																					name="profileImg" value=""
+																					accept="image/png, image/gif, image/jpg, image/jpeg"
+																					onchange="previewFile(this);">
+																				{% if user.vendor_image[0].path %}
+
+																				<div class="containerdiv_img"><img
+																						id="previewImg"
+																						src="{{user.vendor_image[0].path}}"
+																						height="200px" width="200px"
+																						alt=""><span
+																						class='close1'>&times;</span>
+																				</div>
+																				{% endif %}
+
+																				{% else %}
+																				<input type="file" class="form-control"
+																					id="applicationImage"
+																					name="profileImg" value=""
+																					accept="image/png, image/gif, image/jpg, image/jpeg"
+																					onchange="previewFile(this);">
+																				<div class="containerdiv_img"><img
+																						style="display: none;"
+																						id="previewImg"
+																						src="{{user.vendor_image[0].path}}"
+																						height="200px" width="200px"
+																						alt=""><span
+																						style="display: none;"
+																						class='close1'>&times;</span>
+																				</div>
+																				{% endif %}
+
+																				<!-- <input type="file" title="your text"
+																					id="profileImg" name="profileImg"
+																					accept="image/png, image/gif, image/jpg, image/jpeg">
+
+																				<div id="imgs"></div> -->
+
+																				<!-- {% if (user.vendor_image[0].is_deleted
+																				== "0") %}
+																				<div>
+																					<img src="{{user.vendor_image[0].path}}"
+																						height="200px" width="200px"
+																						style="margin-top: 10px;">
+																				</div>
+																				{% endif %} -->
+																			</div>
+																			<!-- <div class="col-lg-6">
+																				<label for="file-upload"
+																					class="custom-file-upload">
+																					{{user.vendor_image[0].fileName}}
+																				</label>
+																			</div> -->
+
+																		</div>
+
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group mb-0">
+																<div class="col-sm-offset-3 col-sm-9">
+																	<button id="updateVendor" type="submit"
+																		class="btn btn-success ">Update</button>
+																</div>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+							<!-- Request MOney -->
+							<section class="content">
+								<!-- Row -->
+								<div class="row">
+									<!-- /.modal -->
+									<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog"
+										aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<form method="POST" name="adduser" action="/allUser/requestCash">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-hidden="true">×</button>
+														<h5 class="modal-title">Add/Deduct Cash</h5>
+													</div>
+													<div class="modal-body">
+														<div id="requestCash"> </div>
+														<div class="form-group">
+															<label for="recipient-name"
+																class="control-label mb-10">Cash:</label>
+															<input type="text" name="chips" class="form-control"
+																id="action_chips" required>
+															<span class="help-block form-error" id="displayError"
+																style="display: none;">The input value was not a correct
+																number</span>
+														</div>
+
+													</div>
+													<div class="modal-footer">
+														<input type="submit" name="requestType"
+															class="btn btn-success playerChipsAction" value="Add">
+														<input type="submit" class="btn btn-danger playerChipsAction"
+															name="requestType" value="Deduct">
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<!-- Button trigger modal -->
+								</div>
+								<!-- /Row -->
+							</section>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- /Row -->
+	</div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script>
+	$(document).ready(function () {
+		var host = window.location.origin;
+		// $('#profileImg').change(function() {
+		//         var file = $('#profileImg')[0].files[0].name;
+		//         $('.custom-file-upload').text(file);
+		//     });
+		// let profile_img = $("#profileImg").val();
+
+		$("#name").prop("disabled", true);
+
+
+		// $("#vendor_updateSubmit").on("submit", function () {
+		// 	let vendor_iid = $("#vendor_id").val();
+		// 	$("#name").removeAttr("disabled");
+
+		// 	// alert(12222)
+		// 	// alert(vendor_iid)
+
+		// 	var formData = new FormData();
+		// 	// alert(formData)
+
+		// 	var fileInput = $('#applicationImage')[0].files;
+		// 	// alert(formData)
+
+
+		// 	formData.append('file', fileInput[0]);
+		// 	var formArray = $("#vendor_updateSubmit");
+
+		// 	var params = $(formArray).serializeArray();
+
+		// 	// alert("test",params)
+		// 	$.each(params, function (i, val) {
+		// 		formData.append(val.name, val.value);
+		// 	});
+
+		// 	// $("form input").each(function (i) {
+		// 	// 	formData.append($(this).attr("name"), $(this).val());
+		// 	// });
+		// 	// alert(formArray)
+		// 	// formData.append(formArray);
+		// 	// alert(formData)
+		// 	// return false;
+
+		// 	$("#name").removeAttr("disabled");
+		// 	// var form = $('form').serialize();
+		// 	// $('input[disabled]').each(function () {
+		// 	// 	form = form + '&' + $(this).attr('name') + '=' + $(this).val();
+		// 	// });
+		// 	alert(7777)
+
+		// 	$.ajax({
+		// 		type: "POST",
+		// 		contentType: false,
+		// 		processData: false,
+		// 		cache: false,
+		// 		dataType: "json",
+		// 		url: host + "/vendorUpdateProfile/" + vendor_iid,
+		// 		data: formData,
+
+		// 		success: function (result) {
+		// 			alert(7777)
+		// 			console.log("vendor update", result);
+		// 		// return res.redirect('/vendor_dashboard');
+		// 			window.location.href = host+'/vendor_dashboard';
+		// 		},
+		// 		error() {
+		// 			console.log("error");
+		// 		}
+		// 	})
+		// });
+
+	});
+
+</script>
+<script>
+	$(document).ready(function () {
+		var host = window.location.origin;
+	});
+
+	$.validate({
+		modules: 'security',
+		onModulesLoaded: function () {
+			// Show strength of password
+			$('input[name="pass_confirmation"]').displayPasswordStrength();
+		}
+	});
+
+	$(".updateVendor").click(function () {
+
+		alert(1111)
+
+		$("#name").removeAttr("disabled");
+
+	});
+	/*$("body").on("click", ".addChips", function(){
+		var agentId = $(this).attr("id");
+		// console.log("player id ----------->",PlayerId)
+		var html = '<input type="hidden" name="agentId" value="'+agentId+'" />';
+		$("#requestCash").html(html);
+	});*/
+
+	$("body").on("click", ".playerChipsAction", function () {
+		var action_chips = $('#action_chips').val();
+		if (action_chips < 0 || isNaN(action_chips) || (action_chips % 1 !== 0)) {
+			document.getElementById('displayError').style.display = 'block';
+			document.getElementById('displayError').style.color = 'red';
+			return false;
+		}
+	});
+	$("body").on("click", "#action_chips", function () {
+		document.getElementById('displayError').style.display = 'none';
+	});
+</script>
+
+<script>
+	function previewFile(input) {
+		var file = $("input[type=file]").get(0).files[0];
+
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function () {
+				$("#previewImg").attr("src", reader.result);
+				$("#previewImg").css({ 'display': 'block' });
+				$(".close1").css({ 'display': 'block' });
+			}
+
+			reader.readAsDataURL(file);
+		}
+	}
+	$(".close1").click(function () {
+
+		$('#previewImg').css({ 'display': 'none' });
+		$('.close1').css({ 'display': 'none' });
+		$('#profile_Img').attr('value', "1");
+
+	});
+</script>
+
+
+
+{% endblock %}

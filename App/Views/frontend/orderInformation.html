@@ -1,0 +1,247 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+<div class="wrap-breadcrumb parallax-breadcrumb">
+	<div class="container">
+		<ul class="breadcrumb">
+			<li><a href="/home"><i class="fa fa-home"></i></a></li>
+			<li><a href="/myAccount">Account</a></li>
+			<li><a href="/orderHistory">Order
+					History</a></li>
+			<li>
+				<a href="">Order
+					Information</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div id="account-order" class="container">
+
+	<div class="row">
+
+		<aside id="column-left" class="col-sm-3 hidden-xs">
+			<div class="box">
+				<div class="box-heading">Account</div>
+				<div class="list-group">
+
+					<a href="/myAccount" class="list-group-item">My Account </a>
+
+					<a href="/getAccountInformation" class="list-group-item">Edit Account</a> 
+					<a href="/changePassword"
+						class="list-group-item">Password</a>
+
+					<a href="/getAddressBook" class="list-group-item">Address Book</a> <a href="/wishlist"
+						class="list-group-item">Wish List </a>
+					<a href="/orderHistory" class="list-group-item">Order History </a>
+					<a href=""
+						class="list-group-item">Returns </a>
+					<a href=""
+						class="list-group-item">Transactions </a>
+
+					<a href="/frontend/logout" class="list-group-item">Logout </a>
+
+				</div>
+			</div>
+
+			<div class="box">
+				<div class="box-heading">Information</div>
+				<div class="list-group">
+					<a class="list-group-item" href="/aboutus">About Us </a>
+					<a class="list-group-item" href="/deliveryInformation">Delivery
+						Information </a>
+					<a class="list-group-item" href="/privacyPolicy">Privacy Policy </a>
+					<a class="list-group-item" href="/termsconditions">Terms &amp;
+						Conditions </a>
+					<a class="list-group-item" href="/contact">Contact Us </a>
+					<!-- <a class="list-group-item" href="siteMap.html">Site Map </a> -->
+				</div>
+			</div>
+		</aside>
+		<div id="content" class="col-sm-9">
+			<h2>Order History</h2>
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<td class="text-left" colspan="2">Order Details</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="text-left" style="width: 50%;"> <b>Order ID:</b> #{{orderId}}<br>
+							<b>Date Added:</b> {{dateAdded}}
+						</td>
+						<td class="text-left" style="width: 50%;"> <b>Payment Method:</b> Cash On Delivery<br>
+							<b>Shipping Method:</b> Flat Shipping Rate
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<td class="text-left" style="width: 50%; vertical-align: top;">Payment Address</td>
+						<td class="text-left" style="width: 50%; vertical-align: top;">Shipping Address</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="text-left">
+							{{paymentAddress.name}}<br>{{paymentAddress.company}}<br>{{paymentAddress.address_1}}<br>{{paymentAddress.address_2}}<br>{{paymentAddress.cityPincode}}<br>{{paymentAddress.stateName}}<br>{{paymentAddress.countryName}}
+						</td>
+						<td class="text-left">
+							{{shippingAddress.name}}<br>{{shippingAddress.company}}<br>{{shippingAddress.address_1}}<br>{{shippingAddress.address_2}}<br>{{shippingAddress.cityPincode}}<br>{{shippingAddress.stateName}}<br>{{shippingAddress.countryName}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<td class="text-center">Product Name</td>
+							<!-- <td class="text-left">Model</td> -->
+							<td class="text-center">Quantity</td>
+							<td class="text-center">Price</td>
+							<td class="text-center">Tax</td>
+							<td class="text-center">Total</td>
+							<td style="width: 10px;"></td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in products %}
+						<tr>
+							<td class="text-center">{{item.productName}}
+								<!-- <br> -->
+								<!-- &nbsp;<small> - Delivery Date: 2011-04-22</small> -->
+							</td>
+							<td class="text-center">{{item.quantity}}</td>
+							<td class="text-center">&#8377;&nbsp; {{item.unitPrice}}</td>
+							<td class="text-center">&#8377;&nbsp; {{item.tax}}</td>
+							<td class="text-center">&#8377;&nbsp; {{item.total}}</td>
+							<td class="text-center" style="white-space: nowrap;">
+								<!-- <a href="/addtocart_call"
+									data-toggle="tooltip" title="" class="btn btn-primary"
+									data-original-title="Reorder"><i class="fa fa-shopping-cart"></i></a> -->
+								<button type="button" class="reorder btn btn-primary" data-original-title="Reorder"
+									data-toggle="tooltip" productId={{item.productId}} title="Reorder"
+									onclick="cart.add('47', '1');"><i class="fa fa-shopping-cart"></i></button>
+
+								<!-- <a href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=account/return/add&amp;order_id=38&amp;product_id=47"
+									data-toggle="tooltip" title="" class="btn btn-danger"
+									data-original-title="Return"><i class="fa fa-reply"></i></a> -->
+							</td>
+						</tr>
+						{% endfor %}
+
+					</tbody>
+
+					<tfoot>
+
+						<tr>
+							<td colspan="3"></td>
+							<td class="text-center"><b>Sub-Total</b></td>
+							<td class="text-center">&#8377;&nbsp; {{subTotal}}</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="3"></td>
+							<td class="text-center"><b>Flat Shipping Rate</b></td>
+							<td class="text-center">&#8377;&nbsp; {{shipping_charge}}</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="3"></td>
+							<td class="text-center"><b>Total Tax</b></td>
+							<td class="text-center">&#8377;&nbsp; {{taxTotal}}</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="3"></td>
+							<td class="text-center"><b>Total</b></td>
+							<td class="text-center">&#8377;&nbsp; {{grandTotal}}</td>
+							<td></td>
+						</tr>
+					</tfoot>
+
+				</table>
+			</div>
+			<h3>Order History</h3>
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<td class="text-left">Date Added</td>
+						<td class="text-left">Status</td>
+						<!-- <td class="text-left">Comment</td> -->
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td class="text-left">{{dateAdded}}</td>
+						<td class="text-left">{{orderStatus}}</td>
+						<!-- <td class="text-left"></td> -->
+					</tr>
+				</tbody>
+
+			</table>
+			<div class="buttons clearfix">
+				<div class="pull-right"><a href="/orderHistory" class="btn btn-primary">Continue</a></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<!-- ======= Quick view JS ========= -->
+<script>
+
+	$('body').on('click', '.reorder', function () {
+		let action = $(this).attr('action');
+		// let content = 'Are you really want to add this product into wishlist?';
+		// if (action == 'remove') {
+		//     content = 'Are you really want to remove this product from wishlist?';
+		// }
+		// if (confirm(content)) {
+		// alert('Thanks for confirming');
+		let host = window.location.origin;
+		//  alert(host)
+		let productId = $(this).attr('productId');
+		// alert(productId)
+		// alert(action),
+
+		$.ajax({
+			url: host + '/addtocart_call',
+			type: 'POST',
+			data: { action: action, productId: productId },  // data to submit
+			success: function (status) {
+				console.log('===>', status);
+				  alert('Product added to cart successfully');
+				location.reload();
+			}
+			, error: function (jqXhr, textStatus, errorMessage) {
+				$('p').append('Error' + errorMessage);
+			}
+		});
+		// }
+
+	});
+
+	function quickbox() {
+		if ($(window).width() > 767) {
+			$('.quickview-button').magnificPopup({
+				type: 'iframe',
+				delegate: 'a',
+				preloader: true,
+				tLoading: 'Loading image #%curr%...',
+			});
+		}
+	}
+	jQuery(document).ready(function () { quickbox(); });
+	jQuery(window).resize(function () { quickbox(); });
+
+</script>
+
+{% endblock %}

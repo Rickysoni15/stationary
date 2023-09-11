@@ -1,0 +1,869 @@
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :bFgB__8Pk6BInd9MAAAA","level":"info"}
+{"message":"Some One Connected :-Iu3E0-JXooBhL2jAAAB","level":"info"}
+{"message":"Some One Connected :WGfk2WC277W2oQhcAAAC","level":"info"}
+{"message":"Some One Connected :dJExAHf6FkFsqcq9AAAD","level":"info"}
+{"message":"Some One Connected :bRC-Yp4c6IkvS3UFAAAE","level":"info"}
+{"message":"<=> gameCount|| 234","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :q7ldsNPJx6FASL-IAAAA","level":"info"}
+{"message":"Some One Connected :6v5_prRgelt-tnLwAAAB","level":"info"}
+{"message":"<=> gameCount|| 235","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :xlXO7DX0zOwo9N2dAAAA","level":"info"}
+{"message":"Some One Connected :tHoxfTMWvFlnM6xKAAAB","level":"info"}
+{"message":"<=> gameCount|| 236","level":"info"}
+{"message":"Some One Connected :HwL_gnePZJQkyJZ-AAAC","level":"info"}
+{"message":"Some One Connected :-7aKP54XbpbRV7TyAAAD","level":"info"}
+{"message":"<=> gameCount|| 237","level":"info"}
+{"message":"<=> gameCount|| 238","level":"info"}
+{"message":"<=> gameCount|| 239","level":"info"}
+{"message":"<=> gameCount|| 240","level":"info"}
+{"message":"Some One Connected :Z9UWAa0pIYRBGPUnAAAE","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :BKJT-lsAaITLUGYpAAAA","level":"info"}
+{"message":"Some One Connected :QhEtupLRaXdmwBkXAAAB","level":"info"}
+{"message":"<=> gameCount|| 241","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :T4Dibah6qc40ColoAAAA","level":"info"}
+{"message":"Some One Connected :_EqRlL4r3skBsGySAAAB","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :4sIEdvNVjGjhC4_3AAAA","level":"info"}
+{"message":"Some One Connected :yKaJh39JrSxDtq_BAAAB","level":"info"}
+{"message":"<=> gameCount|| 242","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :ZpTd-B_oUHkBQP5cAAAA","level":"info"}
+{"message":"Some One Connected :Q1vCruSqExPUNeHrAAAB","level":"info"}
+{"message":"<=> gameCount|| 243","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :xQE1NVfbJaz5GbbSAAAA","level":"info"}
+{"message":"Some One Connected :_4aA0hsWqb5G-iDwAAAB","level":"info"}
+{"message":"<=> gameCount|| 244","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :s1Y54F2Qctd0-VCAAAAA","level":"info"}
+{"message":"Some One Connected :dzsWhJsHP08oNLJoAAAB","level":"info"}
+{"message":"<=> gameCount|| 245","level":"info"}
+{"message":"Some One Connected :93HASZUVAeRRYZqyAAAC","level":"info"}
+{"message":"Some One Connected :E6ggd2W-Wk0J0N15AAAD","level":"info"}
+{"message":"Some One Connected :SKkSJUp8LrSXQsH0AAAE","level":"info"}
+{"message":"Some One Connected :anU4gmTOenK7iF9vAAAF","level":"info"}
+{"message":"Some One Connected :z7dAGIzl9P2LQfSzAAAG","level":"info"}
+{"message":"Some One Connected :SPEtoRgEIpkqQtWLAAAH","level":"info"}
+{"message":"Some One Connected :0xgDhm8IKiOcsD7zAAAI","level":"info"}
+{"message":"<=> gameCount|| 246","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :-DFn0n-ImyicGMyKAAAA","level":"info"}
+{"message":"Some One Connected :DA3mThjLReVLx_qYAAAB","level":"info"}
+{"message":"Some One Connected :I7KplqiamPyudDNKAAAC","level":"info"}
+{"message":"<=> gameCount|| 247","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :jWs-lFrPLauUw4_7AAAA","level":"info"}
+{"message":"Some One Connected :EEFeuq_Wvj4QT7A7AAAB","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :BM3YQcSK5adgIq77AAAA","level":"info"}
+{"message":"Some One Connected :kPa1CeLHhTr8rqHjAAAB","level":"info"}
+{"message":"<=> gameCount|| 248","level":"info"}
+{"message":"<=> gameCount|| 249","level":"info"}
+{"message":"Some One Connected :3uq5_cMHIToWcBuPAAAC","level":"info"}
+{"message":"<=> gameCount|| 250","level":"info"}
+{"message":"<=> gameCount|| 251","level":"info"}
+{"message":"Some One Connected :j3nTbYY1ExhSe37WAAAD","level":"info"}
+{"message":"Some One Connected :gWJwNbi9t12Yza_gAAAE","level":"info"}
+{"message":"Some One Connected :ii121BCzriE3kfxkAAAF","level":"info"}
+{"message":"Some One Connected :KEoUi4CwbqGyNivoAAAG","level":"info"}
+{"message":"<=> gameCount|| 252","level":"info"}
+{"message":"Some One Connected :uIP_BiukEZ2gyXc0AAAH","level":"info"}
+{"message":"<=> gameCount|| 253","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :yd8UAkrqDfCBNGokAAAA","level":"info"}
+{"message":"Some One Connected :rMnDGUJwD8WRD-2yAAAB","level":"info"}
+{"message":"Some One Connected :np4lTgPwXSRNwZIeAAAC","level":"info"}
+{"message":"<=> gameCount|| 254","level":"info"}
+{"message":"Some One Connected :1WbHnOi1EVKdWJfOAAAD","level":"info"}
+{"message":"Some One Connected :wXuGU4pKsydMcTydAAAE","level":"info"}
+{"message":"Some One Connected :gDvwGOVech4T6PNrAAAF","level":"info"}
+{"message":"Some One Connected :N5sw8LjJexRS4VifAAAG","level":"info"}
+{"message":"Some One Connected :ckCNRwZbOIdcH1n5AAAH","level":"info"}
+{"message":"<=> gameCount|| 255","level":"info"}
+{"message":"Some One Connected :mg70VWHRWQIKq4avAAAI","level":"info"}
+{"message":"Some One Connected :8DGkMi-C98P96KKhAAAJ","level":"info"}
+{"message":"<=> gameCount|| 256","level":"info"}
+{"message":"Some One Connected :BQfLzEFkB7PK1_XPAAAK","level":"info"}
+{"message":"Some One Connected :rkAgT9hzFytNQDD-AAAL","level":"info"}
+{"message":"Some One Connected :VDyuSbkU-8m5h56DAAAM","level":"info"}
+{"message":"Some One Connected :sB4FLXMHoATBGSLpAAAN","level":"info"}
+{"message":"Some One Connected :cPn1t2j-DAzy3XkUAAAO","level":"info"}
+{"message":"Some One Connected :JSErhBhwFWiWhArYAAAP","level":"info"}
+{"message":"Some One Connected :fojVcF3eD73LFtfdAAAQ","level":"info"}
+{"message":"Some One Connected :3fRya1bH6A4D6w29AAAR","level":"info"}
+{"message":"<=> gameCount|| 257","level":"info"}
+{"message":"Some One Connected :Ir606KFCqojXtKx7AAAS","level":"info"}
+{"message":"Some One Connected :q7iKn_bR71QsoWm3AAAT","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :wXEybH2KkllefOgnAAAA","level":"info"}
+{"message":"Some One Connected :UtfBsk9m6m3uqoHqAAAB","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :e-uFYGRUWv0-P-IxAAAA","level":"info"}
+{"message":"Some One Connected :mbPNLytsQo5iNia_AAAB","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :uEpQBqgI6VgIKRO2AAAA","level":"info"}
+{"message":"Some One Connected :6LETmiwlFFKbSC6NAAAB","level":"info"}
+{"message":"Some One Connected :EQLDJAkXI0ZpwUBDAAAC","level":"info"}
+{"message":"Some One Connected :wdlZniEoLE6oN4hnAAAD","level":"info"}
+{"message":"Some One Connected :ouTfbpj0EyCpksgoAAAE","level":"info"}
+{"message":"Some One Connected :kEp1I-7zsmbjw1CqAAAF","level":"info"}
+{"message":"Some One Connected :vOiPO-fWv11rCZXJAAAG","level":"info"}
+{"message":"Some One Connected :K-VKvalnBFe9FLGaAAAH","level":"info"}
+{"message":"Some One Connected :vKCgb0kv6D4tG75AAAAI","level":"info"}
+{"message":"Some One Connected :OgdXLD7n7uHYjPHxAAAJ","level":"info"}
+{"message":"Some One Connected :9dwqPUKgw2i8n4LRAAAK","level":"info"}
+{"message":"Some One Connected :nq-_RlF7_a6ZoAI5AAAL","level":"info"}
+{"message":"Some One Connected :RTZb4evMY-XaiQ8-AAAM","level":"info"}
+{"message":"Some One Connected :1xwcOdfvBQasjYH9AAAN","level":"info"}
+{"message":"Some One Connected :4pcBQhjm4aC9SM37AAAO","level":"info"}
+{"message":"Some One Connected :EeI3AgM1mMIU8g6hAAAP","level":"info"}
+{"message":"Some One Connected :lkhVyuu7D1GSLWZpAAAQ","level":"info"}
+{"message":"Some One Connected :QKleCEZKX-iLxkAyAAAR","level":"info"}
+{"message":"Some One Connected :GTI69UqzL5Jle1O2AAAS","level":"info"}
+{"message":"Some One Connected :RhZ3tATj4vovWXp0AAAT","level":"info"}
+{"message":"Some One Connected :z17bgUpZHL6L-QQCAAAU","level":"info"}
+{"message":"Some One Connected :9UR_rTQ7X1YmSqVrAAAV","level":"info"}
+{"message":"Some One Connected :EshojWpHQgV7pVWNAAAW","level":"info"}
+{"message":"<=> gameCount|| 258","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :aNxGhYEILfuXoy4_AAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :7r_h9i8sSNXJYVF2AAAA","level":"info"}
+{"message":"Some One Connected :IgEKYKZuDNvDpRtCAAAB","level":"info"}
+{"message":"Some One Connected :6k_p7zLYN3-2likTAAAC","level":"info"}
+{"message":"Some One Connected :pMzxq3vlNQ6gQqDWAAAD","level":"info"}
+{"message":"<=> gameCount|| 259","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :e_rHGCtJ2hVffdpZAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :vs1GQ8Cnnhwo_WnjAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :4m5JB6uuiIzJF1TfAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :ftpXJSBKN6Z_rhi9AAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :8j5-dTuAcB913AOZAAAA","level":"info"}
+{"message":"Some One Connected :t309c8cGGW9k_lxpAAAB","level":"info"}
+{"message":"<=> gameCount|| 260","level":"info"}
+{"message":"Some One Connected :mxv0neUyik8xOhsqAAAC","level":"info"}
+{"message":"Some One Connected :0aKn6iN3arPqTIVYAAAD","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :pys1HcVwy03aEflWAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :dmIvfh21gudn1yinAAAA","level":"info"}
+{"message":"Some One Connected :igBa91yMgHSCDGrcAAAB","level":"info"}
+{"message":"Some One Connected :9TPq3DqU4tEm3tHGAAAC","level":"info"}
+{"message":"<=> gameCount|| 261","level":"info"}
+{"message":"Some One Connected :6wpmhI0L_DXc10wUAAAD","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :QyT--MXQzLxHXrJ3AAAA","level":"info"}
+{"message":"Some One Connected :BAdKZGPVYMPBI0tNAAAB","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :CQfjqtMhZZ-HtevXAAAA","level":"info"}
+{"message":"Some One Connected :s5nVWFgmTKwrdvauAAAB","level":"info"}
+{"message":"Some One Connected :k_ECoklbVR-W6oavAAAC","level":"info"}
+{"message":"Some One Connected :F0yz9ysHWNa3MyliAAAD","level":"info"}
+{"message":"<=> gameCount|| 262","level":"info"}
+{"message":"Some One Connected :p-pJctwXXGyUyT0SAAAE","level":"info"}
+{"message":"Some One Connected :2LF6r_ePIeceXPBHAAAF","level":"info"}
+{"message":"Some One Connected :sZie8LUwyr1bDmDOAAAG","level":"info"}
+{"message":"Some One Connected :sEayp3xhN8COFTehAAAH","level":"info"}
+{"message":"Some One Connected :rOxRBn-B0jOQ5bL2AAAI","level":"info"}
+{"message":"Some One Connected :U_aIoF5jE8JYFaetAAAJ","level":"info"}
+{"message":"Some One Connected :C8H2C25G91AIQDmtAAAK","level":"info"}
+{"message":"<=> gameCount|| 263","level":"info"}
+{"message":"Mongoose default connection disconnected","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :DwDxGkZVNF0Pi2gXAAAA","level":"info"}
+{"message":"Some One Connected :4C26eFyFcLxuDFf_AAAB","level":"info"}
+{"message":"<=> gameCount|| 264","level":"info"}
+{"message":"Mongoose default connection disconnected","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :E0yuP0noRv-OAPFhAAAA","level":"info"}
+{"message":"Some One Connected :AD1pdA4nzkc5AxY9AAAB","level":"info"}
+{"message":"Some One Connected :beji62pihGlhfTNDAAAC","level":"info"}
+{"message":"Some One Connected :Rz-kzATIHePy78FWAAAD","level":"info"}
+{"message":"<=> gameCount|| 265","level":"info"}
+{"message":"Some One Connected :EFk4gvIoRzbsxeaIAAAE","level":"info"}
+{"message":"Some One Connected :6FaEdfwvXSc7Xgq2AAAF","level":"info"}
+{"message":"<=> gameCount|| 266","level":"info"}
+{"message":"<=> gameCount|| 267","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :LBX78_4LwDAKg6OfAAAA","level":"info"}
+{"message":"Some One Connected :CmUvkaz1RpmDsI5wAAAB","level":"info"}
+{"message":"<=> gameCount|| 268","level":"info"}
+{"message":"Some One Connected :EpoT_SIx1mf1hj8fAAAC","level":"info"}
+{"message":"<=> gameCount|| 269","level":"info"}
+{"message":"Some One Connected :7yFK7I9jVBqR7azyAAAD","level":"info"}
+{"message":"<=> gameCount|| 270","level":"info"}
+{"message":"Some One Connected :a9mIlw3o3lMW1a7dAAAE","level":"info"}
+{"message":"Mongoose default connection disconnected","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :8hthWiUDflaUPk7AAAAA","level":"info"}
+{"message":"Some One Connected :06VTiDAzBuo50fnpAAAB","level":"info"}
+{"message":"Some One Connected :Q73-FAXHVZ2aohvbAAAC","level":"info"}
+{"message":"Some One Connected :-BvJ0jy5aAdI_E40AAAD","level":"info"}
+{"message":"Some One Connected :xoDiYKTtu_uFkDyTAAAE","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :sedMZMJ5hGPgeE2hAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :XYWQ4Uzog6CNPuEkAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :u0L4hIDxunAPC-e8AAAA","level":"info"}
+{"message":"Some One Connected :0wg8qMztgKdZPoeOAAAB","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :SGR08ALZdnohJV3sAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :wl-AzEHxQob8UBfkAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :4QzHC4wxpZvMIfH5AAAA","level":"info"}
+{"message":"Some One Connected :5WZbdFgXo0xPDqdTAAAB","level":"info"}
+{"message":"Some One Connected :riKb1K6yYobgcPyyAAAC","level":"info"}
+{"message":"<=> gameCount|| 271","level":"info"}
+{"message":"Some One Connected :tywbZzQYRuXOJtE8AAAD","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :_ICy99ET6BL-LDt-AAAA","level":"info"}
+{"message":"Some One Connected :YqQOX4QFUXoRXcwuAAAB","level":"info"}
+{"message":"<=> gameCount|| 272","level":"info"}
+{"message":"Mongoose default connection disconnected","level":"info"}
+{"message":"Mongoose default connection disconnected through app termination","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :4J8itZDxMokC3ccOAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :CAxxs7-Yh2GJ5-cRAAAA","level":"info"}
+{"message":"Some One Connected :yFWSs2R3P98UOed7AAAB","level":"info"}
+{"message":"<=> gameCount|| 273","level":"info"}
+{"message":"Some One Connected :yNEqlNt_ptyIsH0fAAAC","level":"info"}
+{"message":"Mongoose default connection disconnected","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :xeHdE9eqt21KtYbEAAAA","level":"info"}
+{"message":"Some One Connected :YKVegkpEtHG5L693AAAB","level":"info"}
+{"message":"Some One Connected :RxDuL3IIZEEQ9dBuAAAC","level":"info"}
+{"message":"<=> gameCount|| 274","level":"info"}
+{"message":"Some One Connected :KBMDzt_9kO_Xzkp8AAAD","level":"info"}
+{"message":"<=> gameCount|| 275","level":"info"}
+{"message":"Some One Connected :EbSdPe6kAe3Jrjs3AAAE","level":"info"}
+{"message":"Some One Connected :RkS8XV3y1CZZrykqAAAF","level":"info"}
+{"message":"Some One Connected :oXvIoRTLsibaa5O5AAAG","level":"info"}
+{"message":"<=> gameCount|| 276","level":"info"}
+{"message":"Some One Connected :OUZiJOJ2UNv2Q5o-AAAH","level":"info"}
+{"message":"Some One Connected :NJY8UKwWUgJE4rY_AAAI","level":"info"}
+{"message":"Some One Connected :rRvYrvB2XHovVLGWAAAJ","level":"info"}
+{"message":"Some One Connected :D6EheIrlEbOtTirlAAAK","level":"info"}
+{"message":"Some One Connected :Ry_0hsSbXukJLRuSAAAL","level":"info"}
+{"message":"Some One Connected :JglU9wwTK0fkETUdAAAM","level":"info"}
+{"message":"<=> gameCount|| 277","level":"info"}
+{"message":"Some One Connected :dfS0XTE2o2jjldS_AAAN","level":"info"}
+{"message":"<=> gameCount|| 278","level":"info"}

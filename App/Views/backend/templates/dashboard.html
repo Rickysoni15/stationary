@@ -1,0 +1,91 @@
+{% extends "backend/partition/layout.html" %} {% block body %}
+
+<!-- Breadcrumb -->
+<section class="content-header">
+    <h1>
+        {{App.name}}
+        <!-- <small>Version 0.1</small> -->
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
+
+<!-- /Title -->
+{% include "backend/partition/notification.html" %}
+<!-- Row -->
+
+<!-- /Main Content -->
+<section class="content">
+
+    <div class="row">
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="ion ion-ios-albums"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Total Users</span>
+                    <span class="info-box-number">{{totalUsers}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-briefcase"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Total Applications</span>
+                    <span class="info-box-number">{{appliedCount}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="ion ion-ios-analytics"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Total Shade</span>
+                    <span class="info-box-number">{{totalShade}}</span>
+                </div>
+            </div>
+        </div> -->
+
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Footer -->
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <!-- <b>Version</b> 2.4.0 -->
+    </div>
+    <strong>Copyright &copy; <span id="currentYear"></span>-<span id="nextYear"></span> <a href="/">{{App.name}}</a>.</strong> All rights reserved.
+</footer>
+<!-- /Footer -->
+
+</div>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script> -->
+{% endblock %} {% block Jscript %}
+<script>
+    $(document).ready(function() {
+
+        var host = window.location.origin;
+        let year = new Date().getFullYear();
+        $('#currentYear').html(year);
+        $('#nextYear').html( parseInt( year + 1) );
+
+    });
+</script>
+
+{% endblock %}

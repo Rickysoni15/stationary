@@ -1,0 +1,138 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+<div class="wrap-breadcrumb parallax-breadcrumb">
+	<div class="container">
+		<ul class="breadcrumb">
+			<li><a href="/home"><i
+						class="fa fa-home"></i></a></li>
+			<li><a href="/myAccount">Account</a>
+			</li>
+			<li><a href="/orderHistory">Order
+					History</a></li>
+		</ul>
+	</div>
+</div>
+
+<div id="account-order" class="container">
+
+	<div class="row">
+
+		<aside id="column-left" class="col-sm-3 hidden-xs">
+			<div class="box">
+				<div class="box-heading">Account</div>
+				<div class="list-group">
+
+					<a href="/myAccount"
+						class="list-group-item">My Account </a>
+
+					<a href="/getAccountInformation"
+						class="list-group-item">Edit Account</a> <a
+						href="/changePassword"
+						class="list-group-item">Password</a>
+
+					<a href="/getAddressBook"
+						class="list-group-item">Address Book</a> <a
+						href="/wishlist"
+						class="list-group-item">Wish List </a> 
+						<a
+						href="/orderHistory"
+						class="list-group-item">Order History </a>  
+						 <a
+						href=""
+						class="list-group-item">Returns </a> 
+						<a
+						href=""
+						class="list-group-item">Transactions </a> 
+
+					<a href="/frontend/logout"
+						class="list-group-item">Logout </a>
+
+				</div>
+			</div>
+
+			<div class="box">
+				<div class="box-heading">Information</div>
+				<div class="list-group">
+					<a class="list-group-item" href="/aboutus">About Us </a>
+					<a class="list-group-item" href="/deliveryInformation">Delivery
+						Information </a>
+					<a class="list-group-item" href="/privacyPolicy">Privacy Policy </a>
+					<a class="list-group-item" href="/termsconditions">Terms &amp;
+						Conditions </a>
+					<a class="list-group-item" href="/contact">Contact Us </a>
+					<!-- <a class="list-group-item" href="siteMap.html">Site Map </a> -->
+				</div>
+			</div>
+		</aside>
+		<div id="content" class="col-sm-9">
+			<h1>Order History</h1>
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<td class="text-right">Order ID</td>
+							<td class="text-left">Customer</td>
+							<td class="text-right">No. of Products</td>
+							<td class="text-left">Status</td>
+							<td class="text-right">Total</td>
+							<td class="text-left">Date Added</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in orderHistory %}
+						<tr>
+							<td class="text-center"># {{item.orderId}}</td>
+							<td class="text-center">{{item.customerName}}</td>
+							<td class="text-center">{{item.quantity}}</td>
+							<td class="text-center">{{item.status}}</td>
+							<td class="text-center"> &#8377;&nbsp; {{item.total}}</td>
+							<td class="text-center">{{item.dateAdded}}</td>
+							<td class="text-right"><a
+									href="/orderInformation/{{item.orderId}}"
+									data-toggle="tooltip" title="" class="btn btn-info" data-original-title="View"><i
+										class="fa fa-eye"></i></a></td>
+						</tr>
+						{% endfor %}
+						
+					</tbody>
+				</table>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 text-left"></div>
+				<div class="col-sm-6 text-right">Showing 1 to 2 of 2 (1 Pages)</div>
+			</div>
+			<div class="buttons clearfix">
+				<div class="pull-right"><a
+						href="/myAccount"
+						class="btn btn-primary">Continue</a></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
+
+{% block Jscript %}
+
+<!-- ======= Quick view JS ========= -->
+<script>
+
+	function quickbox() {
+		if ($(window).width() > 767) {
+			$('.quickview-button').magnificPopup({
+				type: 'iframe',
+				delegate: 'a',
+				preloader: true,
+				tLoading: 'Loading image #%curr%...',
+			});
+		}
+	}
+	jQuery(document).ready(function () { quickbox(); });
+	jQuery(window).resize(function () { quickbox(); });
+
+</script>
+
+{% endblock %}

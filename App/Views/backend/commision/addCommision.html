@@ -1,0 +1,117 @@
+{% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+<style>
+	.waves-effect {
+		color: white;
+		background-color: #3c8dbc;
+	}
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Coupon Code</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Commision</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<!-- <h6 class="panel-title txt-dark">Settings</h6> -->
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										{% if commisionData %}
+										<form method="POST" action="/backend/editPostCommision"
+											class="form-horizontal" enctype="multipart/form-data">
+											{% else %}
+											<form id="formdata" method="POST" action="/backend/addPostCommision"
+												class="form-horizontal" enctype="multipart/form-data">
+												{% endif %}
+												<table border="0" class="table display  pb-30">
+													<div class="col-sm-12">
+														<div class="panel-wrapper collapse in">
+															<div class="panel-body">
+                                                                <input type="hidden" class="form-control"
+																			name="id" id="id"
+																			value="{{commisionData._id}}" />
+																<div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="couponcode">Commision:</label>
+																	<div class="col-sm-6">
+																		<input type="text" class="form-control"
+																			name="commision" id="commision" placeholder="%"
+																			value="{{commisionData.commision}}" required />
+																	</div>
+																</div>
+                                                               
+														</div>
+													</div>
+													<tr>
+														<td colspan="2">
+
+															{% if commisionData %}
+															<input type="submit" class="btn btn-success btn-flat"
+																value="Update">
+                                                               
+                                                                <button id="back_btn" class="btn waves-effect waves-light" name="action">Back
+                                                                </button>
+															{%else%}
+															<input id="submit" type="submit"
+																class="btn btn-success btn-flat" value="submit">
+                                                               
+                                                                <button id="back_btn" class="btn waves-effect waves-light" name="action">Back
+                                                                </button>
+															{% endif %}
+														</td>
+													</tr>
+												</table>
+											</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- /Row -->
+			</div>
+		</section>
+
+		{% endblock %}
+
+		{% block Jscript %}
+		<script>
+            $("#back_btn").click(function () {
+                window.history.back();
+            });
+		</script>
+
+		{% endblock %}

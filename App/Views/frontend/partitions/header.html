@@ -1,0 +1,225 @@
+<header>
+  <div class="header-container">
+    <div class="container">
+      <div class="row">
+        <div class="header-main">
+
+          <div class="head-right-bottom">
+            <div class="container">
+              <div class="header-logo">
+                <div id="logo">
+                  <a href="/home"><img src="/assets/front/images/catalog/logo.jpg"
+                      title="BookClub - Stationery Store" alt="BookClub - Stationery Store"
+                      class="img-responsive" /></a>
+                </div>
+              </div>
+
+              <div class="header-cart">
+                <div id="cart" class="btn-group btn-block">
+                  <span class="cart_heading"></span>
+                  <button type="button" data-toggle="dropdown" data-loading-text="Loading..."
+                    class="btn btn-inverse btn-block btn-lg dropdown-toggle"><i class="fa fa-shopping-cart"></i> <span
+                      id="cart-total">0</span></button>
+                  <ul class="dropdown-menu pull-right cart-menu">
+                    <li>
+                      <p class="text-center">Your shopping cart is empty!</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="dropdown myaccount">
+                <a href="indexe223.html?route=account/account" title="My Account" class="dropdown-toggle"
+                  data-toggle="dropdown">
+                  <span class="hidden-xs hidden-sm hidden-md">My Account</span><i class="fa fa-angle-down"
+                    aria-hidden="true"></i></a>
+                <ul class="dropdown-menu dropdown-menu-right myaccount-menu">
+                  <li><a href="/register_User">Register</a></li>
+                  <li><a href="/login">Login</a></li>
+                  <li><a href="/wishlist" id="wishlist-total" title="Wish List (0)">Wish List</a></li>
+                  <li><a href="/shoppingcart" title="Shopping Cart">Shopping Cart</a></li>
+                  <li><a href="/checkout" title="Checkout">Checkout</a></li>
+                  <li><a href="/frontend/logout" title="Logout">Logout</a></li>
+
+                  <li class="lang-curr">
+                    <div class="pull-left">
+                      <form action="" method="post" enctype="multipart/form-data" id="form-language">
+                        <input type="hidden" name="code" value="" />
+                        <input type="hidden" name="redirect" value="" />
+                      </form>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div id="search" class="input-group">
+                <span class="search_button"></span>
+                <div class="search_toggle">
+                  <div id="searchbox">
+                    <input type="text" name="search" value="" placeholder="Search Products Here"
+                      class="form-control input-lg" />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <nav class="nav-container" role="navigation">
+                <div class="nav-inner">
+                  <!-- ======= Menu Code START ========= -->
+                  <!-- Opencart 3 level Category Menu-->
+                  <div id="menu" class="main-menu">
+                    <ul class="nav navbar-nav">
+                      <li class="top_level home"><a href="/home">Home</a></li>
+
+                      <li class="top_level dropdown"><a href="/products">Stationery</a>
+                       
+                      <div class="dropdown-menu megamenu column3">
+                        
+                        <div class="dropdown-inner">
+                          <ul class="list-unstyled childs_1">
+                            <!-- 2 Level Sub Categories START -->
+                            <!-- {% for item in productCategoryData %}
+                            <ul>
+                                <li class="dropdown"><a href='/products/{{item._id}}'>{{item.productCategoryName}}</a></li>>
+                            </ul>
+                            {% else %}
+                        <li>This would display if the 'item' collection were empty</li>
+                        {% endfor %} -->
+
+                            <li class="dropdown"><a href="pens.html">Pens</a>
+                              <div class="dropdown-menu">
+                                <div class="dropdown-inner">
+                                  <ul class="list-unstyled childs_2">
+                                    <li><a href="indexb0b2.html?route=product/category&amp;path=20_27_49">Marker Pen</a>
+                                    </li>
+                                    <li><a
+                                        href="index17aa.html?route=product/category&amp;path=20_27_50">Highlighter</a>
+                                    </li>
+                                    <li><a href="index8a75.html?route=product/category&amp;path=20_27_51">Colored
+                                        Pencils</a></li>
+                                    <li><a href="index3b96.html?route=product/category&amp;path=20_27_52">Pencils</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </li>
+                            <!-- 2 Level Sub Categories END -->
+
+                          </ul>
+                          <ul class="list-unstyled childs_1">
+                            <li class="dropdown"><a href="files.html">Files</a>
+                              <div class="dropdown-menu">
+                                <div class="dropdown-inner">
+                                  <ul class="list-unstyled childs_2">
+                                    <li><a href="index1cfb.html?route=product/category&amp;path=20_26_53">Box File</a>
+                                    </li>
+                                    <li><a href="index5b8a.html?route=product/category&amp;path=20_26_54">File
+                                        Folder</a></li>
+                                    <li><a href="index5924.html?route=product/category&amp;path=20_26_55">Clip File</a>
+                                    </li>
+                                    <li><a href="indexde9c.html?route=product/category&amp;path=20_26_56">Spring
+                                        File</a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </li>
+
+                          </ul>
+                          <ul class="list-unstyled childs_1">
+                            <li class="dropdown"><a href="/accessories.html">Accessories</a>
+                              <div class="dropdown-menu">
+                                <div class="dropdown-inner">
+                                  <ul class="list-unstyled childs_2">
+                                    <li><a href="index4639.html?route=product/category&amp;path=20_43_38">Stapler</a>
+                                    </li>
+                                    <li><a href="index1668.html?route=product/category&amp;path=20_43_37">Calculator</a>
+                                    </li>
+                                    <li><a href="indexcd26.html?route=product/category&amp;path=20_43_39">Sharpener</a>
+                                    </li>
+                                    <li><a href="index24a8.html?route=product/category&amp;path=20_43_40">Eraser</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      </li>
+                      <li class="top_level"><a href="/aboutus">About Us</a></li>
+                      <li class="top_level dropdown"><a href="/contact">Contact Us</a></li>
+                      <!-- <li class="top_level"><a href="/viewallproduct.html">Clipboard</a>
+                      </li>
+                      <li class="top_level"><a
+                      href="index68ea.html?route=product/category&amp;path=33">Geometry
+                      Box</a></li>
+                      <li class="top_level"> <a href="blog.html">Blogs </a>
+                      </li> -->
+                    </ul>
+                  </div>
+
+                </div>
+                <!--  =============================================== Mobile menu start  =============================================  -->
+                <div id="res-menu" class="main-menu nav-container1 container">
+                  <div class="nav-responsive"><span>Menu</span>
+                    <div class="expandable"></div>
+                  </div>
+                  <ul class="main-navigation">
+                    <li class="top_level home"><a href="/home">Home</a></li>
+                    <li class="top_level dropdown"><a href="/products">Stationery</a>
+                      <ul>
+                        <li>
+                          <a href="pens.html">Pens</a>
+                          <ul class="list-unstyled childs_2">
+                            <li><a href="indexb0b2.html?route=product/category&amp;path=20_27_49">Marker Pen</a></li>
+                            <li><a href="index17aa.html?route=product/category&amp;path=20_27_50">Highlighter</a>
+                            </li>
+                            <li><a href="index8a75.html?route=product/category&amp;path=20_27_51">Colored Pencils</a>
+                            </li>
+                            <li><a href="index3b96.html?route=product/category&amp;path=20_27_52">Pencils</a>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                      <ul>
+                        <li>
+                          <a href="files.html">Files</a>
+                          <ul class="list-unstyled childs_2">
+                            <li><a href="index1cfb.html?route=product/category&amp;path=20_26_53">Box File</a></li>
+                            <li><a href="index5b8a.html?route=product/category&amp;path=20_26_54">File Folder</a></li>
+                            <li><a href="index5924.html?route=product/category&amp;path=20_26_55">Clip File</a></li>
+                            <li><a href="indexde9c.html?route=product/category&amp;path=20_26_56">Spring File</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                      <ul>
+                        <li>
+                          <a href="/accessories.html">Accessories</a>
+                          <ul class="list-unstyled childs_2">
+                            <li><a href="index4639.html?route=product/category&amp;path=20_43_38">Stapler</a>
+                            </li>
+                            <li><a href="index1668.html?route=product/category&amp;path=20_43_37">Calculator</a>
+                            </li>
+                            <li><a href="indexcd26.html?route=product/category&amp;path=20_43_39">Sharpener</a>
+                            </li>
+                            <li><a href="index24a8.html?route=product/category&amp;path=20_43_40">Eraser</a>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="top_level dropdown"><a href="/aboutus">About Us</a></li>
+                    <li class="top_level dropdown"><a href="/contact">Contact Us</a></li>
+
+                  </ul>
+                </div>
+
+
+              </nav>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

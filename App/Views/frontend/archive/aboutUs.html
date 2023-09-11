@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "frontend/partitions/head.html" %}
+
+<body>
+{% include "frontend/partitions/header.html" %}
+    <main class="about-us-pg">
+        <section class="inner-top-banner-sec">
+            <div class="container">
+                <div class="col-md-12 pl-sm-3 pr-sm-3 pl-0 pr-0">
+                    <div class="head-title-wrp text-center" data-aos="fade-in" data-aos-offset="0">
+                        <h1 class="shadow-title " >about us</h1>
+                        <p class="heading animated" data-aos="zoom-in" data-aos-offset="0">LET’S TALK ABOUT USHANTI</p>                            
+                    </div>
+                    <div class="mid-sap">
+                        <span class="ract-sp animated fadeIn slower"></span>
+                        <span class="eqlip-sp animated infinite slideDown"  data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="1500" data-aos-offset="0"></span>
+                    </div>                 
+                </div>     
+                <div class="company-info">
+                  
+                        <div class="col-md-12">
+                            <div class="p-txt text-center">
+                                {{aboutUsContent.about}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card-heading-wt-bg">
+                                    <p>COMPANY INFORMATION</p>
+                                </div>
+                                <div class="detail-des l-dec">
+                                    <p>{{aboutUsContent.companyInfo}}</p>
+                                </div>
+        
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-heading-wt-bg">
+                                    <p>PROFILE & VISION</p>
+                                </div>
+                                <div class="detail-des r-dec">
+                                    <p>{{aboutUsContent.profileVision}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="compny-img w-100">
+                                    <img src="/front/img/company-info-img.png" class="img-fluid w-100" alt="">
+                                </div>
+                            </div>
+                        </div>
+                   
+                </div>           
+            </div>
+        </section>
+        <section class="director-profile">
+            <div class="director-profile-inr">   
+                <div class="vid-wrap">
+                    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                        <source src="/front/video/director-profile.mp4" type="video/mp4">
+                    </video>
+                    <div class="container">
+                        <div class="col-md-12 text-center">
+                            <div class="card-heading-wt-bg">
+                                <p>DIRECTOR’S PROFILE</p>
+                            </div>
+                        </div>
+                
+                        <div class="row crd-wrp">
+                            {% for director in directors %}
+                                <div class="col-md-4 crd-box">
+                                    <div class="card lighter-accent">
+                                            <div class="dirctor-img">
+                                                <img src="{{director.image}}" alt="">
+                                            </div>
+                                            <div class="det-block">
+                                                <div class="dir-nm">{{director.fullName}}</div>
+                                                <div class="desig">Designation: {{director.designation}}</div>
+                                                <div class="accomplst">
+                                                    <p class="p-title">Accomplishments:</p>
+                                                    <ul class="acmp-list">
+                                                        <li>{{director.pointOne}}</li>
+                                                        <li>{{director.pointTwo}}</li>
+                                                        <li>{{director.pointThree}}</li>
+                                                        <li>{{director.pointFour}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            
+                            
+                             
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="col-md-12 text-center">
+                    <div class="learn-more-btn-1">
+                        <a href="javascript:void(0);" class="loadmore" id="loadMore"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+      <section class="our-subsidiaries">  
+        <div class="container">
+            <div class="col-md-12 text-center">
+                <div class="card-heading-wt-bg">
+                    <p>OUR SUBSIDIARIES </p>
+                </div>
+                <div class="subsidire-links">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="ul-list text-left">
+                                <li><a href="#">Subsidiary 1</a></li>
+                                <li><a href="#">Subsidiary 2</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="ul-list text-right">
+                                <li><a href="#">Subsidiary 1</a></li>
+                                <li><a href="#">Subsidiary 2</a></li>
+                            </ul>   
+                        </div>
+                    </div>
+                  
+                   
+                </div>
+
+            </div>
+        </div>
+      </section>
+      <section class="qlty-rnd">
+        <div class="qlty-rnd-inr"> 
+            <div class="vid-wrap">
+                <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                    <source src="/front/video/quality-nd-rnd.mp4" type="video/mp4">
+                </video>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="heading">QUALITY AND R&D</div>
+                            <p class="p-txt">
+                                {{aboutUsContent.qualityRnd}}
+                            </p>
+                            <p class="p-txt">
+                                abc eft hij klm nop qrs tuv wxy z abc eft hij klm nop qrs tuv wxy z abc eft hij klm nop qrs <br>
+                                tuv wxy z abc eft hij klm nop qrs tuv wxy z abc eft hij klm nop qrs tuv wxy z abc eft hij ...... <br>
+                                tuv wxy z abc eft hij klm nop qrs tuv wxy z abc eft hij klm nop qrs tuv wxy z abc eft hij klm <br>
+                                nop qrs tuv wxy z abc eft hij klm nop.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-md-12 text-center">
+                <div class="learn-more-btn-2">
+                    <a href="javascript:void(0);" class="loadmore2"></a>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section class="aword-section mt-0">
+        <div class="container">
+            <div class="col-md-12">
+                       
+                <div class="text-center">   
+                    <div class="win-leafe" data-aos="fade-down"  data-aos-easing="linear"
+                    data-aos-duration="1200" data-aos-offset="0">
+                        <h4 class="title">AWARDS & CERTIFICTES</h4>
+                    </div>
+                </div>
+                <div class="owl-carousel owl-theme award-list-slider" data-aos="zoom-in" data-aos-easing="linear" 
+                data-aos-duration="1200" data-aos-offset="0">
+                    {% for award in awards %}
+                        <div class="item text-center">
+                            <div class="award-img">
+                                <img src="{{award.image}}" alt="">
+                            </div>
+                            <div class="name-yr-txt">{{award.awardName}} & {{award.year}}</div>
+                        </div>
+                    {% endfor %}
+                    
+
+                </div>
+            </div>
+           
+        </div>
+    </section>
+    </main>
+{% include "frontend/partitions/footer.html" %}
+    
+
+<script>
+       $(document).ready(function(){
+        var $this = $('.crd-wrp');
+        if ($this.find('crd-box').length > 3) {
+            $('.learn-more-btn-1').append('<a href="javascript:;" class="loadmore showMore" id="loadMore"></a>');
+        }
+        // If more than 2 Education items, hide the remaining
+        $('.crd-box').slice(0,3).addClass('shown');
+        $('.crd-box').not('.shown').hide();
+        $('.loadmore').on('click',function(){
+            $('.crd-box').not('.shown').toggle(800);
+            $(this).toggleClass('showLess');
+        });
+
+        var $this = $('.p-txt');
+        if ($this.find('p-txt').length > 1) {
+            $('.learn-more-btn-2').append('<a href="javascript:;" class="loadmore2 showMore" id="loadmore2"></a>');
+        }
+        // If more than 2 Education items, hide the remaining
+        $('.p-txt').slice(0,2).addClass('shown');
+        $('.p-txt').not('.shown').hide();
+        $('.loadmore2').on('click',function(){
+            $('.p-txt').not('.shown').toggle(800);
+            $(this).toggleClass('showLess');
+        });
+    });
+
+</script>
+
+
+
+    <script>
+         $(document).ready(function() {
+          AOS.init({
+            // startEvent: 'load',
+            offset: 250,
+            duration: 1000,
+            easing: 'ease-in-sine',
+            delay: 50,
+            disableMutationObserver: true,
+            throttleDelay: 0,
+            debounceDelay: 0,
+            once: false,
+            mirror: true,
+            startEvent: 'DOMContentLoaded'
+            });
+        });
+        
+        
+    </script>
+
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        autoplay:true,
+        autoplaySpeed:800,
+        margin:0,
+        nav:true,
+        dots:false,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            768:{
+                items:2
+            },
+            992:{
+                items:2
+            },
+            1024:{
+                items:3
+            }
+        }
+    })
+</script>
+
+
+</body>
+</html>

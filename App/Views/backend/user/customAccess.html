@@ -1,0 +1,97 @@
+{% extends "backend/partition/layout.html" %}
+{% block body %}
+
+
+	<!-- Main Content -->
+	<div class="page-wrapper">
+		<div class="container-fluid">
+
+			<!-- Title -->
+			<section class="content-header">
+			    <h1>Student Table</h1>
+			    <ol class="breadcrumb">
+			        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+			        <li class="active">Student profile</li>
+			    </ol>
+			</section>
+			<!-- /Title -->
+			{% include "backend/partition/notification.html" %}
+			<!-- Row -->
+			<section class="content">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="pull-left">
+									<h6 class="panel-title txt-dark">User Details</h6>
+								</div>
+								<!-- <div class="pull-right">
+									<a href="/addUser"><button type="button" class="btn btn-primary btn-md"><i class="fa fa-plus"></i> Add User</button></a>
+								</div> -->
+								<div class="clearfix"></div>
+							</div>
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body">
+									<h4>User Access</h4>
+									<form class="" action="/backend/setUserAccess/{{user.userId}}" method="post">
+										<table class="table table-hover display pb-30" >
+											<thead>
+												<tr>
+													<th>Stage</th>
+													<th>Count</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Student List</td>
+													<td><input type="checkbox" class=""  name="studentList" id="studentList" value="true" {{ "checked" if (user.studentList== "true" )else "" }}></td>
+												</tr>
+												<tr>
+													<td>Affiliate List</td>
+													<td><input type="checkbox" class="" name="affiliateList" id="affiliateList" value="true" {{ "checked" if (user.affiliateList== "true" )else "" }}></td>
+												</tr>
+												<tr>
+													<td>Course Management</td>
+													<td><input type="checkbox" class="" name="courseManagement" id="courseManagement" value="true" {{ "checked" if (user.courseManagement== "true" )else "" }}></td>
+												</tr>
+												<tr>
+													<td>Instructor Request</td>
+													<td><input type="checkbox" class="" name="instructorRequest" id="instructorRequest" value="true" {{ "checked" if (user.instructorRequest== "true" )else "" }}></td>
+												</tr>
+												<tr>
+													<td>Student Application Request</td>
+													<td><input type="checkbox" class="" name="studentApplicationRequest" id="studentApplicationRequest" value="true" {{ "checked" if (user.studentApplicationRequest== "true" )else "" }}></td>
+												</tr>
+												<tr>
+													<td>Course Payment Request</td>
+													<td><input type="checkbox" class="" name="coursePaymentRequest" id="coursePaymentRequest" value="true" {{ "checked" if (user.coursePaymentRequest== "true" )else "" }}></td>
+												</tr>
+												<tr>
+													<td>Blog</td>
+													<td><input type="checkbox" class="" name="blog" id="blog" value="true" {{ "checked" if (user.blog== "true" )else "" }}></td>
+												</tr>
+											</tbody>
+										</table>
+										<input type="submit" class="btn btn-success btn-flat" value="submit">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script>
+$(document).ready( function () {
+	var host = window.location.origin;
+
+} );
+
+
+</script>
+{% endblock %}

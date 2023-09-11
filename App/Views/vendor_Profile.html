@@ -1,0 +1,770 @@
+{% extends "backend/partition/layout.html" %}
+
+{% block body %}
+<style>
+	.containerdiv_img {
+		position: relative;
+		display: inline-block;
+		margin: 10px;
+	}
+
+	.close1 {
+		position: absolute;
+		top: -4px;
+		text-align: center;
+		font-size: 25px;
+		width: 28px;
+		color: red;
+		cursor: pointer;
+		right: 25px;
+	}
+	.address{
+		font-size: 25px;
+		padding: 10px 10px;
+	}
+</style>
+
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		<section class="content-header">
+			<h1>Vendor Profile </h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Vendor profile</li>
+			</ol>
+		</section>
+
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="row">
+
+							<div class="col-md-12">
+								<div class="panel panel-default card-view">
+									<div class="panel-heading">
+										<div class="pull-left">
+											<h6 class="panel-title txt-dark">Edit Profile</h6>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div class="panel-wrapper collapse in">
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-sm-12 col-xs-12">
+													<div class="form-wrap">
+														<form class="form-horizontal" id="vendor_updateSubmit"
+															method="post" action="/vendorUpdateProfile"
+															enctype="multipart/form-data">
+															<input type="hidden" name="vendorId" id="vendor_id"
+																value="{{user._id}}">
+															<div class="form-group">
+																<label for="exampleInputuname_3"
+																	class="col-sm-3 control-label">Company</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-user"></i>
+																		</div>
+																		<input type="text" class="form-control"
+																			id="companyName" placeholder="Enter name" required
+																			name="name" value="{{user.vendor_company}}"
+																			data-validation="length required"
+																			data-validation-length=""
+																			data-validation-error-msg="Username is required">
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="exampleInputuname_3"
+																	class="col-sm-3 control-label">User Name</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-user"></i>
+																		</div>
+																		<input type="text" class="form-control"
+																			id="userName" placeholder="Enter username"
+																			required name="userName"
+																			value="{{user.vendor_username}}"
+																			data-validation="length required"
+																			data-validation-length=""
+																			data-validation-error-msg="Username is required">
+																	</div>
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="exampleInputEmail_3"
+																	class="col-sm-3 control-label">Email*</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-envelope"></i>
+																		</div>
+																		<input type="email" class="form-control"
+																			required name="email" id="email"
+																			value="{{user.vendor_email}}"
+																			data-validation="email">
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="exampleInputEmail_3"
+																	class="col-sm-3 control-label">Mobile*</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-phone"></i>
+																		</div>
+																		<input type="text" class="form-control" required
+																			name="mobile" id="mobile"
+																			value="{{user.vendor_phone}}"
+																			data-validation="number">
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="exampleInputuname_4"
+																	class="col-sm-3 control-label">New Password</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-lock"></i>
+																		</div>
+																		<input type="password" class="form-control"
+																			id="password" placeholder="Enter password"
+																			name="pass_confirmation" maxlength="6"
+																			data-validation="length"
+																			pattern="(?=^.{5,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+																			title="Use 6 or more characters with a mix of letters, numbers & symbols."
+																			data-validation-length="min0">
+
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="exampleInputEmail_4"
+																	class="col-sm-3 control-label">Confirm
+																	Password</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-lock"></i>
+																		</div>
+																		<input type="password" class="form-control"
+																			placeholder="Enter Confirm Password"
+																			maxlength="6" name="pass"
+																			data-validation="confirmation">
+
+																	</div>
+																</div>
+															</div>
+
+                                                            <span id="gst_invalid" class="hidden  mob-helpers">
+                                                                Please enter valid Gst number.
+                                                            </span>
+                                                            <div class="gst_invlidmsg"> </div>
+                                                            <div class="form-group">
+																<label for="exampleInputuname_3"
+																	class="col-sm-3 control-label">GST Number</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<div class="input-group-addon"><i
+																				class="glyphicon glyphicon-user"></i>
+																		</div>
+																		<input type="text" class="form-control"
+																			id="vendor_gstNo" placeholder="Enter username"
+																			name="vendor_gst_no"
+																			value="{{user.vendor_gst_no}}"
+                                                                            required
+																			data-validation="length required"
+																			data-validation-length=""
+																			data-validation-error-msg="Gst number is required">
+																	</div>
+																</div>
+															</div>
+														
+
+
+															<hr>
+
+
+															<div class="form-group address">
+																<label class="col-sm-3 control-label">Address</label>
+																<div class="col-sm-9">
+																	
+																</div>
+															</div>
+
+														
+
+
+															<div class="form-group">
+																<label class="col-sm-3 control-label">PIN Code</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<!-- <div class="input-group-addon"><i
+																				class="glyphicon glyphicon-edit"></i>
+																		</div> -->
+																		<input  name="pincode" type="text" id="pincode"
+																		value="{{user.vendor_pin}}" class="form-control" >
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label class="col-sm-3 control-label">Flat, House no., Building name</label>
+
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<!-- <div class="input-group-addon"><i
+																				class="glyphicon glyphicon-edit"></i>
+																		</div> -->
+																		<input  name="addresstext_no" type="text"
+																	value="{{user.vendor_flatNo}}" class="form-control"
+																	>
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label class="col-sm-3 control-label">Road name, Area, Colony</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<input name="addresstext_name" type="text"
+																	value="{{user.vendor_area}}" class="form-control"
+																	required>
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="exampleInputEmail_3"
+																	class="col-sm-3 control-label">Landmark</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<input name="landmark" type="text"
+																	   value="{{user.vendor_Landmark}}" class="form-control" >
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="exampleInputEmail_3"
+																	class="col-sm-3 control-label">City</label>
+																<div class="col-sm-9">
+																	<div class="input-group">
+																		<input  name="city" id="city" type="text"
+																	value="{{user.vendor_town}}" class="form-control" readonly >
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label for="exampleInputEmail_3"
+																	class="col-sm-3 control-label">State</label>
+																<div class="col-sm-9">
+																	<input type="hidden" id="state" name="state" value="">
+																	<input type="hidden" id="vendor__gst" value="{{user.vendor_Gstcode}}">
+																	<div class="input-group">
+																		
+                                                                        <input  name="vendor_state" id="vendor_state" type="text"
+																	value="{{user.vendor_state}}" class="form-control" readonly >
+																	</div>
+																</div>
+															</div>
+
+
+															<div class="form-group mb-0">
+																<div class="col-sm-offset-3 col-sm-9">
+																	<button id="updateVendor" type="submit"
+																		class="btn btn-success ">Update</button>
+																</div>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+							<!-- Request MOney -->
+							<section class="content">
+								<!-- Row -->
+								<div class="row">
+									<!-- /.modal -->
+									<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog"
+										aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<form method="POST" name="adduser" action="/allUser/requestCash">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-hidden="true">×</button>
+														<h5 class="modal-title">Add/Deduct Cash</h5>
+													</div>
+													<div class="modal-body">
+														<div id="requestCash"> </div>
+														<div class="form-group">
+															<label for="recipient-name"
+																class="control-label mb-10">Cash:</label>
+															<input type="text" name="chips" class="form-control"
+																id="action_chips" required>
+															<span class="help-block form-error" id="displayError"
+																style="display: none;">The input value was not a correct
+																number</span>
+														</div>
+
+													</div>
+													<div class="modal-footer">
+														<input type="submit" name="requestType"
+															class="btn btn-success playerChipsAction" value="Add">
+														<input type="submit" class="btn btn-danger playerChipsAction"
+															name="requestType" value="Deduct">
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<!-- Button trigger modal -->
+								</div>
+								<!-- /Row -->
+							</section>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- /Row -->
+	</div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script>
+	$(document).ready(function () {
+		var host = window.location.origin;
+		// $('#profileImg').change(function() {
+		//         var file = $('#profileImg')[0].files[0].name;
+		//         $('.custom-file-upload').text(file);
+		//     });
+		// let profile_img = $("#profileImg").val();
+
+		$("#name").prop("disabled", true);
+
+        var companyName;
+    $("#vendor_gstNo").keyup(function (e) {
+        var gstValue = $("#vendor_gstNo").val();
+        $('.gst_invlidmsg').html('');
+        // console.log(gstValue, "fsfuwehfuwehf");
+
+        e.preventDefault()
+        if ($(this).val().length == 15) {
+            $.ajax({
+                url: "/validationGst",
+                type: "POST",
+                dataType: "json",
+                data: { gstValue },
+                success: function (result) {
+                    companyName = result.data.tradename;
+                    $(".gst_invlidmsg").html(result.data);
+                    // console.log("result", result.data);
+                    $("#companyName").attr('value', result.data.tradename);
+                    // $("#vendor_Company").val(result.data.tradename);
+                },
+                error() {
+                    console.log("error");
+                }
+            })
+        } else {
+            // Disable submit button
+        }
+    });
+
+	
+    // $("#pincode").on("change", function () {
+    $("#pincode").keyup(function(){  
+        var pincode = $(this).val();
+        console.log("pincode",pincode);
+        $.getJSON("https://api.postalpincode.in/pincode/" + pincode, function (data) {
+            console.log("data",data);
+
+            $("#city").val(data[0].PostOffice[0].District)
+            $("#vendor_state").val(data[0].PostOffice[0].State)
+            // $("#vendor_country").val(data[0].PostOffice[0].Country)
+        })
+    });
+    
+    // $("#vendor_updateSubmit").on("submit", function () {
+		// 	let vendor_iid = $("#vendor_id").val();
+		// 	$("#name").removeAttr("disabled");
+
+		// 	// alert(12222)
+		// 	// alert(vendor_iid)
+
+		// 	var formData = new FormData();
+		// 	// alert(formData)
+
+		// 	var fileInput = $('#applicationImage')[0].files;
+		// 	// alert(formData)
+
+
+		// 	formData.append('file', fileInput[0]);
+		// 	var formArray = $("#vendor_updateSubmit");
+
+		// 	var params = $(formArray).serializeArray();
+
+		// 	// alert("test",params)
+		// 	$.each(params, function (i, val) {
+		// 		formData.append(val.name, val.value);
+		// 	});
+
+		// 	// $("form input").each(function (i) {
+		// 	// 	formData.append($(this).attr("name"), $(this).val());
+		// 	// });
+		// 	// alert(formArray)
+		// 	// formData.append(formArray);
+		// 	// alert(formData)
+		// 	// return false;
+
+		// 	$("#name").removeAttr("disabled");
+		// 	// var form = $('form').serialize();
+		// 	// $('input[disabled]').each(function () {
+		// 	// 	form = form + '&' + $(this).attr('name') + '=' + $(this).val();
+		// 	// });
+		// 	alert(7777)
+
+		// 	$.ajax({
+		// 		type: "POST",
+		// 		contentType: false,
+		// 		processData: false,
+		// 		cache: false,
+		// 		dataType: "json",
+		// 		url: host + "/vendorUpdateProfile/" + vendor_iid,
+		// 		data: formData,
+
+		// 		success: function (result) {
+		// 			alert(7777)
+		// 			console.log("vendor update", result);
+		// 		// return res.redirect('/vendor_dashboard');
+		// 			window.location.href = host+'/vendor_dashboard';
+		// 		},
+		// 		error() {
+		// 			console.log("error");
+		// 		}
+		// 	})
+		// });
+
+	});
+
+</script>
+<script>
+	$(document).ready(function () {
+		var host = window.location.origin;
+	});
+
+	$.validate({
+		modules: 'security',
+		onModulesLoaded: function () {
+			// Show strength of password
+			$('input[name="pass_confirmation"]').displayPasswordStrength();
+		}
+	});
+
+	$(".updateVendor").click(function () {
+
+		alert(1111)
+
+		$("#name").removeAttr("disabled");
+
+	});
+	// $("body").on("click", ".addChips", function(){
+	// 	var agentId = $(this).attr("id");
+	// 	// console.log("player id ----------->",PlayerId)
+	// 	var html = '<input type="hidden" name="agentId" value="'+agentId+'" />';
+	// 	$("#requestCash").html(html);
+	// });
+
+	$("body").on("click", ".playerChipsAction", function () {
+		var action_chips = $('#action_chips').val();
+		if (action_chips < 0 || isNaN(action_chips) || (action_chips % 1 !== 0)) {
+			document.getElementById('displayError').style.display = 'block';
+			document.getElementById('displayError').style.color = 'red';
+			return false;
+		}
+	});
+	$("body").on("click", "#action_chips", function () {
+		document.getElementById('displayError').style.display = 'none';
+	});
+</script>
+
+<script>
+	function previewFile(input) {
+		var file = $("input[type=file]").get(0).files[0];
+
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function () {
+				$("#previewImg").attr("src", reader.result);
+				$("#previewImg").css({ 'display': 'block' });
+				$(".close1").css({ 'display': 'block' });
+			}
+
+			reader.readAsDataURL(file);
+		}
+	}
+	$(".close1").click(function () {
+
+		$('#previewImg').css({ 'display': 'none' });
+		$('.close1').css({ 'display': 'none' });
+		$('#profile_Img').attr('value', "1");
+
+	});
+</script>
+
+<script>
+
+    let stateData = [
+        {
+            "no": "1",
+            "stateName": "Andaman and Nicobar Islands",
+            "gstCode": "35",
+            "stateCode": "AN"
+        }, {
+            "no": "2",
+            "stateName": "Andhra Pradesh",
+            "gstCode": "28",
+            "stateCode": "AP"
+        }, {
+            "no": "3",
+            "stateName": "Andhra Pradesh (New)",
+            "gstCode": "37",
+            "stateCode": "AD"
+        }, {
+            "no": "4",
+            "stateName": "Arunachal Pradesh",
+            "gstCode": "12",
+            "stateCode": "AR"
+        }, {
+            "no": "5",
+            "stateName": "Assam",
+            "gstCode": "18",
+            "stateCode": "AS"
+        }, {
+            "no": "6",
+            "stateName": "Bihar",
+            "gstCode": "10",
+            "stateCode": "BH"
+        }, {
+            "no": "7",
+            "stateName": "Chandigarh",
+            "gstCode": "04",
+            "stateCode": "CH"
+        }, {
+            "no": "8",
+            "stateName": "Chattisgarh",
+            "gstCode": "22",
+            "stateCode": "CT"
+        }, {
+            "no": "9",
+            "stateName": "Dadra and Nagar Haveli",
+            "gstCode": "26",
+            "stateCode": "DN"
+        }, {
+            "no": "10",
+            "stateName": "Daman and Diu",
+            "gstCode": "25",
+            "stateCode": "DD"
+        }, {
+            "no": "11",
+            "stateName": "Delhi",
+            "gstCode": "07",
+            "stateCode": "DL"
+        }, {
+            "no": "12",
+            "stateName": "Goa",
+            "gstCode": "30",
+            "stateCode": "GA"
+        }, {
+            "no": "13",
+            "stateName": "Gujarat",
+            "gstCode": "24",
+            "stateCode": "GJ"
+        }, {
+            "no": "14",
+            "stateName": "Haryana",
+            "gstCode": "06",
+            "stateCode": "HR"
+        }, {
+            "no": "15",
+            "stateName": "Himachal Pradesh",
+            "gstCode": "02",
+            "stateCode": "HP"
+        }, {
+            "no": "16",
+            "stateName": "Jammu and Kashmir",
+            "gstCode": "01",
+            "stateCode": "JK"
+        }, {
+            "no": "17",
+            "stateName": "Jharkhand",
+            "gstCode": "20",
+            "stateCode": "JH"
+        }, {
+            "no": "18",
+            "stateName": "Karnataka",
+            "gstCode": "29",
+            "stateCode": "KA"
+        }, {
+            "no": "19",
+            "stateName": "Kerala",
+            "gstCode": "32",
+            "stateCode": "KL"
+        }, {
+            "no": "20",
+            "stateName": "Lakshadweep Islands",
+            "gstCode": "31",
+            "stateCode": "LD"
+        }, {
+            "no": "21",
+            "stateName": "Madhya Pradesh",
+            "gstCode": "23",
+            "stateCode": "MP"
+        }, {
+            "no": "22",
+            "stateName": "Maharashtra",
+            "gstCode": "27",
+            "stateCode": "MH"
+        }, {
+            "no": "23",
+            "stateName": "Manipur",
+            "gstCode": "14",
+            "stateCode": "MN"
+        }, {
+            "no": "24",
+            "stateName": "Meghalaya",
+            "gstCode": "17",
+            "stateCode": "ME"
+        }, {
+            "no": "25",
+            "stateName": "Mizoram",
+            "gstCode": "15",
+            "stateCode": "MI"
+        }, {
+            "no": "26",
+            "stateName": "Nagaland",
+            "gstCode": "13",
+            "stateCode": "NL"
+        }, {
+            "no": "27",
+            "stateName": "Odisha",
+            "gstCode": "21",
+            "stateCode": "OR"
+        }, {
+            "no": "28",
+            "stateName": "Pondicherry",
+            "gstCode": "34",
+            "stateCode": "PY"
+        }, {
+            "no": "29",
+            "stateName": "Punjab",
+            "gstCode": "03",
+            "stateCode": "PB"
+        }, {
+            "no": "30",
+            "stateName": "Rajasthan",
+            "gstCode": "08",
+            "stateCode": "RJ"
+        }, {
+            "no": "31",
+            "stateName": "Sikkim",
+            "gstCode": "11",
+            "stateCode": "SK"
+        }, {
+            "no": "32",
+            "stateName": "Tamil Nadu",
+            "gstCode": "33",
+            "stateCode": "TN"
+        }, {
+            "no": "33",
+            "stateName": "Telangana",
+            "gstCode": "36",
+            "stateCode": "TS"
+        }, {
+            "no": "34",
+            "stateName": "Tripura",
+            "gstCode": "16",
+            "stateCode": "TR"
+        }, {
+            "no": "35",
+            "stateName": "Uttar Pradesh",
+            "gstCode": "09",
+            "stateCode": "UP"
+        }, {
+            "no": "36",
+            "stateName": "Uttarakhand",
+            "gstCode": "05",
+            "stateCode": "UT"
+        }, {
+            "no": "37",
+            "stateName": "West Bengal",
+            "gstCode": "19",
+            "stateCode": "WB"
+        }
+    ]
+
+    $(document).ready(function () {
+        let selectElem = $('#my-select')
+
+        stateData.forEach(function (opt) {
+            selectElem.append('<option  data-name = "' + opt.stateName + '" value="' + opt.gstCode + '">' + opt.stateName + '</option>');
+        });
+
+        $('#my-select').change(function () {
+            let stateName = $(this).find(':selected').attr('data-name')
+            $("#state").val(stateName);
+
+			// alert(stateName);
+        });
+
+
+
+	var num = $('#vendor__gst').val();
+
+
+
+
+    let Country = num.split(',');
+
+    if (Country != '') {
+
+
+        Country.forEach(function (e) {
+            $("#my-select option[value= " + e + "]").prop("selected", true);
+        });
+
+    }
+    });
+
+</script>
+
+
+
+{% endblock %}

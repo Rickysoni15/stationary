@@ -1,0 +1,133 @@
+{% extends "frontend/affiliate/partitions/layout.html" %}
+{% block body %}
+
+        <section class="profile-section-first" data-aos="fade-in" data-aos-offset="0">
+            <div class="container">
+                <div class="row align-items-center pr-md-5 pl-md-5 pr-0 pl-0">
+
+
+                    <div class="col-md-6 offset-md-3">
+                        <form method="post" action="/updateProfile" class="form-styel">
+                            <div class="form-group">
+                                <label for="firstName" class="label">First Name*</label>
+                                <div class="icon-input-wrp">
+                                    <input id="firstName" class="form-control" type="text" name="firstName" value="{{user.firstName}}">
+                                    <i class="fa fa-edit"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="label">Last Name*</label>
+                                <div class="icon-input-wrp">
+                                    <input id="lastName" class="form-control" type="text" name="lastName">
+                                    <i class="fa fa-edit"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="myinput3" class="label">Email*</label>
+                                <div class="icon-input-wrp">
+                                    <input id="myinput3" class="form-control" type="email" name="" readonly>
+                                    <i class="fa fa-edit"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="myinput4" class="label">Mobile Number*</label>
+                                <div class="icon-input-wrp">
+                                    <input id="myinput4" class="form-control" type="phone" name="" readonly>
+                                    <i class="fa fa-edit"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="label">Password</label>
+                                <div class="icon-input-wrp">
+                                    <input id="password" class="form-control" type="password" name="password">
+                                    <i class="fa fa-edit"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword" class="label">Confirm Password</label>
+                                <div class="icon-input-wrp">
+                                    <input id="confirmPassword" class="form-control" type="password" name="confirmPassword">
+                                    <i class="fa fa-edit"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-4">
+                              <input type="submit" class="btn btn-rounded btn-primary cstm-btn" name="Save" value="Save">
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="profile-section-footer">
+            <div class="container">
+
+                <div class="col-md-12">
+                    <div class="foot-img-link">
+                        <a href="#" class="back-link"><i class="fa fa-angle-left"></i> Go Back</a>
+
+                        <img src="/affiliate/img/profile-mngmnt-footer-img-two.png" class="img-fluid" alt="">
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+{% endblock %} {% block Jscript %}
+
+    <script>
+        $('.client-list-slider').owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplaySpeed: 1200,
+            margin: 0,
+            nav: true,
+            dots: false,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                420: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 3
+                },
+                1024: {
+                    items: 3
+                }
+            }
+        })
+
+        $(document).ready(function() {
+
+
+            AOS.init({
+                // startEvent: 'load',
+                offset: 250,
+                duration: 1000,
+                easing: 'ease-in-sine',
+                delay: 50,
+                disableMutationObserver: true,
+                throttleDelay: 0,
+                debounceDelay: 0,
+                once: false,
+                mirror: true,
+                // startEvent: 'DOMContentLoaded'
+            });
+
+        });
+    </script>
+{% endblock %}

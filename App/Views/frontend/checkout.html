@@ -1,0 +1,2546 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+<div class="wrap-breadcrumb parallax-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/home"><i class="fa fa-home"></i></a></li>
+            <li><a href="/shoppingcart">Shopping Cart</a></li>
+            <li><a href="/checkout">Checkout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="checkout-checkout" class="container">
+    <div class="row">
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+            <div class="box">
+                <div class="box-heading">Categories</div>
+                <div class="box-content">
+                    <ul class="box-category treeview-list treeview">
+                        <li>
+                            <a href="" class="active">Stationery
+                            </a>
+                            {% for item in productCategoryData %}
+
+                            <ul>
+                                <li>
+                                    <a href='/products/{{item._id}}'>{{item.productCategoryName}}</a>
+                                </li>
+                                <!-- <li>
+                                    <a href="files.html">Files</a>
+                                </li>
+                                <li>
+                                    <a href="/accessories.html">Accessories</a>
+                                </li> -->
+                            </ul>
+                            {% else %}
+                        <li>You do not have any category to display here.</li>
+                        {% endfor %}
+                        </li>
+                        <!-- <li>
+								<a href="./envelops.html">Envelopes</a>
+							</li>
+							<li>
+								<a href="/notbooks.html">Note Books</a>
+							</li> -->
+                        <!-- <li>
+								<a
+									href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=17">Ruler</a>
+							</li>
+							<li>
+								<a
+									href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=31">Clipboard</a>
+							</li>
+							<li>
+								<a
+									href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=24">Scissors</a>
+							</li>
+							<li>
+								<a
+									href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=33">Geometry
+									Box</a>
+							</li> -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="swiper-viewport">
+                <div id="banner0"
+                    class="swiper-container  single-banner  swiper-container-horizontal swiper-container-fade">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide swiper-slide-active"
+                            style="width: 278px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                            <!-- <a href="#"><img
+                                    src="./Checkout_files/left-banner-1-278x320.jpg" alt="Left banner"
+                                    class="img-responsive"></a> -->
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination swiper-pagination-bullets"><span
+                            class="swiper-pagination-bullet swiper-pagination-bullet-active"></span></div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $('#banner0').swiper({
+                    effect: 'fade',
+                    autoplay: 2500,
+                    pagination: '.swiper-pagination',  // If we need pagination
+                    autoplayDisableOnInteraction: false
+                });
+            </script>
+            <div class="box latest">
+                <div class="container">
+                    <div class="box-heading">Latest</div>
+                    <div class="box-content">
+
+
+                        <div class="box-product  productbox-grid" id="latest-grid">
+                            {% for item in finalLatestProduct %}
+                            <div class="product-items">
+                                <div class="product-block product-thumb transition">
+                                    <div class="product-block-inner">
+                                        <div class="image">
+                                            <a href="">
+                                                <img src="{{item.imageSrc}}" title="{{item.productName}}"
+                                                    alt="{{item.productName}}" class="img-responsive reg-image"
+                                                    style="width: 80px; height: 50px;" />
+                                                <!-- <img class="img-responsive hover-image"
+													src="/images/products/01-85x68.jpg" title="Voluptates Repudiandae"
+													alt="Voluptates Repudiandae" /> -->
+                                            </a>
+
+                                            <div class="button-group">
+                                                <div class="top-btn">
+                                                    <!-- <button class="wishlist" type="button" data-toggle="tooltip"
+                                                        title="Add to Wish List " onclick="wishlist.add('48 ');"><i
+                                                            class="fa fa-heart"></i></button>
+
+                                                    <div class="quickview-button" data-toggle="tooltip"
+                                                        title="Quick view"> <a class="quickbox"
+                                                            href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/quick_view&amp;product_id=48">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i></a></div> -->
+                                                    <!-- <button class="compare" type="button" data-toggle="tooltip"
+                                                        title="Add to Compare " onclick="compare.add('48 ');"><i
+                                                            class="fa fa-exchange"></i></button> -->
+
+                                                    <button type="button" class="addtocart" data-toggle="tooltip"
+                                                        title="Add to Cart " onclick="cart.add('48 ');"><span>Add to
+                                                            Cart</span> </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="product-details">
+                                            <div class="caption">
+
+                                                <h4>{{item.productName}}</h4>
+
+                                                <p class="price">
+                                                    &#8377;&nbsp; {{item.price}}
+                                                    <!-- <span class="price-tax">Ex Tax: $115.00</span> -->
+                                                </p>
+
+                                                <!-- <div class="rating">
+														<span class="fa fa-stack"><i
+																class="fa fa-star fa-stack-2x"></i><i
+																class="fa fa-star-o fa-stack-2x"></i></span>
+														<span class="fa fa-stack"><i
+																class="fa fa-star fa-stack-2x"></i><i
+																class="fa fa-star-o fa-stack-2x"></i></span>
+														<span class="fa fa-stack"><i
+																class="fa fa-star fa-stack-2x"></i><i
+																class="fa fa-star-o fa-stack-2x"></i></span>
+														<span class="fa fa-stack"><i
+																class="fa fa-star fa-stack-2x"></i><i
+																class="fa fa-star-o fa-stack-2x"></i></span>
+														<span class="fa fa-stack"><i
+																class="fa fa-star fa-stack-2x"></i><i
+																class="fa fa-star-o fa-stack-2x"></i></span>
+													</div> -->
+
+                                                <button type="button" class="addtocart" data-toggle="tooltip"
+                                                    productId={{item.productId}} title="Add to Cart "
+                                                    onclick="cart.add('48 ');"><span>Add to
+                                                        Cart</span> </button>
+
+                                                <!-- <button type="button" class="addtocart btn btn-primary" title="Add"
+												data-toggle="tooltip" productId={{item.productId}} 
+												> <span class="fa fa-cart-plus">+</span></button> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% else %}
+                            <li>This would display if the 'item' collection were empty</li>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="latest_default_width" style="display:none; visibility:hidden"></span>
+        </aside>
+        <div id="content" class="col-sm-9">
+            <h1>Checkout</h1>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a
+                                href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/#collapse-checkout-option"
+                                data-toggle="collapse" data-parent="#accordion" class="accordion-toggle collapsed"
+                                aria-expanded="false">Step 1: Checkout Options <i class="fa fa-caret-down"></i></a></h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapse-checkout-option" aria-expanded="false"
+                        style="height: 0px;">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2>New Customer</h2>
+                                    <p>Checkout Options:</p>
+                                    <div class="radio">
+                                        <label> <input type="radio" name="account" value="register" checked="checked">
+                                            Register Account</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label> <input type="radio" name="account" value="guest">
+                                            Guest Checkout</label>
+                                    </div>
+                                    <p>By creating an account you will be able to shop faster, be up to date on an
+                                        order's status, and
+                                        keep track of the orders you have previously made.</p>
+                                    <input type="button" value="Continue" id="button-account"
+                                        data-loading-text="Loading..." class="btn btn-primary">
+                                </div>
+                                <div class="col-sm-6">
+                                    <h2>Returning Customer</h2>
+                                    <p>I am a returning customer</p>
+                                    <div class="form-group">
+                                        <label class="control-label" for="input-email">E-Mail</label>
+                                        <input type="text" name="email" value="" placeholder="E-Mail" id="input-email"
+                                            class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="input-password">Password</label>
+                                        <input type="password" name="password" value="" placeholder="Password"
+                                            id="input-password" class="form-control">
+                                        <div class="forget-password"><a
+                                                href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=account/forgotten">Forgotten
+                                                Password</a></div>
+                                    </div>
+                                    <input type="button" value="Login" id="button-login" data-loading-text="Loading..."
+                                        class="btn btn-primary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="#collapse-payment-address" data-toggle="collapse"
+                                data-parent="#accordion" class="accordion-toggle" aria-expanded="true">Step 2:
+                                Billing Details <i class="fa fa-caret-down"></i></a></h4>
+                    </div>
+                    <div class="panel-collapse collapse in" id="collapse-payment-address" aria-expanded="true">
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="payment_address" value="existing" checked="checked">
+                                        I want to use an existing address</label>
+                                </div>
+                                <div id="payment-existing">
+                                    <select id="delivery_address_id" name="address_id" class="form-control">
+                                        {% for add in address %}
+                                        <option value="{{add.id}}" selected="selected">{{add.address_1 + ", " +
+                                            add.address_2 + ", " + add.city + ", " + add.stateName + ", " + add.postcode
+                                            + ", " + add.countryName}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="payment_address" value="new">
+                                        I want to use a new address</label>
+                                </div>
+                                <br>
+                                <div id="payment-new" style="display: none;">
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-payment-firstname">First
+                                            Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="firstname" value="" placeholder="First Name"
+                                                id="input-payment-firstname" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-payment-lastname">Last
+                                            Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="lastname" value="" placeholder="Last Name"
+                                                id="input-payment-lastname" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label"
+                                            for="input-payment-company">Company</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="company" value="" placeholder="Company"
+                                                id="input-payment-company" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-payment-address-1">Address
+                                            1</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="address_1" value="" placeholder="Address 1"
+                                                id="input-payment-address-1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="input-payment-address-2">Address
+                                            2</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="address_2" value="" placeholder="Address 2"
+                                                id="input-payment-address-2" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-payment-city">City</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="city" value="" placeholder="City"
+                                                id="input-payment-city" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-payment-postcode">Post
+                                            Code</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="postcode" value="" placeholder="Post Code"
+                                                id="input-payment-postcode" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label"
+                                            for="input-payment-country">Country</label>
+                                        <div class="col-sm-10">
+                                            <select name="country_id" id="input-payment-country" class="form-control">
+                                                <option value=""> --- Please Select --- </option>
+                                                <option value="244_Aaland Islands">Aaland Islands</option>
+                                                <option value="1_Afghanistan">Afghanistan</option>
+                                                <option value="2_Albania">Albania</option>
+                                                <option value="3_Algeria">Algeria</option>
+                                                <option value="4_American Samoa">American Samoa</option>
+                                                <option value="5_Andorra">Andorra</option>
+                                                <option value="6_Angola">Angola</option>
+                                                <option value="7_Anguilla">Anguilla</option>
+                                                <option value="8_Antarctica">Antarctica</option>
+                                                <option value="9_Antigua and Barbuda">Antigua and Barbuda</option>
+                                                <option value="10_Argentina">Argentina</option>
+                                                <option value="11_Armenia">Armenia</option>
+                                                <option value="12_Aruba">Aruba</option>
+                                                <option value="252_Ascension Island (British)">Ascension Island
+                                                    (British)</option>
+                                                <option value="13_Australia">Australia</option>
+                                                <option value="14_Austria">Austria</option>
+                                                <option value="15_Azerbaijan">Azerbaijan</option>
+                                                <option value="16_Bahamas">Bahamas</option>
+                                                <option value="17_Bahrain">Bahrain</option>
+                                                <option value="18_Bangladesh">Bangladesh</option>
+                                                <option value="19_Barbados">Barbados</option>
+                                                <option value="20_Belarus">Belarus</option>
+                                                <option value="21_Belgium">Belgium</option>
+                                                <option value="22_Belize">Belize</option>
+                                                <option value="23_Benin">Benin</option>
+                                                <option value="24_Bermuda">Bermuda</option>
+                                                <option value="25_Bhutan">Bhutan</option>
+                                                <option value="26_Bolivia">Bolivia</option>
+                                                <option value="245_Bonaire, Sint Eustatius and Saba">Bonaire, Sint
+                                                    Eustatius and Saba</option>
+                                                <option value="27_Bosnia and Herzegovina">Bosnia and Herzegovina
+                                                </option>
+                                                <option value="28_Botswana">Botswana</option>
+                                                <option value="29_Bouvet Island">Bouvet Island</option>
+                                                <option value="30_Brazil">Brazil</option>
+                                                <option value="31_British Indian Ocean Territory">British Indian Ocean
+                                                    Territory</option>
+                                                <option value="32_Brunei Darussalam">Brunei Darussalam</option>
+                                                <option value="33_Bulgaria">Bulgaria</option>
+                                                <option value="34_Burkina Faso">Burkina Faso</option>
+                                                <option value="35_Burundi">Burundi</option>
+                                                <option value="36_Cambodia">Cambodia</option>
+                                                <option value="37">Cameroon</option>
+                                                <option value="38_Canada">Canada</option>
+                                                <option value="251_Canary Islands">Canary Islands</option>
+                                                <option value="39_Cape Verde">Cape Verde</option>
+                                                <option value="40_Cayman Islands">Cayman Islands</option>
+                                                <option value="41_Central African Republic">Central African Republic
+                                                </option>
+                                                <option value="42_Chad">Chad</option>
+                                                <option value="43_Chile">Chile</option>
+                                                <option value="44_China">China</option>
+                                                <option value="45_Christmas Island">Christmas Island</option>
+                                                <option value="46_Cocos (Keeling) Islands">Cocos (Keeling) Islands
+                                                </option>
+                                                <option value="47_Colombia">Colombia</option>
+                                                <option value="48_Comoros">Comoros</option>
+                                                <option value="49_Congo">Congo</option>
+                                                <option value="50_Cook Islands">Cook Islands</option>
+                                                <option value="51_Costa Rica">Costa Rica</option>
+                                                <option value="52_Cote D'Ivoire">Cote D'Ivoire</option>
+                                                <option value="53_Croatia">Croatia</option>
+                                                <option value="54_Cuba">Cuba</option>
+                                                <option value="246_Curacao">Curacao</option>
+                                                <option value="55_Cyprus">Cyprus</option>
+                                                <option value="56_Czech Republic">Czech Republic</option>
+                                                <option value="237_Democratic Republic of Congo">Democratic Republic of
+                                                    Congo</option>
+                                                <option value="57_Denmark">Denmark</option>
+                                                <option value="58_Djibouti">Djibouti</option>
+                                                <option value="59_Dominica">Dominica</option>
+                                                <option value="60_Dominican Republic">Dominican Republic</option>
+                                                <option value="61_East Timor">East Timor</option>
+                                                <option value="62_Ecuador">Ecuador</option>
+                                                <option value="63_Egypt">Egypt</option>
+                                                <option value="64_El Salvador">El Salvador</option>
+                                                <option value="65_Equatorial Guinea">Equatorial Guinea</option>
+                                                <option value="66_Eritrea">Eritrea</option>
+                                                <option value="67_Estonia">Estonia</option>
+                                                <option value="68_Ethiopia">Ethiopia</option>
+                                                <option value="69_Falkland Islands (Malvinas)">Falkland Islands
+                                                    (Malvinas)</option>
+                                                <option value="70_Faroe Islands">Faroe Islands</option>
+                                                <option value="71_Fiji">Fiji</option>
+                                                <option value="72_Finland">Finland</option>
+                                                <option value="74_France, Metropolitan">France, Metropolitan</option>
+                                                <option value="75_French Guiana">French Guiana</option>
+                                                <option value="76_French Polynesia">French Polynesia</option>
+                                                <option value="77_French Southern Territories">French Southern
+                                                    Territories</option>
+                                                <option value="126_FYROM">FYROM</option>
+                                                <option value="78_Gabon">Gabon</option>
+                                                <option value="79_Gambia">Gambia</option>
+                                                <option value="80_Georgia">Georgia</option>
+                                                <option value="81_Germany">Germany</option>
+                                                <option value="82_Ghana">Ghana</option>
+                                                <option value="83_Gibraltar">Gibraltar</option>
+                                                <option value="84_Greece">Greece</option>
+                                                <option value="85_Greenland">Greenland</option>
+                                                <option value="86_Grenada">Grenada</option>
+                                                <option value="87_Guadeloupe">Guadeloupe</option>
+                                                <option value="88_Guam">Guam</option>
+                                                <option value="89_Guatemala">Guatemala</option>
+                                                <option value="256_Guernsey">Guernsey</option>
+                                                <option value="90_Guinea">Guinea</option>
+                                                <option value="91_Guinea-Bissau">Guinea-Bissau</option>
+                                                <option value="92_Guyana">Guyana</option>
+                                                <option value="93_Haiti">Haiti</option>
+                                                <option value="94_Heard and Mc Donald Islands">Heard and Mc Donald
+                                                    Islands</option>
+                                                <option value="95_Honduras">Honduras</option>
+                                                <option value="96_Hong Kong">Hong Kong</option>
+                                                <option value="97_Hungary">Hungary</option>
+                                                <option value="98_Iceland">Iceland</option>
+                                                <option value="99_India">India</option>
+                                                <option value="100_Indonesia">Indonesia</option>
+                                                <option value="101_Iran (Islamic Republic of)">Iran (Islamic Republic
+                                                    of)</option>
+                                                <option value="102_Iraq">Iraq</option>
+                                                <option value="103_Ireland">Ireland</option>
+                                                <option value="254_Isle of Man">Isle of Man</option>
+                                                <option value="104_Israel">Israel</option>
+                                                <option value="105_Italy">Italy</option>
+                                                <option value="106_Jamaica">Jamaica</option>
+                                                <option value="107_Japan">Japan</option>
+                                                <option value="257_Jersey">Jersey</option>
+                                                <option value="108_Jordan">Jordan</option>
+                                                <option value="109_Kazakhstan">Kazakhstan</option>
+                                                <option value="110_Kenya">Kenya</option>
+                                                <option value="111_Kiribati">Kiribati</option>
+                                                <option value="253_Kosovo, Republic of">Kosovo, Republic of</option>
+                                                <option value="114_Kuwait">Kuwait</option>
+                                                <option value="115_Kyrgyzstan">Kyrgyzstan</option>
+                                                <option value="116_Lao People's Democratic Republic">Lao People's
+                                                    Democratic Republic</option>
+                                                <option value="117_Latvia">Latvia</option>
+                                                <option value="118_Lebanon">Lebanon</option>
+                                                <option value="119_Lesotho">Lesotho</option>
+                                                <option value="120_Liberia">Liberia</option>
+                                                <option value="121_Libyan Arab Jamahiriya">Libyan Arab Jamahiriya
+                                                </option>
+                                                <option value="122_Liechtenstein">Liechtenstein</option>
+                                                <option value="123_Lithuania">Lithuania</option>
+                                                <option value="124_Luxembourg">Luxembourg</option>
+                                                <option value="125_Macau">Macau</option>
+                                                <option value="127_Madagascar">Madagascar</option>
+                                                <option value="128_Malawi">Malawi</option>
+                                                <option value="129_Malaysia">Malaysia</option>
+                                                <option value="130_Maldives">Maldives</option>
+                                                <option value="131_Mali">Mali</option>
+                                                <option value="132_Malta">Malta</option>
+                                                <option value="133_Marshall Islands">Marshall Islands</option>
+                                                <option value="134_Martinique">Martinique</option>
+                                                <option value="135_Mauritania">Mauritania</option>
+                                                <option value="136_Mauritius">Mauritius</option>
+                                                <option value="137_Mayotte">Mayotte</option>
+                                                <option value="138_Mexico">Mexico</option>
+                                                <option value="139_Micronesia, Federated States of">Micronesia,
+                                                    Federated States of</option>
+                                                <option value="140_Moldova, Republic of">Moldova, Republic of</option>
+                                                <option value="141_Monaco">Monaco</option>
+                                                <option value="142_Mongolia">Mongolia</option>
+                                                <option value="242_Montenegro">Montenegro</option>
+                                                <option value="143_Montserrat">Montserrat</option>
+                                                <option value="144_Morocco">Morocco</option>
+                                                <option value="145_Mozambique">Mozambique</option>
+                                                <option value="146_Myanmar">Myanmar</option>
+                                                <option value="147_Namibia">Namibia</option>
+                                                <option value="148_Nauru">Nauru</option>
+                                                <option value="149_Nepal">Nepal</option>
+                                                <option value="150_Netherlands">Netherlands</option>
+                                                <option value="151_Netherlands Antilles">Netherlands Antilles</option>
+                                                <option value="152_New Caledonia">New Caledonia</option>
+                                                <option value="153_New Zealand">New Zealand</option>
+                                                <option value="154_Nicaragua">Nicaragua</option>
+                                                <option value="155_Niger">Niger</option>
+                                                <option value="156_Nigeria">Nigeria</option>
+                                                <option value="157_Niue">Niue</option>
+                                                <option value="158_Norfolk Island">Norfolk Island</option>
+                                                <option value="112_North Korea">North Korea</option>
+                                                <option value="159_Northern Mariana Islands">Northern Mariana Islands
+                                                </option>
+                                                <option value="160_Norway">Norway</option>
+                                                <option value="161_Oman">Oman</option>
+                                                <option value="162_Pakistan">Pakistan</option>
+                                                <option value="163_Palau">Palau</option>
+                                                <option value="247_Palestinian Territory, Occupied">Palestinian
+                                                    Territory, Occupied</option>
+                                                <option value="164_Panama">Panama</option>
+                                                <option value="165_Papua New Guinea">Papua New Guinea</option>
+                                                <option value="166_Paraguay">Paraguay</option>
+                                                <option value="167_Peru">Peru</option>
+                                                <option value="168_Philippines">Philippines</option>
+                                                <option value="169_Pitcairn">Pitcairn</option>
+                                                <option value="170_Poland">Poland</option>
+                                                <option value="171_Portugal">Portugal</option>
+                                                <option value="172_Puerto Rico">Puerto Rico</option>
+                                                <option value="173_Qatar">Qatar</option>
+                                                <option value="174_Reunion">Reunion</option>
+                                                <option value="175_Romania">Romania</option>
+                                                <option value="176_Russian Federation">Russian Federation</option>
+                                                <option value="177_Rwanda">Rwanda</option>
+                                                <option value="178_Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                                                <option value="179_Saint Lucia">Saint Lucia</option>
+                                                <option value="180_Saint Vincent and the Grenadines">Saint Vincent and
+                                                    the Grenadines</option>
+                                                <option value="181_Samoa">Samoa</option>
+                                                <option value="182_San Marino">San Marino</option>
+                                                <option value="183_Sao Tome and Principe">Sao Tome and Principe</option>
+                                                <option value="184_Saudi Arabia">Saudi Arabia</option>
+                                                <option value="185_Senegal">Senegal</option>
+                                                <option value="243_Serbia">Serbia</option>
+                                                <option value="186_Seychelles">Seychelles</option>
+                                                <option value="187_Sierra Leone">Sierra Leone</option>
+                                                <option value="188_Singapore">Singapore</option>
+                                                <option value="189_Slovak Republic">Slovak Republic</option>
+                                                <option value="190_Slovenia">Slovenia</option>
+                                                <option value="191_Solomon Islands">Solomon Islands</option>
+                                                <option value="192_Somalia">Somalia</option>
+                                                <option value="193_South Africa">South Africa</option>
+                                                <option value="194_South Georgia & South Sandwich Islands">South Georgia
+                                                    &amp; South Sandwich Islands
+                                                </option>
+                                                <option value="113_South Korea">South Korea</option>
+                                                <option value="248_South Sudan">South Sudan</option>
+                                                <option value="195_Spain">Spain</option>
+                                                <option value="196_Sri Lanka">Sri Lanka</option>
+                                                <option value="249_St. Barthelemy">St. Barthelemy</option>
+                                                <option value="197_St. Helena">St. Helena</option>
+                                                <option value="250_St. Martin (French part)">St. Martin (French part)
+                                                </option>
+                                                <option value="198_St. Pierre and Miquelon">St. Pierre and Miquelon
+                                                </option>
+                                                <option value="199_Sudan">Sudan</option>
+                                                <option value="200_Suriname">Suriname</option>
+                                                <option value="201_Svalbard and Jan Mayen Islands">Svalbard and Jan
+                                                    Mayen Islands</option>
+                                                <option value="202_Swaziland">Swaziland</option>
+                                                <option value="203_Sweden">Sweden</option>
+                                                <option value="204_Switzerland">Switzerland</option>
+                                                <option value="205_Syrian Arab Republic">Syrian Arab Republic</option>
+                                                <option value="206_Taiwan">Taiwan</option>
+                                                <option value="207_Tajikistan">Tajikistan</option>
+                                                <option value="208_Tanzania, United Republic of">Tanzania, United
+                                                    Republic of</option>
+                                                <option value="209_Thailand">Thailand</option>
+                                                <option value="210_Togo">Togo</option>
+                                                <option value="211_Tokelau">Tokelau</option>
+                                                <option value="212_Tonga">Tonga</option>
+                                                <option value="213_Trinidad and Tobago">Trinidad and Tobago</option>
+                                                <option value="255_Tristan da Cunha">Tristan da Cunha</option>
+                                                <option value="214_Tunisia">Tunisia</option>
+                                                <option value="215_Turkey">Turkey</option>
+                                                <option value="216_Turkmenistan">Turkmenistan</option>
+                                                <option value="217_Turks and Caicos Islands">Turks and Caicos Islands
+                                                </option>
+                                                <option value="218_Tuvalu">Tuvalu</option>
+                                                <option value="219_Uganda">Uganda</option>
+                                                <option value="220_Ukraine">Ukraine</option>
+                                                <option value="221_United Arab Emirates">United Arab Emirates</option>
+                                                <option value="222_United Kingdom">United Kingdom</option>
+                                                <option value="223_United States">United States</option>
+                                                <option value="224_United States Minor Outlying Islands">United States
+                                                    Minor Outlying Islands</option>
+                                                <option value="225_Uruguay">Uruguay</option>
+                                                <option value="226_Uzbekistan">Uzbekistan</option>
+                                                <option value="227_Vanuatu">Vanuatu</option>
+                                                <option value="228_Vatican City State (Holy See)">Vatican City State
+                                                    (Holy See)</option>
+                                                <option value="229_Venezuela">Venezuela</option>
+                                                <option value="230_Viet Nam">Viet Nam</option>
+                                                <option value="231_Virgin Islands (British)">Virgin Islands (British)
+                                                </option>
+                                                <option value="232_Virgin Islands (U.S.)">Virgin Islands (U.S.)</option>
+                                                <option value="233_Wallis and Futuna Islands">Wallis and Futuna Islands
+                                                </option>
+                                                <option value="234_Western Sahara">Western Sahara</option>
+                                                <option value="235_Yemen">Yemen</option>
+                                                <option value="238_Zambia">Zambia</option>
+                                                <option value="239_Zimbabwe">Zimbabwe</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-payment-zone">Region /
+                                            State</label>
+                                        <div class="col-sm-10">
+                                            <select name="zone_id" id="input-payment-zone" class="form-control">
+                                                <option value=""> --- Please Select --- </option>
+                                                <option value="1475_Andaman and Nicobar Islands">Andaman and Nicobar
+                                                    Islands</option>
+                                                <option value="1476_Andhra Pradesh">Andhra Pradesh</option>
+                                                <option value="1477_Arunachal Pradesh">Arunachal Pradesh</option>
+                                                <option value="1478_Assam">Assam</option>
+                                                <option value="1479_Bihar">Bihar</option>
+                                                <option value="1480_Chandigarh">Chandigarh</option>
+                                                <option value="1481_Dadra and Nagar Haveli">Dadra and Nagar Haveli
+                                                </option>
+                                                <option value="1482_Daman and Diu">Daman and Diu</option>
+                                                <option value="1483_Delhi">Delhi</option>
+                                                <option value="1484_Goa">Goa</option>
+                                                <option value="1485_Gujarat" selected="selected">Gujarat</option>
+                                                <option value="1486_Haryana">Haryana</option>
+                                                <option value="1487_Himachal Pradesh">Himachal Pradesh</option>
+                                                <option value="1488_Jammu and Kashmir">Jammu and Kashmir</option>
+                                                <option value="1489_Karnataka">Karnataka</option>
+                                                <option value="1490_Kerala">Kerala</option>
+                                                <option value="1491_Lakshadweep Islands">Lakshadweep Islands</option>
+                                                <option value="1492_Madhya Pradesh">Madhya Pradesh</option>
+                                                <option value="1493_Maharashtra">Maharashtra</option>
+                                                <option value="1494_Manipur">Manipur</option>
+                                                <option value="1495_Meghalaya">Meghalaya</option>
+                                                <option value="1496_Mizoram">Mizoram</option>
+                                                <option value="1497_Nagaland">Nagaland</option>
+                                                <option value="1498_Orissa">Orissa</option>
+                                                <option value="1499_Puducherry">Puducherry</option>
+                                                <option value="1500_Punjab">Punjab</option>
+                                                <option value="1501_Rajasthan">Rajasthan</option>
+                                                <option value="1502_Sikkim">Sikkim</option>
+                                                <option value="1503_Tamil Nadu">Tamil Nadu</option>
+                                                <option value="4231_Telangana">Telangana</option>
+                                                <option value="1504_Tripura">Tripura</option>
+                                                <option value="1505_Uttar Pradesh">Uttar Pradesh</option>
+                                                <option value="1506_West Bengal">West Bengal</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="buttons clearfix">
+                                    <div class="pull-right">
+                                        <input type="button" value="Continue" id="button-payment-address"
+                                            data-loading-text="Loading..." class="btn btn-primary">
+                                    </div>
+                                </div>
+                            </form>
+                            <script type="text/javascript">
+                                $('input[name=\'payment_address\']').on('change', function () {
+                                    if (this.value == 'new') {
+                                        $('#payment-existing').hide();
+                                        $('#payment-new').show();
+                                    } else {
+                                        $('#payment-existing').show();
+                                        $('#payment-new').hide();
+                                    }
+                                });
+                                //--></script>
+                            <script type="text/javascript">
+                                // Sort the custom fields
+                                $('#collapse-payment-address .form-group[data-sort]').detach().each(function () {
+                                    if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('#collapse-payment-address .form-group').length - 2) {
+                                        $('#collapse-payment-address .form-group').eq(parseInt($(this).attr('data-sort')) + 2).before(this);
+                                    }
+
+                                    if ($(this).attr('data-sort') > $('#collapse-payment-address .form-group').length - 2) {
+                                        $('#collapse-payment-address .form-group:last').after(this);
+                                    }
+
+                                    if ($(this).attr('data-sort') == $('#collapse-payment-address .form-group').length - 2) {
+                                        $('#collapse-payment-address .form-group:last').after(this);
+                                    }
+
+                                    if ($(this).attr('data-sort') < -$('#collapse-payment-address .form-group').length - 2) {
+                                        $('#collapse-payment-address .form-group:first').before(this);
+                                    }
+                                });
+                                //--></script>
+                            <script type="text/javascript">
+                                $('#collapse-payment-address button[id^=\'button-payment-custom-field\']').on('click', function () {
+                                    var element = this;
+
+                                    $('#form-upload').remove();
+
+                                    $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+                                    $('#form-upload input[name=\'file\']').trigger('click');
+
+                                    if (typeof timer != 'undefined') {
+                                        clearInterval(timer);
+                                    }
+
+                                    timer = setInterval(function () {
+                                        if ($('#form-upload input[name=\'file\']').val() != '') {
+                                            clearInterval(timer);
+
+                                            $.ajax({
+                                                url: 'index.php?route=tool/upload',
+                                                type: 'post',
+                                                dataType: 'json',
+                                                data: new FormData($('#form-upload')[0]),
+                                                cache: false,
+                                                contentType: false,
+                                                processData: false,
+                                                beforeSend: function () {
+                                                    $(element).button('loading');
+                                                },
+                                                complete: function () {
+                                                    $(element).button('reset');
+                                                },
+                                                success: function (json) {
+                                                    $(element).parent().find('.text-danger').remove();
+
+                                                    if (json['error']) {
+                                                        $(element).parent().find('input[name^=\'custom_field\']').after('<div class="text-danger">' + json['error'] + '</div>');
+                                                    }
+
+                                                    if (json['success']) {
+                                                        alert(json['success']);
+
+                                                        $(element).parent().find('input[name^=\'custom_field\']').val(json['code']);
+                                                    }
+                                                },
+                                                error: function (xhr, ajaxOptions, thrownError) {
+                                                    // alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                                }
+                                            });
+                                        }
+                                    }, 500);
+                                });
+                                //--></script>
+                            <script type="text/javascript">
+                                $('.date').datetimepicker({
+                                    language: '',
+                                    pickTime: false
+                                });
+
+                                $('.time').datetimepicker({
+                                    language: '',
+                                    pickDate: false
+                                });
+
+                                $('.datetime').datetimepicker({
+                                    language: '',
+                                    pickDate: true,
+                                    pickTime: true
+                                });
+                                //--></script>
+                            <script type="text/javascript">
+                                $('#collapse-payment-address select[name=\'country_id\']').on('change', function () {
+                                    $.ajax({
+                                        url: 'index.php?route=checkout/checkout/country&country_id=' + this.value,
+                                        dataType: 'json',
+                                        beforeSend: function () {
+                                            $('#collapse-payment-address select[name=\'country_id\']').prop('disabled', true);
+                                        },
+                                        complete: function () {
+                                            $('#collapse-payment-address select[name=\'country_id\']').prop('disabled', false);
+                                        },
+                                        success: function (json) {
+                                            if (json['postcode_required'] == '1') {
+                                                $('#collapse-payment-address input[name=\'postcode\']').parent().parent().addClass('required');
+                                            } else {
+                                                $('#collapse-payment-address input[name=\'postcode\']').parent().parent().removeClass('required');
+                                            }
+
+                                            html = '<option value=""> --- Please Select --- </option>';
+
+                                            if (json['zone'] && json['zone'] != '') {
+                                                for (i = 0; i < json['zone'].length; i++) {
+                                                    html += '<option value="' + json['zone'][i]['zone_id'] + '"';
+
+                                                    if (json['zone'][i]['zone_id'] == '1485') {
+                                                        html += ' selected="selected"';
+                                                    }
+
+                                                    html += '>' + json['zone'][i]['name'] + '</option>';
+                                                }
+                                            } else {
+                                                html += '<option value="0" selected="selected"> --- None --- </option>';
+                                            }
+
+                                            $('#collapse-payment-address select[name=\'zone_id\']').html(html);
+                                        },
+                                        error: function (xhr, ajaxOptions, thrownError) {
+                                            // alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                        }
+                                    });
+                                });
+
+                                $('#collapse-payment-address select[name=\'country_id\']').trigger('change');
+                                //--></script>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="#collapse-shipping-address" data-toggle="collapse"
+                                data-parent="#accordion" class="accordion-toggle" aria-expanded="true">Step 3: Delivery
+                                Details <i class="fa fa-caret-down"></i></a></h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapse-shipping-address" aria-expanded="true">
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="shipping_address" value="existing" checked="checked">
+                                        I want to use an existing address</label>
+                                </div>
+                                <div id="shipping-existing">
+                                    <select id="shipping_address_id" name="address_id" class="form-control">
+                                        {% for add in address %}
+                                        <option value="{{add.id}}" selected="selected">{{add.address_1 + ", " +
+                                            add.address_2 + ", " + add.city + ", " + add.stateName + ", " + add.postcode
+                                            + ", " + add.countryName}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="shipping_address" value="new">
+                                        I want to use a new address</label>
+                                </div>
+                                <br>
+                                <div id="shipping-new" style="display: none;">
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-shipping-firstname">First
+                                            Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="firstname" value="" placeholder="First Name"
+                                                id="input-shipping-firstname" class="form-control required-field">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-shipping-lastname">Last
+                                            Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="lastname" value="" placeholder="Last Name"
+                                                id="input-shipping-lastname" class="form-control required-field">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label"
+                                            for="input-shipping-company">Company</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="company" value="" placeholder="Company"
+                                                id="input-shipping-company" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-shipping-address-1">Address
+                                            1</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="address_1" value="" placeholder="Address 1"
+                                                id="input-shipping-address-1" class="form-control required-field">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="input-shipping-address-2">Address
+                                            2</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="address_2" value="" placeholder="Address 2"
+                                                id="input-shipping-address-2" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-shipping-city">City</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="city" value="" placeholder="City"
+                                                id="input-shipping-city" class="form-control required-field">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-shipping-postcode">Post
+                                            Code</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="postcode" value="" placeholder="Post Code"
+                                                id="input-shipping-postcode" class="form-control required-field">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label"
+                                            for="input-shipping-country">Country</label>
+                                        <div class="col-sm-10">
+                                            <select name="country_id" id="input-shipping-country" class="form-control">
+                                                <option value=""> --- Please Select --- </option>
+                                                <option value="244_Aaland Islands">Aaland Islands</option>
+                                                <option value="1_Afghanistan">Afghanistan</option>
+                                                <option value="2_Albania">Albania</option>
+                                                <option value="3_Algeria">Algeria</option>
+                                                <option value="4_American Samoa">American Samoa</option>
+                                                <option value="5_Andorra">Andorra</option>
+                                                <option value="6_Angola">Angola</option>
+                                                <option value="7_Anguilla">Anguilla</option>
+                                                <option value="8_Antarctica">Antarctica</option>
+                                                <option value="9_Antigua and Barbuda">Antigua and Barbuda</option>
+                                                <option value="10_Argentina">Argentina</option>
+                                                <option value="11_Armenia">Armenia</option>
+                                                <option value="12_Aruba">Aruba</option>
+                                                <option value="252_Ascension Island (British)">Ascension Island
+                                                    (British)</option>
+                                                <option value="13_Australia">Australia</option>
+                                                <option value="14_Austria">Austria</option>
+                                                <option value="15_Azerbaijan">Azerbaijan</option>
+                                                <option value="16_Bahamas">Bahamas</option>
+                                                <option value="17_Bahrain">Bahrain</option>
+                                                <option value="18_Bangladesh">Bangladesh</option>
+                                                <option value="19_Barbados">Barbados</option>
+                                                <option value="20_Belarus">Belarus</option>
+                                                <option value="21_Belgium">Belgium</option>
+                                                <option value="22_Belize">Belize</option>
+                                                <option value="23_Benin">Benin</option>
+                                                <option value="24_Bermuda">Bermuda</option>
+                                                <option value="25_Bhutan">Bhutan</option>
+                                                <option value="26_Bolivia">Bolivia</option>
+                                                <option value="245_Bonaire, Sint Eustatius and Saba">Bonaire, Sint
+                                                    Eustatius and Saba</option>
+                                                <option value="27_Bosnia and Herzegovina">Bosnia and Herzegovina
+                                                </option>
+                                                <option value="28_Botswana">Botswana</option>
+                                                <option value="29_Bouvet Island">Bouvet Island</option>
+                                                <option value="30_Brazil">Brazil</option>
+                                                <option value="31_British Indian Ocean Territory">British Indian Ocean
+                                                    Territory</option>
+                                                <option value="32_Brunei Darussalam">Brunei Darussalam</option>
+                                                <option value="33_Bulgaria">Bulgaria</option>
+                                                <option value="34_Burkina Faso">Burkina Faso</option>
+                                                <option value="35_Burundi">Burundi</option>
+                                                <option value="36_Cambodia">Cambodia</option>
+                                                <option value="37">Cameroon</option>
+                                                <option value="38_Canada">Canada</option>
+                                                <option value="251_Canary Islands">Canary Islands</option>
+                                                <option value="39_Cape Verde">Cape Verde</option>
+                                                <option value="40_Cayman Islands">Cayman Islands</option>
+                                                <option value="41_Central African Republic">Central African Republic
+                                                </option>
+                                                <option value="42_Chad">Chad</option>
+                                                <option value="43_Chile">Chile</option>
+                                                <option value="44_China">China</option>
+                                                <option value="45_Christmas Island">Christmas Island</option>
+                                                <option value="46_Cocos (Keeling) Islands">Cocos (Keeling) Islands
+                                                </option>
+                                                <option value="47_Colombia">Colombia</option>
+                                                <option value="48_Comoros">Comoros</option>
+                                                <option value="49_Congo">Congo</option>
+                                                <option value="50_Cook Islands">Cook Islands</option>
+                                                <option value="51_Costa Rica">Costa Rica</option>
+                                                <option value="52_Cote D'Ivoire">Cote D'Ivoire</option>
+                                                <option value="53_Croatia">Croatia</option>
+                                                <option value="54_Cuba">Cuba</option>
+                                                <option value="246_Curacao">Curacao</option>
+                                                <option value="55_Cyprus">Cyprus</option>
+                                                <option value="56_Czech Republic">Czech Republic</option>
+                                                <option value="237_Democratic Republic of Congo">Democratic Republic of
+                                                    Congo</option>
+                                                <option value="57_Denmark">Denmark</option>
+                                                <option value="58_Djibouti">Djibouti</option>
+                                                <option value="59_Dominica">Dominica</option>
+                                                <option value="60_Dominican Republic">Dominican Republic</option>
+                                                <option value="61_East Timor">East Timor</option>
+                                                <option value="62_Ecuador">Ecuador</option>
+                                                <option value="63_Egypt">Egypt</option>
+                                                <option value="64_El Salvador">El Salvador</option>
+                                                <option value="65_Equatorial Guinea">Equatorial Guinea</option>
+                                                <option value="66_Eritrea">Eritrea</option>
+                                                <option value="67_Estonia">Estonia</option>
+                                                <option value="68_Ethiopia">Ethiopia</option>
+                                                <option value="69_Falkland Islands (Malvinas)">Falkland Islands
+                                                    (Malvinas)</option>
+                                                <option value="70_Faroe Islands">Faroe Islands</option>
+                                                <option value="71_Fiji">Fiji</option>
+                                                <option value="72_Finland">Finland</option>
+                                                <option value="74_France, Metropolitan">France, Metropolitan</option>
+                                                <option value="75_French Guiana">French Guiana</option>
+                                                <option value="76_French Polynesia">French Polynesia</option>
+                                                <option value="77_French Southern Territories">French Southern
+                                                    Territories</option>
+                                                <option value="126_FYROM">FYROM</option>
+                                                <option value="78_Gabon">Gabon</option>
+                                                <option value="79_Gambia">Gambia</option>
+                                                <option value="80_Georgia">Georgia</option>
+                                                <option value="81_Germany">Germany</option>
+                                                <option value="82_Ghana">Ghana</option>
+                                                <option value="83_Gibraltar">Gibraltar</option>
+                                                <option value="84_Greece">Greece</option>
+                                                <option value="85_Greenland">Greenland</option>
+                                                <option value="86_Grenada">Grenada</option>
+                                                <option value="87_Guadeloupe">Guadeloupe</option>
+                                                <option value="88_Guam">Guam</option>
+                                                <option value="89_Guatemala">Guatemala</option>
+                                                <option value="256_Guernsey">Guernsey</option>
+                                                <option value="90_Guinea">Guinea</option>
+                                                <option value="91_Guinea-Bissau">Guinea-Bissau</option>
+                                                <option value="92_Guyana">Guyana</option>
+                                                <option value="93_Haiti">Haiti</option>
+                                                <option value="94_Heard and Mc Donald Islands">Heard and Mc Donald
+                                                    Islands</option>
+                                                <option value="95_Honduras">Honduras</option>
+                                                <option value="96_Hong Kong">Hong Kong</option>
+                                                <option value="97_Hungary">Hungary</option>
+                                                <option value="98_Iceland">Iceland</option>
+                                                <option value="99_India">India</option>
+                                                <option value="100_Indonesia">Indonesia</option>
+                                                <option value="101_Iran (Islamic Republic of)">Iran (Islamic Republic
+                                                    of)</option>
+                                                <option value="102_Iraq">Iraq</option>
+                                                <option value="103_Ireland">Ireland</option>
+                                                <option value="254_Isle of Man">Isle of Man</option>
+                                                <option value="104_Israel">Israel</option>
+                                                <option value="105_Italy">Italy</option>
+                                                <option value="106_Jamaica">Jamaica</option>
+                                                <option value="107_Japan">Japan</option>
+                                                <option value="257_Jersey">Jersey</option>
+                                                <option value="108_Jordan">Jordan</option>
+                                                <option value="109_Kazakhstan">Kazakhstan</option>
+                                                <option value="110_Kenya">Kenya</option>
+                                                <option value="111_Kiribati">Kiribati</option>
+                                                <option value="253_Kosovo, Republic of">Kosovo, Republic of</option>
+                                                <option value="114_Kuwait">Kuwait</option>
+                                                <option value="115_Kyrgyzstan">Kyrgyzstan</option>
+                                                <option value="116_Lao People's Democratic Republic">Lao People's
+                                                    Democratic Republic</option>
+                                                <option value="117_Latvia">Latvia</option>
+                                                <option value="118_Lebanon">Lebanon</option>
+                                                <option value="119_Lesotho">Lesotho</option>
+                                                <option value="120_Liberia">Liberia</option>
+                                                <option value="121_Libyan Arab Jamahiriya">Libyan Arab Jamahiriya
+                                                </option>
+                                                <option value="122_Liechtenstein">Liechtenstein</option>
+                                                <option value="123_Lithuania">Lithuania</option>
+                                                <option value="124_Luxembourg">Luxembourg</option>
+                                                <option value="125_Macau">Macau</option>
+                                                <option value="127_Madagascar">Madagascar</option>
+                                                <option value="128_Malawi">Malawi</option>
+                                                <option value="129_Malaysia">Malaysia</option>
+                                                <option value="130_Maldives">Maldives</option>
+                                                <option value="131_Mali">Mali</option>
+                                                <option value="132_Malta">Malta</option>
+                                                <option value="133_Marshall Islands">Marshall Islands</option>
+                                                <option value="134_Martinique">Martinique</option>
+                                                <option value="135_Mauritania">Mauritania</option>
+                                                <option value="136_Mauritius">Mauritius</option>
+                                                <option value="137_Mayotte">Mayotte</option>
+                                                <option value="138_Mexico">Mexico</option>
+                                                <option value="139_Micronesia, Federated States of">Micronesia,
+                                                    Federated States of</option>
+                                                <option value="140_Moldova, Republic of">Moldova, Republic of</option>
+                                                <option value="141_Monaco">Monaco</option>
+                                                <option value="142_Mongolia">Mongolia</option>
+                                                <option value="242_Montenegro">Montenegro</option>
+                                                <option value="143_Montserrat">Montserrat</option>
+                                                <option value="144_Morocco">Morocco</option>
+                                                <option value="145_Mozambique">Mozambique</option>
+                                                <option value="146_Myanmar">Myanmar</option>
+                                                <option value="147_Namibia">Namibia</option>
+                                                <option value="148_Nauru">Nauru</option>
+                                                <option value="149_Nepal">Nepal</option>
+                                                <option value="150_Netherlands">Netherlands</option>
+                                                <option value="151_Netherlands Antilles">Netherlands Antilles</option>
+                                                <option value="152_New Caledonia">New Caledonia</option>
+                                                <option value="153_New Zealand">New Zealand</option>
+                                                <option value="154_Nicaragua">Nicaragua</option>
+                                                <option value="155_Niger">Niger</option>
+                                                <option value="156_Nigeria">Nigeria</option>
+                                                <option value="157_Niue">Niue</option>
+                                                <option value="158_Norfolk Island">Norfolk Island</option>
+                                                <option value="112_North Korea">North Korea</option>
+                                                <option value="159_Northern Mariana Islands">Northern Mariana Islands
+                                                </option>
+                                                <option value="160_Norway">Norway</option>
+                                                <option value="161_Oman">Oman</option>
+                                                <option value="162_Pakistan">Pakistan</option>
+                                                <option value="163_Palau">Palau</option>
+                                                <option value="247_Palestinian Territory, Occupied">Palestinian
+                                                    Territory, Occupied</option>
+                                                <option value="164_Panama">Panama</option>
+                                                <option value="165_Papua New Guinea">Papua New Guinea</option>
+                                                <option value="166_Paraguay">Paraguay</option>
+                                                <option value="167_Peru">Peru</option>
+                                                <option value="168_Philippines">Philippines</option>
+                                                <option value="169_Pitcairn">Pitcairn</option>
+                                                <option value="170_Poland">Poland</option>
+                                                <option value="171_Portugal">Portugal</option>
+                                                <option value="172_Puerto Rico">Puerto Rico</option>
+                                                <option value="173_Qatar">Qatar</option>
+                                                <option value="174_Reunion">Reunion</option>
+                                                <option value="175_Romania">Romania</option>
+                                                <option value="176_Russian Federation">Russian Federation</option>
+                                                <option value="177_Rwanda">Rwanda</option>
+                                                <option value="178_Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                                                <option value="179_Saint Lucia">Saint Lucia</option>
+                                                <option value="180_Saint Vincent and the Grenadines">Saint Vincent and
+                                                    the Grenadines</option>
+                                                <option value="181_Samoa">Samoa</option>
+                                                <option value="182_San Marino">San Marino</option>
+                                                <option value="183_Sao Tome and Principe">Sao Tome and Principe</option>
+                                                <option value="184_Saudi Arabia">Saudi Arabia</option>
+                                                <option value="185_Senegal">Senegal</option>
+                                                <option value="243_Serbia">Serbia</option>
+                                                <option value="186_Seychelles">Seychelles</option>
+                                                <option value="187_Sierra Leone">Sierra Leone</option>
+                                                <option value="188_Singapore">Singapore</option>
+                                                <option value="189_Slovak Republic">Slovak Republic</option>
+                                                <option value="190_Slovenia">Slovenia</option>
+                                                <option value="191_Solomon Islands">Solomon Islands</option>
+                                                <option value="192_Somalia">Somalia</option>
+                                                <option value="193_South Africa">South Africa</option>
+                                                <option value="194_South Georgia & South Sandwich Islands">South Georgia
+                                                    &amp; South Sandwich Islands
+                                                </option>
+                                                <option value="113_South Korea">South Korea</option>
+                                                <option value="248_South Sudan">South Sudan</option>
+                                                <option value="195_Spain">Spain</option>
+                                                <option value="196_Sri Lanka">Sri Lanka</option>
+                                                <option value="249_St. Barthelemy">St. Barthelemy</option>
+                                                <option value="197_St. Helena">St. Helena</option>
+                                                <option value="250_St. Martin (French part)">St. Martin (French part)
+                                                </option>
+                                                <option value="198_St. Pierre and Miquelon">St. Pierre and Miquelon
+                                                </option>
+                                                <option value="199_Sudan">Sudan</option>
+                                                <option value="200_Suriname">Suriname</option>
+                                                <option value="201_Svalbard and Jan Mayen Islands">Svalbard and Jan
+                                                    Mayen Islands</option>
+                                                <option value="202_Swaziland">Swaziland</option>
+                                                <option value="203_Sweden">Sweden</option>
+                                                <option value="204_Switzerland">Switzerland</option>
+                                                <option value="205_Syrian Arab Republic">Syrian Arab Republic</option>
+                                                <option value="206_Taiwan">Taiwan</option>
+                                                <option value="207_Tajikistan">Tajikistan</option>
+                                                <option value="208_Tanzania, United Republic of">Tanzania, United
+                                                    Republic of</option>
+                                                <option value="209_Thailand">Thailand</option>
+                                                <option value="210_Togo">Togo</option>
+                                                <option value="211_Tokelau">Tokelau</option>
+                                                <option value="212_Tonga">Tonga</option>
+                                                <option value="213_Trinidad and Tobago">Trinidad and Tobago</option>
+                                                <option value="255_Tristan da Cunha">Tristan da Cunha</option>
+                                                <option value="214_Tunisia">Tunisia</option>
+                                                <option value="215_Turkey">Turkey</option>
+                                                <option value="216_Turkmenistan">Turkmenistan</option>
+                                                <option value="217_Turks and Caicos Islands">Turks and Caicos Islands
+                                                </option>
+                                                <option value="218_Tuvalu">Tuvalu</option>
+                                                <option value="219_Uganda">Uganda</option>
+                                                <option value="220_Ukraine">Ukraine</option>
+                                                <option value="221_United Arab Emirates">United Arab Emirates</option>
+                                                <option value="222_United Kingdom">United Kingdom</option>
+                                                <option value="223_United States">United States</option>
+                                                <option value="224_United States Minor Outlying Islands">United States
+                                                    Minor Outlying Islands</option>
+                                                <option value="225_Uruguay">Uruguay</option>
+                                                <option value="226_Uzbekistan">Uzbekistan</option>
+                                                <option value="227_Vanuatu">Vanuatu</option>
+                                                <option value="228_Vatican City State (Holy See)">Vatican City State
+                                                    (Holy See)</option>
+                                                <option value="229_Venezuela">Venezuela</option>
+                                                <option value="230_Viet Nam">Viet Nam</option>
+                                                <option value="231_Virgin Islands (British)">Virgin Islands (British)
+                                                </option>
+                                                <option value="232_Virgin Islands (U.S.)">Virgin Islands (U.S.)</option>
+                                                <option value="233_Wallis and Futuna Islands">Wallis and Futuna Islands
+                                                </option>
+                                                <option value="234_Western Sahara">Western Sahara</option>
+                                                <option value="235_Yemen">Yemen</option>
+                                                <option value="238_Zambia">Zambia</option>
+                                                <option value="239_Zimbabwe">Zimbabwe</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label class="col-sm-2 control-label" for="input-shipping-zone">Region /
+                                            State</label>
+                                        <div class="col-sm-10">
+                                            <select name="zone_id" id="input-shipping-zone" class="form-control">
+                                                <option value=""> --- Please Select --- </option>
+                                                <option value="1475_Andaman and Nicobar Islands">Andaman and Nicobar
+                                                    Islands</option>
+                                                <option value="1476_Andhra Pradesh">Andhra Pradesh</option>
+                                                <option value="1477_Arunachal Pradesh">Arunachal Pradesh</option>
+                                                <option value="1478_Assam">Assam</option>
+                                                <option value="1479_Bihar">Bihar</option>
+                                                <option value="1480_Chandigarh">Chandigarh</option>
+                                                <option value="1481_Dadra and Nagar Haveli">Dadra and Nagar Haveli
+                                                </option>
+                                                <option value="1482_Daman and Diu">Daman and Diu</option>
+                                                <option value="1483_Delhi">Delhi</option>
+                                                <option value="1484_Goa">Goa</option>
+                                                <option value="1485_Gujarat" selected="selected">Gujarat</option>
+                                                <option value="1486_Haryana">Haryana</option>
+                                                <option value="1487_Himachal Pradesh">Himachal Pradesh</option>
+                                                <option value="1488_Jammu and Kashmir">Jammu and Kashmir</option>
+                                                <option value="1489_Karnataka">Karnataka</option>
+                                                <option value="1490_Kerala">Kerala</option>
+                                                <option value="1491_Lakshadweep Islands">Lakshadweep Islands</option>
+                                                <option value="1492_Madhya Pradesh">Madhya Pradesh</option>
+                                                <option value="1493_Maharashtra">Maharashtra</option>
+                                                <option value="1494_Manipur">Manipur</option>
+                                                <option value="1495_Meghalaya">Meghalaya</option>
+                                                <option value="1496_Mizoram">Mizoram</option>
+                                                <option value="1497_Nagaland">Nagaland</option>
+                                                <option value="1498_Orissa">Orissa</option>
+                                                <option value="1499_Puducherry">Puducherry</option>
+                                                <option value="1500_Punjab">Punjab</option>
+                                                <option value="1501_Rajasthan">Rajasthan</option>
+                                                <option value="1502_Sikkim">Sikkim</option>
+                                                <option value="1503_Tamil Nadu">Tamil Nadu</option>
+                                                <option value="4231_Telangana">Telangana</option>
+                                                <option value="1504_Tripura">Tripura</option>
+                                                <option value="1505_Uttar Pradesh">Uttar Pradesh</option>
+                                                <option value="1506_West Bengal">West Bengal</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="buttons clearfix">
+                                    <div class="pull-right">
+                                        <input type="button" value="Continue" id="button-guest-shipping"
+                                            data-loading-text="Loading..." class="btn btn-primary">
+                                    </div>
+                                </div>
+                            </form>
+                            <script type="text/javascript">
+                                $('input[name=\'shipping_address\']').on('change', function () {
+                                    if (this.value == 'new') {
+                                        $('#shipping-existing').hide();
+                                        $('#shipping-new').show();
+                                    } else {
+                                        $('#shipping-existing').show();
+                                        $('#shipping-new').hide();
+                                    }
+                                });
+                                //--></script>
+                            <script type="text/javascript">
+                                $('#collapse-shipping-address .form-group[data-sort]').detach().each(function () {
+                                    if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('#collapse-shipping-address .form-group').length - 2) {
+                                        $('#collapse-shipping-address .form-group').eq(parseInt($(this).attr('data-sort')) + 2).before(this);
+                                    }
+
+                                    if ($(this).attr('data-sort') > $('#collapse-shipping-address .form-group').length - 2) {
+                                        $('#collapse-shipping-address .form-group:last').after(this);
+                                    }
+
+                                    if ($(this).attr('data-sort') == $('#collapse-shipping-address .form-group').length - 2) {
+                                        $('#collapse-shipping-address .form-group:last').after(this);
+                                    }
+
+                                    if ($(this).attr('data-sort') < -$('#collapse-shipping-address .form-group').length - 2) {
+                                        $('#collapse-shipping-address .form-group:first').before(this);
+                                    }
+                                });
+                                //--></script>
+                            <script type="text/javascript">
+                                $('#collapse-shipping-address button[id^=\'button-shipping-custom-field\']').on('click', function () {
+                                    var element = this;
+
+                                    $('#form-upload').remove();
+
+                                    $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+                                    $('#form-upload input[name=\'file\']').trigger('click');
+
+                                    if (typeof timer != 'undefined') {
+                                        clearInterval(timer);
+                                    }
+
+                                    timer = setInterval(function () {
+                                        if ($('#form-upload input[name=\'file\']').val() != '') {
+                                            clearInterval(timer);
+
+                                            $.ajax({
+                                                url: 'index.php?route=tool/upload',
+                                                type: 'post',
+                                                dataType: 'json',
+                                                data: new FormData($('#form-upload')[0]),
+                                                cache: false,
+                                                contentType: false,
+                                                processData: false,
+                                                beforeSend: function () {
+                                                    $(element).button('loading');
+                                                },
+                                                complete: function () {
+                                                    $(element).button('reset');
+                                                },
+                                                success: function (json) {
+                                                    $(element).parent().find('.text-danger').remove();
+
+                                                    if (json['error']) {
+                                                        $(element).parent().find('input[name^=\'custom_field\']').after('<div class="text-danger">' + json['error'] + '</div>');
+                                                    }
+
+                                                    if (json['success']) {
+                                                        // alert(json['success']);
+
+                                                        $(element).parent().find('input[name^=\'custom_field\']').val(json['code']);
+                                                    }
+                                                },
+                                                error: function (xhr, ajaxOptions, thrownError) {
+                                                    // alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                                }
+                                            });
+                                        }
+                                    }, 500);
+                                });
+                                //--></script>
+                            <script type="text/javascript">
+                                $('.date').datetimepicker({
+                                    language: '',
+                                    pickTime: false
+                                });
+
+                                $('.time').datetimepicker({
+                                    language: '',
+                                    pickDate: false
+                                });
+
+                                $('.datetime').datetimepicker({
+                                    language: '',
+                                    pickDate: true,
+                                    pickTime: true
+                                });
+                                //--></script>
+                            <script type="text/javascript">
+                                $('#collapse-shipping-address select[name=\'country_id\']').on('change', function () {
+                                    $.ajax({
+                                        url: 'index.php?route=checkout/checkout/country&country_id=' + this.value,
+                                        dataType: 'json',
+                                        beforeSend: function () {
+                                            $('#collapse-shipping-address select[name=\'country_id\']').prop('disabled', true);
+                                        },
+                                        complete: function () {
+                                            $('#collapse-shipping-address select[name=\'country_id\']').prop('disabled', false);
+                                        },
+                                        success: function (json) {
+                                            if (json['postcode_required'] == '1') {
+                                                $('#collapse-shipping-address input[name=\'postcode\']').parent().parent().addClass('required');
+                                            } else {
+                                                $('#collapse-shipping-address input[name=\'postcode\']').parent().parent().removeClass('required');
+                                            }
+
+                                            html = '<option value=""> --- Please Select --- </option>';
+
+                                            if (json['zone'] && json['zone'] != '') {
+                                                for (i = 0; i < json['zone'].length; i++) {
+                                                    html += '<option value="' + json['zone'][i]['zone_id'] + '"';
+
+                                                    if (json['zone'][i]['zone_id'] == '3528') {
+                                                        html += ' selected="selected"';
+                                                    }
+
+                                                    html += '>' + json['zone'][i]['name'] + '</option>';
+                                                }
+                                            } else {
+                                                html += '<option value="0" selected="selected"> --- None --- </option>';
+                                            }
+
+                                            $('#collapse-shipping-address select[name=\'zone_id\']').html(html);
+                                        },
+                                        error: function (xhr, ajaxOptions, thrownError) {
+                                            // alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                        }
+                                    });
+                                });
+
+                                $('#collapse-shipping-address select[name=\'country_id\']').trigger('change');
+                                //--></script>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="#collapse-shipping-method" data-toggle="collapse"
+                                data-parent="#accordion" class="accordion-toggle" aria-expanded="true">Step 4: Delivery
+                                Method <i class="fa fa-caret-down"></i></a></h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapse-shipping-method">
+                        <div class="panel-body">
+                            <p>Please select the preferred shipping method to use on this order.</p>
+                            <p><strong>Flat Rate</strong></p>
+                            <div class="radio">
+                                <label id="shipping_rate_id"> <input type="radio" name="shipping_method"
+                                        value="flat.flat" checked="checked">
+                                    Flat Shipping Rate - &#8377;&nbsp; 99</label>
+                            </div>
+                            <p><strong>Add Comments About Your Order</strong></p>
+                            <p>
+                                <textarea name="comment" rows="8" class="form-control"></textarea>
+                            </p>
+                            <div class="buttons">
+                                <div class="pull-right">
+                                    <input type="button" value="Continue" id="button-shipping-method"
+                                        data-loading-text="Loading..." class="btn btn-primary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="#collapse-payment-method" data-toggle="collapse"
+                                data-parent="#accordion" class="accordion-toggle" aria-expanded="true">Step 5: Payment
+                                Method <i class="fa fa-caret-down"></i></a></h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapse-payment-method">
+                        <div class="panel-body">
+                            <p>Please select the preferred payment method to use on this order.</p>
+                            <div class="radio">
+                                <label> <input type="radio" name="payment_method" value="cod" checked="checked">
+                                    Cash On Delivery
+                                </label>
+                            </div>
+                            <p><strong>Add Comments About Your Order</strong></p>
+                            <p>
+                                <textarea name="comment" rows="8" class="form-control"></textarea>
+                            </p>
+                            <div class="buttons">
+                                <div class="pull-right">
+                                    <input type="checkbox" name="agree" value="1">
+                                    I have read and agree to the <a
+                                        href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=information/information/agree&amp;information_id=5"
+                                        class="agree"><b>Terms &amp; Conditions</b></a>
+                                    &nbsp;
+                                    <input type="button" value="Continue" id="button-payment-method"
+                                        data-loading-text="Loading..." class="btn btn-primary">
+                                    <!-- <script>
+                                            $(document).ready(function() {
+                                                $("#button-payment-method").click(function() {
+                                                    // Check if the checkbox is checked
+                                                    if ($("input[name='agree']").prop("checked")) {
+                                                        // Checkbox is checked, continue with the action
+                                                        // For now, just displaying an alert, you can replace this with your logic
+                                                        // alert("Checkbox is checked. Continue with the action.");
+                                                    } else {
+                                                        // Checkbox is not checked, show an error message
+                                                        alert("Please check the checkbox to proceed.");
+                                                    }
+                                                });
+                                            });
+                                        </script> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="#collapse-checkout-confirm" data-toggle="collapse"
+                                data-parent="#accordion" class="accordion-toggle" aria-expanded="true">Step 6: Confirm
+                                Order
+                                <i class="fa fa-caret-down"></i></a></h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapse-checkout-confirm">
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td class="text-left">Product Name</td>
+                                            <!-- <td class="text-left">Model</td> -->
+                                            <td class="text-right">Quantity</td>
+                                            <td class="text-right">Unit Price</td>
+                                            <td class="text-left">Tax</td>
+                                            <td class="text-right">Total</td>
+                                        </tr>
+                                    </thead>
+                                    {% for item in addtocartdata %}
+                                    <tbody>
+                                        <tr name="{{item.productId}}">
+                                            <td class="text-left"><a href="">{{item.product_name}}</a> <br>
+                                                <!-- &nbsp; -->
+                                                <!-- <small> - Delivery Date: 2011-04-22</small> </td> -->
+                                                <!-- <td class="text-left">Product 21</td> -->
+                                            <td class="text-right">{{item.quantity}}</td>
+                                            <td class="text-right">&#8377;&nbsp; {{item.unitPrice}}</td>
+                                            <td class="text-left">&#8377;&nbsp; {{item.tax}}</td>
+                                            <td class="text-right">&#8377;&nbsp; {{item.grandTotal}}</td>
+                                        </tr>
+                                    </tbody>
+                                    {% else %}
+                                    <li>This would display if the 'item' collection were empty</li>
+                                    {% endfor %}
+
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4" class="text-right"><strong>Sub-Total:</strong></td>
+                                            <td class="text-right">&#8377;&nbsp; {{finalSubTotal}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-right"><strong>Tax:</strong></td>
+                                            <td class="text-right">&#8377;&nbsp; {{finalTax}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-right"><strong>Flat Shipping Rate:</strong></td>
+                                            <td class="text-right">&#8377;&nbsp; 99</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-right"><strong>Total:</strong></td>
+                                            <td class="text-right">&#8377;&nbsp; {{finalTotal}}</td>
+                                        </tr>
+                                    </tfoot>
+
+                                </table>
+                            </div>
+                            <div class="buttons">
+                                <div class="pull-right">
+                                    <input type="button" value="Confirm Order" id="button-confirm"
+                                        data-loading-text="Loading..." class="btn btn-primary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block Jscript %}
+    <!-- ======= Quick view JS ========= -->
+    <script>
+
+        $('body').on('click', '.addtocart', function () {
+            let action = $(this).attr('action');
+            // let content = 'Are you really want to add this product into wishlist?';
+            // if (action == 'remove') {
+            //     content = 'Are you really want to remove this product from wishlist?';
+            // }
+            // if (confirm(content)) {
+            // alert('Thanks for confirming');
+            let host = window.location.origin;
+            //  alert(host)
+            let productId = $(this).attr('productId');
+            alert(productId)
+            // alert(action),
+
+            $.ajax({
+                url: host + '/addtocart_call',
+                type: 'POST',
+                data: { action: action, productId: productId },  // data to submit
+                success: function (status) {
+                    console.log('===>', status);
+                    //   alert('Product added to wishlist successfully');
+                    location.reload();
+                }
+                , error: function (jqXhr, textStatus, errorMessage) {
+                    $('p').append('Error' + errorMessage);
+                }
+            });
+            // }
+        });
+
+        // below code is for 2 to 3  on continue
+        // $(document).ready(function () {
+
+        //     $("#button-payment-address").click(function () {
+        //         // Close any open collapses
+        //         $(".panel-collapse.in").collapse("hide");
+
+        //         // Toggle the collapse state of the payment method panel
+        //         $("#collapse-shipping-address").collapse("toggle");
+        //     });
+        // });
+        $(document).ready(function () {
+            $("#button-payment-address").click(function () {
+                // Close any open collapses
+                $(".panel-collapse.in").collapse("hide");
+
+                var stateDropdown = $('#input-payment-zone');
+                var countryDropdown = $('#input-payment-country');
+
+                // if (stateDropdown.val() === '') {
+                //     alert("Please select a region/state.");
+                // } else if (countryDropdown.val() === '') {
+                //     alert("Please select a country.");
+                // } else {
+                // Check if all required fields are filled in
+                if ($('input[name="payment_address"]:checked').val() === 'new') {
+                    if (stateDropdown.val() === '') {
+                        alert("Please select a region/state.");
+                    } else if (countryDropdown.val() === '') {
+                        alert("Please select a country.");
+                    } else {
+                        let lastname = $("#input-payment-lastname").val();
+                        let firstname = $("#input-payment-firstname").val();
+                        let address_1 = $("#input-payment-address-1").val();
+                        let city = $("#input-payment-city").val();
+                        let postcode = $("#input-payment-postcode").val();
+
+                        // alert(firstname,address_1,city )
+
+                        if (lastname == "" || firstname == "" || address_1 == "" || city == "" || postcode == "") {
+
+                            event.preventDefault(); // Prevent form submission
+                            alert("Please fill in all required fields.");
+                        } else {
+                            $("#collapse-shipping-address").collapse("toggle");
+                        }
+                    }
+
+                    // Toggle the collapse state of the payment method panel
+                    // $("#collapse-shipping-address").collapse("toggle");
+                    // }
+                } else {
+                    $("#collapse-shipping-address").collapse("toggle");
+                }
+            });
+        });
+
+        /* below code is for 3 to 4  on continue */
+        // $(document).ready(function () {
+        //     $("#button-guest-shipping").click(function () {
+        //         // Close any open collapses
+        //         $(".panel-collapse.in").collapse("hide");
+
+        //         // Toggle the collapse state of the payment method panel
+        //         $("#collapse-shipping-method").collapse("toggle");
+        //     });
+        // });
+
+        // check below code for form-validation
+
+        $(document).ready(function () {
+            $("#button-guest-shipping").click(function () {
+                // Close any open collapses
+                $(".panel-collapse.in").collapse("hide");
+
+                var stateDropdown = $('#input-shipping-zone');
+                var countryDropdown = $('#input-shipping-country');
+
+                // if (stateDropdown.val() === '') {
+                //     alert("Please select a region/state.");
+                // } else if (countryDropdown.val() === '') {
+                //     alert("Please select a country.");
+                // } else {
+                // Check if all required fields are filled in
+                if ($('input[name="shipping_address"]:checked').val() === 'new') {
+                    if (stateDropdown.val() === '') {
+                        alert("Please select a region/state.");
+                    } else if (countryDropdown.val() === '') {
+                        alert("Please select a country.");
+                    } else {
+                        // if (!validateForm()) {
+                        //     alert("Please fill in all required fields.");
+                        //     return;
+                        // } else {
+                        //     $("#collapse-shipping-method").collapse("toggle");
+                        // }
+                        let lastname = $("#input-shipping-lastname").val();
+                        let firstname = $("#input-shipping-firstname").val();
+                        let address_1 = $("#input-shipping-address-1").val();
+                        let city = $("#input-shipping-city").val();
+                        let postcode = $("#input-shipping-postcode").val();
+
+                        // alert(firstname,address_1,city )
+
+                        if (lastname == "" || firstname == "" || address_1 == "" || city == "" || postcode == "") {
+
+                            event.preventDefault(); // Prevent form submission
+                            alert("Please fill in all required fields.");
+                        } else {
+                            $("#collapse-shipping-method").collapse("toggle");
+                        }
+                    }
+
+                    // Toggle the collapse state of the payment method panel
+                    // $("#collapse-shipping-method").collapse("toggle");
+                    // }
+                } else {
+                    $("#collapse-shipping-method").collapse("toggle");
+                }
+            });
+        });
+
+        /*
+        function validateForm() {
+            var allFieldsFilled = true;
+
+            $(".required-field").each(function () {
+                if ($(this).val() == "") {
+                    allFieldsFilled = false;
+                    return false; // Exit the loop early if an empty required field is found
+                }
+            });
+
+            return allFieldsFilled;
+        }
+        */
+
+        // below code is for 4 to 5  on continue
+        $(document).ready(function () {
+            $("#button-shipping-method").click(function () {
+                // Close any open collapses
+                $(".panel-collapse.in").collapse("hide");
+
+                // Toggle the collapse state of the payment method panel
+                $("#collapse-payment-method").collapse("toggle");
+            });
+        });
+
+        // below code is for 5 to 6  on continue
+        $(document).ready(function () {
+            $("#button-payment-method").click(function () {
+                // Check if the checkbox is checked
+                if ($("input[name='agree']").prop("checked")) {
+                    // Checkbox is checked, close any open collapses
+                    $(".panel-collapse.in").collapse("hide");
+
+                    // Toggle the collapse state of the checkout confirmation panel
+                    $("#collapse-checkout-confirm").collapse("toggle");
+                } else {
+                    // Checkbox is not checked, show an error message
+                    alert("Please agree terms and condition to proceed.");
+                }
+            });
+        });
+
+        // below code is for  6 on continue
+        $("#button-confirm").click(function () {
+            let host = window.location.origin;
+            var formData = {};
+
+            // Form 1: Delivery Method
+            let shippingMethodString = $("#shipping_rate_id").text();
+            formData.deliveryMethod = {
+                shippingMethod: shippingMethodString.substr(shippingMethodString.indexOf("₹") + 1).trim(),
+                comment: $("textarea[name='comment']").val(),
+            };
+            console.log("deliveryMethod", formData.deliveryMethod);
+
+            // Form 2: Payment Method
+            formData.paymentMethod = {
+                paymentMethod: $("input[name='payment_method']:checked").val(),
+                comment: $("textarea[name='comment']").val(),
+                agree: $("input[name='agree']").is(":checked"),
+            };
+
+            // Form 3: Delivery Details
+            formData.deliveryDetails = {
+                shippingAddress: $("input[name='shipping_address']:checked").val(),
+                // addressId: $("#shipping-existing select[name='address_id']").val(),
+                addressId: $('#delivery_address_id').find(":selected").val(),
+                firstname: $("#shipping-new input[name='firstname']").val(),
+                lastname: $("#shipping-new input[name='lastname']").val(),
+                company: $("#shipping-new input[name='company']").val(),
+                address1: $("#shipping-new input[name='address_1']").val(),
+                address2: $("#shipping-new input[name='address_2']").val(),
+                city: $("#shipping-new input[name='city']").val(),
+                postcode: $("#shipping-new input[name='postcode']").val(),
+                countryId: $("#shipping-new select[name='country_id']").val(),
+                zoneId: $("#shipping-new select[name='zone_id']").val(),
+            };
+
+            formData.billingDetails = {
+                shippingAddress: $("input[name='payment_address']:checked").val(),
+                addressId: $('#shipping_address_id').find(":selected").val(),
+                firstname: $("#payment-new input[name='firstname']").val(),
+                lastname: $("#payment-new input[name='lastname']").val(),
+                company: $("#payment-new input[name='company']").val(),
+                address1: $("#payment-new input[name='address_1']").val(),
+                address2: $("#payment-new input[name='address_2']").val(),
+                city: $("#payment-new input[name='city']").val(),
+                postcode: $("#payment-new input[name='postcode']").val(),
+                countryId: $("#payment-new select[name='country_id']").val(),
+                zoneId: $("#payment-new select[name='zone_id']").val(),
+            };
+
+            // Form 4: Confirm Order - Extract data for all products
+            formData.confirmOrder = {
+                products: [], // An array to store product data
+                subTotal: $("table tfoot tr td.text-right").eq(1).text().substr($("table tfoot tr td.text-right").eq(1).text().indexOf("₹") + 1).trim(),
+                taxTotal: $("table tfoot tr td.text-right").eq(3).text().substr($("table tfoot tr td.text-right").eq(3).text().indexOf("₹") + 1).trim(),
+                flatShippingRate: $("table tfoot tr td.text-right").eq(5).text().substr($("table tfoot tr td.text-right").eq(5).text().indexOf("₹") + 1).trim(),
+                grandTotal: $("table tfoot tr td.text-right").eq(7).text().substr($("table tfoot tr td.text-right").eq(7).text().indexOf("₹") + 1).trim(),
+            };
+
+            console.log("confirmOrder", formData.confirmOrder);
+
+            // Loop through table rows to extract product data
+            $("table tbody tr").each(function () {
+                var productData = {
+                    productId:$(this).attr("name"),
+                    productName: $(this).find("td.text-left a").text(),
+                    quantity: $(this).find("td.text-right").eq(0).text(),
+                    unitPrice: $(this).find("td.text-right").eq(1).text().substr($(this).find("td.text-right").eq(1).text().indexOf("₹") + 1).trim(),
+                    tax: $(this).find("td.text-left").eq(1).text().substr($(this).find("td.text-left").eq(1).text().indexOf("₹") + 1).trim(),
+                    total: $(this).find("td.text-right").eq(2).text().substr($(this).find("td.text-right").eq(2).text().indexOf("₹") + 1).trim(),
+                };
+                // Push product data into the products array
+                formData.confirmOrder.products.push(productData);
+            });
+
+            // alert(JSON.stringify(formData))
+
+            $.ajax({
+                type: "POST",
+                url: host + '/confirmOrder',
+                // data: { productDetail: JSON.stringify(formData)},  
+                data: JSON.stringify(formData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (status) {
+                    console.log('===>', status);
+                    alert("Order confirmed successfully!");
+                    location.reload(host + '/home');
+                }
+                , error: function (jqXhr, textStatus, errorMessage) {
+                    $('p').append('Error' + errorMessage);
+                }
+                // success: function (response) {
+                //     // Handle the API response here
+                //     // console.log("API Response:", response);
+                //     alert("Order confirmed successfully!");
+                // },
+                // error: function (error) {
+                //     console.error("Error:", error);
+                //     alert("Error confirming the order. Please try again.");
+                // }
+            });
+            // Show confirmation message            
+            // alert("Your order is confirmed!",JSON.stringify(formData.deliveryDetails));
+            // Redirect to the home page (replace with the actual URL)
+            window.location.href = "/home";
+        });
+
+        function quickbox() {
+            if ($(window).width() > 767) {
+                $('.quickview-button').magnificPopup({
+                    type: 'iframe',
+                    delegate: 'a',
+                    preloader: true,
+                    tLoading: 'Loading image #%curr%...',
+                });
+            }
+        }
+
+        jQuery(document).ready(function () { quickbox(); });
+        jQuery(window).resize(function () { quickbox(); });
+
+
+        // old code of form-validation
+        // $(document).ready(function () {
+        //     $("#button-guest-shipping").click(function () {
+        //         // Close any open collapses
+        //         $(".panel-collapse.in").collapse("hide");
+
+        //         var stateDropdown = $('#input-shipping-zone');
+        //         // var errorMessage = $('.error-message');
+
+        //         var countryDropdown = $('#input-shipping-country');
+        //         // var errorMessage1 = $('.error-message');
+
+        //         if (stateDropdown.val() === '') {
+        //             alert("Please select a region/state.");
+        //             // errorMessage.text('Please select a region/state.');
+        //         } else if (countryDropdown.val() === '') {
+        //             alert("Please select a country.");
+        //             // errorMessage1.text('Please select a country.');
+        //         } else {
+        //             // Check if all required fields are filled in
+        //             if (validateForm()) {
+        //                 // Toggle the collapse state of the payment method panel
+        //                 $("#collapse-shipping-method").collapse("toggle");
+        //             } else {
+        //                 // Display an error message or take other appropriate action
+        //                 alert("Please fill in all required fields.");
+        //             }
+        //         }
+        //     });
+        // });
+
+        // function validateForm() {
+        //     var allFieldsFilled = true;
+
+        //     $(".required-field").each(function () {
+        //         if ($(this).val() == "") {
+        //             allFieldsFilled = false;
+        //             return false; // Exit the loop early if an empty required field is found
+        //         }
+        //     });
+
+        //     return allFieldsFilled;
+        // }
+
+
+    </script>
+
+
+    <!-- <script type="text/javascript">
+    
+    $(document).on('change', 'input[name=\'account\']', function () {
+        if ($('#collapse-payment-address').parent().find('.panel-heading .panel-title > *').is('a')) {
+            if (this.value == 'register') {
+                $('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 2: Account &amp; Billing Details <i class="fa fa-caret-down"></i></a>');
+            } else {
+                $('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 2: Billing Details <i class="fa fa-caret-down"></i></a>');
+            }
+        } else {
+            if (this.value == 'register') {
+                $('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('Step 2: Account &amp; Billing Details');
+            } else {
+                $('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('Step 2: Billing Details');
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        $.ajax({
+            url: 'index.php?route=checkout/payment_address',
+            dataType: 'html',
+            success: function (html) {
+                $('#collapse-payment-address .panel-body').html(html);
+
+                $('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 2: Billing Details <i class="fa fa-caret-down"></i></a>');
+
+                $('a[href=\'#collapse-payment-address\']').trigger('click');
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    // Checkout
+    $(document).delegate('#button-account', 'click', function () {
+        $.ajax({
+            url: 'index.php?route=checkout/' + $('input[name=\'account\']:checked').val(),
+            dataType: 'html',
+            beforeSend: function () {
+                $('#button-account').button('loading');
+            },
+            complete: function () {
+                $('#button-account').button('reset');
+            },
+            success: function (html) {
+                $('.alert-dismissible, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
+
+                $('#collapse-payment-address .panel-body').html(html);
+
+                if ($('input[name=\'account\']:checked').val() == 'register') {
+                    $('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 2: Account &amp; Billing Details <i class="fa fa-caret-down"></i></a>');
+                } else {
+                    $('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 2: Billing Details <i class="fa fa-caret-down"></i></a>');
+                }
+
+                $('a[href=\'#collapse-payment-address\']').trigger('click');
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    // Login
+    $(document).delegate('#button-login', 'click', function () {
+        $.ajax({
+            url: 'index.php?route=checkout/login/save',
+            type: 'post',
+            data: $('#collapse-checkout-option :input'),
+            dataType: 'json',
+            beforeSend: function () {
+                $('#button-login').button('loading');
+            },
+            complete: function () {
+                $('#button-login').button('reset');
+            },
+            success: function (json) {
+                $('.alert-dismissible, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
+
+                if (json['redirect']) {
+                    location = json['redirect'];
+                } else if (json['error']) {
+                    $('#collapse-checkout-option .panel-body').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+                    // Highlight any found errors
+                    $('input[name=\'email\']').parent().addClass('has-error');
+                    $('input[name=\'password\']').parent().addClass('has-error');
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    // Register
+    $(document).delegate('#button-register', 'click', function () {
+        $.ajax({
+            url: 'index.php?route=checkout/register/save',
+            type: 'post',
+            data: $('#collapse-payment-address input[type=\'text\'], #collapse-payment-address input[type=\'date\'], #collapse-payment-address input[type=\'datetime-local\'], #collapse-payment-address input[type=\'time\'], #collapse-payment-address input[type=\'password\'], #collapse-payment-address input[type=\'hidden\'], #collapse-payment-address input[type=\'checkbox\']:checked, #collapse-payment-address input[type=\'radio\']:checked, #collapse-payment-address textarea, #collapse-payment-address select'),
+            dataType: 'json',
+            beforeSend: function () {
+                $('#button-register').button('loading');
+            },
+            success: function (json) {
+                $('.alert-dismissible, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
+
+                if (json['redirect']) {
+                    location = json['redirect'];
+                } else if (json['error']) {
+                    $('#button-register').button('reset');
+
+                    if (json['error']['warning']) {
+                        $('#collapse-payment-address .panel-body').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+
+                    for (i in json['error']) {
+                        var element = $('#input-payment-' + i.replace('_', '-'));
+
+                        if ($(element).parent().hasClass('input-group')) {
+                            $(element).parent().after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        } else {
+                            $(element).after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        }
+                    }
+
+                    // Highlight any found errors
+                    $('.text-danger').parent().addClass('has-error');
+                } else {
+                    var shipping_address = $('#payment-address input[name=\'shipping_address\']:checked').prop('value');
+
+                    if (shipping_address) {
+                        $.ajax({
+                            url: 'index.php?route=checkout/shipping_method',
+                            dataType: 'html',
+                            success: function (html) {
+                                // Add the shipping address
+                                $.ajax({
+                                    url: 'index.php?route=checkout/shipping_address',
+                                    dataType: 'html',
+                                    success: function (html) {
+                                        $('#collapse-shipping-address .panel-body').html(html);
+
+                                        $('#collapse-shipping-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 3: Delivery Details <i class="fa fa-caret-down"></i></a>');
+                                    },
+                                    error: function (xhr, ajaxOptions, thrownError) {
+                                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                    }
+                                });
+
+                                $('#collapse-shipping-method .panel-body').html(html);
+
+                                $('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-method" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 4: Delivery Method <i class="fa fa-caret-down"></i></a>');
+
+                                $('a[href=\'#collapse-shipping-method\']').trigger('click');
+
+                                $('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('Step 4: Delivery Method');
+                                $('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('Step 5: Payment Method');
+                                $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('Step 6: Confirm Order');
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                            }
+                        });
+                    } else {
+                        $.ajax({
+                            url: 'index.php?route=checkout/shipping_address',
+                            dataType: 'html',
+                            success: function (html) {
+                                $('#collapse-shipping-address .panel-body').html(html);
+
+                                $('#collapse-shipping-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 3: Delivery Details <i class="fa fa-caret-down"></i></a>');
+
+                                $('a[href=\'#collapse-shipping-address\']').trigger('click');
+
+                                $('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('Step 4: Delivery Method');
+                                $('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('Step 5: Payment Method');
+                                $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('Step 6: Confirm Order');
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                            }
+                        });
+                    }
+
+                    $.ajax({
+                        url: 'index.php?route=checkout/payment_address',
+                        dataType: 'html',
+                        complete: function () {
+                            $('#button-register').button('reset');
+                        },
+                        success: function (html) {
+                            $('#collapse-payment-address .panel-body').html(html);
+
+                            $('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 2: Billing Details <i class="fa fa-caret-down"></i></a>');
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    // Payment Address
+    $(document).delegate('#button-payment-address', 'click', function () {
+        $.ajax({
+            url: 'index.php?route=checkout/payment_address/save',
+            type: 'post',
+            data: $('#collapse-payment-address input[type=\'text\'], #collapse-payment-address input[type=\'date\'], #collapse-payment-address input[type=\'datetime-local\'], #collapse-payment-address input[type=\'time\'], #collapse-payment-address input[type=\'password\'], #collapse-payment-address input[type=\'checkbox\']:checked, #collapse-payment-address input[type=\'radio\']:checked, #collapse-payment-address input[type=\'hidden\'], #collapse-payment-address textarea, #collapse-payment-address select'),
+            dataType: 'json',
+            beforeSend: function () {
+                $('#button-payment-address').button('loading');
+            },
+            complete: function () {
+                $('#button-payment-address').button('reset');
+            },
+            success: function (json) {
+                $('.alert-dismissible, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
+
+                if (json['redirect']) {
+                    location = json['redirect'];
+                } else if (json['error']) {
+                    if (json['error']['warning']) {
+                        $('#collapse-payment-address .panel-body').prepend('<div class="alert alert-warning alert-dismissible">' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+
+                    for (i in json['error']) {
+                        var element = $('#input-payment-' + i.replace('_', '-'));
+
+                        if ($(element).parent().hasClass('input-group')) {
+                            $(element).parent().after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        } else {
+                            $(element).after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        }
+                    }
+
+                    // Highlight any found errors
+                    $('.text-danger').parent().parent().addClass('has-error');
+                } else {
+                    $.ajax({
+                        url: 'index.php?route=checkout/shipping_address',
+                        dataType: 'html',
+                        success: function (html) {
+                            $('#collapse-shipping-address .panel-body').html(html);
+
+                            $('#collapse-shipping-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 3: Delivery Details <i class="fa fa-caret-down"></i></a>');
+
+                            $('a[href=\'#collapse-shipping-address\']').trigger('click');
+
+                            $('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('Step 4: Delivery Method');
+                            $('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('Step 5: Payment Method');
+                            $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('Step 6: Confirm Order');
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    }).done(function () {
+                        $.ajax({
+                            url: 'index.php?route=checkout/payment_address',
+                            dataType: 'html',
+                            success: function (html) {
+                                $('#collapse-payment-address .panel-body').html(html);
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                            }
+                        });
+                    });
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    // Shipping Address
+    $(document).delegate('#button-shipping-address', 'click', function () {
+        $.ajax({
+            url: 'index.php?route=checkout/shipping_address/save',
+            type: 'post',
+            data: $('#collapse-shipping-address input[type=\'text\'], #collapse-shipping-address input[type=\'date\'], #collapse-shipping-address input[type=\'datetime-local\'], #collapse-shipping-address input[type=\'time\'], #collapse-shipping-address input[type=\'password\'], #collapse-shipping-address input[type=\'checkbox\']:checked, #collapse-shipping-address input[type=\'radio\']:checked, #collapse-shipping-address textarea, #collapse-shipping-address select'),
+            dataType: 'json',
+            beforeSend: function () {
+                $('#button-shipping-address').button('loading');
+            },
+            success: function (json) {
+                $('.alert-dismissible, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
+
+                if (json['redirect']) {
+                    location = json['redirect'];
+                } else if (json['error']) {
+                    $('#button-shipping-address').button('reset');
+
+                    if (json['error']['warning']) {
+                        $('#collapse-shipping-address .panel-body').prepend('<div class="alert alert-warning alert-dismissible">' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+
+                    for (i in json['error']) {
+                        var element = $('#input-shipping-' + i.replace('_', '-'));
+
+                        if ($(element).parent().hasClass('input-group')) {
+                            $(element).parent().after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        } else {
+                            $(element).after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        }
+                    }
+                    // Highlight any found errors
+                    $('.text-danger').parent().parent().addClass('has-error');
+                } else {
+                    $.ajax({
+                        url: 'index.php?route=checkout/shipping_method',
+                        dataType: 'html',
+                        complete: function () {
+                            $('#button-shipping-address').button('reset');
+                        },
+                        success: function (html) {
+                            $('#collapse-shipping-method .panel-body').html(html);
+
+                            $('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-method" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 4: Delivery Method <i class="fa fa-caret-down"></i></a>');
+
+                            $('a[href=\'#collapse-shipping-method\']').trigger('click');
+
+                            $('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('Step 5: Payment Method');
+                            $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('Step 6: Confirm Order');
+
+                            $.ajax({
+                                url: 'index.php?route=checkout/shipping_address',
+                                dataType: 'html',
+                                success: function (html) {
+                                    $('#collapse-shipping-address .panel-body').html(html);
+                                },
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                }
+                            });
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    }).done(function () {
+                        $.ajax({
+                            url: 'index.php?route=checkout/payment_address',
+                            dataType: 'html',
+                            success: function (html) {
+                                $('#collapse-payment-address .panel-body').html(html);
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                            }
+                        });
+                    });
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    // Guest
+    $(document).delegate('#button-guest', 'click', function () {
+        $.ajax({
+            url: 'index.php?route=checkout/guest/save',
+            type: 'post',
+            data: $('#collapse-payment-address input[type=\'text\'], #collapse-payment-address input[type=\'date\'], #collapse-payment-address input[type=\'datetime-local\'], #collapse-payment-address input[type=\'time\'], #collapse-payment-address input[type=\'checkbox\']:checked, #collapse-payment-address input[type=\'radio\']:checked, #collapse-payment-address input[type=\'hidden\'], #collapse-payment-address textarea, #collapse-payment-address select'),
+            dataType: 'json',
+            beforeSend: function () {
+                $('#button-guest').button('loading');
+            },
+            success: function (json) {
+                $('.alert-dismissible, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
+
+                if (json['redirect']) {
+                    location = json['redirect'];
+                } else if (json['error']) {
+                    $('#button-guest').button('reset');
+
+                    if (json['error']['warning']) {
+                        $('#collapse-payment-address .panel-body').prepend('<div class="alert alert-warning alert-dismissible">' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+
+                    for (i in json['error']) {
+                        var element = $('#input-payment-' + i.replace('_', '-'));
+
+                        if ($(element).parent().hasClass('input-group')) {
+                            $(element).parent().after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        } else {
+                            $(element).after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        }
+                    }
+
+                    // Highlight any found errors
+                    $('.text-danger').parent().addClass('has-error');
+                } else {
+                    var shipping_address = $('#collapse-payment-address input[name=\'shipping_address\']:checked').prop('value');
+
+                    if (shipping_address) {
+                        $.ajax({
+                            url: 'index.php?route=checkout/shipping_method',
+                            dataType: 'html',
+                            complete: function () {
+                                $('#button-guest').button('reset');
+                            },
+                            success: function (html) {
+                                // Add the shipping address
+                                $.ajax({
+                                    url: 'index.php?route=checkout/guest_shipping',
+                                    dataType: 'html',
+                                    success: function (html) {
+                                        $('#collapse-shipping-address .panel-body').html(html);
+
+                                        $('#collapse-shipping-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 3: Delivery Details <i class="fa fa-caret-down"></i></a>');
+                                    },
+                                    error: function (xhr, ajaxOptions, thrownError) {
+                                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                    }
+                                });
+
+                                $('#collapse-shipping-method .panel-body').html(html);
+
+                                $('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-method" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 4: Delivery Method <i class="fa fa-caret-down"></i></a>');
+
+                                $('a[href=\'#collapse-shipping-method\']').trigger('click');
+
+                                $('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('Step 5: Payment Method');
+                                $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('Step 6: Confirm Order');
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                            }
+                        });
+                    } else {
+                        $.ajax({
+                            url: 'index.php?route=checkout/guest_shipping',
+                            dataType: 'html',
+                            complete: function () {
+                                $('#button-guest').button('reset');
+                            },
+                            success: function (html) {
+                                $('#collapse-shipping-address .panel-body').html(html);
+
+                                $('#collapse-shipping-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 3: Delivery Details <i class="fa fa-caret-down"></i></a>');
+
+                                $('a[href=\'#collapse-shipping-address\']').trigger('click');
+
+                                $('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('Step 4: Delivery Method');
+                                $('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('Step 5: Payment Method');
+                                $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('Step 6: Confirm Order');
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                            }
+                        });
+                    }
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    // Guest Shipping
+    $(document).delegate('#button-guest-shipping', 'click', function () {
+        $.ajax({
+            url: 'index.php?route=checkout/guest_shipping/save',
+            type: 'post',
+            data: $('#collapse-shipping-address input[type=\'text\'], #collapse-shipping-address input[type=\'date\'], #collapse-shipping-address input[type=\'datetime-local\'], #collapse-shipping-address input[type=\'time\'], #collapse-shipping-address input[type=\'password\'], #collapse-shipping-address input[type=\'checkbox\']:checked, #collapse-shipping-address input[type=\'radio\']:checked, #collapse-shipping-address textarea, #collapse-shipping-address select'),
+            dataType: 'json',
+            beforeSend: function () {
+                $('#button-guest-shipping').button('loading');
+            },
+            success: function (json) {
+                $('.alert-dismissible, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
+
+                if (json['redirect']) {
+                    location = json['redirect'];
+                } else if (json['error']) {
+                    $('#button-guest-shipping').button('reset');
+
+                    if (json['error']['warning']) {
+                        $('#collapse-shipping-address .panel-body').prepend('<div class="alert alert-danger alert-dismissible">' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+
+                    for (i in json['error']) {
+                        var element = $('#input-shipping-' + i.replace('_', '-'));
+
+                        if ($(element).parent().hasClass('input-group')) {
+                            $(element).parent().after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        } else {
+                            $(element).after('<div class="text-danger">' + json['error'][i] + '</div>');
+                        }
+                    }
+
+                    // Highlight any found errors
+                    $('.text-danger').parent().addClass('has-error');
+                } else {
+                    $.ajax({
+                        url: 'index.php?route=checkout/shipping_method',
+                        dataType: 'html',
+                        complete: function () {
+                            $('#button-guest-shipping').button('reset');
+                        },
+                        success: function (html) {
+                            $('#collapse-shipping-method .panel-body').html(html);
+
+                            $('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-method" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 4: Delivery Method <i class="fa fa-caret-down"></i>');
+
+                            $('a[href=\'#collapse-shipping-method\']').trigger('click');
+
+                            $('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('Step 5: Payment Method');
+                            $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('Step 6: Confirm Order');
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    $(document).delegate('#button-shipping-method', 'click', function () {
+        $.ajax({
+            url: 'index.php?route=checkout/shipping_method/save',
+            type: 'post',
+            data: $('#collapse-shipping-method input[type=\'radio\']:checked, #collapse-shipping-method textarea'),
+            dataType: 'json',
+            beforeSend: function () {
+                $('#button-shipping-method').button('loading');
+            },
+            success: function (json) {
+                $('.alert-dismissible, .text-danger').remove();
+
+                if (json['redirect']) {
+                    location = json['redirect'];
+                } else if (json['error']) {
+                    $('#button-shipping-method').button('reset');
+
+                    if (json['error']['warning']) {
+                        $('#collapse-shipping-method .panel-body').prepend('<div class="alert alert-danger alert-dismissible">' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+                } else {
+                    $.ajax({
+                        url: 'index.php?route=checkout/payment_method',
+                        dataType: 'html',
+                        complete: function () {
+                            $('#button-shipping-method').button('reset');
+                        },
+                        success: function (html) {
+                            $('#collapse-payment-method .panel-body').html(html);
+
+                            $('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-method" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 5: Payment Method <i class="fa fa-caret-down"></i></a>');
+
+                            $('a[href=\'#collapse-payment-method\']').trigger('click');
+
+                            $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('Step 6: Confirm Order');
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    $(document).delegate('#button-payment-method', 'click', function () {
+        $.ajax({
+            url: 'index.php?route=checkout/payment_method/save',
+            type: 'post',
+            data: $('#collapse-payment-method input[type=\'radio\']:checked, #collapse-payment-method input[type=\'checkbox\']:checked, #collapse-payment-method textarea'),
+            dataType: 'json',
+            beforeSend: function () {
+                $('#button-payment-method').button('loading');
+            },
+            success: function (json) {
+                $('.alert-dismissible, .text-danger').remove();
+
+                if (json['redirect']) {
+                    location = json['redirect'];
+                } else if (json['error']) {
+                    $('#button-payment-method').button('reset');
+
+                    if (json['error']['warning']) {
+                        $('#collapse-payment-method .panel-body').prepend('<div class="alert alert-danger alert-dismissible">' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+                } else {
+                    $.ajax({
+                        url: 'index.php?route=checkout/confirm',
+                        dataType: 'html',
+                        complete: function () {
+                            $('#button-payment-method').button('reset');
+                        },
+                        success: function (html) {
+                            $('#collapse-checkout-confirm .panel-body').html(html);
+
+                            $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('<a href="#collapse-checkout-confirm" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Step 6: Confirm Order <i class="fa fa-caret-down"></i></a>');
+
+                            $('a[href=\'#collapse-checkout-confirm\']').trigger('click');
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+
+</script> -->
+
+    {% endblock %}

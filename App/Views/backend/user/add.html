@@ -1,0 +1,118 @@
+{% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		<!-- Title -->
+		<section class="content-header">
+		    <h1>Customer Table</h1>
+		    <ol class="breadcrumb">
+		        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		        <!-- <li><a href="/user">User profile</a></li> -->
+		        <li class="active"><span>Add Customer</span></li>
+		    </ol>
+		</section>
+		<!-- /Title -->
+		<!-- Row  -->
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<h6 class="panel-title txt-dark">Add Customer</h6>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-12 col-xs-12">
+										<div class="form-wrap">
+                                            {% if user %}
+												<form method="POST" action="/backend/addCustomUser/{{user._id}}" name="adduser" class="form-horizontal">
+                                            {% else %}
+												<form method="POST" action="/backend/addCustomUser" name="adduser" class="form-horizontal">
+                                            {% endif %}
+													<div class="form-group">
+														<label for="exampleInputuname_3" class="col-sm-3 control-label">First Name*</label>
+														<div class="col-sm-6">
+															<div class="input-group">
+																<div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+																<input type="text" class="form-control" required name="firstname" id="firstName" value="{{user.firstname}}" data-validation="length alphanumeric" data-validation-length="" data-validation-error-msg="Username is required">
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="exampleInputuname_3" class="col-sm-3 control-label">Last Name*</label>
+														<div class="col-sm-6">
+															<div class="input-group">
+																<div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+																<input type="text" class="form-control" required name="lastname" id="lastName" value="{{user.lastname}}" data-validation="length alphanumeric" data-validation-length="" data-validation-error-msg="Username is required">
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label  for="exampleInputEmail_3" class="col-sm-3 control-label">Email*</label>
+														<div class="col-sm-6">
+															<div class="input-group">
+																<div class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></div>
+																<input type="email" class="form-control" required name="email" id="email" value="{{user.email}}" data-validation="email">
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="exampleInputpwd_32" class="col-sm-3 control-label">Mobile*</label>
+														<div class="col-sm-6">
+															<div class="input-group">
+																<div class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></div>
+																<input type="number" class="form-control" name="mobile" id="mobile" value="{{user.mobile}}" data-maxnlength="10" data-validation="length" data-validation-length="max10">
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="exampleInputpwd_32" class="col-sm-3 control-label">Password*</label>
+														<div class="col-sm-6">
+															<div class="input-group">
+																<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
+																<input type="password" class="form-control" name="password" id="password" value="{{user.password}}" data-minlength="6" data-validation="length" data-validation-length="min6">
+															</div>
+														</div>
+													</div>
+													<div class="form-group mb-0">
+														<div class="col-sm-offset-3 col-sm-9">
+															<input type="submit" class="btn btn-success btn-flat" value="submit">
+															<a href="/backend/customer" class="btn btn-danger btn-flat">Cancel</a>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Row -->
+
+				<!-- /Row -->
+			</div>
+		</section>
+
+	</div>
+</div>
+
+		{% endblock %}
+
+		{% block Jscript %}
+		<script>
+			$(document).ready( function () {
+				var host = window.location.origin;
+			} );
+		</script>
+		{% endblock %}

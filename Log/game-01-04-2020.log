@@ -1,0 +1,37 @@
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :8bOPsY8yESPscUgaAAAA","level":"info"}
+{"message":"Mongoose default connection disconnected","level":"info"}
+{"message":"Mongoose default connection disconnected through app termination","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :Ej7EY2YCz8dGkXbiAAAA","level":"info"}
+{"message":"Some One Connected :D7QxS9OZiYZRJV8vAAAB","level":"info"}
+{"message":"Some One Connected :ymQWoKCt5yrV-8vcAAAC","level":"info"}
+{"message":"Some One Connected :PDszJM4kJSv-qLt4AAAD","level":"info"}
+{"message":"Some One Connected :VVwoE_jLk3Eek9g1AAAE","level":"info"}
+{"message":"Some One Connected :Qhz8zhZARKEQQANXAAAF","level":"info"}
+{"message":"Some One Connected :POLm2DSsv9ywR5HDAAAG","level":"info"}
+{"message":"Some One Connected :NEnCfoiJgehx8rfxAAAH","level":"info"}
+{"message":"Some One Connected :0-BcB6kIvt2OfmlhAAAI","level":"info"}
+{"message":"Some One Connected :gPQKySEjL73iJ6FhAAAJ","level":"info"}

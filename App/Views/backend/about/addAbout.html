@@ -1,0 +1,229 @@
+{% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		<!-- Title -->
+		<section class="content-header">
+			<h1>About Us</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">About Us</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<!-- <h6 class="panel-title txt-dark">Settings</h6> -->
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										{% if about %}
+										<form method="POST" action="/backend/editAboutData/{{about._id}}"
+											class="form-horizontal" enctype="multipart/form-data">
+											{% else %}
+											<form method="POST" action="/backend/addAboutData" class="form-horizontal"
+												enctype="multipart/form-data">
+												{% endif %}
+												<table border="0" class="table display  pb-30">
+													<div class="col-sm-12">
+														<div class="panel-wrapper collapse in">
+															<div class="panel-body">
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="heading">Heading:</label>
+																	<div class="col-sm-6">
+																		<input type="text" class="form-control"
+																			name="heading" id="heading"
+																			value="{{about.heading}}" required />
+																	</div>
+																</div> -->
+
+																<div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="introduction">ABOUT US:</label>
+																	<div class="col-sm-6">
+																		<textarea class="form-control"
+																			name="introduction" id="introduction"
+																			rows="9" style="resize:none;"
+																			>{{about.introduction}}</textarea>
+																	</div>
+																</div>
+
+															
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="yearsExperience">Years Experience:</label>
+																	<div class="col-sm-3">
+																		<input type="number" class="form-control"
+																			name="yearsExperience"
+																			placeholder="Years Experience"
+																			id="yearsExperience"
+																			value="{{about.yearsExperience}}" required>
+																	</div>
+																</div> -->
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2" for="heading">Image:</label>
+																	<div class="col-sm-6">
+																		<input type="file" class="form-control" id="aboutimage" name="aboutimage" value="" >
+																		
+																	</div>
+																</div> -->
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="yearlyProduction">Yearly
+																		Production:</label>
+																	<div class="col-sm-3">
+																		<input type="number" class="form-control"
+																			name="yearlyProduction"
+																			placeholder="Yearly Production"
+																			id="yearlyProduction"
+																			value="{{about.yearlyProduction}}" required>
+																	</div>
+																</div> -->
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="clients">Clients:</label>
+																	<div class="col-sm-3">
+																		<input type="number" class="form-control"
+																			name="clients"
+																			placeholder="Years of Experience"
+																			id="clients" value="{{about.clients}}"
+																			required>
+																	</div>
+																</div> -->
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2" for="yearsExperience">Years Experience:</label>
+																	<div class="col-sm-6">
+																		<textarea class="form-control" name="yearsExperience" id="yearsExperience" rows="1" style="resize:none;">{{about.yearsExperience}}</textarea>
+																	</div>
+																</div> -->
+
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="ourValues">Our Values:</label>
+																	<div class="col-sm-6">
+																		<textarea class="form-control" name="ourValues"
+																			id="ourValues" rows="9" style="resize:none;"
+																			maxlength="400" required>{{about.ourValues}}</textarea>
+																	</div>
+																</div> -->
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="ourMission">Our Mission:</label>
+																	<div class="col-sm-6">
+																		<textarea class="form-control" name="ourMission"
+																			id="ourMission" rows="9"
+																			style="resize:none;" maxlength="400"
+																			required>{{about.ourMission}}</textarea>
+																	</div>
+																</div> -->
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="image">Image 1:</label>
+																	<div class="col-sm-6">
+																		{% if about %}
+
+																		<input type="file" class="form-control"
+																			onchange="previewFile(this);"
+																			id="aboutImage" name="aboutImage" value="{{about.about_image}}">
+
+																		<br><img id="previewImg"
+																			src="{{about.about_image}}" height="200px"
+																			width="200px" alt="" required><span
+																			class='close1'>&times;</span>
+
+																		{% else %}
+																		<input type="file" class="form-control"
+																			onchange="previewFile(this);"
+																			id="aboutImage" name="aboutImage" value="">
+
+																		<br><img id="previewImg"
+																			src="{{about.about_image}}" height="200px"
+																			width="200px" alt=""><span
+																			class='close1'>&times;</span>
+
+
+																		{% endif %}
+																		<!-- <br><img id="previewImg" style="width: 200px;height: 200px;" src="" > -->
+
+																	<!-- </div> -->
+																<!-- </div> --> 
+															</div>
+														</div>
+													</div>
+													<tr>
+														<td colspan="2">
+
+															{% if about %}
+															<input type="submit" class="btn btn-success btn-flat"
+																value="Update">
+																<a href="/backend/about "id="cancel" name="cancel" class="btn btn-default">Cancel</a>                                                        
+															
+																{%else%}
+															<input type="submit" class="btn btn-success btn-flat"
+																value="submit">
+																<a href="/backend/about "id="cancel" name="cancel" class="btn btn-default">Cancel</a>                                                        
+															
+																{% endif %}
+														</td>
+													</tr>
+												</table>
+											</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- /Row -->
+			</div>
+		</section>
+
+		{% endblock %}
+
+		{% block Jscript %}
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script>
+
+		<script>
+			function previewFile(input) {
+				var file = $("input[type=file]").get(0).files[0];
+				if (file) {
+					var reader = new FileReader();
+					reader.onload = function () {
+						$("#previewImg").attr("src", reader.result);
+					}
+					reader.readAsDataURL(file);
+				}
+			}
+			$(".close1").click(function () {
+				$('#previewImg').css({ 'display': 'none' });
+				$('.close1').css({ 'display': 'none' });
+				$('#aboutImage').val('');
+			});
+			bkLib.onDomLoaded(function () { nicEditors.allTextAreas() });
+			
+		</script>
+		
+
+
+		{% endblock %}

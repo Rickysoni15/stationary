@@ -1,0 +1,1767 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+<style>
+    #myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  /* border-bottom: 1px solid #ddd; */
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+</style>
+</style>
+<div class="main-content">
+    <div class="success_alert">{% include "frontend/partitions/notification.html" %}</div>
+    <div class="fullwidth-template">
+        <div class="home-slider style1 rows-space-30">
+            <div class="container">
+                <div class="slider-owl owl-slick equal-container nav-center"
+                    data-slick='{"autoplay":true, "autoplaySpeed":9000, "arrows":true, "dots":false, "infinite":true, "speed":1000, "rows":1}'
+                    data-responsive='[{"breakpoint":"2000","settings":{"slidesToShow":1}}]'>
+              
+
+                    {% if project %}
+                    {% set ii = 0 %}
+                    {% for image in project.coverfiles %}
+                    {% if (image.is_deleted == "0") %}
+                    {% set ii = ii + 1 %}
+                    
+                   
+                        <div class="slider-item style{{ii}}">
+                            <div class="slider-inner equal-element" style="height: 495px; background-image: url('{{image.path}}') !important;">
+
+                                <div class="slider-infor">
+                                    <h5 class="title-small" style="visibility: hidden;">
+                                        New Arrivals!
+                                    </h5>
+                                    <h3 class="title-big" style="visibility: hidden;">
+                                        Scandinavians<br />
+                                        Collection
+                                    </h3>
+                                    <div class="price" style="visibility: hidden;">
+                                        Price from:
+                                        <span class="number-price">
+                                            $75.00
+                                        </span>
+                                    </div>
+                                    <a href="/productDetails" class="button btn-shop-the-look bgroud-style">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                   
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <div class="slider-item style1">
+                        <div class="slider-inner equal-element">
+                            <div class="slider-infor">
+                                <h5 class="title-small">
+                                    New Arrivals!
+                                </h5>
+                                <h3 class="title-big">
+                                    Scandinavians<br/>
+                                    Collection
+                                </h3>
+                                <div class="price">
+                                    Price from:
+                                    <span class="number-price">
+											$75.00
+										</span>
+                                </div>
+                                <a href="/productDetails" class="button btn-shop-the-look bgroud-style">Shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-item style2">
+                        <div class="slider-inner equal-element">
+                            <div class="slider-infor">
+                                <h5 class="title-small">
+                                    Table Supplies Sale!
+                                </h5>
+                                <h3 class="title-big">
+                                    Up to <span>75%</span> <br/> Store Items
+                                </h3>
+                                <div class="price">
+                                    Price from:
+                                    <span class="number-price">
+											$95.00
+										</span>
+                                </div>
+                                <a href="/productDetails" class="button btn-shop-now">Shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-item style3">
+                        <div class="slider-inner equal-element">
+                            <div class="slider-infor">
+                                <h5 class="title-small">
+                                    New Arrivals!
+                                </h5>
+                                <h3 class="title-big">
+                                    Trending <br/>
+                                    Collection
+                                </h3>
+                                <div class="price">
+                                    Price from:
+                                    <span class="number-price">
+											$75.00
+										</span>
+                                </div>
+                                <a href="/productDetails" class="button btn-shop-the-look bgroud-style">Shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        <div class="banner-wrapp rows-space-35">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="banner">
+                            <div class="item-banner style12">
+                                {% if project and project.home_image1 != "" %}
+                                <div class="inner" style="background-image: url('{{project.home_image1}}') !important;">
+                                    <div class="banner-content">
+                                        <h3 class="title" style="visibility: hidden;">Best Seller</h3>
+                                        <div class="description" style="visibility: hidden;">
+                                            Check out our your <br /> furniture collection now!
+                                        </div>
+                                        <a href="/productDetails" class="button btn-shop-now">Shop now</a>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="inner">
+                                    <div class="banner-content">
+                                        <h3 class="title">Best Seller</h3>
+                                        <div class="description">
+                                            Check out our your <br /> furniture collection now!
+                                        </div>
+                                        <a href="/productDetails" class="button btn-shop-now">Shop now</a>
+                                    </div>
+                                </div>
+                                {% endif %} 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="banner">
+                            <div class="item-banner style14">
+                                {% if project and project.home_image2 != "" %}
+                                <div class="inner" style="background-image: url('{{project.home_image2}}') !important;">
+                                    <div class="banner-content" style="visibility: hidden;">
+                                        <h4 class="oemone-subtitle">End this weekend</h4>
+                                        <h3 class="title">Big Sale <br />75% Off</h3>
+                                        <div class="code">
+                                            Use promo Code:
+                                            <span class="nummer-code">CLERIC</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="inner">
+                                    <div class="banner-content">
+                                        <h4 class="oemone-subtitle">End this weekend</h4>
+                                        <h3 class="title">Big Sale <br />75% Off</h3>
+                                        <div class="code">
+                                            Use promo Code:
+                                            <span class="nummer-code">CLERIC</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %} 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="banner">
+                            <div class="item-banner style12 type2">
+                                {% if project and project.home_image3 != "" %}
+                                <div class="inner" style="background-image: url('{{project.home_image3}}') !important;">
+                                    <div class="banner-content">
+                                        <h3 class="title" style="visibility: hidden;">Lookbook</h3>
+                                        <div class="description" style="visibility: hidden;">
+                                            New Jewelry Collections <br />Summer Lookbook
+                                        </div>
+                                        <a href="/productDetails" class="button btn-view-the-look">Shop now</a>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="inner">
+                                    <div class="banner-content">
+                                        <h3 class="title">Lookbook</h3>
+                                        <div class="description">
+                                            New Jewelry Collections <br />Summer Lookbook
+                                        </div>
+                                        <a href="/productDetails" class="button btn-view-the-look">Shop now</a>
+                                    </div>
+                                </div>
+                                {% endif %} 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="user_login" value="{{App.role}}">
+
+        <div class="oemone-tabs  default rows-space-40">
+            <div class="container">
+                <div class="tab-head">
+                    <ul class="tab-link">
+                        <li class="active">
+                            <a data-toggle="tab" aria-expanded="true" href="#bestseller">Bestseller</a>
+                        </li>
+                        <li class="">
+                            <a data-toggle="tab" aria-expanded="true" href="#new_arrivals">New Arrivals </a>
+                        </li>
+                        <li class="">
+                            <a data-toggle="tab" aria-expanded="true" href="#top-rated">Top Rated</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-container">
+                    <div id="bestseller" class="tab-panel active">
+                        <div class="oemone-product">
+                            <ul class="row list-products auto-clear equal-container product-grid">
+                                {% if bestSeller %}
+                                {% for item in bestSeller %}
+
+                                {% if (loop.index <= 8) %} <li
+                                    class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                    <div class="product-inner equal-element">
+                                        <!-- <div class="product-top">
+                                            <div class="flash">
+                                                <span class="onnew">
+                                                    <span class="text">
+                                                        new
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div> -->
+
+                                        <div class="product-thumb">
+
+                                            {% if item.product_defaultImg.length > 0 %}
+
+                                            {% for img in item.product_defaultImg %}
+
+                                            <div class="thumb-inner">
+
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                    <img src="{{img.path}}" alt="img" style=" height: 250px;">
+
+                                                </a>
+
+                                                <div class="thumb-group">
+                                                    <div class="yith-wcwl-add-to-wishlist">
+                                                        <div class="yith-wcwl-add-button">
+                                                            {% if item.wishlist_arr != null %}
+                                                            <a href="javascript:void(0)" {% if
+                                                                item.wishlist_arr==item._id.toString() %}
+                                                                class="wishlist_call wishlist_active" {% else %}
+                                                                class="wishlist_call" {% endif %}
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% else %}
+                                                            <a href="javascript:void(0)" class="wishlist_call"
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+
+                                                    <a href="javascript:void(0)"
+                                                        class="button quick-wiew-button popup-button-click  openModel"
+                                                        data-id="{{item._id}}">Quick View</a>
+                                                    <div class="loop-form-add-to-cart">
+                                                        <button class="single_add_to_cart_button button"
+                                                            id="{{item._id}}" data-price="{{item.product_price}}"
+                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                            to
+                                                            cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% endfor %}
+
+
+                                            {% else %}
+                                            <div class="thumb-inner">
+
+
+
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+
+                                                    <img src="/assets/images/no_image.jpg" alt="img"
+                                                        style="height: 250px;">
+
+                                                </a>
+
+
+                                                <div class="thumb-group">
+                                                    <div class="yith-wcwl-add-to-wishlist">
+                                                        <div class="yith-wcwl-add-button">
+                                                            {% if item.wishlist_arr != null %}
+                                                            <a href="javascript:void(0)" {% if
+                                                                item.wishlist_arr==item._id.toString() %}
+                                                                class="wishlist_call wishlist_active" {% else %}
+                                                                class="wishlist_call" {% endif %}
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% else %}
+                                                            <a href="javascript:void(0)" class="wishlist_call"
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0)"
+                                                        class="button quick-wiew-button popup-button-click  openModel"
+                                                        data-id="{{item._id}}">Quick View</a>
+                                                    <div class="loop-form-add-to-cart">
+                                                        <button class="single_add_to_cart_button button"
+                                                            id="{{item._id}}" data-price="{{item.product_price}}"
+                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                            to
+                                                            cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-info pb_20">
+                                            <h5 class="product-name product_title">
+                                                <a
+                                                    href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                <span class="proName" data-proName="{{item.product_name}}"></span>
+                                            </a>
+                                            </h5>
+                                            <div class="group-info">
+                                                <div class="stars-rating">
+                                                    <div class="star-ratingD">
+                                                        <span class="starD-{{item.product_rating_num}}"></span>
+                                                    </div>
+                                                    <div class="count-starD">
+                                                        {% if item.product_rating != 0 %} {{item.product_rating}} {%
+                                                        endif
+                                                        %}
+                                                    </div>
+                                                </div>
+                                                <div class="price">
+
+                                                    {% if item.is_discount == "1" and item.discount_start == "true" %}
+                                                    <del>
+                                                        &#8377;<span class="main_price"
+                                                            data-main_price="{{item.product_price}}"></span>
+                                                    </del>
+                                                    <ins>
+                                                        &#8377;<span class="dis_price"
+                                                            data-dis_price="{{item.discount_price}}"></span>
+                                                        <span class="product_stock_quantity"
+                                                            data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                            style="color: red;"></span>
+                                                    </ins>
+
+                                                    {% else %}
+
+
+                                                    <ins>
+
+                                                        &#8377;<span class="main_price"
+                                                            data-main_price="{{item.product_price}}"></span>
+                                                        <span class="product_stock_quantity"
+                                                            data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                            style="color: red;"></span>
+                                                    </ins>
+
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </li>
+
+                                    {% endif %}
+
+
+                                    {% endfor%}
+
+                                    {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="new_arrivals" class="tab-panel">
+                        <div class="oemone-product">
+                            <ul class="row list-products auto-clear equal-container product-grid">
+                                {% if new_arrival_data %}
+                                {% for item in new_arrival_data %}
+                                <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                    <div class="product-inner equal-element">
+                                        <div class="product-top">
+                                            <div class="flash">
+                                                <span class="onnew">
+                                                    <span class="text">
+                                                        new
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="product-thumb">
+                                            <div class="thumb-inner">
+                                                <a href="#">
+                                                    <img src="{{item.product_image[0].path}}" alt="img">
+                                                </a>
+                                                <div class="thumb-group">
+                                                    <div class="yith-wcwl-add-to-wishlist">
+                                                        <div class="yith-wcwl-add-button">
+                                                            <a href="#">Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                    <a href="#" class="button quick-wiew-button">Quick View</a>
+                                                    <div class="loop-form-add-to-cart">
+                                                        <button class="single_add_to_cart_button button">Add to cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <div class="product-thumb">
+
+                                            {% if item.product_defaultImg.length > 0 %}
+
+                                            {% for img in item.product_defaultImg %}
+
+                                            <div class="thumb-inner">
+
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                    <img src="{{img.path}}" alt="img" style=" height: 250px;">
+
+                                                </a>
+
+                                                <div class="thumb-group">
+                                                    <div class="yith-wcwl-add-to-wishlist">
+                                                        <div class="yith-wcwl-add-button">
+                                                            {% if item.wishlist_arr != null %}
+                                                            <a href="javascript:void(0)" {% if
+                                                                item.wishlist_arr==item._id.toString() %}
+                                                                class="wishlist_call wishlist_active" {% else %}
+                                                                class="wishlist_call" {% endif %}
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% else %}
+                                                            <a href="javascript:void(0)" class="wishlist_call"
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+
+                                                    <a href="javascript:void(0)"
+                                                        class="button quick-wiew-button popup-button-click  openModel"
+                                                        data-id="{{item._id}}">Quick View</a>
+                                                    <div class="loop-form-add-to-cart">
+                                                        <button class="single_add_to_cart_button button"
+                                                            id="{{item._id}}" data-price="{{item.product_price}}"
+                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                            to
+                                                            cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% endfor %}
+
+
+                                            {% else %}
+                                            <div class="thumb-inner">
+
+
+
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+
+                                                    <img src="/assets/images/no_image.jpg" alt="img"
+                                                        style="height: 250px;">
+
+                                                </a>
+
+
+                                                <div class="thumb-group">
+                                                    <div class="yith-wcwl-add-to-wishlist">
+                                                        <div class="yith-wcwl-add-button">
+                                                            {% if item.wishlist_arr != null %}
+                                                            <a href="javascript:void(0)" {% if
+                                                                item.wishlist_arr==item._id.toString() %}
+                                                                class="wishlist_call wishlist_active" {% else %}
+                                                                class="wishlist_call" {% endif %}
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% else %}
+                                                            <a href="javascript:void(0)" class="wishlist_call"
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0)"
+                                                        class="button quick-wiew-button popup-button-click  openModel"
+                                                        data-id="{{item._id}}">Quick View</a>
+                                                    <div class="loop-form-add-to-cart">
+                                                        <button class="single_add_to_cart_button button"
+                                                            id="{{item._id}}" data-price="{{item.product_price}}"
+                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                            to
+                                                            cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-info pb_20">
+                                            <h5 class="product-name product_title">
+                                                <a
+                                                    href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                    <span class="proName" data-proName="{{item.product_name}}"></span>
+                                                </a>
+                                            </h5>
+                                            <div class="group-info">
+                                                <div class="stars-rating">
+                                                    <div class="star-ratingD">
+                                                        <span class="starD-{{item.product_rating_num}}"></span>
+                                                    </div>
+                                                    <div class="count-starD">
+                                                        {% if item.product_rating != 0 %} {{item.product_rating}} {%
+                                                        endif
+                                                        %}
+                                                    </div>
+                                                </div>
+                                                <div class="price">
+
+                                                    {% if item.is_discount == "1" and item.discount_start == "true" %}
+                                                    <del>
+                                                        &#8377;<span class="main_price"
+                                                            data-main_price="{{item.product_price}}"></span>
+                                                    </del>
+                                                    <ins>
+                                                        &#8377;<span class="dis_price"
+                                                            data-dis_price="{{item.discount_price}}"></span>
+                                                        <span class="product_stock_quantity"
+                                                            data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                            style="color: red;"></span>
+                                                    </ins>
+
+                                                    {% else %}
+
+
+                                                    <ins>
+
+                                                        &#8377;<span class="main_price"
+                                                            data-main_price="{{item.product_price}}"></span>
+                                                        <span class="product_stock_quantity"
+                                                            data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                            style="color: red;"></span>
+                                                    </ins>
+
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="top-rated" class="tab-panel">
+                        <div class="oemone-product">
+                            <ul class="row list-products auto-clear equal-container product-grid">
+
+                                {% if topRated %}
+                                {% for item in topRated %}
+
+                                {% if (loop.index <= 8) %} <li
+                                    class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                    <div class="product-inner equal-element">
+                                        <!-- <div class="product-top">
+                                            <div class="flash">
+                                                <span class="onnew">
+                                                    <span class="text">
+                                                        new
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div> -->
+                                        <!-- <div class="product-thumb">
+                                            <div class="thumb-inner">
+                                                <a href="#">
+                                                    <img src="{{item.product_image[0].path}}" alt="img">
+                                                </a>
+                                                <div class="thumb-group">
+                                                    <div class="yith-wcwl-add-to-wishlist">
+                                                        <div class="yith-wcwl-add-button">
+                                                            <a href="#">Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                    <a href="#" class="button quick-wiew-button">Quick View</a>
+                                                    <div class="loop-form-add-to-cart">
+                                                        <button class="single_add_to_cart_button button">Add to cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <div class="product-thumb">
+
+                                            {% if item.product_defaultImg.length > 0 %}
+
+                                            {% for img in item.product_defaultImg %}
+
+                                            <div class="thumb-inner">
+
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                    <img src="{{img.path}}" alt="img" style=" height: 250px;">
+
+                                                </a>
+
+                                                <div class="thumb-group">
+                                                    <div class="yith-wcwl-add-to-wishlist">
+                                                        <div class="yith-wcwl-add-button">
+                                                            {% if item.wishlist_arr != null %}
+                                                            <a href="javascript:void(0)" {% if
+                                                                item.wishlist_arr==item._id.toString() %}
+                                                                class="wishlist_call wishlist_active" {% else %}
+                                                                class="wishlist_call" {% endif %}
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% else %}
+                                                            <a href="javascript:void(0)" class="wishlist_call"
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+
+                                                    <a href="javascript:void(0)"
+                                                        class="button quick-wiew-button popup-button-click  openModel"
+                                                        data-id="{{item._id}}">Quick View</a>
+                                                    <div class="loop-form-add-to-cart">
+                                                        <button class="single_add_to_cart_button button"
+                                                            id="{{item._id}}" data-price="{{item.product_price}}"
+                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                            to
+                                                            cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% endfor %}
+
+
+                                            {% else %}
+                                            <div class="thumb-inner">
+
+
+
+                                                <a href="/productDetails/{{item._id}}/{{item.product_name}}">
+
+                                                    <img src="/assets/images/no_image.jpg" alt="img"
+                                                        style="height: 250px;">
+
+                                                </a>
+
+
+                                                <div class="thumb-group">
+                                                    <div class="yith-wcwl-add-to-wishlist">
+                                                        <div class="yith-wcwl-add-button">
+                                                            {% if item.wishlist_arr != null %}
+                                                            <a href="javascript:void(0)" {% if
+                                                                item.wishlist_arr==item._id.toString() %}
+                                                                class="wishlist_call wishlist_active" {% else %}
+                                                                class="wishlist_call" {% endif %}
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% else %}
+                                                            <a href="javascript:void(0)" class="wishlist_call"
+                                                                data="{{item.wishlist_arr}}" data-id="{{item._id}}"
+                                                                data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                                to
+                                                                Wishlist</a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0)"
+                                                        class="button quick-wiew-button popup-button-click  openModel"
+                                                        data-id="{{item._id}}">Quick View</a>
+                                                    <div class="loop-form-add-to-cart">
+                                                        <button class="single_add_to_cart_button button"
+                                                            id="{{item._id}}" data-price="{{item.product_price}}"
+                                                            data-product_stock_quantity_check="{{item.product_stock_quantity}}">Add
+                                                            to
+                                                            cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-info pb_20">
+                                            <h5 class="product-name product_title">
+                                                <a
+                                                    href="/productDetails/{{item._id}}/{{item.product_name}}">
+                                                    <span class="proName" data-proName="{{item.product_name}}"></span>
+                                                </a>
+                                            </h5>
+                                            <div class="group-info">
+                                                <div class="stars-rating">
+                                                    <div class="star-ratingD">
+                                                        <span class="starD-{{item.product_rating_num}}"></span>
+                                                    </div>
+                                                    <div class="count-starD">
+                                                        {% if item.product_rating != 0 %} {{item.product_rating}} {%
+                                                        endif
+                                                        %}
+                                                    </div>
+                                                </div>
+                                                <div class="price">
+
+                                                    {% if item.is_discount == "1" and item.discount_start == "true"%}
+                                                    <del>
+                                                        &#8377;<span class="main_price"
+                                                            data-main_price="{{item.product_price}}"></span>
+                                                    </del>
+                                                    <ins>
+                                                        &#8377;<span class="dis_price"
+                                                            data-dis_price="{{item.discount_price}}"></span>
+                                                        <span class="product_stock_quantity"
+                                                            data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                            style="color: red;"></span>
+                                                    </ins>
+
+                                                    {% else %}
+
+
+                                                    <ins>
+
+                                                        &#8377;<span class="main_price"
+                                                            data-main_price="{{item.product_price}}"></span>
+                                                        <span class="product_stock_quantity"
+                                                            data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                            style="color: red;"></span>
+                                                    </ins>
+
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </li>
+
+                                    {% endif %}
+
+
+                                    {% endfor%}
+
+                                    {% endif %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner-wrapp rows-space-60">
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="banner">
+                            <div class="item-banner style6">
+                                {% if project and project.home_image4 != "" %}
+                                <div class="inner" style="background-image: url('{{project.home_image4}}') !important;">
+                                    <div class="container">
+                                        <div class="banner-content">
+                                            <h4 class="oemone-subtitle" style="visibility: hidden;">Celebrate Day Sale!</h4>
+                                            <h3 class="title" style="visibility: hidden;">Save <span>25%</span> Of On All<br />Items Collection
+                                            </h3>
+                                            <a href="#" class="button btn-view-promotion">Shop now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="inner">
+                                    <div class="container">
+                                        <div class="banner-content">
+                                            <h4 class="oemone-subtitle">Celebrate Day Sale!</h4>
+                                            <h3 class="title">Save <span>25%</span> Of On All<br />Items Collection
+                                            </h3>
+                                            <a href="#" class="button btn-view-promotion">Shop now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %} 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-in-stock-wrapp">
+            <div class="container">
+                <h3 class="custommenu-title-blog white">
+                    Featured Products
+                </h3>
+                <div class="oemone-product style3">
+                    <ul class="row list-products auto-clear equal-container product-grid">
+                        {% if feature_productdata %}
+                        {% for item in feature_productdata %}
+                        <li class="product-item  col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12 style-3">
+                            <div class="product-inner equal-element">
+                                <div class="product-thumb">
+                                    <div class="product-top">
+                                        <div class="flash">
+                                            <span class="onnew">
+                                                <span class="text">
+                                                    new
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <!-- <div class="yith-wcwl-add-to-wishlist">
+                                            <div class="yith-wcwl-add-button">
+                                                <a href="#" tabindex="0">Add to Wishlist</a>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    {% if item.product_defaultImg.length > 0 %}
+
+                                    {% for img in item.product_defaultImg %}
+                                    <div class="thumb-inner">
+                                        <a href="javascript:void(0)" tabindex="0">
+                                            <img src="{{item.product_defaultImg[0].path}}" alt="img">
+                                        </a>
+                                    </div>
+
+                                    {% endfor %}
+                                    {% else %}
+
+                                    <div class="thumb-inner">
+                                        <a href="javascript:void(0)" tabindex="0">
+                                            <img src="/assets/images/no_image.jpg" alt="img">
+                                        </a>
+                                    </div>
+
+                                    {% endif %}
+
+                                    <a href="javascript:void(0)"
+                                        class="button quick-wiew-button popup-button-click openModel  "
+                                        data-id="{{item._id}}">Quick View</a>
+                                    <!-- <a href="#" class="button quick-wiew-button" tabindex="0">Quick View</a> -->
+                                </div>
+                                <div class="product-info">
+                                    <h5 class="product-name product_title">
+                                        <a href="javascript:void(0)" tabindex="0">{{item.product_name}}</a>
+                                    </h5>
+                                    <div class="group-info">
+                                        <div class="stars-rating">
+                                            <div class="star-ratingD">
+                                                <span class="starD-{{item.product_rating_num}}"></span>
+                                            </div>
+                                            <div class="count-starD">
+                                                {% if item.product_rating != 0 %} {{item.product_rating}} {% endif
+                                                %}
+                                            </div>
+                                        </div>
+                                        <div class="price">
+                                            {% if item.is_discount == "1" and item.discount_start == "true" %}
+                                            <del>
+                                                &#8377;<span class="main_price"
+                                                    data-main_price="{{item.product_price}}"></span>
+                                            </del>
+                                            <ins>
+                                                &#8377;<span class="dis_price"
+                                                    data-dis_price="{{item.discount_price}}"></span>
+                                                <span class="product_stock_quantity"
+                                                    data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                    style="color: red;"></span>
+                                            </ins>
+
+                                            {% else %}
+
+
+                                            <ins>
+
+                                                &#8377;<span class="main_price"
+                                                    data-main_price="{{item.product_price}}"></span>
+                                                <span class="product_stock_quantity"
+                                                    data-product_stock_quantity="{{item.product_stock_quantity}}"
+                                                    style="color: red;"></span>
+                                            </ins>
+
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="group-buttons">
+                                        <div class="quantity">
+                                            <div class="control">
+                                                <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                                <input type="text" data-step="1" data-min="0" value="1" title="Qty"
+                                                    class="input-qty qty" size="4">
+                                                <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                            </div>
+                                        </div>
+
+                                        <a href="/productDetails/{{item._id}}/{{item.product_name}}"><button
+                                                class="add_to_cart_button button" tabindex="0">Shop now</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="banner-wrapp">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <div class="banner">
+                            <div class="item-banner style10">
+                                {% if project and project.home_image5 != "" %}
+                                <div class="inner" style="background-image: url('{{project.home_image5}}') !important;">
+                                    <div class="banner-content" style="visibility: hidden;">
+                                        <h4 class="oemone-subtitle">Jewelry Collection!</h4>
+                                        <h3 class="title">Big Deal Of The Day</h3>
+                                        <div class="description">
+                                            We’ve been waiting for you!
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="inner">
+                                    <div class="banner-content">
+                                        <h4 class="oemone-subtitle">Jewelry Collection!</h4>
+                                        <h3 class="title">Big Deal Of The Day</h3>
+                                        <div class="description">
+                                            We’ve been waiting for you!
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-12">
+                        <div class="banner">
+                            <div class="item-banner style11">
+                                {% if project and project.home_image6 != "" %}
+                                <div class="inner" style="background-image: url('{{project.home_image6}}') !important;">
+                                    <div class="banner-content">
+                                        <h4 class="oemone-subtitle" style="visibility: hidden;">Let’s us make your style!</h4>
+                                        <h3 class="title" style="visibility: hidden;">Best Collection </h3>
+                                        <div class="description" style="visibility: hidden;">
+                                            A complete shopping guide on what & how to wear it!
+                                        </div>
+                                        <a href="#" class="button btn-shopping-us">Shop now</a>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="inner">
+                                    <div class="banner-content">
+                                        <h4 class="oemone-subtitle">Let’s us make your style!</h4>
+                                        <h3 class="title">Best Collection </h3>
+                                        <div class="description">
+                                            A complete shopping guide on what & how to wear it!
+                                        </div>
+                                        <a href="#" class="button btn-shopping-us">Shop now</a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block Jscript %}
+<script>
+    $(document).ready(function () {
+        $('.form-search-width-category').css({ 'display': 'block' });
+        $("#hidefrom_homepage").css({ 'display': 'none' });
+
+        $(".main_price").each(function () {
+            let main_price = $(this).attr('data-main_price');
+            main_price = (main_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+            $(this).text(main_price)
+
+        });
+
+        $(".dis_price").each(function () {
+            let dis_price = $(this).attr('data-dis_price');
+            dis_price = (dis_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")
+
+            $(this).text(dis_price)
+
+
+        });
+
+
+        $(".product_stock_quantity").each(function () {
+            let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+            var isnan = isNaN(product_stock_quantity);
+            if (isnan == false) {
+                if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                    $(this).text("(only " + product_stock_quantity + " left)");
+                } else {
+                    if (parseInt(product_stock_quantity) == 0) {
+                        $(this).text("out of stock");
+                    }
+                }
+            }
+        });
+
+        $(".single_add_to_cart_button").each(function () {
+            let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+            var isnan = isNaN(product_stock_quantity_check);
+            if (isnan == false) {
+                if (parseInt(product_stock_quantity_check) == 0) {
+                    $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                }
+            }
+        });
+
+        $(".wishlist_call").each(function () {
+            let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+            var isnan = isNaN(product_stock_quantity_check);
+            if (isnan == false) {
+                if (parseInt(product_stock_quantity_check) == 0) {
+                    $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                }
+            }
+        });
+
+        $(".wishlist_fun").each(function () {
+            let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+            var isnan = isNaN(product_stock_quantity_check);
+            if (isnan == false) {
+                if (parseInt(product_stock_quantity_check) == 0) {
+                    $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                }
+            }
+        });
+
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        let user_login = $('#user_login').attr('value');
+        if (user_login != "user") {
+            $('.yith-wcwl-add-to-wishlist').hide();
+            $('.review_form_wrapper').hide();
+            $('.loop-form-add-to-cart').css({ 'display': 'none' });
+        }
+
+        var host = window.location.origin;
+        $(".wishlist_call").on("click", function () {
+            var id = $(this).attr('data-id');
+            $.ajax({
+                type: 'POST',
+                url: host + "/wishlist_call",
+                data: { id: id },
+                success: function (resultData) {
+                    // alert(resultData)
+                    console.log(resultData);
+                    if (resultData == "success") {
+                        console.log("sdasd");
+                        $('a.wishlist_call[data-id = ' + id + ']').addClass('wishlist_active');
+                    } else {
+                        console.log("erere");
+                        $('a.wishlist_call[data-id = ' + id + ']').removeClass("wishlist_active");
+                        // alert("Something went wrong")
+                    }
+                    // alert("Save Complete")
+                }
+            });
+        });
+
+        var host = window.location.origin;
+        $(document).on('click', '.single_add_to_cart_button', function () {
+            // alert(9)
+            var id = $(this).attr('id');
+            var price = $(this).attr('data-price');
+
+
+            $.ajax({
+
+                type: 'POST',
+                url: host + "/addtocart_get",
+                data: { id: id, product_price: price },
+
+
+                success: function (resultData) {
+                    // alert(resultData)
+                    console.log("vhjrreurttrytry============", resultData);
+                    if (resultData == "success") {
+                        console.log("sdasd");
+                        setTimeout(function () {
+                            swal({
+                                title: "Success!",
+                                text: "Add to cart Sucessfully.",
+                                type: "success"
+                            }, function () {
+                                // window.location = "/contact";
+                                location.reload();
+                            });
+                        }, 500);
+                    } else {
+
+                        setTimeout(function () {
+                                swal({
+                                    title: "Warning!",
+                                    text: "Sorry, We don't have enough stock on hand for the quantity you selected, Please select a lower quantity.",
+                                    type: "warning"
+                                }, function () {
+                                    // window.location = "/contact";
+                                    location.reload();
+                                });
+                            }, 500);
+                        // console.log("erere");
+
+                        // alert("Something went wrong")
+                    }
+                    // alert("Save Complete")
+                }
+            });
+        });
+
+        $(".listItem").css("display", "none");
+
+        $("#listproducts").click(function () {
+
+            $(".listItem").css("display", "block");
+            $(".gridItem").css("display", "none");
+
+        });
+        $("#gridproducts").click(function () {
+            $(".listItem").css("display", "none");
+            $(".gridItem").css("display", "block");
+
+        });
+
+
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        var host = window.location.origin;
+
+
+        // $('body').on('click', '.openModel', function (e) {
+        //     var deleteid = $(this).attr("data-id");
+        //     // var id = $('#productdeleteid').val();
+
+        //     // $('.loop-form-add-to-cart').css({ 'display': 'none' });
+
+
+        //     var model_price;
+
+
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: host + "/productsModel/" + deleteid,
+        //         success: function (data) {
+
+        //             model_price = data.productDataModel[0].GST_rate;
+
+        //             let productName = data.productDataModel[0].product_name
+        //             let defaultImg;
+        //             let makeHtmlSlider = '';
+
+        //             if (data.productDataModel[0].product_defaultImg) {
+        //                 defaultImg = data.productDataModel[0].product_defaultImg[0].path
+        //             } else {
+        //                 defaultImg = "/assets/images/no_image.jpg"
+        //             }
+
+        //             makeHtmlSlider += '<div class="details-item"><img src="' + defaultImg + '" alt="img"></div>'
+
+        //             for (let i = 0; i < data.productDataModel[0].product_image.length; i++) {
+        //                 if (data.productDataModel[0].product_image[i].is_deleted == "0") {
+        //                     let imgSrc = data.productDataModel[0].product_image[i].path
+        //                     makeHtmlSlider += '<div class="details-item"><img src="' + imgSrc + '" alt="img"></div>'
+        //                 }
+        //             }
+
+
+        //             let html = ` 
+        //                     <h1 class="product-title">
+        //                         `+ productName + `
+        //                     </h1>
+        //                     <div class="stars-rating">
+        //                         <div class="star-ratingD">`
+
+        //             if (data.productDataModel[0].product_rating_num == undefined) {
+        //                 html += ` <span class="starD-0"></span>`
+
+        //             } else {
+        //                 html += ` <span class="starD-` + data.productDataModel[0].product_rating_num + `"></span>`
+
+        //             }
+        //             html += ` </div>
+        //                         <div class="count-starD">`
+        //             if (data.productDataModel[0].product_rating != 0 && data.productDataModel[0].product_rating != undefined) {
+
+        //                 html += `<span>` + data.productDataModel[0].product_rating + `</span>`
+        //             }
+        //             html += `</div>
+        //                     </div>
+                         
+        //                     <div class="availability">
+        //                         <span> `+ data.productDataModel[0].product_description + `</span>
+        //                     </div>
+
+        //                     <div class="price priceaftermodel">`
+
+        //             if (data.productDataModel[0].is_discount == 1) {
+        //                 html += `<span> &#8377;` + (data.productDataModel[0].discount_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `</span>`
+        //             } else {
+        //                 html += `<span> &#8377;` + (data.productDataModel[0].product_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `</span>`
+        //             }
+
+
+        //             html += `</div>
+                           
+
+        //                     <div class="availability" id="productDis">
+        //                         SKU :`+ data.productDataModel[0].product_sku + `
+        //                     </div>
+
+        //                     <div class="availability" id="productDis">
+        //                         Sold By :`+ data.productDataModel[0].venodor_name + `
+        //                     </div>
+
+        //                     <div class="availability">
+        //                         availability : `+ data.productDataModel[0].product_stock_status + `
+        //                     </div>
+                           
+        //                     <div class="group-button">
+        //                         <div class="yith-wcwl-add-to-wishlist">
+        //                             <div class="yith-wcwl-add-button">`
+        //             if (data.productDataModel[0].wishlist_arr != null || data.productDataModel[0].wishlist_arr != undefined) {
+        //                 if (data.productDataModel[0].wishlist_arr == data.productDataModel[0]._id.toString()) {
+        //                     html += `<a href="javascript:void(0)" class="wishlist_fun wishlist_active" data=` + data.productDataModel[0].wishlist_arr + ` data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+        //                 } else {
+        //                     html += `<a href="javascript:void(0)" class="wishlist_fun" data=` + data.productDataModel[0].wishlist_arr + ` data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+        //                 }
+        //             } else {
+        //                 html += `<a href="javascript:void(0)" class="wishlist_fun" data=` + data.productDataModel[0].wishlist_arr + ` data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+        //             }
+        //             html += `</div>
+        //                         </div>
+        //                         <div class="size-chart-wrapp">
+        //                             <div class="btn-size-chart">
+                                      
+        //                             </div>
+        //                         </div>
+        //                         <div class="quantity-add-to-cart">`
+        //             // <div class="quantity">
+        //             //     <div class="control">
+        //             //         <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+        //             //         <input type="text" data-step="1" data-min="0" value="1" title="Qty"
+        //             //             class="input-qty qty" size="4">
+        //             //         <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+        //             //     </div>
+        //             // </div>
+        //             html += `<button class="single_add_to_cart_button button" id="` + data.productDataModel[0]._id + `" data-price="` + data.productDataModel[0].product_price + `">Add to cart</button>
+        //                         </div>
+        //                     </div>`;
+
+
+
+        //             let htmlSrc = '<div class="kt-popup-quickview"><div class="details-thumb"><div class="slider-product slider-for">' + makeHtmlSlider + '</div><div class="slider-product-button slider-nav nav-center">' + makeHtmlSlider + '</div></div><div class="details-infor">' + html + '</div></div>'
+
+        //             quickview_popup2(htmlSrc);
+
+
+        //         }
+        //     })
+        //         .done(function (data) {
+        //             // var html = $(data);
+        //             // html.find('#loading').addClass('hidden');
+        //             // $('document').append(html);
+        //             let user_login = $('#user_login').attr('value');
+        //             if (user_login != "user") {
+        //                 $('.yith-wcwl-add-to-wishlist').hide();
+        //                 $('.review_form_wrapper').hide();
+        //                 $('.loop-form-add-to-cart').css({ 'display': 'none' });
+        //                 $('.single_add_to_cart_button').css({ 'display': 'none' });
+
+        //             }
+
+        //             $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+        //         }
+        //         );
+
+
+        // });
+
+
+        $('body').on('click', '.openModel', function (e) {
+            var deleteid = $(this).attr("data-id");
+            // var id = $('#productdeleteid').val();
+
+            // $('.loop-form-add-to-cart').css({ 'display': 'none' });
+
+
+            var model_price;
+
+
+            $.ajax({
+                type: 'GET',
+                url: host + "/productsModel/" + deleteid,
+                success: function (data) {
+
+                    model_price = data.productDataModel[0].GST_rate;
+
+                    let productName = data.productDataModel[0].product_name
+                    let defaultImg;
+                    let makeHtmlSlider = '';
+
+                    if (data.productDataModel[0].product_defaultImg) {
+                        defaultImg = data.productDataModel[0].product_defaultImg[0].path
+                    } else {
+                        defaultImg = "/assets/images/no_image.jpg"
+                    }
+
+                    makeHtmlSlider += '<div class="details-item"><img src="' + defaultImg + '" alt="img"></div>'
+
+                    for (let i = 0; i < data.productDataModel[0].product_image.length; i++) {
+                        if (data.productDataModel[0].product_image[i].is_deleted == "0") {
+                            let imgSrc = data.productDataModel[0].product_image[i].path
+                            makeHtmlSlider += '<div class="details-item"><img src="' + imgSrc + '" alt="img"></div>'
+                        }
+                    }
+
+
+                    let html = ` 
+                            <h1 class="product-title">
+                                `+ productName + `
+                            </h1>
+                            <div class="stars-rating">
+                                <div class="star-ratingD">`
+
+                    if (data.productDataModel[0].product_rating_num == undefined) {
+                        html += ` <span class="starD-0"></span>`
+
+                    } else {
+                        html += ` <span class="starD-` + data.productDataModel[0].product_rating_num + `"></span>`
+
+                    }
+                    html += ` </div>
+                                <div class="count-starD">`
+                    if (data.productDataModel[0].product_rating != 0 && data.productDataModel[0].product_rating != undefined) {
+
+                        html += `<span>` + data.productDataModel[0].product_rating + `</span>`
+                    }
+                    html += `</div>
+                            </div>
+                         
+                            <div class="availability">
+                                <span> `+ data.productDataModel[0].product_description + `</span>
+                            </div>
+
+                            <div class="price priceaftermodel">`
+
+                    if (data.productDataModel[0].is_discount == 1 && data.productDataModel[0].discount_start == "true") {
+                        html += `<span> &#8377;` + (data.productDataModel[0].discount_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `</span> `
+                    } else {
+                        html += `<span> &#8377;` + (data.productDataModel[0].product_price).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",") + `</span> `
+                    }
+
+
+                    html += `</div>
+                           
+
+                            <div class="availability" id="productDis">
+                                SKU :`+ data.productDataModel[0].product_sku + `
+                            </div>
+
+                            <div class="availability" id="productDis">
+                                Sold By :`+ data.productDataModel[0].venodor_name + `
+                            </div>
+
+                            <div class="availability">
+                                availability : <span class="product_stock_quantity"
+                                                        data-product_stock_quantity=`+ data.productDataModel[0].product_stock_quantity + `
+                                                        >`+ data.productDataModel[0].product_stock_status + `</span>
+                            </div>
+                           
+                            <div class="group-button">
+                                <div class="yith-wcwl-add-to-wishlist">
+                                    <div class="yith-wcwl-add-button">`
+                    if (data.productDataModel[0].wishlist_arr != null || data.productDataModel[0].wishlist_arr != undefined) {
+                        if (data.productDataModel[0].wishlist_arr == data.productDataModel[0]._id.toString()) {
+                            html += `<a href="javascript:void(0)" class="wishlist_fun wishlist_active" data= "` + data.productDataModel[0].wishlist_arr + `" data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `" data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+                        } else {
+                            html += `<a href="javascript:void(0)" class="wishlist_fun" data= "` + data.productDataModel[0].wishlist_arr + `"  data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `"    data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+                        }
+                    } else {
+                        html += `<a href="javascript:void(0)" class="wishlist_fun" data=` + data.productDataModel[0].wishlist_arr + `"  data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `"   data-id=` + data.productDataModel[0]._id + `>Add to Wishlist</a>`;
+                    }
+                    html += `</div>
+                                </div>
+                                <div class="size-chart-wrapp">
+                                    <div class="btn-size-chart">
+                                      
+                                    </div>
+                                </div>
+                                <div class="quantity-add-to-cart">`
+                    // <div class="quantity">
+                    //     <div class="control">
+                    //         <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                    //         <input type="text" data-step="1" data-min="0" value="1" title="Qty"
+                    //             class="input-qty qty" size="4">
+                    //         <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                    //     </div>
+                    // </div>
+                    html += `<button class="single_add_to_cart_button button" id="` + data.productDataModel[0]._id + `" data-product_stock_quantity_check="` + data.productDataModel[0].product_stock_quantity + `"  data-price="` + data.productDataModel[0].product_price + `">Add to cart</button>
+                                </div>
+                            </div>`;
+
+
+
+                    let htmlSrc = '<div class="kt-popup-quickview"><div class="details-thumb"><div class="slider-product slider-for">' + makeHtmlSlider + '</div><div class="slider-product-button slider-nav nav-center">' + makeHtmlSlider + '</div></div><div class="details-infor">' + html + '</div></div>'
+
+                    quickview_popup2(htmlSrc);
+
+
+                }
+            })
+                .done(function (data) {
+                    // var html = $(data);
+                    // html.find('#loading').addClass('hidden');
+                    // $('document').append(html);
+                    let user_login = $('#user_login').attr('value');
+                    if (user_login != "user") {
+                        $('.yith-wcwl-add-to-wishlist').hide();
+                        $('.review_form_wrapper').hide();
+                        $('.loop-form-add-to-cart').css({ 'display': 'none' });
+                        $('.single_add_to_cart_button').css({ 'display': 'none' });
+
+                    }
+
+                    $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+
+                    $(".product_stock_quantity").each(function () {
+                        let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                        var isnan = isNaN(product_stock_quantity);
+                        if (isnan == false) {
+                            if (product_stock_quantity.length >= 1 && product_stock_quantity <= 5) {
+                                $(this).text('(only ' + product_stock_quantity + " left)")
+                            }
+                        }
+
+                    });
+
+                    $(".product_stock_quantity").each(function () {
+
+                        let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                        var isnan = isNaN(product_stock_quantity);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                                $(this).text("(only " + product_stock_quantity + " left)");
+                                $(this).attr('style', 'color:red');
+
+
+                                // $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+                            } else {
+                                if (parseInt(product_stock_quantity) == 0) {
+                                    $(this).text("out of stock");
+                                    $(this).attr('style', 'color:red');
+
+
+                                    // $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+                                }
+                            }
+                        } else {
+
+                            // $('<style>.priceaftermodel:after{content:" Tax exclude(' + model_price + '%)"}</style>').appendTo('head');
+
+                        }
+                    });
+
+                    $(".single_add_to_cart_button").each(function () {
+                        let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                        var isnan = isNaN(product_stock_quantity_check);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity_check) == 0) {
+                                $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                            }
+                        }
+                    });
+
+                    $(".wishlist_call").each(function () {
+                        let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                        var isnan = isNaN(product_stock_quantity_check);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity_check) == 0) {
+                                $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                            }
+                        }
+                    });
+
+                    $(".wishlist_fun").each(function () {
+                        let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                        var isnan = isNaN(product_stock_quantity_check);
+                        if (isnan == false) {
+                            if (parseInt(product_stock_quantity_check) == 0) {
+                                $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                            }
+                        }
+                    });
+
+                }
+                );
+
+
+        });
+        var host = window.location.origin;
+        $(document).on('click', '.wishlist_fun', function () {
+            var id = $(this).attr('data-id');
+            $.ajax({
+                type: 'POST',
+                url: host + "/wishlist_call",
+                data: { id: id },
+                success: function (resultData) {
+                    // alert(resultData)
+                    console.log(resultData);
+                    if (resultData == "success") {
+                        console.log("sdasd");
+                        $('a.wishlist_fun[data-id = ' + id + ']').addClass('wishlist_active');
+                        $('a.wishlist_call[data-id = ' + id + ']').addClass('wishlist_active');
+                    } else {
+                        console.log("erere");
+                        $('a.wishlist_fun[data-id = ' + id + ']').removeClass("wishlist_active");
+                        $('a.wishlist_call[data-id = ' + id + ']').removeClass('wishlist_active');
+                        // alert("Something went wrong")
+                    }
+                    // alert("Save Complete")
+                }
+            });
+        });
+
+    });
+
+    function quickview_popup2(htmlSrc) {
+
+        var window_size = parseFloat(jQuery('body').innerWidth());
+        window_size += kt_get_scrollbar_width();
+        if (window_size > 992) {
+            // $(document).on('click', '.popup-button-click', function () {
+            $.magnificPopup.open({
+                items: {
+                    src: htmlSrc,
+                    type: 'inline'
+                }
+            });
+            slick_quickview_popup2();
+            return false;
+            // });
+        }
+    }
+
+    function slick_quickview_popup2() {
+
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: false,
+            focusOnSelect: true,
+            infinite: true,
+            prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+            nextArrow: '<i class="fa fa-angle-right " aria-hidden="true"></i>',
+        });
+    }
+
+    function kt_get_scrollbar_width() {
+        var $inner = jQuery('<div style="width: 100%; height:200px;">test</div>'),
+            $outer = jQuery('<div style="width:200px;height:150px; position: absolute; top: 0; left: 0; visibility: hidden; overflow:hidden;"></div>').append($inner),
+            inner = $inner[0],
+            outer = $outer[0];
+        jQuery('body').append(outer);
+        var width1 = parseFloat(inner.offsetWidth);
+        $outer.css('overflow', 'scroll');
+        var width2 = parseFloat(outer.clientWidth);
+        $outer.remove();
+        return (width1 - width2);
+    }
+
+    $('.owl-slick').not('.slick-initialized').each(function () {
+        var _this = $(this),
+            _responsive = _this.data('responsive'),
+            _config = [];
+
+        if ($('body').hasClass('rtl')) {
+            _config.rtl = true;
+        }
+        if (_this.hasClass('slick-vertical')) {
+            _config.prevArrow = '<span class="pe-7s-angle-up"></span>';
+            _config.nextArrow = '<span class="pe-7s-angle-down"></span>';
+        } else {
+            _config.prevArrow = '<span class="fa fa-angle-left"></span>';
+            _config.nextArrow = '<span class="fa fa-angle-right"></span>';
+        }
+        _config.responsive = _responsive;
+        _config.cssEase = 'linear';
+
+        _this.slick(_config);
+        _this.on('afterChange', function (event, slick, direction) {
+            _this.find('.slick-active:first').addClass('first-slick');
+            _this.find('.slick-active:last').addClass('last-slick');
+        });
+        _this.on('beforeChange', function (event, slick, currentSlide) {
+            _this.find('.slick-slide').removeClass('last-slick');
+            _this.find('.slick-slide').removeClass('first-slick');
+        });
+        if (_this.hasClass('slick-vertical')) {
+            equal_elems();
+            setTimeout(function () {
+                _this.slick('setPosition');
+            }, 0);
+        }
+        _this.find('.slick-active:first').addClass('first-slick');
+        _this.find('.slick-active:last').addClass('last-slick');
+    });
+
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: false,
+        focusOnSelect: true,
+        infinite: true,
+        prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        nextArrow: '<i class="fa fa-angle-right " aria-hidden="true"></i>',
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        $(".proName").each(function () {
+            let productName = $(this).attr('data-proName');
+
+            // alert(productName.length)
+
+            if (productName.length > 20) {
+
+                productName = productName.substring(0, 20) + '...';
+
+            }
+
+
+            $(this).text(productName);
+
+
+        });
+    });
+</script>
+
+{% endblock %}

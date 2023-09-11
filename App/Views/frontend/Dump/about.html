@@ -1,0 +1,129 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+<div class="main-content main-content-about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="trail-item trail-end active">
+                            About US
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="content-area content-about col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="site-main">
+                    <h3 class="custom_blog_title">About US</h3>
+                    <div class="page-main-content">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                            <p>{{aboutData.introduction | safe}}</p>
+                                <!-- <p>This privacy policy sets out how this website uses and protects any information that you give the Store while using this website. The Store is committed to ensuring that your privacy is protected. The Store may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes.</p>
+
+                                <h3>What we collect</h3>
+                                
+                                <p>We may collect the following information:</p>
+                                
+                                <p>Name</p>
+                                
+                                <p>contact information including email address</p>
+                                
+                                <p>demographic information such as postcode, preferences and interests</p>
+                                
+                                <p>other information relevant to customer surveys and/or offers</p>
+                                
+                                <h3>What we do with the information we gather</h3>
+                                
+                                <p>We require this information to understand your needs and provide you with a better service, and in particular for the following reasons:</p>
+                                
+                                <h4>Internal record keeping.</h4>
+                                
+                                <p>We may use the information to improve our products and services.</p>
+                                
+                                <p>We may send emails regarding orders and invoice of the order.</p>
+                                
+                                <h4>Security</h4>
+                                
+                                <p>We are committed to ensuring that your information is secure. In order to prevent unauthorised access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.</p>
+                                
+                                <h4>Links to other websites</h4>
+                                
+                                <p>Our website may contain links to other websites of interest. However, once you have used these links to leave our site, you should note that we do not have any control over that other website. Therefore, we cannot be responsible for the protection and privacy of any information which you provide whilst visiting such sites and such sites are not governed by this privacy statement. You should exercise caution and look at the privacy statement applicable to the website in question.</p> -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 col-sm-4">
+                                <div class="oemone-iconbox  layout1">
+                                    <div class="iconbox-inner">
+                                        <div class="icon-item">
+                                            <span class="placeholder-text">01</span>
+                                            <span class="icon flaticon-diamond"></span>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title">
+                                                GREAT VALUE
+                                            </h4>
+                                            <div class="text">
+                                                Most popular brands with widest range of selection at best prices.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-lg-offset-1">
+                                <div class="oemone-iconbox  layout1">
+                                    <div class="iconbox-inner">
+                                        <div class="icon-item">
+                                            <span class="placeholder-text">02</span>
+                                            <span class="icon flaticon-support"></span>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title">
+                                                ONLINE SUPPORT 24/7
+                                            </h4>
+                                            <div class="text">
+                                                Reach out to us through email oemone09@gmail.com
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-lg-offset-1">
+                                <div class="oemone-iconbox  layout1">
+                                    <div class="iconbox-inner">
+                                        <div class="icon-item">
+                                            <span class="placeholder-text">03</span>
+                                            <span class="icon flaticon-padlock"></span>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title">
+                                                SECURE PAYMENT
+                                            </h4>
+                                            <div class="text">
+                                                Partnered with India's most popular and secure payment solutions.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+
+{% endblock %}

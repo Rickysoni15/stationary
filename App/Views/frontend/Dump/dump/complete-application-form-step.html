@@ -1,0 +1,818 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+        <section class="application-form-section-first" data-aos="fade-in" data-aos-offset="0">
+            <div class="container">
+                <div class="row align-items-center pr-md-5 pl-md-5 pr-0 pl-0">
+                    <div class="col-md-12 text-center pb-4">
+                        <h1 class="title text-blue title-text-with-circle" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                            <span class="big-yellow-circle"></span> <span class="small-sub-darkblue-circle"></span>APPLICATION <br> FORM
+                        </h1>
+                    </div>
+                    <div class="col-md-12">
+                      <input type="hidden" id="courseId" value="{{course._id}}">
+                      <input type="hidden" id="applicationId" value="{{courseData._id}}">
+                        <form id="msform" class="form-styel">
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="d-none"><strong></strong></li>
+                                <li class="" id="account"><strong>Personal Information</strong></li>
+                                <li id="personal"><strong>Documents</strong></li>
+
+                                <li id="confirm"><strong>Application Fee</strong></li>
+                            </ul>
+
+                            <!-- fieldsets -->
+                            <fieldset>
+                                <div class="form-card">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="firstName" class="label">First Name*</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="firstName" name="firstName" class="form-control" type="text"  placeholder="Enter your First Name" onkeypress="return /[a-z]/i.test(event.key)" value="{{courseData.firstName}}" >
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="middleName" class="label">Middle Name*</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="middleName" name="middleName" class="form-control" type="text" placeholder="Enter your Middle Name" onkeypress="return /[a-z]/i.test(event.key)" value="{{courseData.middleName}}" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="lastName" class="label">Last Name*</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="lastName" name="LastName" class="form-control" type="text" placeholder="Enter your Last Name" onkeypress="return /[a-z]/i.test(event.key)" value="{{courseData.lastName}}" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="age" class="label">Age*</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="age" name="age" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "2" placeholder="Enter your Age" value="{{courseData.age}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="birthday" class="label">Birthday*</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="birthday" name="birthday" class="form-control" type="date" placeholder="Enter your Birth Date" value="{{courseData.birthday}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="gender" class="label">Gender* </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select name="gender" id="gender" class="form-control" placeholder="Select Your Gender">
+                                                    <option {{ "selected" if (courseData.gender == 'male') else "" }} value="male">Male</option>
+                                                    <option {{ "selected" if (courseData.gender == 'female') else "" }} value="female">Female</option>
+                                                    <option {{ "selected" if (courseData.gender == 'other') else "" }} value="other">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="nationality" class="label">Nationality* </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="nationality" name="nationality" class="form-control" type="text" placeholder="Enter your Nationality" value="{{courseData.nationality}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="state" class="label">State* </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="state" name="state" class="form-control" type="text" placeholder="Enter your State" value="{{courseData.state}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="city" class="label">City* </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="city" name="city" class="form-control" type="text" placeholder="Enter your City" value="{{courseData.city}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="address" class="label">Address* </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="address" name="address" class="form-control" type="text" placeholder="Enter your Address" value="{{courseData.address}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="pinNo" class="label">Pin Code* </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="pinNo" name="pinNo" class="form-control" type="text" placeholder="Enter your Pin Code" value="{{courseData.pinNo}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="my-input11" class="label">Mobile Number*
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="phone" name="phone" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "10" placeholder="Enter your Mobile Number" value="{{user.mobile}}" readonly value="{{courseData.phone}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="email" class="label">Email Id*
+
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="email" name="email" class="form-control" type="email" placeholder="Enter your Email ID" value="{{user.email}}" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="my-input13" class="label">College Name* </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="collegeName" name="collegeName" class="form-control" type="text" placeholder="Enter your College Name*" value="{{course.collegeName}}" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="my-input14" class="label">Course Name* </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="courseName" name="courseName" class="form-control" type="text" placeholder="Enter your Course Name*" value="{{course.name}}" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <input type="button" name="next" class="next action-button" id="firstFormSubmit" value="Next" />
+
+
+                            </fieldset>
+                            <fieldset>
+
+                                <div class="form-card">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="title-txt text-blue">Upload Aadhar Card*</div>
+                                            <div class="card upload-card" id="aadharCardDiv" style="background-image: url('{{courseData.aadharCard}}')">
+                                                <div class="form-group files">
+                                                    <label class="lbl"> <i class="fa fa-cloud-upload"></i> Upload File
+                                                    </label>
+                                                    <p class="p-txt">or drop a file</p>
+                                                    <input type="file" id="aadharCard" class="form-control" multiple="">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="title-txt text-blue">Upload License*</div>
+                                            <div class="card upload-card" id="licenseDiv" style="background-image: url('{{courseData.license}}')">
+                                                <div class="form-group files">
+                                                    <label class="lbl"> <i class="fa fa-cloud-upload"></i> Upload File
+                                                    </label>
+                                                    <p class="p-txt">or drop a file</p>
+                                                    <input type="file" id="license" class="form-control" multiple="">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="title-txt text-blue">Upload 10th marksheet</div>
+                                            <div class="card upload-card" id="marksheet10Div" style="background-image: url('{{courseData.marksheet10}}')">
+                                                <div class="form-group files">
+                                                    <label class="lbl"> <i class="fa fa-cloud-upload"></i> Upload File
+                                                    </label>
+                                                    <p class="p-txt">or drop a file</p>
+                                                    <input type="file" id="marksheet10" class="form-control" multiple="">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="title-txt text-blue">Upload 12th marksheet</div>
+                                            <div class="card upload-card" id="marksheet12Div" style="background-image: url('{{courseData.marksheet12}}')">
+                                                <div class="form-group files">
+                                                    <label class="lbl"> <i class="fa fa-cloud-upload"></i> Upload File
+                                                    </label>
+                                                    <p class="p-txt">or drop a file</p>
+                                                    <input type="file" id="marksheet12" class="form-control" multiple="">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                <input type="button" name="next" class="next action-button" id="secondFormSubmit" value="Next" />
+
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="amount" class="label">Amount*</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                              <input id="amount" class="form-control" type="text" name="" value="₹1500.00" readonly>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="email2" class="label">Email*</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="email2" class="form-control" type="email" name="" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="phone4" class="label">Phone*</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="phone4" class="form-control" type="phone" name="" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="phoneAlternate" class="label">Alternate Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="phoneAlternate" class="form-control" type="number" name="phoneAlternate" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="address" class="label">Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="address" class="form-control" type="text" name="" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="landmark" class="label">Landmark*</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="landmark" class="form-control" type="text" name="" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="pincode" class="label">Pincode* </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="pincode" class="form-control" type="text" name="" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="school" class="label">School* </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="schoolName" class="form-control" type="text" name="schoolName" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+
+                                <input type="button" data-toggle="modal" data-target="#applicationSuccessModal" id="thirdFormSubmit" name="next" class="next action-button" value="Next" />
+
+                            </fieldset>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-12 text-right foot-img">
+                    <img src="/front/img/application-form-step-footer-img.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Complate -->
+        <div class="modal fade" id="applicationSuccessModal" tabindex="-1" role="dialog" aria-labelledby="applicationSuccessModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-transparent">
+
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <img src="/front/img/Complete-Application-img.png" class="img-fluid w-100" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal uploaded-successfully -->
+        <div class="modal fade" id="uploadedSuccessfullyModal" tabindex="-1" role="dialog" aria-labelledby="uploadedSuccessfullyModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-transparent">
+
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <img src="/front/img/uploaded-successfully.png" class="img-fluid w-100" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal error-uploading -->
+        <div class="modal fade" id="errorUploadingModal" tabindex="-1" role="dialog" aria-labelledby="errorUploadingModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-transparent">
+
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <img src="/front/img/error-uploading.png" class="img-fluid w-100" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+{% endblock %} {% block Jscript %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+        $('.client-list-slider').owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplaySpeed: 1200,
+            margin: 0,
+            nav: true,
+            dots: false,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                420: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 3
+                },
+                1024: {
+                    items: 3
+                }
+            }
+        })
+
+        $(document).ready(function() {
+
+
+
+            // $('#applicationSuccessModal').on('hide.bs.modal', function(event) {
+            //     window.location.href = "index.html";
+            // })
+
+
+            AOS.init({
+                // startEvent: 'load',
+                offset: 250,
+                duration: 1000,
+                easing: 'ease-in-sine',
+                delay: 50,
+                disableMutationObserver: true,
+                throttleDelay: 0,
+                debounceDelay: 0,
+                once: false,
+                mirror: true,
+                // startEvent: 'DOMContentLoaded'
+            });
+
+        });
+    </script>
+
+
+
+    <script>
+        $(document).ready(function() {
+
+          let firstProcessDone =  "{{courseData.firstProcessDone}}";
+          let secondProcessDone =  "{{courseData.secondProcessDone}}";
+          let fullProcessDone =  "{{courseData.fullProcessDone}}";
+          let paymentStatus =  "{{courseData.paymentStatus}}";
+
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
+            var current = 0;
+            var steps = $("fieldset").length;
+
+            setProgressBar(current);
+
+            $(".next").click(function() {
+              // alert( $(this).attr('id') )
+              let formName = $(this).attr('id');
+              if ( formName == 'firstFormSubmit' ) {
+                let upload = true;
+                $('#firstName, #lastName, #gender, #nationality, #state, #city, #address, #pinNo, #phone, #email, #collegeName, #courseName').each(function() {
+                  if ($(this).val() == '') {
+                    alert( $(this).attr('id')+' cannot be blank, Data is not saved' );
+                    upload = false;
+                    return false;
+                  }
+                });
+                if ( upload == true ) {
+                  let courseId = $('#courseId').val();
+                  let firstName = $('#firstName').val();
+                  let middleName = $('#middleName').val();
+                  let lastName = $('#lastName').val();
+                  let gender = $('#gender').val();
+                  let age = $('#age').val();
+                  let birthday = $('#birthday').val();
+                  let nationality = $('#nationality').val();
+                  let state = $('#state').val();
+                  let city = $('#city').val();
+                  let address = $('#address').val();
+                  let pinNo = $('#pinNo').val();
+                  let phone = $('#phone').val();
+                  let email = $('#email').val();
+                  let collegeName = $('#collegeName').val();
+                  let courseName = $('#courseName').val();
+                  let applicationId = $('#applicationId').val();
+
+                  $.ajax({
+                    type: "post",
+                    url: "/saveApplicationData",
+                    data: { courseId : courseId, firstName :firstName, middleName :middleName, lastName :lastName, gender :gender, nationality :nationality, state :state, city :city, address :address, pinNo :pinNo, phone :phone, email :email, collegeName :collegeName, courseName :courseName, step: 'personal', applicationId :applicationId, age : age, birthday: birthday },
+                    success: function(responseData) {
+                      // console.log("responseData", responseData);
+                      if (responseData.status == 'success') {
+                        $('#applicationId').val(responseData.data);
+                      }
+                      else {
+                        alert(responseData.message);
+                        return false;
+                      }
+                    }
+                  })
+                }else {
+                  return false;
+                }
+              }
+              else if ( formName == 'secondFormSubmit') {
+                  let aadharCard    = $('#aadharCard')[0].files[0];
+                  let license       = $('#license')[0].files[0];
+                  let marksheet10   = $('#marksheet10')[0].files[0];
+                  let marksheet12   = $('#marksheet12')[0].files[0];
+                  let applicationId = $('#applicationId').val();
+                  let courseId      = $('#courseId').val();
+                  let uploadFlag    = false;
+                  // console.log("aadharCard", aadharCard);
+                  // console.log("courseId", courseId);
+                  if ( applicationId == '') {
+                    alert("Invalid Application, Please Re Initiate the process");
+                    return false;
+                  }
+                  if ( secondProcessDone == false && ( aadharCard == undefined ||  license == undefined ||  marksheet10 == undefined ||  marksheet12 == undefined) ) {
+                    alert("Please Update image to Continue");
+                    return false;
+                  }
+                  if ( aadharCard != undefined ||  license != undefined ||  marksheet10 != undefined ||  marksheet12 != undefined ) {
+                    uploadFlag = true;
+                  }
+
+                  if ( uploadFlag == true ) {
+                    alert('send fromm data')
+                    // create FormData
+                  	var formData = new FormData();
+                    formData.append('step', 'document');
+                    formData.append('courseId', courseId);
+                    formData.append('aadharCard', aadharCard);
+                    formData.append('license', license);
+                    formData.append('marksheet10', marksheet10);
+                    formData.append('marksheet12', marksheet12);
+                    formData.append('applicationId', applicationId);
+                    formData.append('uploadFlag', uploadFlag);
+
+                  	// upload the image
+                  	var uploadLocation = '/saveApplicationData';
+                  	// formData.append('key', 'bb63bee9d9846c8d5b7947bcdb4b3573');
+
+                  	var ajax = new XMLHttpRequest();
+                  	ajax.open("POST", uploadLocation, true);
+
+                  	ajax.onreadystatechange = function(e) {
+                  		if (ajax.readyState === 4) {
+                  			if (ajax.status === 200) {
+                  				// done!
+                          let responseData = JSON.parse(ajax.response)
+                          $('#aadharCardDiv').attr('style', "background-image: url('"+responseData.data.aadharCard+"')")
+                          $('#licenseDiv').attr('style', "background-image: url('"+responseData.data.license+"')")
+                          $('#marksheet10Div').attr('style', "background-image: url('"+responseData.data.marksheet10+"')")
+                          $('#marksheet12Div').attr('style', "background-image: url('"+responseData.data.marksheet12+"')")
+                  			} else {
+                  				// error!
+                          alert('error');
+                          return false;
+                  			}
+                  		}
+                  	}
+
+                  	ajax.send(formData);
+                  }
+
+
+
+              }
+              else if ( formName == 'thirdFormSubmit') {
+
+
+                let upload = true;
+                let applicationId   = $('#applicationId').val();
+                let phoneAlternate  = $('#phoneAlternate').val();
+                let schoolName      = $('#schoolName').val();
+
+                if ( schoolName == '') {
+                  alert('Please Insert School Name')
+                }else {
+                  $.ajax({
+                    type: "post",
+                    url: "/saveApplicationData",
+                    data: { phoneAlternate :phoneAlternate, schoolName :schoolName, applicationId :applicationId, step: 'fees' },
+                    success: function(responseData) {
+                      alert(responseData.message)
+                      console.log("responseData", responseData);
+                      if (responseData.status == 'success') {
+
+
+                        var options = {
+                            // "key": "rzp_test_U3FPfrQYtumZc4", // Enter the Key ID generated from the Dashboard
+                            "key": "rzp_live_N9edmzFq0ljDrz", // Enter the Key ID generated from the Dashboard
+                            "amount": "1500", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                            "currency": "INR",
+                            "name": responseData.data.firstName+' '+responseData.data.lastName,
+                            "description": "Apply on "+responseData.data.collegeName+' for '+responseData.data.courseName,
+                            "image": "/front/img/det-logo.png",
+                            "order_id": responseData.data.orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                            "callback_url": "/checkout/"+responseData.data._id,
+                            "prefill": {
+                                "name": responseData.data.firstName+' '+responseData.data.lastName,
+                                "email": responseData.data.email,
+                                "contact": responseData.data.phone
+                            },
+                            "notes": {
+                                "address": responseData.data.address
+                            },
+                            "theme": {
+                                "color": "#3399cc"
+                            }
+                        };
+                        var rzp1 = new Razorpay(options);
+                        rzp1.open();
+                      }
+                      // else {
+                      //   alert(responseData.message)
+                      // }
+                    }
+                  })
+                }
+
+
+              }else {
+                return false;
+              }
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 500
+                });
+                setProgressBar(++current);
+            });
+
+            $(".previous").click(function() {
+
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+
+                //Remove class active
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+                //show the previous fieldset
+                previous_fs.show();
+
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        previous_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 500
+                });
+                setProgressBar(--current);
+            });
+
+            function setProgressBar(curStep) {
+                var percent = parseFloat(100 / steps) * curStep;
+                percent = percent.toFixed();
+                $(".progress-bar")
+                    .css("width", percent + "%")
+            }
+
+            $(".submit").click(function() {
+                return false;
+            })
+
+            if ( paymentStatus == 'unpaid') {
+              if (fullProcessDone == 'true') {
+                setTimeout( function(){ proceedNext(); } ,500);
+                setTimeout( function(){ proceedNext(); } ,1000);
+
+                // initiate payment only
+
+
+                var options = {
+                    // "key": "rzp_test_U3FPfrQYtumZc4", // Enter the Key ID generated from the Dashboard
+                    "key": "rzp_live_N9edmzFq0ljDrz", // Enter the Key ID generated from the Dashboard
+                    "amount": "1500", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                    "currency": "INR",
+                    "name": "{{courseData.firstName}} {{courseData.lastName}}",
+                    "description": "Apply on {{courseData.collegeName}} for {{courseData.courseName}}",
+                    "image": "/front/img/det-logo.png",
+                    "order_id": "{{courseData.orderId}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                    "callback_url": "/checkout/{{courseData._id}}",
+                    "prefill": {
+                        "name": "{{courseData.firstName}} {{courseData.lastName}}",
+                        "email": "{{courseData.email}}",
+                        "contact": "{{courseData.phone}}"
+                    },
+                    "notes": {
+                        "address": "{{courseData.address}}"
+                    },
+                    "theme": {
+                        "color": "#3399cc"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+
+
+              }else if (secondProcessDone == 'true') {
+                // first and second form is filled need to fill 3rd form
+                // proceedNext();
+                setTimeout( function(){ proceedNext(); } ,1000);
+                setTimeout( function(){ proceedNext(); } ,2000);
+              }else if (firstProcessDone == 'true') {
+                // 1st from is filled only.
+                setTimeout( function(){ proceedNext(); } ,1000);
+
+              }else {
+                // do nothing
+              }
+            }else {
+              // application is completed and paid so redirect
+              windlow.location('/');
+            }
+            function proceedNext(){
+              current_fs = $('fieldset:visible');
+              next_fs = $('fieldset:visible').next();
+
+              //Add Class Active
+              $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+              //show the next fieldset
+              next_fs.show();
+              //hide the current fieldset with style
+              current_fs.animate({
+                  opacity: 0
+              }, {
+                  step: function(now) {
+                      // for making fielset appear animation
+                      opacity = 1 - now;
+
+                      current_fs.css({
+                          'display': 'none',
+                          'position': 'relative'
+                      });
+                      next_fs.css({
+                          'opacity': opacity
+                      });
+                  },
+                  duration: 500
+              });
+              setProgressBar(++current);
+            }
+
+
+
+
+        });
+    </script>
+{% endblock %}

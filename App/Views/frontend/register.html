@@ -1,0 +1,289 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+<div class="wrap-breadcrumb parallax-breadcrumb">
+    <div class="container"></div>
+</div>
+
+<div id="account-register" class="container">
+    <ul class="breadcrumb">
+        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="/home">Account</a></li>
+        <li><a href="/register.html">Register</a></li>
+    </ul>
+    <div class="row">
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+            <div class="box">
+                <div class="box-heading">Account</div>
+                <div class="list-group">
+
+                    <a href="/login" class="list-group-item">Login </a> <a href="/register_User"
+                        class="list-group-item">Register</a> <a href="/changePassword"
+                        class="list-group-item">Forgotten Password
+                    </a>
+
+                    <a href="/myAccount" class="list-group-item">My Account </a>
+
+                    <a href="/getAddressBook" class="list-group-item">Address Book</a> <a href="/wishlist"
+                        class="list-group-item">Wish List </a> <a href="/orderHistory" class="list-group-item">Order
+                        History </a>
+                    <!-- <a
+                        href="indexe223.html?route=account/download" class="list-group-item">Downloads </a>
+                        <a
+                        href="indexe223.html?route=account/recurring" class="list-group-item">Recurring payments
+                    </a> 
+                    <a href="indexe223.html?route=account/reward" class="list-group-item">Reward Points </a>  -->
+                    <a href="" class="list-group-item">Returns </a> <a
+                        href="" class="list-group-item">Transactions </a>
+                    <!-- <a
+                        href="indexe223.html?route=account/newsletter" class="list-group-item">Newsletter </a> -->
+
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="box-heading">Information</div>
+                <div class="list-group">
+                    <a class="list-group-item" href="/aboutus">About Us </a>
+                    <a class="list-group-item" href="/deliveryInformation">Delivery
+                        Information </a>
+                    <a class="list-group-item" href="/privacyPolicy">Privacy Policy </a>
+                    <a class="list-group-item" href="/termsconditions">Terms &amp;
+                        Conditions </a>
+                    <a class="list-group-item" href="/contact">Contact Us </a>
+                    <!-- <a class="list-group-item" href="siteMap.html">Site Map </a> -->
+                </div>
+            </div>
+        </aside>
+
+        <div id="content" class="col-sm-9">
+            <h1>Register Account</h1>
+            <p>If you already have an account with us, please login at the <a href="/login">login page</a>.</p>
+            <form action="/register__User" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <fieldset id="account">
+                    <legend>Your Personal Details</legend>
+                    <!-- <div class="form-group required" style="display:  none ;">
+                        <label class="col-sm-2 control-label">Customer Group</label>
+                        <div class="col-sm-10">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="customer_group_id" value="1" checked="checked" />
+                                    Default</label>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="firstname" value="" placeholder="First Name" id="input-firstname"
+                                class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="lastname" value="" placeholder="Last Name" id="input-lastname"
+                                class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
+                        <div class="col-sm-10">
+                            <input type="email" name="email" value="" placeholder="E-Mail" id="input-email"
+                                class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-telephone">Telephone</label>
+                        <div class="col-sm-10">
+                            <input type="tel" name="telephone" value="" placeholder="Telephone" id="input-telephone"
+                                class="form-control" />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Your Password</legend>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-password">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="password" value="" placeholder="Password" id="input-password"
+                                class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-confirm">Password Confirm</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="confirm" value="" placeholder="Password Confirm"
+                                id="input-confirm" class="form-control" />
+                        </div>
+                    </div>
+                </fieldset>
+                <!-- <fieldset>
+                    <legend>Newsletter</legend>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Subscribe</label>
+                        <div class="col-sm-10"> <label class="radio-inline">
+                                <input type="radio" name="newsletter" value="1" />
+                                Yes</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="newsletter" value="0" checked="checked" />
+                                No</label>
+                        </div>
+                    </div>
+                </fieldset> -->
+
+                <div class="buttons">
+                    <div class="pull-right">I have read and agree to the <a
+                            href="index11ee.html?route=information/information/agree&amp;information_id=3"
+                            class="agree"><b>Privacy Policy</b></a>
+                        <input type="checkbox" name="agree" value="1" />
+                        &nbsp;
+                        <input type="submit" value="Continue" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block Jscript %}
+
+<!-- ======= Quick view JS ========= -->
+<script>
+
+    function quickbox() {
+        if ($(window).width() > 767) {
+            $('.quickview-button').magnificPopup({
+                type: 'iframe',
+                delegate: 'a',
+                preloader: true,
+                tLoading: 'Loading image #%curr%...',
+            });
+        }
+    }
+    jQuery(document).ready(function () { quickbox(); });
+    jQuery(window).resize(function () { quickbox(); });
+
+</script>
+
+<script type="text/javascript">
+    // Sort the custom fields
+    $('#account .form-group[data-sort]').detach().each(function () {
+        if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('#account .form-group').length) {
+            $('#account .form-group').eq($(this).attr('data-sort')).before(this);
+        }
+
+        if ($(this).attr('data-sort') > $('#account .form-group').length) {
+            $('#account .form-group:last').after(this);
+        }
+
+        if ($(this).attr('data-sort') == $('#account .form-group').length) {
+            $('#account .form-group:last').after(this);
+        }
+
+        if ($(this).attr('data-sort') < -$('#account .form-group').length) {
+            $('#account .form-group:first').before(this);
+        }
+    });
+
+    $('input[name=\'customer_group_id\']').on('change', function () {
+        $.ajax({
+            url: 'index.php?route=account/register/customfield&customer_group_id=' + this.value,
+            dataType: 'json',
+            success: function (json) {
+                $('.custom-field').hide();
+                $('.custom-field').removeClass('required');
+
+                for (i = 0; i < json.length; i++) {
+                    custom_field = json[i];
+
+                    $('#custom-field' + custom_field['custom_field_id']).show();
+
+                    if (custom_field['required']) {
+                        $('#custom-field' + custom_field['custom_field_id']).addClass('required');
+                    }
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    $('input[name=\'customer_group_id\']:checked').trigger('change');
+    //--></script>
+<script type="text/javascript">
+    $('button[id^=\'button-custom-field\']').on('click', function () {
+        var element = this;
+
+        $('#form-upload').remove();
+
+        $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+        $('#form-upload input[name=\'file\']').trigger('click');
+
+        if (typeof timer != 'undefined') {
+            clearInterval(timer);
+        }
+
+        timer = setInterval(function () {
+            if ($('#form-upload input[name=\'file\']').val() != '') {
+                clearInterval(timer);
+
+                $.ajax({
+                    url: 'index.php?route=tool/upload',
+                    type: 'post',
+                    dataType: 'json',
+                    data: new FormData($('#form-upload')[0]),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        $(element).button('loading');
+                    },
+                    complete: function () {
+                        $(element).button('reset');
+                    },
+                    success: function (json) {
+                        $(element).parent().find('.text-danger').remove();
+
+                        if (json['error']) {
+                            $(node).parent().find('input').after('<div class="text-danger">' + json['error'] + '</div>');
+                        }
+
+                        if (json['success']) {
+                            alert(json['success']);
+
+                            $(element).parent().find('input').val(json['code']);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });
+            }
+        }, 500);
+    });
+    //--></script>
+<script type="text/javascript">
+    $('.date').datetimepicker({
+        language: '',
+        pickTime: false
+    });
+
+    $('.time').datetimepicker({
+        language: '',
+        pickDate: false
+    });
+
+    $('.datetime').datetimepicker({
+        language: '',
+        pickDate: true,
+        pickTime: true
+    });
+    //--></script>
+
+{% endblock %}

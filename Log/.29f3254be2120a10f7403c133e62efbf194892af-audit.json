@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "Log\\.29f3254be2120a10f7403c133e62efbf194892af-audit.json",
+    "files": [
+        {
+            "date": 1687946652644,
+            "name": "Log\\alfa-28-06-2023.log",
+            "hash": "db5b17c3107ee77216355b3afa9c4ebd"
+        },
+        {
+            "date": 1688116527548,
+            "name": "Log\\alfa-30-06-2023.log",
+            "hash": "6c5d82d6dfebd378e2b5ec6e2eca4edc"
+        },
+        {
+            "date": 1688356536675,
+            "name": "Log\\alfa-03-07-2023.log",
+            "hash": "73598206eff1099b3ae99f934436b460"
+        }
+    ],
+    "hashType": "md5"
+}

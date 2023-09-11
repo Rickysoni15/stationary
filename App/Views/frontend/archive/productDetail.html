@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "frontend/partitions/head.html" %}
+<body>
+    {% include "frontend/partitions/header.html" %}
+    <main class="product-pg" id="hh">
+        <section class="inner-top-banner-sec">
+            <div class="container">
+                <div class="col-md-12 pl-sm-3 pr-sm-3 pl-0 pr-0">
+                    <div class="head-title-wrp text-center" data-aos="fade-in" data-aos-offset="0">
+                        <h1 class="shadow-title " >Products</h1>
+                        <p class="heading animated" data-aos="zoom-in" data-aos-offset="0">MAKING THE WORLD MORE COLOURFUL</p>
+                    </div>
+                    <div class="mid-sap">
+                        <span class="ract-sp animated fadeIn slower"></span>
+                        <span class="eqlip-sp animated infinite slideDown"  data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="1500" data-aos-offset="0"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="shadeCardTable">
+          <table class="table table-hover">
+
+          <thead>
+
+            {% if category == 'Pigments' %}
+
+
+              {% if isPhthalocyanine == 'true' %}
+              <tr>
+                <th>1%</th>
+                <th>4%</th>
+                <th>Product Name</th>
+                <th>Read More</th>
+              </tr>
+              {% else %}
+              <tr>
+                <th>1%</th>
+                <th>4%</th>
+                <th>Product Name</th>
+                <th colspan="4">Fastness Properties</th>
+                <th colspan="2">Light Fastness</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Water</th>
+                <th>Xylene</th>
+                <th>Oil</th>
+                <th>Acid</th>
+                <th>Full Shade</th>
+                <th>Tint Shade</th>
+              </tr>
+              {% endif %}
+
+
+            {% elif category == 'Dyes' %}
+
+
+              {% if isPhthalocyanine == 'true' %}
+                <tr>
+                  <th>1%</th>
+                  <th>4%</th>
+                  <th>Product Name</th>
+                  <th>Read More</th>
+                </tr>
+              {% else %}
+              <tr>
+                <th>1%</th>
+                <th>4%</th>
+                <th>Product Name</th>
+                <th colspan="4">Fastness Properties</th>
+                <th>Solubility at 30C</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Light</th>
+                <th>Washing</th>
+                <th>Rubbing</th>
+                <th>Prespiration</th>
+                <th></th>
+              </tr>
+              {% endif %}
+
+
+            {% else %}
+              <tr>
+                  <th>Product Name</th>
+                  <th>Read More</th>
+                </tr>
+            {% endif %}
+
+
+
+          </thead>
+          <tbody>
+          {% if category == 'Pigments' %}
+
+
+              {% if isPhthalocyanine == 'true' %}
+                {% for shade in shadeData %}
+                  <tr>
+                    <td> <img src="{{ shade.onePercent }}" alt=""> </td>
+                    <td> <img src="{{ shade.fourPercent }}" alt=""> </td>
+                    <td>{{ shade.name }}</td>
+                    <td> <button class="btn btn-info shadeReadMoreData" type="button" name="button" data-toggle="modal" shadeHeading="{{ shade.name }}" shadeChemImg="{{shade.chemComp}}" shadeId="{{shade._id}}" shadetech="{{shade.techData}}" data-target="#readMoreModal">Read More</button> </td>
+                  </tr>
+                {% endfor %}
+              {% else %}
+                {% for shade in shadeData %}
+                  <tr>
+                    <td><img src="{{ shade.onePercent }}" alt=""></td>
+                    <td><img src="{{ shade.fourPercent }}" alt=""></td>
+                    <td>{{shade.name }}</td>
+                    <td>{{shade.water}}</td>
+                    <td>{{shade.xylene}}</td>
+                    <td>{{shade.oil}}</td>
+                    <td>{{shade.acid}}</td>
+                    <td>{{shade.fullShade}}</td>
+                    <td>{{shade.tintShade}}</td>
+                  </tr>
+                {% endfor %}
+              {% endif %}
+
+
+            {% elif category == 'Dyes' %}
+
+              {% if isPhthalocyanine == 'true' %}
+                {% for shade in shadeData %}
+                  <tr>
+                    <td> <img src="{{ shade.onePercent }}" alt=""> </td>
+                    <td> <img src="{{ shade.fourPercent }}" alt=""> </td>
+                    <td>{{ shade.name }}</td>
+                    <td> <button class="btn btn-info shadeReadMoreData" type="button" name="button" data-toggle="modal" shadeHeading="{{ shade.name }}" shadeChemImg="{{shade.chemComp}}" shadeId="{{shade._id}}" shadetech="{{shade.techData}}" data-target="#readMoreModal">Read More</button> </td>
+                  </tr>
+                {% endfor %}
+              {% else %}
+                {% for shade in shadeData %}
+                  <tr>
+                    <td><img src="{{ shade.onePercent }}" alt=""></td>
+                    <td><img src="{{ shade.fourPercent }}" alt=""></td>
+                    <td>{{shade.name }}</td>
+                    <td>{{shade.light}}</td>
+                    <td>{{shade.washing}}</td>
+                    <td>{{shade.rubbing}}</td>
+                    <td>{{shade.perspiration}}</td>
+                    <td>{{shade.solubility}}</td>
+                  </tr>
+                {% endfor %}
+              {% endif %}
+
+            {% else %}
+              {% for shade in shadeData %}
+                <tr>
+                  <td>{{shade.name }}</td>
+                  <td> <button class="btn btn-info shadeReadMoreData" type="button" name="button" data-toggle="modal" shadeHeading="{{ shade.name }}" shadeChemImg="{{shade.chemComp}}" shadeId="{{shade._id}}" shadetech="{{shade.techData}}" data-target="#readMoreModal">Read More</button> </td>
+                </tr>
+              {% endfor %}
+
+            {% endif %}
+
+
+          </tbody>
+          </table>
+        </div>
+      {% if isPhthalocyanine == 'true' %}
+      {% else %}
+        {% if category != 'Intermediates' %}
+          <button type="button" class="btn btn-primary downloadShaderCard"  > <i class="fa fa-file-pdf-o"></i> Download PDF</button>
+        {% endif %}
+      {% endif %}
+
+
+
+    </main>
+    <!-- Modal -->
+    <div class="modal fade" id="readMoreModal" tabindex="-1" role="dialog" aria-labelledby="readMoreModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="readMoreModalLabel">Technical Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="techDataDetails">
+              <h3 class="shadeHeading"></h3>
+              <img src="" class="shadeChemImg" alt="">
+              <input type="hidden" name="" class="shadeId" value="">
+              <p class="shadetech"></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary downloadReadmore" > <i class="fa fa-file-pdf-o"></i> Download PDF</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    {% include "frontend/partitions/footer.html" %}
+
+    <script src="/front/js/html2pdf.bundle.min.js"></script>
+    <script>
+         $(document).ready(function() {
+          AOS.init({
+            // startEvent: 'load',
+            offset: 250,
+            duration: 1000,
+            easing: 'ease-in-sine',
+            delay: 50,
+            disableMutationObserver: true,
+            throttleDelay: 0,
+            debounceDelay: 0,
+            once: false,
+            mirror: true,
+            startEvent: 'DOMContentLoaded'
+            });
+
+          $('.shadeReadMoreData').click(function(){
+            let shadeHeading = $(this).attr('shadeHeading')
+            let shadeChemImg  = $(this).attr('shadeChemImg')
+            let shadeId = $(this).attr('shadeId')
+            let shadetech = $(this).attr('shadetech')
+
+            $('.shadeHeading').html(shadeHeading);
+            $('.shadeChemImg').attr('src', shadeChemImg);
+            $('.shadeId').val(shadeId);
+            $('.shadetech').html(shadetech);
+          });
+
+          $('.downloadReadmore').click(function(){
+            // Choose the element that our invoice is rendered in.
+            const element = document.getElementById("techDataDetails");
+            // Choose the element and save the PDF for our user.
+            html2pdf()
+              .from(element)
+              .save();
+          });
+
+
+          $('.downloadShaderCard').click(function(){
+            alert();
+            // Choose the element that our invoice is rendered in.
+            const element = document.getElementById("shadeCardTable");
+            // Choose the element and save the PDF for our user.
+            html2pdf()
+              .from(element)
+              .save();
+          });
+
+
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,625 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Excel Data</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>
+            <thead>
+                
+                <tr style="background-color: #eaeaea; text-align: center;">
+                    
+                    <th>School logo</th>
+                    
+                    
+                    <th>School Name</th>
+                    
+                    
+                    <th>Medium</th>
+                    
+                    
+                    <th>School Address1</th>
+                    
+                    
+                    <th>School Address2</th>
+                    
+                    
+                    <th>Phone</th>
+                    
+                    
+                    <th>Candidate Pic</th>
+                    
+                    
+                    <th>First Name</th>
+                    
+                    
+                    <th>Last Name</th>
+                    
+                    
+                    <th>Father Name</th>
+                    
+                    
+                    <th>Address1</th>
+                    
+                    
+                    <th>Address2</th>
+                    
+                    
+                    <th>Address3</th>
+                    
+                    
+                    <th>Mobile</th>
+                    
+                    
+                    <th>Birthday</th>
+                    
+                    
+                    <th>Standard</th>
+                    
+                    
+                    <th>Academic Year</th>
+                    
+                    
+                    <th>School Address</th>
+                    
+                    
+                    <th>Full Name</th>
+                    
+                    
+                    <th>Mobile_label</th>
+                    
+                    
+                    <th>Gr_label</th>
+                    
+                    
+                    <th>Birthday_label</th>
+                    
+                    
+                    <th>address1_label</th>
+                    
+                    
+                    <th>GR Number</th>
+                    
+                    
+                    <th>Phone2</th>
+                    
+                    
+                    <th>Mobile2</th>
+                    
+                    
+                    <th>Managed</th>
+                    
+                    
+                    <th>Ph label</th>
+                    
+                    
+                    <th>Mobile3</th>
+                    
+                    
+                    <th>Std_label</th>
+                    
+                    
+                    <th>Data Conformation Link</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                
+                    
+                 
+                 <tr> 
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">/cardElements/uploads/logo1.png</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Little Krishna</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">English Medium</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Fortune Industrial Park. Opp. Gajanand Resi.,</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Singarva-Kathwada Road, A'bad. </td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">2345678909</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">/cardElements/uploads/6d97b44819e979c496.png</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Yesha</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Thakkar</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Harishbhai</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">575,Bavaji Nu Dahelu,Holi Chakla,Gomtinagar Gam,Ahmedabad-21.</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">1234567890</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">22-10-1995</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">10th C</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">2015-2016</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">PHONE:	</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">BIRTHDAY:	</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center"> ADDRESS:	</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                      
+                              <td class="text-center"> - </td>
+                        
+                 </tr>   
+                    
+                 <tr> 
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">/cardElements/uploads/logo2.png</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">NEW AKSHAR VIDHYALAY</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">/cardElements/uploads/2aaca378210beae1b2.png</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">575,Bavaji Nu Dahelu,Holi Chakla,Gomtinagar Gam,Ahmedabad-21.</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">1234567890</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">22-10-1999</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">10th A</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">2015-2016</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Pramukh nagar, R.C. technical college road, Near Haveli Hall,ghatlodia, A'bad - 61. Ph.: 27663794</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Patel Darshna Hasmukhbhai</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Ph.No.:</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Gr.No.: </td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">D.O.B.:</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Add.: </td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">G-004</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">0987654321</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                          
+                              <td>http://localhost:4014/icard-varification-link/61a07e54b19faf143b7c630a/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5OWQ4YWU4OTVjYTI5NjY5MyIsImlhdCI6MTYzNzkyNjE5NCwiZXhwIjoxNjM4MDEyNTk0fQ.4xvl2uSa_T9bCYgDuj0lqo5MrTbkCWTKgUZ2sptox6w</td> 
+                              
+                 </tr>   
+                    
+                 <tr> 
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">/cardElements/uploads/logo2.png</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">NEW AKSHAR VIDHYALAY</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">/cardElements/uploads/b18d97f917c90a688c.png</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">B-6,Chanchalba Apart.,Bhaduatnagar,Ghodasar,Ahmedabad.</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">1234567890</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">22-10-1996</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Nursery</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">2018-2019</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Pramukh nagar, R.C. technical college road, Near Haveli Hall,ghatlodia, A'bad - 61. Ph.: 27663794</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Patel Darshn Hasmukhbhai</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Ph.No.:</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Gr.No.: </td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">D.O.B.:</td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">Add.: </td> 
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">G-001</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                        <!--<img src="/cardElements/uploads/logo.png" alt="" border="3" height="100" width="100;"> -->
+                            <td class="text-center">0987654321</td> 
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                        
+                            <td class="text-center"> - </td>
+                        
+                        
+                      
+                          
+                              <td>http://localhost:4014/icard-varification-link/61a07e54b19faf143b7c630a/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFlYmQ4NGVhOTlkYWU4MmY5YSIsImlhdCI6MTYzNzkyNjE5NCwiZXhwIjoxNjM4MDEyNTk0fQ.WviS4Uu1jnMK5nTH0399KL273eYNCQYSAh9VRE2ffPU</td> 
+                              
+                 </tr>   
+                    
+                  
+                
+            </tbody>
+        </table></body></html>

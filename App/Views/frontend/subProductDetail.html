@@ -1,0 +1,537 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+<div class="wrap-breadcrumb parallax-breadcrumb">
+    <div class="container"></div>
+</div>
+
+
+<div id="product-category" class="container">
+    <!-- <ul class="breadcrumb">
+        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="statioery.html">Stationery</a></li>
+    </ul> -->
+    <div class="row">
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+            <div class="box">
+                <div class="box-heading">Categories</div>
+                <div class="box-content">
+                    <ul class="box-category treeview-list treeview">
+                        <li>
+                            <a href="/products" class="active">Stationery
+                            </a>
+
+                            <a href='/products/{{item._id}}'>{{mainProductCategoryName}}</a>
+
+
+                            </a>
+
+                            <ul>
+                                {{mainProductCategory[0].productCategoryName}}
+                            </ul>
+
+
+                            <!-- {% for item in productCategory %}
+
+                            <ul>
+                                <li>
+                                    <a href='/products/{{item._id}}'>{{item.productCategoryName}}</a>
+
+                                </li>
+                                
+                            </ul>
+                            {% else %}
+                        <li>This would display if the 'item' collection were empty</li>
+                        {% endfor %} -->
+                        </li>
+                        <!-- <li>
+                            <a href="/envelops.html">Envelopes</a>
+                        </li>
+                        <li>
+                            <a href="notbooks.html">Note Books</a>
+                        </li>
+                        <li>
+                            <a href="indexb152.html?route=product/category&amp;path=17">Ruler</a>
+                        </li>
+                        <li>
+                            <a href="/viewallproduct.html">Clipboard</a>
+                        </li>
+                        <li>
+                            <a href="indexc957.html?route=product/category&amp;path=24">Scissors</a>
+                        </li>
+                        <li>
+                            <a href="index68ea.html?route=product/category&amp;path=33">Geometry Box</a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box sidebarFilter">
+                <div class="box-heading">Refine Search</div>
+                <div class="filterbox">
+                    <div class="list-group-filter">
+
+                        <a class="list-group-item group-name">Color</a>
+                        <div class="list-group-item">
+                            <div id="filter-group1">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="filter[]" value="4" />
+                                        Green
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="filter[]" value="2" />
+                                        Red
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="filter[]" value="3" />
+                                        Yellow
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="filter[]" value="1" />
+                                        Blue
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a class="list-group-item group-name">Size</a>
+                        <div class="list-group-item">
+                            <div id="filter-group2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="filter[]" value="5" />
+                                        Small
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="filter[]" value="6" />
+                                        Medium
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="filter[]" value="7" />
+                                        Large
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a class="list-group-item group-name">Weight</a>
+                        <div class="list-group-item">
+                            <div id="filter-group3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="filter[]" value="9" />
+                                        5
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="filter[]" value="10" />
+                                        10
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="filter[]" value="11" />
+                                        15
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer text-right">
+                        <button type="button" id="button-filter" class="btn btn-primary">Refine Search</button>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $('#button-filter').on('click', function () {
+                    filter = [];
+
+                    $('input[name^=\'filter\']:checked').each(function (element) {
+                        filter.push(this.value);
+                    });
+
+                    location = 'indexfd9e.html?route=product/category&amp;path=20&amp;filter=' + filter.join(',');
+                });
+//--></script>
+
+            <div class="swiper-viewport">
+                <div id="banner0" class="swiper-container  single-banner ">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><a href="#"><img src="images/slider/left-banner-1.jpg"
+                                    alt="Left banner" class="img-responsive" /></a></div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $('#banner0').swiper({
+                    effect: 'fade',
+                    autoplay: 2500,
+                    pagination: '.swiper-pagination',  // If we need pagination
+                    autoplayDisableOnInteraction: false
+                });
+            </script>
+
+            <span class="latest_default_width" style="display:none; visibility:hidden"></span>
+
+        </aside>
+
+        <div id="content" class="col-sm-9">
+            <h3 class="page-title">Stationery</h3>
+            <div class="row category_thumb">
+                <!-- <div class="col-sm-2 category_img"><img src="images/slider/category-banner.jpg" alt="Stationery" title="Stationery" class="img-thumbnail" /></div> -->
+                <!-- <div class="col-sm-10 category_description">
+                        <p>
+                            Example of category description text</p>
+                    </div> -->
+            </div>
+            <!-- <h3 class="refine-search">Refine Search</h3>
+                <div class="row">
+                    <div class="col-sm-12 category_list">
+                        <ul>
+                            <li><a href="pens.html">Pens</a></li>
+                            <li><a href="files.html">Files</a></li>
+                            <li><a href="/accessories.html">Accessories</a></li>
+                        </ul>
+                    </div>
+                </div> -->
+
+            <div class="category_filter">
+                <div class="col-md-4 btn-list-grid">
+                    <div class="btn-group">
+                        <button type="button" id="grid-view" class="btn btn-default grid" data-toggle="tooltip"
+                            title="Grid"><i class="fa fa-th"></i></button>
+                        <button type="button" id="list-view" class="btn btn-default list" data-toggle="tooltip"
+                            title="List"><i class="fa fa-th-list"></i></button>
+                    </div>
+                </div>
+                <!-- <div class="compare-total"><a href="index6431.html?route=product/compare" id="compare-total">
+                            Product Compare (0)</a></div> -->
+                <div class="pagination-right">
+                    <div class="sort-by-wrapper">
+                        <div class="col-md-2 text-right sort-by">
+                            <label class="control-label" for="input-sort">Sort By:</label>
+                        </div>
+                        <div class="col-md-3 text-right sort">
+                            <select id="input-sort" class="form-control" onchange="location = this.value;">
+
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;sort=p.sort_order&amp;order=ASC "
+                                    selected="selected">Default</option>
+
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;sort=pd.name&amp;order=ASC ">
+                                    Name (A - Z) </option>
+
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;sort=pd.name&amp;order=DESC ">
+                                    Name (Z - A) </option>
+
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;sort=p.price&amp;order=ASC ">
+                                    Price (Low &gt; High) </option>
+
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;sort=p.price&amp;order=DESC ">
+                                    Price (High &gt; Low) </option>
+
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;sort=rating&amp;order=DESC ">
+                                    Rating (Highest) </option>
+
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;sort=rating&amp;order=ASC ">
+                                    Rating (Lowest) </option>
+
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;sort=p.model&amp;order=ASC ">
+                                    Model (A - Z) </option>
+
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;sort=p.model&amp;order=DESC ">
+                                    Model (Z - A) </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="show-wrapper">
+                        <div class="col-md-1 text-right show">
+                            <label class="control-label" for="input-limit">Show:</label>
+                        </div>
+                        <div class="col-md-2 text-right limit">
+                            <select id="input-limit" class="form-control" onchange="location = this.value;">
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;limit=9 "
+                                    selected="selected">9</option>
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;limit=25 ">
+                                    25 </option>
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;limit=50 ">
+                                    50 </option>
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;limit=75 ">
+                                    75 </option>
+                                <option
+                                    value="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=20&amp;limit=100 ">
+                                    100 </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row cat_prod">
+                {% for item in productDetail %}
+                <div class="product-layout product-list col-xs-12">
+                    <div class="product-block product-thumb">
+                        <div class="product-block-inner">
+                            <div class="image">
+                                <a href="">
+                                    <img src="{{item.imageSrc}}" title="{{item.product_name}}"
+                                        alt="{{item.product_name}}" class="img-responsive reg-image"
+                                        style="width: 280px; height: 202px;" />
+                                    <!-- <img class="img-responsive hover-image" 
+                                            title="{{item.product_name}}" alt="{{item.product_name}}" /> -->
+                                </a>
+
+                                <div class="button-group">
+                                    <div class="top-btn">
+                                        <button type="button" class="wishlist" action="add" data-toggle="tooltip"
+                                            productId={{item._id}} title="Add to Wish List"
+                                            onclick="wishlist.add('47');"><i class="fa fa-heart"></i></button>
+                                        <div class="quickview-button" data-toggle="tooltip" title="Quick view"> <a
+                                                class="quickbox"
+                                                href={{item.imageSrc}}>
+                                                <i class="fa fa-eye" aria-hidden="true"></i></a></div>
+                                        <button type="button" class="compare" data-toggle="tooltip"
+                                            title="Add to Compare" onclick="compare.add('47');"><i
+                                                class="fa fa-exchange"></i></button>
+                                        <button type="button" class="addtocart btn btn-primary" data-toggle="tooltip"  productId={{item._id}}
+                                            title="Add to Cart" onclick="cart.add('47', '1 ');"><span>Add to
+                                                Cart</span></button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="product-details">
+                                <div class="caption">
+                                    <h4><a
+                                            href="">{{item.product_name}}</a>
+                                    </h4>
+
+                                    <!-- <p class="price">
+                                        Rs {{item.product_price}} 
+                                        <span class="price-tax">Ex Tax: Rs {{item.taxValue}}</span>
+                                    </p> -->
+
+                                    <p class="price">
+                                       &#8377;&nbsp; {{item.product_price}}
+                                        <span class="price-tax">Ex Tax:  &#8377;&nbsp; {{item.taxValue}} </span>
+                                    </p>
+
+                                    <p class="desc">{{item.product_description}}</p>
+                                    <div class="button-group">
+                                        <div class="top-btn">
+                                            <button type="button" class="wishlist" action="add" data-toggle="tooltip"
+                                            productId={{item._id}} title="Add to Wish List"
+                                            onclick="wishlist.add('47');"><i class="fa fa-heart"></i></button>
+
+                                            <div class="quickview-button" data-toggle="tooltip" title="Quick view">
+                                                <a class="quickbox"
+                                                    href={{item.imageSrc}}>
+                                                    <i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            </div>
+
+                                            <button type="button" class="addtocart btn btn-primary"
+                                                data-toggle="tooltip"  productId={{item._id}} title="Add to Cart"
+                                                onclick="cart.add('47', '1 ');"><span>Add to Cart</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <li>This would display if the 'item' collection were empty</li>
+                {% endfor %}
+            </div>
+
+            <div class="pagination-wrapper">
+                <div class="col-sm-6 text-left page-link">
+                    <ul class="pagination">
+                        <li class="active"><span>1</span></li>
+                        <li><a href="/secondpage.html">2</a></li>
+                        <li><a href="/secondpage.html">&gt;</a></li>
+                        <li><a href="/secondpage.html">&gt;|</a></li>
+                    </ul>
+                </div>
+                <!-- <div class="col-sm-6 text-right page-result">showing 1 to {{productCount}} product</div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block Jscript %}
+<!-- ======= Quick view JS ========= -->
+<script>
+
+    $('body').on('click', '.wishlist', function () {
+        let action = $(this).attr('action');
+        // let content = 'Are you really want to add this product into wishlist?';
+        // if (action == 'remove') {
+        //     content = 'Are you really want to remove this product from wishlist?';
+        // }
+        // if (confirm(content)) {
+            // alert('Thanks for confirming');
+            let host = window.location.origin;
+            //  alert(host)
+            let productId = $(this).attr('productId');
+            alert(productId)
+            // alert(action),
+
+                $.ajax({
+                    url: host + '/wishlist_call',
+                    type: 'POST',
+                    data: { action: action, productId: productId },  // data to submit
+                    success: function (status) {
+                        console.log('===>', status);
+                        //   alert('Product added to wishlist successfully');
+                        location.reload();
+                    }
+                    , error: function (jqXhr, textStatus, errorMessage) {
+                        $('p').append('Error' + errorMessage);
+                    }
+                });
+        // }
+
+    });
+
+    $(document).ready(function () {
+        // var host = 'https://example.com'; // Replace with your API host
+        var host = "http://localhost:4002"
+        // AJAX request to fetch data from the API
+        // $.ajax({
+        //     url: host + '/getProducts',
+        //     method: 'GET',
+        //     dataType: 'json',
+        //     success: function (data) {
+        //         $.each(data, function (index, product) {
+        //             // alert(data)
+        //             console.log(product)
+        //             // Update the elements with dynamic data
+        //             // $('#product-link').attr('href', product.link);
+        //             $('#product-image').attr('src', product.imageSrc);
+        //             $('#product-name').text(product.product_name);
+        //             $('#product-price').text(product.discount_price);
+        //             $('#product-description').text(product.product_description);
+        //         });
+        //     },
+        //     error: function (xhr, status, error) {
+        //         console.error('Error fetching data:', error);
+        //     }
+        // });
+    });
+
+    $('body').on('click', '.addtocart', function () {
+        let action = $(this).attr('action');
+        // let content = 'Are you really want to add this product into wishlist?';
+        // if (action == 'remove') {
+        //     content = 'Are you really want to remove this product from wishlist?';
+        // }
+        // if (confirm(content)) {
+            // alert('Thanks for confirming');
+            let host = window.location.origin;
+            //  alert(host)
+            let productId = $(this).attr('productId');
+            alert(productId)
+            // alert(action),
+
+                $.ajax({
+                    url: host + '/addtocart_call',
+                    type: 'POST',
+                    data: { action: action, productId: productId },  // data to submit
+                    success: function (status) {
+                        console.log('===>', status);
+                        //   alert('Product added to wishlist successfully');
+                        location.reload();
+                    }
+                    , error: function (jqXhr, textStatus, errorMessage) {
+                        $('p').append('Error' + errorMessage);
+                    }
+                });
+        // }
+
+    });
+
+    function quickbox() {
+        if ($(window).width() > 767) {
+            $('.quickview-button').magnificPopup({
+                type: 'image',
+                delegate: 'a',
+                preloader: true,
+                tLoading: 'Loading image #%curr%...',
+            });
+        }
+    }
+    jQuery(document).ready(function () { quickbox(); });
+    jQuery(window).resize(function () { quickbox(); });
+
+</script>
+
+<script>
+    function subscribe() {
+        var emailpattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var email = $('#txtemail').val();
+        if (email != "") {
+            if (!emailpattern.test(email)) {
+                $('.text-danger').remove();
+                var str = '<span class="error">Invalid Email</span>';
+                $('#txtemail').after('<div class="text-danger">Invalid Email</div>');
+
+                return false;
+            }
+            else {
+                $.ajax({
+                    url: 'index.php?route=extension/module/newsletters/news',
+                    type: 'post',
+                    data: 'email=' + $('#txtemail').val(),
+                    dataType: 'json',
+
+
+                    success: function (json) {
+
+                        $('.text-danger').remove();
+                        $('#txtemail').after('<div class="text-danger">' + json.message + '</div>');
+
+                    }
+
+                });
+                return false;
+            }
+        }
+        else {
+            $('.text-danger').remove();
+            $('#txtemail').after('<div class="text-danger">Email Is Require</div>');
+            $(email).focus();
+
+            return false;
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,361 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+<div class="wrap-breadcrumb parallax-breadcrumb">
+	<div class="container">
+		<ul class="breadcrumb">
+			<li><a href="/home"> <i
+						class="fa fa-home"></i></a></li>
+			<li><a href="/myAccount">
+					Account</a></li>
+			<li><a href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=account/return/add"> Product
+					Returns</a></li>
+		</ul>
+	</div>
+</div>
+
+<div id="account-return" class="container">
+
+	<div class="row">
+
+		<aside id="column-left" class="col-sm-3 hidden-xs">
+			<div class="box">
+				<div class="box-heading">Account</div>
+				<div class="list-group">
+
+					<a href="/myAccount"
+						class="list-group-item">My Account </a>
+
+					<a href="/getAccountInformation"
+						class="list-group-item">Edit Account</a> <a
+						href="/changePassword"
+						class="list-group-item">Password</a>
+
+					<a href="/getAddressBook"
+						class="list-group-item">Address Book</a> <a
+						href="/wishlist"
+						class="list-group-item">Wish List </a> 
+						<a
+						href="/orderHistory"
+						class="list-group-item">Order History </a>  
+						 <a
+						href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=account/return"
+						class="list-group-item">Returns </a> 
+						<a
+						href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=account/transaction"
+						class="list-group-item">Transactions </a> 
+
+					<a href="/frontend/logout"
+						class="list-group-item">Logout </a>
+
+				</div>
+			</div>
+
+			<div class="box">
+				<div class="box-heading">Information</div>
+				<div class="list-group">
+					<a class="list-group-item" href="/aboutus">About Us </a>
+					<a class="list-group-item" href="/deliveryInformation">Delivery
+						Information </a>
+					<a class="list-group-item" href="/privacyPolicy">Privacy Policy </a>
+					<a class="list-group-item" href="/termsconditions">Terms &amp;
+						Conditions </a>
+					<a class="list-group-item" href="/contact">Contact Us </a>
+					<!-- <a class="list-group-item" href="siteMap.html">Site Map </a> -->
+				</div>
+			</div>
+		</aside>
+		
+		<div id="content" class="col-sm-9">
+			<h1>Product Returns</h1>
+			<p>Please complete the form below to request an RMA number.</p>
+			<form action="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=account/return/add"
+				method="post" enctype="multipart/form-data" class="form-horizontal">
+				<fieldset>
+					<legend>Order Information</legend>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-firstname">First Name</label>
+						<div class="col-sm-10">
+							<input type="text" name="firstname" value="Kevin" placeholder="First Name"
+								id="input-firstname" class="form-control">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
+						<div class="col-sm-10">
+							<input type="text" name="lastname" value="Kotadiya" placeholder="Last Name"
+								id="input-lastname" class="form-control">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-email">E-Mail</label>
+						<div class="col-sm-10">
+							<input type="text" name="email" value="kevin@gmail.com" placeholder="E-Mail"
+								id="input-email" class="form-control">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-telephone">Telephone</label>
+						<div class="col-sm-10">
+							<input type="text" name="telephone" value="9812345678" placeholder="Telephone"
+								id="input-telephone" class="form-control">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-order-id">Order ID</label>
+						<div class="col-sm-10">
+							<input type="text" name="order_id" value="38" placeholder="Order ID" id="input-order-id"
+								class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-date-ordered">Order Date</label>
+						<div class="col-sm-3">
+							<div class="input-group date">
+								<input type="text" name="date_ordered" value="2023-09-06" placeholder="Order Date"
+									data-date-format="YYYY-MM-DD" id="input-date-ordered" class="form-control">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default"><i
+											class="fa fa-calendar"></i></button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Product Information</legend>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-product">Product Name</label>
+						<div class="col-sm-10">
+							<input type="text" name="product" value="Accusantium Doloremque" placeholder="Product Name"
+								id="input-product" class="form-control">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-model">Product Code</label>
+						<div class="col-sm-10">
+							<input type="text" name="model" value="Product 21" placeholder="Product Code"
+								id="input-model" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-quantity">Quantity</label>
+						<div class="col-sm-10">
+							<input type="text" name="quantity" value="1" placeholder="Quantity" id="input-quantity"
+								class="form-control">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label">Reason for Return</label>
+						<div class="col-sm-10">
+							<div class="radio">
+								<label>
+									<input type="radio" name="return_reason_id" value="1">
+									Dead On Arrival</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="return_reason_id" value="4">
+									Faulty, please supply details</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="return_reason_id" value="3">
+									Order Error</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="return_reason_id" value="5">
+									Other, please supply details</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="return_reason_id" value="2">
+									Received Wrong Item</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label">Product is opened</label>
+						<div class="col-sm-10">
+							<label class="radio-inline"> <input type="radio" name="opened" value="1">
+								Yes</label>
+							<label class="radio-inline"> <input type="radio" name="opened" value="0" checked="checked">
+								No</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-comment">Faulty or other details</label>
+						<div class="col-sm-10">
+							<textarea name="comment" rows="10" placeholder="Faulty or other details" id="input-comment"
+								class="form-control"></textarea>
+						</div>
+					</div>
+
+				</fieldset>
+				<div class="buttons clearfix">
+					<div class="pull-left"><a
+							href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=account/account"
+							class="btn btn-default">Back</a></div>
+					<div class="pull-right">
+						<input type="submit" value="Submit" class="btn btn-primary">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+
+<!-- ======= Quick view JS ========= -->
+<script>
+
+	function quickbox() {
+		if ($(window).width() > 767) {
+			$('.quickview-button').magnificPopup({
+				type: 'iframe',
+				delegate: 'a',
+				preloader: true,
+				tLoading: 'Loading image #%curr%...',
+			});
+		}
+	}
+	jQuery(document).ready(function () { quickbox(); });
+	jQuery(window).resize(function () { quickbox(); });
+
+</script>
+
+<script type="text/javascript">
+$('.date').datetimepicker({
+language: '',
+pickTime: false
+});
+//--></script>
+<div class="bootstrap-datetimepicker-widget dropdown-menu">
+	<div class="datepicker">
+		<div class="datepicker-days" style="display: block;">
+			<table class="table-condensed">
+				<thead>
+					<tr>
+						<th class="prev">‹</th>
+						<th colspan="5" class="picker-switch">September 2023</th>
+						<th class="next">›</th>
+					</tr>
+					<tr>
+						<th class="dow">Su</th>
+						<th class="dow">Mo</th>
+						<th class="dow">Tu</th>
+						<th class="dow">We</th>
+						<th class="dow">Th</th>
+						<th class="dow">Fr</th>
+						<th class="dow">Sa</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="day old">27</td>
+						<td class="day old">28</td>
+						<td class="day old">29</td>
+						<td class="day old">30</td>
+						<td class="day old">31</td>
+						<td class="day">1</td>
+						<td class="day">2</td>
+					</tr>
+					<tr>
+						<td class="day">3</td>
+						<td class="day">4</td>
+						<td class="day">5</td>
+						<td class="day active today">6</td>
+						<td class="day">7</td>
+						<td class="day">8</td>
+						<td class="day">9</td>
+					</tr>
+					<tr>
+						<td class="day">10</td>
+						<td class="day">11</td>
+						<td class="day">12</td>
+						<td class="day">13</td>
+						<td class="day">14</td>
+						<td class="day">15</td>
+						<td class="day">16</td>
+					</tr>
+					<tr>
+						<td class="day">17</td>
+						<td class="day">18</td>
+						<td class="day">19</td>
+						<td class="day">20</td>
+						<td class="day">21</td>
+						<td class="day">22</td>
+						<td class="day">23</td>
+					</tr>
+					<tr>
+						<td class="day">24</td>
+						<td class="day">25</td>
+						<td class="day">26</td>
+						<td class="day">27</td>
+						<td class="day">28</td>
+						<td class="day">29</td>
+						<td class="day">30</td>
+					</tr>
+					<tr>
+						<td class="day new">1</td>
+						<td class="day new">2</td>
+						<td class="day new">3</td>
+						<td class="day new">4</td>
+						<td class="day new">5</td>
+						<td class="day new">6</td>
+						<td class="day new">7</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="datepicker-months" style="display: none;">
+			<table class="table-condensed">
+				<thead>
+					<tr>
+						<th class="prev">‹</th>
+						<th colspan="5" class="picker-switch">2023</th>
+						<th class="next">›</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="7"><span class="month">Jan</span><span class="month">Feb</span><span
+								class="month">Mar</span><span class="month">Apr</span><span
+								class="month">May</span><span class="month">Jun</span><span
+								class="month">Jul</span><span class="month">Aug</span><span
+								class="month active">Sep</span><span class="month">Oct</span><span
+								class="month">Nov</span><span class="month">Dec</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="datepicker-years" style="display: none;">
+			<table class="table-condensed">
+				<thead>
+					<tr>
+						<th class="prev">‹</th>
+						<th colspan="5" class="picker-switch">2020-2029</th>
+						<th class="next">›</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="7"><span class="year old">2019</span><span class="year">2020</span><span
+								class="year">2021</span><span class="year">2022</span><span
+								class="year active">2023</span><span class="year">2024</span><span
+								class="year">2025</span><span class="year">2026</span><span
+								class="year">2027</span><span class="year">2028</span><span
+								class="year">2029</span><span class="year old">2030</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

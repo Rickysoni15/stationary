@@ -1,0 +1,524 @@
+<!-- {% extends "backend/partition/layout.html" %}
+
+
+{% block body %} -->
+
+
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+
+
+        <section class="content-header">
+            <h1>Region</h1>
+
+            <ol class="breadcrumb">
+                <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <!-- <li><a href="/listRegion">Categories</a></li> -->
+                <li class="active">Region</li>
+            </ol>
+
+        </section>
+
+        {% include "backend/partition/notification.html" %}
+
+        <section class="content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default card-view">
+                        <div class="panel-heading">
+                            <div class="pull-left">
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body ">
+                                <div class="table-wrap">
+                                    <div class="table-responsive">
+                                        {% if region %}
+                                        <form method="POST" action="/backend/regionEdit/{{region._id}}"
+                                            class="form-horizontal" enctype="multipart/form-data">
+                                            {% else %}
+                                            <form method="POST" action="/backend/addRegion" class="form-horizontal"
+                                                enctype="multipart/form-data">
+                                                {% endif %}
+                                                <!-- <table border="0" class="table display  pb-30"> -->
+                                                {% if region %}
+
+                                                <div class="col-sm-12">
+                                                    <div class="panel-wrapper collapse in">
+                                                        <div class="panel-body">
+                                                            <div class="form-group">
+                                                                <label class="control-label mb-10 col-sm-2"
+                                                                    for="regionName">Region Name:</label>
+                                                                <div class="col-sm-6">
+                                                                    <input required type="text" class="form-control"
+                                                                        name="regionName" id="regionName"
+                                                                        value="{{region.regionName}}" />
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- <div class="form-group">
+                                                                <label class="control-label mb-10 col-sm-2" for="profiletype"
+                                                                    id="profiletype">Profle Type</label>
+                                                                    <div class="col-sm-6">
+                                                                        <input required type="text" class="form-control"
+                                                                            name="profiletype" id="profiletype"
+                                                                            value="{{region.profiletype}}" />
+                                                                    </div>
+                                                                    </div> -->
+
+
+                                                            {% for rdata in regionData %}
+
+                                                            {% if (rdata.address.length > 0) %}
+
+                                                            <div class="" style="float: right;"><button
+                                                                    class="btn btn-primary" type="button"
+                                                                    onclick="addAddress();">Add Address</button> </div>
+
+                                                            {% for address in rdata.address %}
+                                                            <div class="form-group">
+
+                                                                <label class="control-label mb-10 col-sm-2"
+                                                                    for="address" id="address">Address:</label>
+                                                                <div class="col-sm-6">
+                                                                    <textarea class="form-control " name="address"
+                                                                        id="address" cols="10"
+                                                                        rows="5">{{address}}</textarea>
+                                                                    <!-- <input class="form-control" type="text" name="address" id="address" cols="10" rows="5"  value="{{address}}"> -->
+
+
+
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="" style="float: left;">
+                                                                        <i
+                                                                            class="fa fa-trash removeAddressTextarea"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                            <div id="moreAddresses"></div>
+
+                                                            {% else %}
+                                                            <div class="form-group">
+
+                                                                <div class="" style="float: right;"><button
+                                                                        class="btn btn-primary" type="button"
+                                                                        onclick="addAddress();">Add Address</button>
+                                                                </div>
+
+                                                                <label class="control-label mb-10 col-sm-2"
+                                                                    for="address" id="address">Address:</label>
+                                                                <div class="col-sm-6">
+                                                                    <textarea class="form-control " name="address"
+                                                                        id="address" cols="10" rows="5"> </textarea>
+                                                                    <!-- <input class="form-control" type="textarea" name="address" id="address" cols="10" rows="5"  value="{{address}}"> -->
+
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="" style="float: left;">
+                                                                        <i
+                                                                            class="fa fa-trash removeAddressTextarea"></i>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div id="moreAddresses"></div>
+
+                                                            {% endif %}
+                                                            {% if (rdata.phone.length > 0) %}
+
+                                                            <div class="" style="float: right;"><button
+                                                                    class="btn btn-primary" type="button"
+                                                                    onclick="addPhone();">Add Phone</button> </div>
+
+                                                            {% for phone in rdata.phone %}
+                                                            <div class="form-group">
+
+                                                                <label class="control-label mb-10 col-sm-2" for="phone"
+                                                                    id="phone">Phone:</label>
+                                                                <div class="col-sm-6">
+                                                                    <input class="form-control" type="number"
+                                                                        name="phone" id="phone" value="{{phone}}">
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="" style="float: left;">
+                                                                        <i class="fa fa-trash removePhoneTextarea"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                            <div id="morePhones"></div>
+
+                                                            {% else %}
+                                                            <div class="form-group">
+
+                                                                <div class="" style="float: right;"><button
+                                                                        class="btn btn-primary" type="button"
+                                                                        onclick="addPhone();">Add Phone</button> </div>
+
+                                                                <label class="control-label mb-10 col-sm-2" for="phone"
+                                                                    id="phone">Phone:</label>
+                                                                <div class="col-sm-6">
+
+                                                                    <input class="form-control" type="number"
+                                                                        name="phone" id="phone">
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="" style="float: left;">
+                                                                        <i class="fa fa-trash removePhoneTextarea"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="morePhones"></div>
+
+                                                            {% endif %}
+                                                            {% if (rdata.email.length > 0) %}
+
+                                                            <div class="" style="float: right;"><button
+                                                                    class="btn btn-primary" type="button"
+                                                                    onclick="addEmail();">Add Email</button> </div>
+
+                                                            {% for email in rdata.email %}
+                                                            <div class="form-group">
+
+                                                                <label class="control-label mb-10 col-sm-2" for="email"
+                                                                    id="email">Email:</label>
+                                                                <div class="col-sm-6">
+                                                                    <input class="form-control" type="text" name="email"
+                                                                        id="email" value="{{email}}">
+
+
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="" style="float: left;">
+                                                                        <i class="fa fa-trash removeEmailTextarea"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                            <div id="moreEmails"></div>
+
+                                                            {% else %}
+                                                            <div class="form-group">
+
+                                                                <div class="" style="float: right;"><button
+                                                                        class="btn btn-primary" type="button"
+                                                                        onclick="addEmail();">Add Email</button> </div>
+
+                                                                <label class="control-label mb-10 col-sm-2" for="email"
+                                                                    id="email">Email:</label>
+                                                                <div class="col-sm-6">
+
+                                                                    <input class="form-control" type="text" name="email"
+                                                                        id="email">
+
+
+
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="" style="float: left;">
+                                                                        <i class="fa fa-trash removeEmailTextarea"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="moreEmails"></div>
+
+                                                            {% endif %}
+                                                            
+                                                            {% endfor %}
+
+                                                            <!-- <div id= "content"></div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {%else%}
+                                                <div class="col-sm-12">
+                                                    <div class="panel-wrapper collapse in">
+                                                        <div class="panel-body">
+                                                            <div class="form-group">
+                                                                <label class="control-label mb-10 col-sm-2"
+                                                                    for="regionName">Region Name:</label>
+                                                                <div class="col-sm-6">
+                                                                    <input required type="text" class="form-control"
+                                                                        name="regionName" id="regionName"
+                                                                        value="{{region.regionName}}" />
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="" style="float: right;"><button
+                                                                    class="btn btn-primary" type="button"
+                                                                    onclick="addAddress();">Add Address</button> </div>
+
+
+                                                            <div class="form-group">
+
+                                                                <label class="control-label mb-10 col-sm-2"
+                                                                    for="address" id="address">Address:</label>
+                                                                <div class="col-sm-6">
+                                                                    <textarea class="form-control " name="address"
+                                                                        id="address" cols="10"
+                                                                        rows="5">{{address}}</textarea>
+                                                                    <!-- <input class="form-control" type="text" name="address" id="address" cols="10" rows="5"  value="{{address}}"> -->
+
+
+
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="" style="float: left;">
+                                                                        <i
+                                                                            class="fa fa-trash removeAddressTextarea"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div id="moreAddresses"></div>
+
+                                                            <div id="moreAddresses"></div>
+
+
+
+
+
+
+
+
+
+
+                                                            <div class="" style="float: right;"><button
+                                                                    class="btn btn-primary" type="button"
+                                                                    onclick="addPhone();">Add Phone</button> </div>
+
+
+                                                            <div class="form-group">
+
+                                                                <label class="control-label mb-10 col-sm-2" for="phone"
+                                                                    id="phone">Phone:</label>
+                                                                <div class="col-sm-6">
+                                                                    <input class="form-control" type="number"
+                                                                        name="phone" id="phone" value="{{phone}}">
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="" style="float: left;">
+                                                                        <i class="fa fa-trash removePhoneTextarea"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div id="morePhones"></div>
+
+
+                                                            <div id="morePhones"></div>
+
+
+
+
+
+
+
+
+
+                                                            <div class="" style="float: right;"><button
+                                                                    class="btn btn-primary" type="button"
+                                                                    onclick="addEmail();">Add Email</button> </div>
+
+
+
+
+                                                            <div id="moreEmails"></div>
+
+
+                                                            <div class="form-group">
+
+
+
+                                                                <label class="control-label mb-10 col-sm-2" for="email"
+                                                                    id="email">Email:</label>
+                                                                <div class="col-sm-6">
+
+                                                                    <input class="form-control" type="text" name="email"
+                                                                        id="email">
+
+
+
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="" style="float: left;">
+                                                                        <i class="fa fa-trash removeEmailTextarea"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                           
+                                                                <div class="col-sm-1">
+                                                                    <div class="" style="float: left;">
+                                                                        <i class="fa fa-trash removeEmailTextarea"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div id="moreEmails"></div> -->
+
+
+
+
+
+
+
+
+                                                            <!-- <div id= "content"></div> -->
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif%}
+                                                <tr>
+                                                    <td colspan="2">
+
+                                                        {% if region %}
+                                                        <input type="submit" class="btn btn-success btn-flat"
+                                                            value="Update">
+                                                        {%else%}
+                                                        <input type="submit" class="btn btn-success btn-flat"
+                                                            value="Submit">
+                                                        {% endif %}
+
+                                                    </td>
+                                                </tr>
+
+                                                <!-- </table> -->
+                                            </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /Row -->
+            </div>
+        </section>
+
+        {% endblock %}
+
+        {% block Jscript %}
+        <script>
+            var intAddressTextBox = 0;
+
+            function addAddress() {
+                intAddressTextBox++;
+                var objNewDiv = document.createElement('div');
+                objNewDiv.setAttribute('id', 'div_' + intAddressTextBox);
+                objNewDiv.innerHTML = '<div class="form-group">\
+                                <label class="control-label mb-10 col-sm-2" for="address" id="address">Address:</label>\
+                                    <div class="col-sm-6">\
+                                        <textarea class="form-control" name="address"  id="address" cols="10" rows="5"></textarea>\
+                                    </div>\
+                                    <div class="col-sm-4">\
+                                        <div class="" style="float: left;">\
+                                            <i class="fa fa-trash removeAddressTextaready_'+ intAddressTextBox + '"  ></i>\
+                                        </div>\
+                                    </div>\
+                            </div>\   '
+
+
+                document.getElementById('moreAddresses').appendChild(objNewDiv);
+                $('.removeAddressTextaready_' + intAddressTextBox).click(function () {
+                    // $(this).hide();
+                    let parent = $(this).parent().parent().parent().parent().html('');
+                });
+
+
+            }
+
+
+            $('.removeAddressTextarea').click(function () {
+                // $(this).hide();
+                let parent = $(this).parent().parent().parent().html('');
+                console.log("parent", parent);
+            });
+
+
+
+
+            var intPhoneTextBox = 0;
+
+            function addPhone() {
+                intPhoneTextBox++;
+                var objNewDiv = document.createElement('div');
+                objNewDiv.setAttribute('id', 'div_' + intPhoneTextBox);
+                objNewDiv.innerHTML = ' <div class="form-group">\
+                                <label class="control-label mb-10 col-sm-2" for="phone" id="phone">Phone:</label>\
+                                <div class="col-sm-6">\
+                                    <input class="form-control" type="number" name="phone" id="phone">\
+                                </div>\
+                                <div class="col-sm-1">\
+                                    <div class="" style="float: left;">\
+                                        <i class="fa fa-trash removePhoneTextaready_'+ intPhoneTextBox + '"  ></i>\
+                                    </div>\
+                                </div>\
+                            </div> ';
+
+
+
+                document.getElementById('morePhones').appendChild(objNewDiv);
+                $('.removePhoneTextaready_' + intPhoneTextBox).click(function () {
+                    // $(this).hide();
+                    let parent = $(this).parent().parent().parent().parent().html('');
+                });
+
+            }
+
+            $('.removePhoneTextarea').click(function () {
+                // $(this).hide();
+                let parent = $(this).parent().parent().parent().html('');
+                console.log("parent", parent);
+            });
+
+
+
+
+            var intEmailTextBox = 0;
+
+            function addEmail() {
+                intEmailTextBox++;
+                var objNewDiv = document.createElement('div');
+                objNewDiv.setAttribute('id', 'div_' + intEmailTextBox);
+                objNewDiv.innerHTML = ' <div class="form-group">\
+                                <label class="control-label mb-10 col-sm-2" for="email" id="email">Email:</label>\
+                                <div class="col-sm-6">\
+                                    <input class="form-control" type="text" name="email" id="email">\
+                                </div>\
+                                <div class="col-sm-1">\
+                                    <div class="" style="float: left;">\
+                                        <i class="fa fa-trash removeEmailTextaready_'+ intEmailTextBox + '"  ></i> </div>\
+                                </div>\
+                            </div> ';
+
+
+
+                document.getElementById('moreEmails').appendChild(objNewDiv);
+
+                document.getElementById('moreEmails').appendChild(objNewDiv);
+                $('.removeEmailTextaready_' + intEmailTextBox).click(function () {
+                    // $(this).hide();
+                    let parent = $(this).parent().parent().parent().parent().html('');
+                });
+            }
+
+            $('.removeEmailTextarea').click(function () {
+                // $(this).hide();
+                let parent = $(this).parent().parent().parent().html('');
+                console.log("parent", parent);
+            });
+
+
+
+
+
+
+        </script>
+
+        {% endblock %}

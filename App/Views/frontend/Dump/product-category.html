@@ -1,0 +1,216 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+    <section class="breadcrumb">
+        <div class="container">
+            <div class="page-title-inner">
+                <div class="float-left">
+                    <h1 class="page-title">Product</h1>
+                </div>
+                <div class="float-right">
+                    <div id="breadcrumb-menu" class="breadcrumb-menu">
+                        <a href="javascript:void(0)">Home</a> 
+                        <span class="current">Product</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ptb-50">
+        <div class="container">
+            
+            <h2 class="section-title-border">{{singleProductCategoryData.product_name}} </h2>
+            <div class="row">
+                <div class="col-lg-8 col-sm-12 col-md-12">
+                    <div class="space-detail dot-border pt-0">
+                        <div class="mb-4">
+                            <img src="{{singleProductCategoryData.product_image}}" class="w-100">
+                        </div>
+                        <p>{{singleProductCategoryData.product_description | safe}}</p>
+                        
+                    </div>
+                    <div class="space-detail dot-border pt-0">
+                        
+                        <p>In your life, you may have many times facing financial issues. It’s good if you know how to
+                            handle it by yourself and have enough time to take care of it. In other cases, it’s time you
+                            get a financial consulting service. And the article below will show you those…</p>
+                        <p>Financial services sites are absolutely competitive. They are really trying to drive people
+                            online. The self-service model is being taken seriously so they want to make sure their
+                            sites are available, responsive and allow users to do as many things as possible. Though,
+                            many have shown an overall poor performance. The top reasons for failure were as follows:
+                            company websites make browsing too difficult; content missing, repeated and poorly worded;
+                            and site search doesn’t work for typical tasks.</p>
+                        <blockquote>
+                            <p> All of our planners believe that everyone, rich or not so rich, deserves great financial
+                                advice and planning services.</p>
+                        </blockquote>
+                        <p>That’s why we take the time to listen to you, learn your goals and then create your plan
+                            using John Doe’s philosophies that reflect the latest academic research.</p>
+                    </div>
+                    <div class="space-detail dot-border">
+                        <div class="row">
+                    <div class="col-lg-7 col-sm-12 col-xs-12">
+                        <h2 class="section-title-border h4-title">Application and Duties</h2>
+                        <p>We are working with clients, from individual investors to large financial
+                            institutions, to develop advanced portfolio management strategies to help them
+                            achieve specific goals.</p>
+                        <ul class="list-item-desc">
+                            <li><i class="fas fa-check mr-3"></i> Help clients navigate today’s evolving markets
+                            </li>
+                            <li><i class="fas fa-check mr-3"></i> Research market ideas and build investment
+                                portfolios</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-5 col-sm-12 col-xs-12">
+                        <div>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+            
+           
+                    </div>           
+                </div>  
+            <div class="col-lg-4 col-sm-12 col-md-12">
+                <div class="right-widget-area">
+                    <div class="widget">
+                        <h3 class="widget-title">Our Services</h3>
+                        <ul class="menu-services-menu">
+                            <li>
+                                <a href="javascript:void(0)" class="active">Agricultural Processing</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Chemical Research</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Material Engineering</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Mechanical Engineering</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Petroleum and Gas</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Power and Energy</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <div class="help-form h-100">
+                            <h2 style="font-size: 23px;color: #ffffff;line-height: 35px; font-weight: 600;">DO YOU NEED ANY HELP?</h2>
+                            <p class="text-white mb-4">My job is to help professionals to achieve their industrial goals whilst having adequate protection along the way.</p>
+                            <div class="feature-box-btn text-left mt-4">
+                                <a class="btn default contact-btn" href="javascript:void(0)">CONTACT NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="owl-carousel owl-theme slide-owl">
+                            <div class="item">
+                                <div class="testimonial-inner rounded">
+                                    <div class="testimonial-excerpt">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                                    </div>
+                                    <div class="testimonial-thumb">
+                                        <img src="/front/image/team_member2-80x80.jpg" alt="" class="rounded-circle">
+                                    </div>
+                                    <div class="testimonial-info">
+                                        <p><a href="#" class="client-name">Kevin Nash</a></p>
+                                        <span>Manager</span>, <a href="javascript:void(0)">Oemone</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-inner rounded">
+                                    <div class="testimonial-excerpt">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                                    </div>
+                                    <div class="testimonial-thumb">
+                                        <img src="/front/image/testi-1-80x80.jpg" alt="" class="rounded-circle">
+                                    </div>
+                                    <div class="testimonial-info">
+                                        <p><a href="#" class="client-name">David Johnson</a></p>
+                                        <span>President</span>, <a href="javascript:void(0)">Oemone</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-inner rounded">
+                                    <div class="testimonial-excerpt">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                                    </div>
+                                    <div class="testimonial-thumb">
+                                        <img src="/front/image/testi-2-80x80.jpg" alt="" class="rounded-circle">
+                                    </div>
+                                    <div class="testimonial-info">
+                                        <p><a href="#" class="client-name">Ernestina Lee</a></p>
+                                        <span>President</span>, <a href="javascript:void(0)">Oemone</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-inner rounded">
+                                    <div class="testimonial-excerpt">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                                    </div>
+                                    <div class="testimonial-thumb">
+                                        <img src="/front/image/testi-3-80x80.jpg" alt="" class="rounded-circle">
+                                    </div>
+                                    <div class="testimonial-info">
+                                        <p><a href="#" class="client-name">Paul Anderson</a></p>
+                                        <span>CEO</span>, <a href="javascript:void(0)">Oemone</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-inner rounded">
+                                    <div class="testimonial-excerpt">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                                    </div>
+                                    <div class="testimonial-thumb">
+                                        <img src="/front/image/testi-3-80x80.jpg" alt="" class="rounded-circle">
+                                    </div>
+                                    <div class="testimonial-info">
+                                        <p><a href="#" class="client-name">Ruben Driggs</a></p>
+                                        <span>Engineer</span>, <a href="javascript:void(0)">Oemone</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-inner rounded">
+                                    <div class="testimonial-excerpt">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                                    </div>
+                                    <div class="testimonial-thumb">
+                                        <img src="/front/image/testi-5-300x300.jpg" alt="" class="rounded-circle">
+                                    </div>
+                                    <div class="testimonial-info">
+                                        <p><a href="#" class="client-name">Clifford Donley</a></p>
+                                        <span>Manager</span>, <a href="javascript:void(0)">Oemone</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="pdf-btn">
+                            <a class="" href="javascript:void(0)"><i class="far fa-file-pdf mr-3"></i>COMPANY PRESENTATION</a>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            </div> 
+                
+            
+    </div>
+    </section>
+
+
+    {% endblock %}
+
+    {% block Jscript %}
+  
+    
+    {% endblock %}

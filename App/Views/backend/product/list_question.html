@@ -1,0 +1,174 @@
+{% extends "backend/partition/layout.html" %}
+
+{% block body %}
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Questionnaire Form Table</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Questionnaire Form</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<h6 class="panel-title txt-dark">Atrribute</h6>
+							</div>
+							<div class="pull-right">
+                                <a href="/backend/add_Question"><button type="button" class="btn btn-primary btn-md"><i class="fa fa-plus"></i> Add Question</button></a>
+							</div>
+							<div class="clearfix"></div>
+							<!-- <input type="hidden" id="menu_name" name="menu_name" value="{{menu_name}}" /> -->
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										<input type="hidden" id="gameType" name="gameType">
+										<table id="myTable" class="table table-hover display  pb-30">
+											<thead>
+												<tr>
+													<th>Question Form ID</th>
+													<!-- <th>Product Description</th> -->
+													<!-- <th>Category</th> -->
+													<th>Action</th>
+												</tr>
+											</thead>
+											<!-- <td>
+												<tr>
+													<div class="showcolor" style="background-color: pink;"></div>
+												</tr>
+											</td> -->
+											<tbody>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script>
+	$(document).ready(function () {
+		var host = window.location.origin;
+		// var menu_name = $('#menu_name').attr('value')
+		var refresh = "false";
+		var table = $('#myTable').DataTable({
+			// "oLanguage": {
+			// 	"sSearch": "Search Username"
+			// },
+			// "scrollX": true,
+			"processing": true,
+			"serverSide": true,
+			"searching": false,
+			"ordering": false,
+			"autoWidth": false,
+			"pageLength": 25,
+			"ajax": host + "/backend/get_question",
+			"columns": [
+				{
+					"data": "name"
+					//, render : function(data, type, row){	
+					//     for (let r = 0; r < row.set_array.length; r++) {
+					//         return row.set_array[r];
+					//     }
+					// }
+				},
+				// { "data": "product_description" },
+
+				{
+					"data": "action",
+					render: function (data, type, row) {
+						// for (let r = 0; r < row.set_array.length; r++) {
+							return '<a href="/backend/add_question/'+row._id+'"><button type="button" class="btn btn-warning btn-xs btn-rounded" name="edit"><i class="fa fa-edit" aria-hidden="true"></i></button></a> <button type="button" name="delete" id="'+row._id+'" class="btn btn-danger btn-xs delete btn-rounded"><i class="fa fa-trash" aria-hidden="true"></i></button>'
+
+							// return '<a href="/backend/product_setting_add/'+row.menu_name+'/'+row.setname+'">'
+						// }
+					}
+				}
+			]
+		})
+
+
+		$(function () {
+			"use strict";
+
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.delete', function (e) {
+					var id = $(this).attr('id');
+					var thisElement = this;
+					swal({
+						title: "Are you sure?",
+						text: "You will not be able to recover this Item!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#e69a2a",
+						confirmButtonText: "Yes, delete it!",
+						cancelButtonText: "No, cancel plx!",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					}, function (isConfirm) {
+						if (isConfirm) {
+							// alert(id)
+							$.ajax({
+								type: 'GET',
+								url: host+'/backend/delete_question/'+id,
+								// data: {id: id},
+								success: function (resultData) {
+									// alert(resultData)
+									console.log(resultData);
+									if (resultData == 'success') {
+										$(thisElement).parent().parent().hide(700);
+										swal("Deleted!", "Your product setting item has been deleted.", "success");
+									} else {
+										alert("Something went wrong")
+									}
+									// alert("Save Complete")
+								}
+							});
+							swal("Deleted!", "Item Deleted Succesfully.", "success");
+						} else {
+							swal("Cancelled", "Item Not Deleted)", "error");
+						}
+					});
+					return false;
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+
+
+	});
+
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,683 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+<style>
+    .panel-heading .accordion-toggle:after {
+        /* symbol for "opening" panels */
+        font-family: 'Glyphicons Halflings';
+        /* essential for enabling glyphicon */
+        content: "\e114";
+        /* adjust as needed, taken from bootstrap.css */
+        float: right;
+        /* adjust as needed */
+        color: grey;
+        /* adjust as needed */
+    }
+
+    .panel-heading .accordion-toggle.collapsed:after {
+        /* symbol for "collapsed" panels */
+        content: "\e080";
+        /* adjust as needed, taken from bootstrap.css */
+    }
+</style>
+<div class="main-content main-content-login">
+
+    <div class="success_alert">{% include "frontend/partitions/notification.html" %}</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="trail-item trail-end active">
+                            Address
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" role="button" data-toggle="collapse"
+                            data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                            Add New Address
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="content-area col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="site-main">
+                                    <h3 class="custom_blog_title">
+                                    </h3>
+
+
+                                    <div class="customer_login">
+                                        <div class="row">
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="login-item">
+                                                    <h5 class="title-login">Address</h5>
+                                                    <form class="register" id="registerSubmit"
+                                                        action="/customer_address_post" method="post"
+                                                        enctype="multipart/form-data">
+
+                                                        <!-- <div class="vendor_gstbtn form-row-wide">
+            
+                                                        <div class="text ">GST</div>
+                                                        <div>
+            
+                                                            <label class="switch_vendorGst">
+                                                                <input name="gstSwitch" class="gstSwitch" type="checkbox"
+                                                                    id="switchVal" value="0" hidden>
+                                                                <span class="slider_vendorGst round"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div> -->
+
+                                                        <!-- {% if role %}
+            
+                                                    <span id="gst_invalid" class="hidden  mob-helpers">
+                                                        Please enter valid Gst number.
+                                                    </span>
+                                                    <div class="gst_invlidmsg"> </div>
+                                                    <p class="form-row Gst_Hide form-row-wide">
+                                                        <label class="text">GST Number</label>
+                                                        <input title="gst_number" name="gst_No" id="vendor_gstNo" maxlength="15"
+                                                            type="text" class="input_Gst">
+                                                    </p>
+                                                    {% endif %} -->
+
+
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">Full Name</label>
+                                                            <input title="name" name="fullname"
+                                                                value="{{user.firstname}}{{user.lastname}}" type="text"
+                                                                class="input-text" required>
+                                                        </p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">First Name</label>
+                                                            <input title="name" name="firstname"
+                                                                value="{{user.firstname}}" type="text"
+                                                                class="input-text" required>
+                                                        </p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">Last Name</label>
+                                                            <input title="name" name="lastname"
+                                                                value="{{user.lastname}}" type="text"
+                                                                class="input-text" required>
+                                                        </p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">Mobile Number</label>
+                                                            <input title="name" name="mobileno" value="{{user.mobile}}"
+                                                                type="text" class="input-text" required>
+                                                        </p>
+
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">PIN Code</label>
+                                                            <input title="email" name="pincode" id="pincode" type="text"
+                                                                value="{{user.pincode}}" class="input-text" required>
+                                                        </p>
+
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">Flat, House no., Building name</label>
+                                                            <input title="email" name="addresstext_no" type="text"
+                                                                value="{{user.addresstext_no}}" class="input-text"
+                                                                required>
+                                                        </p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">Road name, Area, Colony</label>
+                                                            <input title="email" name="addresstext_name" type="text"
+                                                                value="{{user.addresstext_name}}" class="input-text"
+                                                                required>
+                                                        </p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">Landmark</label>
+                                                            <input title="email" name="landmark" type="text"
+                                                                value="{{user.landmark}}" class="input-text" required>
+                                                        </p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">City</label>
+                                                            <input title="email" name="city" id="city" type="text"
+                                                                value="{{user.city}}" class="input-text" required readonly>
+                                                        </p>
+
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">State</label>
+                                                            <input title="state" name="state" id="state" type="text"
+                                                                value="{{user.state}}" class="input-text" required readonly>
+                                                        </p>
+
+                                                        <!-- <input type="hidden" id="state" name="state" value="">
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">State</label>
+                                                            <select id="my-select" name="stateGstCode" required>
+                                                                <option value="" selected disabled>
+                                                                    Please Select</option>
+                                                            </select> -->
+                                                            <!-- <input title="email" name="state"
+                                                                                    type="text" value="{{user.state}}"
+                                                                                    class="input-text" required> -->
+                                                        <!-- </p> -->
+                                                        <!-- <p class="form-row form-row-wide">
+                                                        <label class="text">State</label>
+                                                        <input title="email" name="state" type="text" value="{{user.state}}" class="input-text" required>
+                                                    </p> -->
+                                                        <p class="form-row form-row-wide">
+                                                            <label class="text">Address Type</label>
+
+                                                            <select name="addresstype" id="cars" required>
+                                                                <option value="" selected disabled>Please Select
+                                                                </option>
+                                                                <option value="Home">Home</option>
+                                                                <option value="Office">Office</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                            <!-- <input title="email" name="addresstype" type="text" value="{{user.addresstype}}" class="input-text" required> -->
+                                                        </p>
+
+                                                        <!-- <p class="form-row form-row-wide">
+                                                        <label for="myfile">Select a file:</label>
+                                                        <input type="file" id="kycImage" name="kycImage"
+                                                            accept="image/x-png,image/gif,image/jpeg,.pdf" required>
+                                                    </p> -->
+
+                                                        <!-- <p class="form-row">
+                                                        <span class="inline">
+                                                            <input type="checkbox" name="term_and_condition" id="cb2">
+                                                            <label for="cb2" class="label-text">I agree to <span>Terms &
+                                                                    Conditions</span></label>
+                                                        </span>
+                                                    </p> -->
+
+                                                        <p class="">
+                                                            <input type="submit" class="button-submit" value="Submit">
+                                                        </p>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="customer_login">
+            <div class="row">
+                {% for user in user.address_arr %}
+                {% if user.is_deleted == "0" %}
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="login-item">
+                        <!-- <h5 class="title-login">Your Address</h5> -->
+                        <form class="login">
+                            <p class="form-row form-row-wide">
+                                <b>{{user.fullname}}</b> <br />
+                                {{user.addresstext_name}}
+                                {{user.addresstext_no}} <br />
+                                {{user.landmark}} <br />
+                                {{user.city}}
+                                {{user.state}}
+                                {{user.pincode}}<br />
+                                {{user.mobileno}}
+                            </p>
+                            <p class="form-row">
+                                <input type="button" class="custom_button"
+                                    onclick="location.href='/customer_edit_address/{{user.id}}'" value="Edit">
+                                <input type="button" class="custom_button delete_add" id="{{user.id}}" value="Remove">
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        var host = window.location.origin;
+
+        $(function () {
+            "use strict";
+
+            var SweetAlert = function () { };
+
+            SweetAlert.prototype.init = function () {
+
+                //Parameter
+                $('body').on('click', '.delete_add', function (e) {
+                    var id = $(this).attr('id');
+                    var thisElement = this;
+                    swal({
+                        title: "Are you sure?",
+                        text: "You will not be able to recover this Address!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#e69a2a",
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "No, cancel plx!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    }, function (isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                type: 'POST',
+                                url: host + "/customer_remove_address",
+                                data: { id: id },
+                                success: function (resultData) {
+                                    // alert(resultData)
+                                    console.log(resultData);
+                                    if (resultData == 'success') {
+                                        swal("Deleted!", "Your Address has been deleted.", "success");
+                                        location.reload();
+                                    } else {
+                                        alert("Something went wrong")
+                                    }
+                                    // alert("Save Complete")
+                                }
+                            });
+                            swal("Deleted!", "Address Deleted Succesfully.", "success");
+                        } else {
+                            swal("Cancelled", "Address Not Deleted", "error");
+                        }
+                    });
+                    return false;
+                });
+
+            },
+                $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+            $.SweetAlert.init();
+        });
+
+        $(".Gst_Hide").hide();
+        $('#switchVal').click(function () {
+            $('.Gst_Hide').toggle();
+        });
+    });
+
+    var companyName;
+    $("#vendor_gstNo").keyup(function (e) {
+        var gstValue = $("#vendor_gstNo").val();
+        $('.gst_invlidmsg').html('');
+        // console.log(gstValue, "fsfuwehfuwehf");
+
+        e.preventDefault()
+        if ($(this).val().length == 15) {
+            $.ajax({
+                url: "/validationGst",
+                type: "POST",
+                dataType: "json",
+                data: { gstValue },
+                success: function (result) {
+                    companyName = result.data.tradename;
+                    $(".gst_invlidmsg").html(result.data);
+                    // console.log("result", result.data);
+                    $("#vendor_Company").attr('value', result.data.tradename);
+                    $("#vendor_Company").val(result.data.tradename);
+                },
+                error() {
+                    console.log("error");
+                }
+            })
+        } else {
+            // Disable submit button
+        }
+    });
+
+    // $("#pincode").on("change", function () {
+        $("#pincode").keyup(function(){  
+        var pincode = $(this).val();
+        console.log("pincode",pincode);
+        $.getJSON("https://api.postalpincode.in/pincode/" + pincode, function (data) {
+            console.log("data",data);
+
+            $("#city").val(data[0].PostOffice[0].District)
+            $("#state").val(data[0].PostOffice[0].State)
+            // $("#vendor_country").val(data[0].PostOffice[0].Country)
+        })
+    });
+
+    $("#registerSubmit").on("submit", function () {
+        $("#vendor_Company").removeAttr("disabled");
+        var form = $('form').serialize();
+        $('input[disabled]').each(function () {
+            form = form + '&' + $(this).attr('name') + '=' + $(this).val();
+        });
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: $("#registerSubmit").serialize(),
+        })
+    });
+
+    $("#switchVal").on("click", function () {
+        if ($("#switchVal").val() == 0) {
+            $("#switchVal").val(1);
+        }
+        else {
+            $("#switchVal").val(0);
+        }
+        // alert($("#switchVal").val());
+        var toggle = $("#vendor_Company").prop("disabled");
+        $("#gst_invalid").addClass("hidden");
+        $("#vendor_Company").prop("disabled", !toggle);
+
+        $(':input[type="submit"]').prop('', false);
+        $("#vendor_Company").val("");
+
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+
+        $("#mobile-num").keyup(function () {
+            var mobNum = $(this).val();
+            var filter = /^\d*(?:\.\d{1,2})?$/;
+
+            if (filter.test(mobNum)) {
+                if (mobNum.length == 10) {
+                    // alert("valid");
+                    $("#mobile-valid").removeClass("hidden");
+                    $("#folio-invalid").addClass("hidden");
+                } else {
+                    //   alert('Please put 10  digit mobile number');
+                    $("#folio-invalid").removeClass("hidden");
+                    $("#mobile-valid").addClass("hidden");
+                    return false;
+                }
+            }
+            else {
+                // alert('Not a valid number');
+                $("#folio-invalid").removeClass("hidden");
+                $("#mobile-valid").addClass("hidden");
+                return false;
+            }
+
+        });
+
+        $("#vendor_gstNo").keyup(function () {
+            var gstNum = $(this).val();
+            if (gstNum.length == 15) {
+
+                $("#mobile-valid").removeClass("hidden");
+                $("#gst_invalid").addClass("hidden");
+            } else {
+
+                $("#gst_invalid").removeClass("hidden");
+                $("#mobile-valid").addClass("hidden");
+                return false;
+            }
+
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#loginSubmit_email").css("display", "block");
+        $("#login_Email").css("background-color", "#7f87ab");
+        $("#login_Email").css("color", "#fff");
+        $("#loginSubmit_mobile").css("display", "none");
+        $(".moblie_otpLogin").css("display", "none");
+        $("#login_Email").click(function () {
+            $("#loginSubmit_email").css("display", "block");
+            $("#loginSubmit_mobile").css("display", "none");
+            $("#login_Phone").css("background-color", "transparent");
+            $("#login_Email").css("color", "#fff");
+            $("#login_Phone").css("color", "#000");
+            $("#login_Email").css("background-color", "#7f87ab");
+
+
+        });
+        $("#login_Phone").click(function () {
+            $("#loginSubmit_email").css("display", "none");
+            $("#loginSubmit_mobile").css("display", "block");
+            $("#login_Email").css("background-color", "transparent");
+            $("#login_Phone").css("color", "#fff");
+            $("#login_Email").css("color", "#000");
+            $("#login_Phone").css("background-color", "#7f87ab");
+            $(".moblie_otpLogin").css("display", "none");
+            $("#otp_Send").css("display", "block");
+
+        });
+
+
+        $("#otp_Send").click(function () {
+            $(".moblie_otpLogin").css("display", "block");
+            $("#otp_Send").css("display", "none");
+
+
+        });
+
+    });
+</script>
+
+<script>
+
+    let stateData = [
+        {
+            "no": "1",
+            "stateName": "Andaman and Nicobar Islands",
+            "gstCode": "35",
+            "stateCode": "AN"
+        }, {
+            "no": "2",
+            "stateName": "Andhra Pradesh",
+            "gstCode": "28",
+            "stateCode": "AP"
+        }, {
+            "no": "3",
+            "stateName": "Andhra Pradesh (New)",
+            "gstCode": "37",
+            "stateCode": "AD"
+        }, {
+            "no": "4",
+            "stateName": "Arunachal Pradesh",
+            "gstCode": "12",
+            "stateCode": "AR"
+        }, {
+            "no": "5",
+            "stateName": "Assam",
+            "gstCode": "18",
+            "stateCode": "AS"
+        }, {
+            "no": "6",
+            "stateName": "Bihar",
+            "gstCode": "10",
+            "stateCode": "BH"
+        }, {
+            "no": "7",
+            "stateName": "Chandigarh",
+            "gstCode": "04",
+            "stateCode": "CH"
+        }, {
+            "no": "8",
+            "stateName": "Chattisgarh",
+            "gstCode": "22",
+            "stateCode": "CT"
+        }, {
+            "no": "9",
+            "stateName": "Dadra and Nagar Haveli",
+            "gstCode": "26",
+            "stateCode": "DN"
+        }, {
+            "no": "10",
+            "stateName": "Daman and Diu",
+            "gstCode": "25",
+            "stateCode": "DD"
+        }, {
+            "no": "11",
+            "stateName": "Delhi",
+            "gstCode": "07",
+            "stateCode": "DL"
+        }, {
+            "no": "12",
+            "stateName": "Goa",
+            "gstCode": "30",
+            "stateCode": "GA"
+        }, {
+            "no": "13",
+            "stateName": "Gujarat",
+            "gstCode": "24",
+            "stateCode": "GJ"
+        }, {
+            "no": "14",
+            "stateName": "Haryana",
+            "gstCode": "06",
+            "stateCode": "HR"
+        }, {
+            "no": "15",
+            "stateName": "Himachal Pradesh",
+            "gstCode": "02",
+            "stateCode": "HP"
+        }, {
+            "no": "16",
+            "stateName": "Jammu and Kashmir",
+            "gstCode": "01",
+            "stateCode": "JK"
+        }, {
+            "no": "17",
+            "stateName": "Jharkhand",
+            "gstCode": "20",
+            "stateCode": "JH"
+        }, {
+            "no": "18",
+            "stateName": "Karnataka",
+            "gstCode": "29",
+            "stateCode": "KA"
+        }, {
+            "no": "19",
+            "stateName": "Kerala",
+            "gstCode": "32",
+            "stateCode": "KL"
+        }, {
+            "no": "20",
+            "stateName": "Lakshadweep Islands",
+            "gstCode": "31",
+            "stateCode": "LD"
+        }, {
+            "no": "21",
+            "stateName": "Madhya Pradesh",
+            "gstCode": "23",
+            "stateCode": "MP"
+        }, {
+            "no": "22",
+            "stateName": "Maharashtra",
+            "gstCode": "27",
+            "stateCode": "MH"
+        }, {
+            "no": "23",
+            "stateName": "Manipur",
+            "gstCode": "14",
+            "stateCode": "MN"
+        }, {
+            "no": "24",
+            "stateName": "Meghalaya",
+            "gstCode": "17",
+            "stateCode": "ME"
+        }, {
+            "no": "25",
+            "stateName": "Mizoram",
+            "gstCode": "15",
+            "stateCode": "MI"
+        }, {
+            "no": "26",
+            "stateName": "Nagaland",
+            "gstCode": "13",
+            "stateCode": "NL"
+        }, {
+            "no": "27",
+            "stateName": "Odisha",
+            "gstCode": "21",
+            "stateCode": "OR"
+        }, {
+            "no": "28",
+            "stateName": "Pondicherry",
+            "gstCode": "34",
+            "stateCode": "PY"
+        }, {
+            "no": "29",
+            "stateName": "Punjab",
+            "gstCode": "03",
+            "stateCode": "PB"
+        }, {
+            "no": "30",
+            "stateName": "Rajasthan",
+            "gstCode": "08",
+            "stateCode": "RJ"
+        }, {
+            "no": "31",
+            "stateName": "Sikkim",
+            "gstCode": "11",
+            "stateCode": "SK"
+        }, {
+            "no": "32",
+            "stateName": "Tamil Nadu",
+            "gstCode": "33",
+            "stateCode": "TN"
+        }, {
+            "no": "33",
+            "stateName": "Telangana",
+            "gstCode": "36",
+            "stateCode": "TS"
+        }, {
+            "no": "34",
+            "stateName": "Tripura",
+            "gstCode": "16",
+            "stateCode": "TR"
+        }, {
+            "no": "35",
+            "stateName": "Uttar Pradesh",
+            "gstCode": "09",
+            "stateCode": "UP"
+        }, {
+            "no": "36",
+            "stateName": "Uttarakhand",
+            "gstCode": "05",
+            "stateCode": "UT"
+        }, {
+            "no": "37",
+            "stateName": "West Bengal",
+            "gstCode": "19",
+            "stateCode": "WB"
+        }
+    ]
+
+    $(document).ready(function () {
+        let selectElem = $('#my-select')
+
+        stateData.forEach(function (opt) {
+
+           
+            selectElem.append('<option  data-name = "' + opt.stateName + '" value="' + opt.gstCode + '">' + opt.stateName + '</option>');
+        });
+
+        $('#my-select').change(function () {
+            let stateName = $(this).find(':selected').attr('data-name')
+            $("#state").val(stateName);
+        });
+    });
+
+</script>
+
+{% endblock %}

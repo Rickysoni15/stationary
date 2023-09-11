@@ -1,0 +1,50 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "Log/.cabf4699996f39fd0b5b7a2da5666bf10c0042a3-audit.json",
+    "files": [
+        {
+            "date": 1693281848080,
+            "name": "Log/alfa-29-08-2023.log",
+            "hash": "96f6f79694c75c6a9415feb07f0cf432"
+        },
+        {
+            "date": 1693452906454,
+            "name": "Log/alfa-31-08-2023.log",
+            "hash": "a3b79a75e71045c25f41d047d9146e4c"
+        },
+        {
+            "date": 1693797398534,
+            "name": "Log/alfa-04-09-2023.log",
+            "hash": "7e136a4c22b51fea25abbf2fbb428db0"
+        },
+        {
+            "date": 1693885628445,
+            "name": "Log/alfa-05-09-2023.log",
+            "hash": "c6a64e03e70aa5b996a63af6c002c96f"
+        },
+        {
+            "date": 1693971119515,
+            "name": "Log/alfa-06-09-2023.log",
+            "hash": "437d9f292eca4b470e9b461f2c71980e"
+        },
+        {
+            "date": 1694058344524,
+            "name": "Log/alfa-07-09-2023.log",
+            "hash": "044da9e16d24c240ea20b3b33a8168d9"
+        },
+        {
+            "date": 1694231403763,
+            "name": "Log/alfa-09-09-2023.log",
+            "hash": "9db650ee37a12cdd8cb9bbdd8bf81b5c"
+        },
+        {
+            "date": 1694404279297,
+            "name": "Log/alfa-11-09-2023.log",
+            "hash": "3a1108e5360375ce29219e5ea3ed9d34"
+        }
+    ],
+    "hashType": "md5"
+}

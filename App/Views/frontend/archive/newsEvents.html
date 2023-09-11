@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "frontend/partitions/head.html" %}
+<body>
+    {% include "frontend/partitions/header.html" %}
+    <main>
+        <section class="inner-top-banner-sec">
+            <div class="container">
+                <div class="col-md-12 pl-sm-3 pr-sm-3 pl-0 pr-0">
+                    <div class="head-title-wrp text-center" data-aos="fade-in" data-aos-offset="0">
+                        <h1 class="shadow-title " >News & Events</h1>
+                        <p class="heading animated" data-aos="zoom-in" data-aos-offset="0">WHAT’S NEW?</p>                            
+                    </div>
+                    <div class="mid-sap">
+                        <span class="ract-sp animated fadeIn slower"></span>
+                        <span class="eqlip-sp animated infinite slideDown"  data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="1500" data-aos-offset="0"></span>
+                    </div>
+                    <div class="card primary-blue mt-4 mb-5 card-style" data-aos="fade-in">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 lg-pr-2 pr-3" data-aos="zoom-in" data-aos-offset="0">
+                                    <figure class="m-0">
+                                        <img src="/front/img/nws-evnt-left-img-1.png" class="img-fluid w-100" alt="">
+                                    </figure>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="discp-wrp animated" data-aos="fade-left" data-aos-offset="0">
+                                        <div class="title">
+                                            {{firstNewsData.heading}}
+                                        </div>
+                                        <p class="pra-txt">
+                                            {{firstNewsData.content}}
+                                        </p>
+                                        <a href="#" class="readmore-btn">Read more...</a>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <section class="qoute-sec bg-vid">
+            <div class="overlay"></div>
+            <div class="vid-wrap">
+            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                <source src="/front/video/news.mp4" type="video/mp4">
+              </video>
+              <div class="qoute-inr"> 
+              <div class="container">
+                <blockquote class="blockquote text-center mb-0">
+                  <div class="text-white">
+                    <p class="mb-0 p-txt" data-aos="zoom-in" data-aos-offset="0"> <span class="qt-icon tp-q">“   </span> Some quote related to this page... <br> it’ll look good and add value.
+                     <span class="qt-icon bt-q"> &bdquo; </span></p>
+                  
+                  </div>
+                </blockquote>
+            </div>   
+              </div>
+            </div>
+        </section>
+        <section class="inner-top-banner-sec mt-0">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="row">
+                        {% for news in newsData %}
+                            {{news | safe}}
+                        {% endfor %}
+{# 
+                        <div class="col-md-6 pl-xl-3 pr-xl-3 pl-md-3 pr-md-3 pl-0 pr-0">                    
+                            <div class="card primary-till mt-4 mb-3 card-style small-card" data-aos="fade-right" data-aos-offset="0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 ">
+                                            <div class="discp-wrp" data-aos="fade-in" data-aos-offset="0">
+                                                <div class="title">
+                                                    Heading abc1
+                                                </div>
+                                                <p class="pra-txt">
+                                                    From manufacturing & marketing of direct Dyestuffs, Ushanti has successfully.....
+                                                </p>
+                                                <a href="#" class="readmore-btn">Read more...</a>
+                                            </div>  
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 lg-pr-2 pr-3">
+                                            <figure class="m-0" data-aos="zoom-in" data-aos-offset="0">
+                                                <img src="/front/img/product-blue-small-1.png" class="img-fluid w-100" alt="">
+                                            </figure>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 pl-xl-3 pr-xl-3 pl-md-3 pr-md-3 pl-0 pr-0">                    
+                            <div class="card primary-till mt-4 mb-3 card-style small-card" data-aos="fade-left" data-aos-offset="0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 pl-3 pl-xl-2 order-1 order-xl-2">
+                                            <div class="discp-wrp" data-aos="fade-in" data-aos-offset="0">
+                                                <div class="title">
+                                                    Heading abc2
+                                                </div>
+                                                <p class="pra-txt">
+                                                    From manufacturing & marketing of direct Dyestuffs, Ushanti has successfully.....
+                                                </p>
+                                                <a href="#" class="readmore-btn">Read more...</a>
+                                            </div>  
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 xl-pl-2 pl-3 order-2 order-xl-1" data-aos="zoom-in" data-aos-offset="0">
+                                            <figure class="m-0" >
+                                                <img src="/front/img/product-till-small-1.png" class="img-fluid w-100" alt="">
+                                            </figure>
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card primary-blue mt-4 mb-4 card-style" data-aos="fade-in" data-aos-offset="0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 lg-pr-2 pr-3" data-aos="zoom-in" data-aos-offset="0">
+                                        <figure class="m-0">
+                                            <img src="/front/img/nws-evnt-left-img-1.png" class="img-fluid w-100" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="discp-wrp animated" data-aos="fade-left" data-aos-offset="0">
+                                            <div class="title">
+                                                Heading abc3
+                                            </div>
+                                            <p class="pra-txt">
+                                                From manufacturing & marketing of direct Dyestuffs, Ushanti has successfully.....
+                                            </p>
+                                            <a href="#" class="readmore-btn">Read more...</a>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div> #}
+                        
+                        
+                        
+
+                    </div>
+                </div>
+
+                
+                
+                {# <div class="col-md-12">
+                    <div class="row">
+                        
+                    </div>
+                </div> #}
+            </div>
+        </section>
+    </main>
+    {% include "frontend/partitions/footer.html" %}
+    <script>
+         $(document).ready(function() {
+          AOS.init({
+            // startEvent: 'load',
+            offset: 250,
+            duration: 1000,
+            easing: 'ease-in-sine',
+            delay: 50,
+            disableMutationObserver: true,
+            throttleDelay: 0,
+            debounceDelay: 0,
+            once: false,
+            mirror: true,
+            startEvent: 'DOMContentLoaded'
+            });
+        });
+        
+        
+    </script>
+</body>
+</html>

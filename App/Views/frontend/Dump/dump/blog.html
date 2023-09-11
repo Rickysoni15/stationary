@@ -1,0 +1,214 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+        <section class="blog-section-1" data-aos="fade-in" data-aos-offset="0">
+            <div class="container">
+                <div class="row align-items-center pr-md-5 pl-md-5 pr-0 pl-0">
+                    <div class="col-md-12 text-center pb-4">
+                        <h1 class="title text-blue title-text-with-circle" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                            <span class="big-yellow-circle"></span> Blogs <span class="big-gry-circle"></span>
+                        </h1>
+                    </div>
+                    <div class="col-md-12 mt-3 mt-md-5 mb-5">
+
+                        <p class="text-blue p-txt text-center aos-init aos-animate" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                            Suspendisse ante mi iaculis ac eleifend id venenatis non eros. Sed rhoncus gravida eli eu <br> sollicitudin sem iaculis. Mi iaculis ac eleifend id venenatis non erossed venenatis non eros sed <br> rhoncus gravida.
+                        </p>
+                    </div>
+
+                    <!-- <div class="col-md-6 text-center text-md-left text-center order-2 order-md-1" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                        <img src="/front/img/circle-img-2.png" alt="" class="img-fluid">
+                    </div>
+
+                    <div class="col-md-6 order-1 order-md-2 text-md-left text-center mb-3 mb-md-0">
+                        <h3 class="title text-blue" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">Heading abc0</h3>
+                        <p class="text-blue p-txt" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                            Suspendisse ante mi iaculis ac eleifend id <br> venenatis non eros...
+                        </p>
+                        <a href="blog-detail.html" class="btn btn-outlined btn-rounded btn-outline-primary cstm-btn">Read
+                            More</a>
+                    </div> -->
+
+                </div>
+
+                <!-- <div class="row align-items-center pr-md-5 pl-md-5 pr-0 pl-0">
+                    <div class="col-md-5 mt-5 mt-md-0 mb-4 mb-md-0 text-center text-md-right ">
+                        <h3 class="title text-yellow text-md-right text-center" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">Heading abc1</h3>
+                        <p class="text-yellow p-txt text-md-right text-center" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                            Suspendisse ante mi iaculis ac <br> eleifend id venenatis non eros...
+                        </p>
+                        <a href="blog-detail.html" class="btn btn-outlined btn-rounded btn-outline-yellow cstm-btn-yellow">Read
+                            More</a>
+                    </div>
+                    <div class="col-md-6 text-center text-md-left text-center" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                        <img src="/front/img/blog-img-2.png" alt="" class="img-fluid">
+                    </div>
+
+
+                </div> -->
+            </div>
+        </section>
+        <section class="blog-section-second">
+            <div class="container">
+              <span id="blogData"></span>
+
+                <!-- <div class="row align-items-center pr-md-5 pl-md-5 pr-0 pl-0 pb-0 mb-md-5">
+                    <div class="col-md-6 text-center text-md-left text-center order-2 order-md-1" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                        <img src="/front/img/blog-img-3.png" alt="" class="img-fluid">
+                    </div>
+
+                    <div class="col-md-6 order-1 order-md-2 text-md-left text-center mb-3 mb-md-0">
+                        <h3 class="title text-blue" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">Heading abc2</h3>
+                        <p class="text-blue p-txt" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                            Suspendisse ante mi iaculis ac eleifend id <br> venenatis non eros...
+                        </p>
+                        <a href="blog-detail.html" class="btn btn-outlined btn-rounded btn-outline-primary cstm-btn">Read
+                            More</a>
+                    </div>
+
+                </div> -->
+                <!-- <div class="row align-items-center pr-md-5 pl-md-5 pr-0 pl-0">
+                    <div class="col-md-5 mt-5 mt-md-0 mb-4 mb-md-0 text-center text-md-right ">
+                        <h3 class="title text-yellow text-md-right text-center" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">Heading abc</h3>
+                        <p class="text-yellow p-txt text-md-right text-center" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                            Suspendisse ante mi iaculis ac <br> eleifend id venenatis non eros...
+                        </p>
+                        <a href="blog-detail.html" class="btn btn-outlined btn-rounded btn-outline-yellow cstm-btn-yellow">Read
+                            More</a>
+                    </div>
+                    <div class="col-md-6 text-center text-md-left text-center" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                        <img src="/front/img/blog-img-2.png" alt="" class="img-fluid">
+                    </div>
+
+
+                </div> -->
+
+                <div class="text-center">
+                    <nav aria-label="Page navigation" class="cstm-pagignation">
+                        <ul class="pagination">
+                            <!-- <li class="page-next-prev">
+                                <a href="#" class="link-nxt-prev"><i class="fa fa-angle-left"></i></a>
+                            </li> -->
+                            {% for item in range(0, blogCount) %}
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="/blog/{{loop.index}}">{{loop.index}}</a>
+                            </li>
+                            {% else %}
+                              <li>This would display if the 'item' collection were empty</li>
+                            {% endfor %}
+                            <!-- <li class="page-next-prev">
+                                <a href="#" class="link-nxt-prev"><i class="fa fa-angle-right"></i></a>
+                            </li> -->
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </section>
+        <section class="blog-section-third">
+            <div class="container">
+                <div class="row  align-items-center">
+                    <div class="col-md-12">
+                        <div class="quote-wrp text-center" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                            <div class="qote-icon">
+                                <img src="/front/img/qoute-icon.png" alt="">
+                            </div>
+                            <p class="p-txt text-white">
+                                Reading is essential for those who <br> seek to rise above the ordinary.
+                            </p>
+                            <small class="text-white">-Jim Rohn</small>
+                        </div>
+
+                    </div>
+                </div>
+        </section>
+        <section class="blog-section-fourth">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="counter-list list-unstyled">
+                            <li data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                                <h3 class="text-big">500+</h3>
+                                <p class="text-small">STUDENTS</p>
+
+                            </li>
+                            <li data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                                <h3 class="text-big">50</h3>
+                                <p class="text-small">COLLEGES</p>
+
+                            </li>
+                            <li data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000" data-aos-offset="0">
+                                <h3 class="text-big">315+</h3>
+                                <p class="text-small">COURSES</p>
+
+                            </li>
+                        </ul>
+                        <div class="mb-0 text-center bottom-img">
+                            <img src="/front/img/footer-blog-img.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+
+        <span id="dummyBlogData" style="display:none"></span>
+
+    {% endblock %} {% block Jscript %}
+    <script>
+        $('.client-list-slider').owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplaySpeed: 1200,
+            margin: 0,
+            nav: true,
+            dots: false,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                420: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 3
+                },
+                1024: {
+                    items: 3
+                }
+            }
+        })
+
+        $(document).ready(function() {
+
+
+          let blogData = "{{blogData}}";
+          // var htmlObject = $(blogData);
+          // console.log("blogData", blogData);
+          $('#dummyBlogData').html(blogData);
+          let data = $('#dummyBlogData')[0].innerText;
+          // console.log("blogData", data[0].innerText);
+
+          $('#blogData').html(data)
+            AOS.init({
+                // startEvent: 'load',
+                offset: 250,
+                duration: 1000,
+                easing: 'ease-in-sine',
+                delay: 50,
+                disableMutationObserver: true,
+                throttleDelay: 0,
+                debounceDelay: 0,
+                once: false,
+                mirror: true,
+                // startEvent: 'DOMContentLoaded'
+            });
+
+        });
+    </script>
+    {% endblock %}

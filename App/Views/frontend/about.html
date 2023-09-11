@@ -1,0 +1,192 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+
+    <div class="wrap-breadcrumb parallax-breadcrumb">
+        <div class="container"></div>
+    </div>
+
+
+    <div id="information-information" class="container">
+        <ul class="breadcrumb">
+            <li><a href="/home"><i class="fa fa-home"></i></a></li>
+            <li><a href="/aboutus">About Us</a></li>
+        </ul>
+        <div class="row">
+            <aside id="column-left" class="col-sm-3 hidden-xs">
+                <div class="box">
+                    <div class="box-heading">Categories</div>
+                    <div class="box-content">
+                        <ul class="box-category treeview-list treeview">
+                            <li>
+                                <a href="" class="active">Stationery
+                                </a>
+                                {% for item in productCategoryData %}
+    
+                                <ul>
+                                    <li>
+                                        <a href='/products/{{item._id}}'>{{item.productCategoryName}}</a>
+                                    </li>
+                                    <!-- <li>
+                                        <a href="files.html">Files</a>
+                                    </li>
+                                    <li>
+                                        <a href="/accessories.html">Accessories</a>
+                                    </li> -->
+                                </ul>
+                                {% else %}
+                            <li>You do not have any category to display here.</li>
+                            {% endfor %}
+                            </li>
+                            <!-- <li>
+                                    <a href="./envelops.html">Envelopes</a>
+                                </li>
+                                <li>
+                                    <a href="/notbooks.html">Note Books</a>
+                                </li> -->
+                            <!-- <li>
+                                    <a
+                                        href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=17">Ruler</a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=31">Clipboard</a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=24">Scissors</a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=product/category&amp;path=33">Geometry
+                                        Box</a>
+                                </li> -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="swiper-viewport">
+                    <div id="banner0" class="swiper-container  single-banner ">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"></div>
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                        $('#banner0').swiper({
+                            effect: 'fade',
+                            autoplay: 2500,
+                            pagination: '.swiper-pagination',  // If we need pagination
+                            autoplayDisableOnInteraction: false
+                        });
+                    </script>
+                <div class="box">
+                    <div class="box-heading">Information</div>
+                    <div class="list-group">
+                        <a class="list-group-item" href="/aboutus">About Us </a>
+                        <a class="list-group-item" href="/deliveryInformation">Delivery
+                            Information </a>
+                        <a class="list-group-item" href="/privacyPolicy">Privacy Policy </a>
+                        <a class="list-group-item" href="/termsconditions">Terms &amp;
+                            Conditions </a>
+                        <a class="list-group-item" href="/contact">Contact Us </a>
+                        <!-- <a class="list-group-item" href="siteMap.html">Site Map </a> -->
+                    </div>
+                </div>
+            </aside>
+
+            <div id="content" class="col-sm-9">
+                <h1 class="page-title">About Us</h1>
+                <div class="aboutus">
+                    <h3>100% Fully Responsive</h3>
+                    <div class="image1"> </div>
+                    <div class="about-content">These days Mobile is the handiest device to access internet. Hence your
+                        website must be mobile accessible as compatibility.</div>
+                </div>
+                <div class="aboutus">
+                    <h3>Cross Browser Compatibility</h3>
+                    <div class="image2"> </div>
+                    <div class="about-content">Cross-browser means web application works with all versions of all
+                        browsers. To claim cross-browser compatibility, the website is nowadays expected to support
+                        browsers.</div>
+                </div>
+                <div class="aboutus">
+                    <h3>Dedicated support team</h3>
+                    <div class="image3"> </div>
+                    <div class="about-content">Our support team guarantees to respond you within 24 working hours. We
+                        will process tickets and respond you to in the queue order.</div>
+                </div>
+                <div class="aboutus">
+                    <h3>High Quality Products</h3>
+                    <div class="image4"> </div>
+                    <div class="about-content">Website design can do wonders for your traffic. Giving a fresh look to
+                        your website makes your visitors think that you care for them and are ready to change with time.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block Jscript %}
+    <!-- ======= Quick view JS ========= -->
+    <script>
+
+        function quickbox() {
+            if ($(window).width() > 767) {
+                $('.quickview-button').magnificPopup({
+                    type: 'iframe',
+                    delegate: 'a',
+                    preloader: true,
+                    tLoading: 'Loading image #%curr%...',
+                });
+            }
+        }
+        jQuery(document).ready(function () { quickbox(); });
+        jQuery(window).resize(function () { quickbox(); });
+
+    </script>
+
+    <script>
+            function subscribe() {
+                var emailpattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                var email = $('#txtemail').val();
+                if (email != "") {
+                    if (!emailpattern.test(email)) {
+                        $('.text-danger').remove();
+                        var str = '<span class="error">Invalid Email</span>';
+                        $('#txtemail').after('<div class="text-danger">Invalid Email</div>');
+
+                        return false;
+                    }
+                    else {
+                        $.ajax({
+                            url: 'index.php?route=extension/module/newsletters/news',
+                            type: 'post',
+                            data: 'email=' + $('#txtemail').val(),
+                            dataType: 'json',
+
+
+                            success: function (json) {
+
+                                $('.text-danger').remove();
+                                $('#txtemail').after('<div class="text-danger">' + json.message + '</div>');
+
+                            }
+
+                        });
+                        return false;
+                    }
+                }
+                else {
+                    $('.text-danger').remove();
+                    $('#txtemail').after('<div class="text-danger">Email Is Require</div>');
+                    $(email).focus();
+
+                    return false;
+                }
+            }
+    </script>
+    {% endblock %}

@@ -1,0 +1,295 @@
+{% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Product Category</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<!-- <li><a href="/listCategory">Categories</a></li> -->
+				<li class="active">Sub Product Category</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+
+		<head>
+			<style>
+				input.largerCheckbox {
+					width: 30px;
+					height: 30px;
+				}
+
+				/* .fafa-trashremoveAddressTextareacol-sm-5 {
+					width: 30px;
+            		height: 30px;
+				} */
+			</style>
+		</head>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<!-- <h6 class="panel-title txt-dark">Settings</h6> -->
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+
+										
+										
+										{% if productCategorydata and add_post == "edit_post" %}
+										<form method="POST"
+											action="/backend/productCategory/edit_sub_post_productCategory"
+											class="form-horizontal" enctype="multipart/form-data">
+											{% else %}
+											<form id="formdata" method="POST"
+												action="/backend/productCategory/add_sub_post_productCategory"
+												class="form-horizontal" enctype="multipart/form-data">
+												{% endif %}
+												<table border="0" class="table display  pb-30">
+													<div class="col-sm-12">
+														<div class="panel-wrapper collapse in">
+															<div class="panel-body">
+																
+																<div class="form-group">
+																	<input type="hidden" class="form-control"
+																		name="productCategorydata_id"
+																		id="productCategorydata_id"
+																		value="{{productCategorydata._id}}" />
+																	<input type="hidden" class="form-control"
+																		name="main_productId" id="main_productId"
+																		value="{{productCategorydata.main_productId}}" />
+
+																	<label class="control-label mb-10 col-sm-2"
+																		for="brand_name">Category Name:</label>
+																	<div class="col-sm-6">
+																		{% if add_post == "add_post" %}
+																		
+																		<input type="text" class="form-control"
+																			name="productCategoryName"
+																			id="productCategoryName" value="" />
+																		{% else %}
+																		<input type="text" class="form-control"
+																			name="productCategoryName"
+																			id="productCategoryName"
+																			value="{{productCategorydata.productCategoryName}}" />
+																		{% endif %}
+																	</div>
+																</div>
+
+															</div>
+														</div>
+													</div>
+													<tr>
+														<td colspan="2">
+
+														
+
+															{% if productCategorydata and add_post == "edit_post" %}
+															<input type="submit" class="btn btn-success btn-flat"
+																value="Update">
+
+																
+																<a class="btn btn-danger btn-flat"
+																href="/backend/productCategory/list_sub_productCategory/{{productCategorydata.main_productId}}">Cancel</a> 
+															<!-- <a class="btn btn-danger btn-flat"
+																href="/backend/productCategory/list_sub_productCategory/{{productCategorydata.main_productId}}/{{productCategorydata.main_sub_productId}}">Cancel</a> -->
+															{%else%}
+															<input id="submit" type="submit"
+																class="btn btn-success btn-flat" value="Submit">
+																
+																<a class="btn btn-danger btn-flat"
+
+
+																
+																href="/backend/productCategory/list_sub_productCategory/{{productCategoryMainId[0]}}">Cancel</a>
+															{% endif %}
+														</td>
+													</tr>
+												</table>
+											</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- /Row -->
+			</div>
+		</section>
+
+		{% endblock %}
+
+		{% block Jscript %}
+
+		<script>
+			// $(document).load(function(){
+			// 	$("#remainingTextBox").hide();
+			// });
+
+			$(document).ready(function () {
+
+				// $('.remainingTextBox').css("display", "none");
+				// $('input[type="checkbox"]').click(function(){
+				// if($(this).is(":checked")){
+				// $("#remainingTextBox").show();
+
+				// }
+				// else if($(this).is(":not(:checked)")){
+				// $("#remainingTextBox").hide();
+				// }
+			});
+			// });
+
+			$('.removeAddressTextarea').click(function () {
+				let parent = $(this).parent().parent().parent().parent().html('');
+				console.log("parent", parent);
+			});
+
+
+
+			$('.removePdf').click(function () {
+				var host = window.location.origin;
+
+				let id = $(this).attr('id'); //product's id
+
+
+				let _id = $(this).attr('name'); //pdf's id
+				var thisElement = this;
+
+				// let parent = $(this).parent().parent().parent().html('');
+
+
+				$.ajax({
+					type: 'POST',
+					url: host + "/backend/pdfCategoryDelete",
+					data: { id: id, _id: _id },
+					success: function (resultData) {
+
+						// alert(data);
+						if (resultData == 'success') {
+							$(thisElement).parent().parent().parent().hide();
+
+						} else {
+							alert("Something went wrong")
+						}
+						// alert("Save Complete")
+					}
+				});
+
+
+			});
+
+
+
+	// $('.removePdf').click(function(){
+	// 	let parent = $(this).parent().parent().parent().html('');
+	// 	console.log("parent", parent);
+	// });
+
+
+
+		</script>
+
+
+
+
+
+		<script>
+			var intWorkProcessTextBox = 0;
+
+			function addWorkProcess() {
+				intWorkProcessTextBox++;
+				var objNewDiv = document.createElement('div');
+				objNewDiv.setAttribute('id', 'div_' + intWorkProcessTextBox);
+
+
+				//by kiran sir
+				var textArea = document.createElement('textarea')
+				textArea.setAttribute('id', 'description_');
+				textArea.setAttribute('name', 'description');
+				textArea.setAttribute('rows', '10');
+				textArea.setAttribute('cols', '70');
+
+				// textArea.setAttribute('style','resize:none;')
+
+
+				objNewDiv.innerHTML = '<div class="form-group">\
+							<div class="form-group">\
+								<label class="control-label mb-10 col-sm-2" for="heading" id="heading">Heading:</label>\
+								<div class="col-sm-6">\
+									<input type="text" class="form-control" name="heading" id="heading"/>\
+								</div>\
+								<div class="col-sm-1">\
+									<div class="" style="float: right;">\
+										<i class="fa fa-trash fa-2x removeAddressTextaready_'+ intWorkProcessTextBox + '"  ></i> </div>\
+									</div>\
+								</div>\
+							</div>\
+								<div class="form-group">\
+									<label class="control-label mb-10 col-sm-2" for="description" id="description">Description:</label>\
+									<div class="col-sm-6"  id="_new_textArea_div_'+ intWorkProcessTextBox + '">\
+								</div>\
+							</div>'
+
+
+
+
+
+
+				document.getElementById('moreWorkProcess').appendChild(objNewDiv);
+				document.getElementById("_new_textArea_div_" + intWorkProcessTextBox).appendChild(textArea);
+
+
+
+
+				new nicEditor().panelInstance(textArea);
+
+
+				$('.removeAddressTextaready_' + intWorkProcessTextBox).click(function () {
+					// $(this).hide();
+					let parent = $(this).parent().parent().parent().parent().parent().html('');
+				});
+
+
+			}
+
+			$('.removeAddressTextarea').click(function () {
+				// $(this).hide();
+				let parent = $(this).parent().parent().parent().parent().html('');
+				console.log("parent", parent);
+			});
+			$('.removePdf').click(function () {
+				// $(this).hide();
+				let parent = $(this).parent().parent().parent().html('');
+				console.log("parent", parent);
+			});
+
+		</script>
+
+		<script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script>
+		<script type="text/javascript">
+
+			bkLib.onDomLoaded(function () { nicEditors.allTextAreas() });
+		</script>
+
+
+
+		{% endblock %}

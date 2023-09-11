@@ -1,0 +1,770 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+<style>
+    .panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+#overlay{	
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height:100%;
+  display: none;
+  background: rgba(0,0,0,0.6);
+}
+.cv-spinner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 4px #ddd solid;
+  border-top: 4px #2e93e6 solid;
+  border-radius: 50%;
+  animation: sp-anime 0.8s infinite linear;
+}
+@keyframes sp-anime {
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+.is-hide{
+  display:none;
+}
+
+</style>
+
+<div class="main-content main-content-checkout">
+    <div id="overlay">
+        <div class="cv-spinner">
+          <span class="spinner"></span>
+        </div>
+      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="trail-item trail-end active">
+                            Checkout
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <h3 class="custom_blog_title">
+            Checkout
+        </h3>
+        <div class="checkout-wrapp">
+            <div class="shipping-address-form-wrapp">
+                <div class="shipping-address-form  checkout-form">
+                    <div class="row-col-1 row-col">
+                        <div class="shipping-address">
+                            <h3 class="title-form">
+                                Shipping Address
+                            </h3>
+                            <div class="row">
+                                {% set i = 0 %}
+                                {% for user in user.address_arr %}
+                                {% if user.is_deleted == "0" %}
+                                {% set i = i + 1 %}
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="login-item">
+                                        <!-- <h5 class="title-login">Your Address</h5> -->
+                                        <div class="col-lg-1">
+                                            {% if user.is_default == "0" %}
+                                            <input type="radio" id="{{user.id}}" class="default_add" name="default_add" value="" checked>
+                                            {% else %}
+                                            <input type="radio" id="{{user.id}}" class="default_add" name="default_add" value="">
+                                            {% endif %}
+                                            <label for="{{user.id}}"></label>
+                                        </div>
+                                        <div class="col-lg-11">
+                                            <form class="login">
+                                            <p class="form-row form-row-wide">
+                                               <b>{{user.fullname}}</b> <br />
+                                               {{user.addresstext_no}} <br />
+                                               {{user.addresstext_name}} <br />
+                                               {{user.landmark}} <br />
+                                               {{user.city}}
+                                               {{user.state}}
+                                               {{user.pincode}}<br />
+                                               {{user.mobileno}}
+                                            </p>
+                                            <!-- <p class="form-row">
+                                                <input type="button" class="custom_button" onclick="location.href='/customer_edit_address/{{user.id}}'" value="Edit">
+                                                <input type="button" class="custom_button delete_add" id="{{user.id}}" value="Remove">
+                                            </p> -->
+                                            </form>
+                                        </div>
+                                </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                  <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                                      <a class="accordion-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Add New Address
+                                      </a>
+                                    </h4>
+                                  </div>
+                                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="content-area col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="site-main">
+                                                    <h3 class="custom_blog_title">
+                                                    </h3>
+                                
+                                
+                                                    <div class="customer_login">
+                                                        <div class="row">
+                                
+                                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                <div class="login-item">
+                                                                    <h5 class="title-login">Address</h5>
+                                                                    <form class="register" id="registerSubmit" action="/customer_address_post" method="post"
+                                                                        enctype="multipart/form-data">
+                                
+                                                                        <!-- <div class="vendor_gstbtn form-row-wide">
+                                
+                                                                            <div class="text ">GST</div>
+                                                                            <div>
+                                
+                                                                                <label class="switch_vendorGst">
+                                                                                    <input name="gstSwitch" class="gstSwitch" type="checkbox"
+                                                                                        id="switchVal" value="0" hidden>
+                                                                                    <span class="slider_vendorGst round"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div> -->
+                                
+                                                                        <!-- {% if role %}
+                                
+                                                                        <span id="gst_invalid" class="hidden  mob-helpers">
+                                                                            Please enter valid Gst number.
+                                                                        </span>
+                                                                        <div class="gst_invlidmsg"> </div>
+                                                                        <p class="form-row Gst_Hide form-row-wide">
+                                                                            <label class="text">GST Number</label>
+                                                                            <input title="gst_number" name="gst_No" id="vendor_gstNo" maxlength="15"
+                                                                                type="text" class="input_Gst">
+                                                                        </p>
+                                                                        {% endif %} -->
+                                
+                                                                        <input type="hidden" name="default_add" value="checkout">
+                                
+                                                                        <p class="form-row form-row-wide">
+                                                                            <label class="text">Full Name</label>
+                                                                            <input title="name" name="fullname" value="{{user.firstname}}{{user.lastname}}" type="text" class="input-text"
+                                                                                required>
+                                                                        </p>
+                                                                        <p class="form-row form-row-wide">
+                                                                            <label class="text">Mobile Number</label>
+                                                                            <input title="name" name="mobileno" value="{{user.mobile}}" type="text" class="input-text"
+                                                                                required>
+                                                                        </p>
+                                
+                                                                        <p class="form-row form-row-wide">
+                                                                            <label class="text">PIN Code</label>
+                                                                            <input title="email" name="pincode" type="text" value="{{user.pincode}}" class="input-text" required>
+                                                                        </p>
+                                
+                                                                        <p class="form-row form-row-wide">
+                                                                            <label class="text">Flat, House no., Building name</label>
+                                                                            <input title="email" name="addresstext_no" type="text" value="{{user.addresstext_no}}" class="input-text" required>
+                                                                        </p>
+                                                                        <p class="form-row form-row-wide">
+                                                                            <label class="text">Road name, Area, Colony</label>
+                                                                            <input title="email" name="addresstext_name" type="text" value="{{user.addresstext_name}}" class="input-text" required>
+                                                                        </p>
+                                                                        <p class="form-row form-row-wide">
+                                                                            <label class="text">Landmark</label>
+                                                                            <input title="email" name="landmark" type="text" value="{{user.landmark}}" class="input-text" required>
+                                                                        </p>
+                                                                        <p class="form-row form-row-wide">
+                                                                            <label class="text">Town/City</label>
+                                                                            <input title="email" name="city" type="text" value="{{user.city}}" class="input-text" required>
+                                                                        </p>
+                                                                        <p class="form-row form-row-wide">
+                                                                            <label class="text">State</label>
+                                                                            <input title="email" name="state" type="text" value="{{user.state}}" class="input-text" required>
+                                                                        </p>
+                                                                        <p class="form-row form-row-wide">
+                                                                            <label class="text">Address Type</label>
+                                                                            <!-- <input title="email" name="addresstype" type="text" value="{{user.addresstype}}" class="input-text" required> -->
+                                                                            <select name="addresstype" id="cars" required>
+                                                                                <option value="" selected disabled>Please Select</option>   
+                                                                                <option value="Home">Home</option>
+                                                                                <option value="Office">Office</option>
+                                                                                <option value="Other">Other</option>
+                                                                            </select>
+                                                                        </p>
+                                
+                                                                        <!-- <p class="form-row form-row-wide">
+                                                                            <label for="myfile">Select a file:</label>
+                                                                            <input type="file" id="kycImage" name="kycImage"
+                                                                                accept="image/x-png,image/gif,image/jpeg,.pdf" required>
+                                                                        </p> -->
+                                
+                                                                        <!-- <p class="form-row">
+                                                                            <span class="inline">
+                                                                                <input type="checkbox" name="term_and_condition" id="cb2">
+                                                                                <label for="cb2" class="label-text">I agree to <span>Terms &
+                                                                                        Conditions</span></label>
+                                                                            </span>
+                                                                        </p> -->
+                                
+                                                                        <p class="">
+                                                                            <input type="submit" class="button-submit" value="Submit">
+                                                                        </p>
+                                
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                           
+                              </div>
+                            <!-- <p class="form-row form-row-first">
+                                <label class="text">First name</label>
+                                <input title="first" type="text" class="input-text">
+                            </p>
+                            <p class="form-row form-row-last">
+                                <label class="text">Last name</label>
+                                <input title="last" type="text" class="input-text">
+                            </p>
+                            <p class="form-row forn-row-col forn-row-col-1">
+                                <label class="text">Country</label>
+                                <select title="country" data-placeholder="United Kingdom" class="chosen-select"
+                                        tabindex="1">
+                                    <option value="United States">United States</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="Afghanistan">Afghanistan</option>
+                                    <option value="Aland Islands">Aland Islands</option>
+                                    <option value="Albania">Albania</option>
+                                    <option value="Algeria">Algeria</option>
+                                    <option value="American Samoa">American Samoa</option>
+                                    <option value="Andorra">Andorra</option>
+                                    <option value="Angola">Angola</option>
+                                    <option value="Anguilla">Anguilla</option>
+                                    <option value="Antarctica">Antarctica</option>
+                                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                    <option value="Argentina">Argentina</option>
+                                    <option value="Armenia">Armenia</option>
+                                    <option value="Aruba">Aruba</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Azerbaijan">Azerbaijan</option>
+                                    <option value="Bahamas">Bahamas</option>
+                                    <option value="Bahrain">Bahrain</option>
+                                    <option value="Bangladesh">Bangladesh</option>
+                                    <option value="Barbados">Barbados</option>
+                                    <option value="Belarus">Belarus</option>
+                                    <option value="Belgium">Belgium</option>
+                                    <option value="Belize">Belize</option>
+                                    <option value="Benin">Benin</option>
+                                    <option value="Bermuda">Bermuda</option>
+                                    <option value="Bhutan">Bhutan</option>
+                                </select>
+                            </p>
+                            <p class="form-row forn-row-col forn-row-col-2">
+                                <label class="text">State</label>
+                                <select title="state" data-placeholder="London" class="chosen-select" tabindex="1">
+                                    <option value="United States">London</option>
+                                    <option value="United Kingdom">tokyo</option>
+                                    <option value="Afghanistan">Seoul</option>
+                                    <option value="Aland Islands">Mexico city</option>
+                                    <option value="Albania">Mumbai</option>
+                                    <option value="Algeria">Delhi</option>
+                                    <option value="American Samoa">New York</option>
+                                    <option value="Andorra">Jakarta</option>
+                                    <option value="Angola">Sao Paulo</option>
+                                    <option value="Anguilla">Osaka</option>
+                                    <option value="Antarctica">Karachi</option>
+                                    <option value="Antigua and Barbuda">Matx-cơ-va</option>
+                                    <option value="Argentina">Toronto</option>
+                                    <option value="Armenia">Boston</option>
+                                </select>
+                            </p>
+                            <p class="form-row forn-row-col forn-row-col-3">
+                                <label class="text">City</label>
+                                <select title="city" data-placeholder="London" class="chosen-select" tabindex="1">
+                                    <option value="United States">London</option>
+                                    <option value="United Kingdom">tokyo</option>
+                                    <option value="Afghanistan">Seoul</option>
+                                    <option value="Aland Islands">Mexico city</option>
+                                    <option value="Albania">Mumbai</option>
+                                    <option value="Algeria">Delhi</option>
+                                    <option value="American Samoa">New York</option>
+                                    <option value="Andorra">Jakarta</option>
+                                    <option value="Angola">Sao Paulo</option>
+                                    <option value="Anguilla">Osaka</option>
+                                    <option value="Antarctica">Karachi</option>
+                                    <option value="Antigua and Barbuda">Matx-cơ-va</option>
+                                    <option value="Argentina">Toronto</option>
+                                    <option value="Armenia">Boston</option>
+                                </select>
+                            </p>
+                            <p class="form-row form-row-first">
+                                <label class="text">Zip code</label>
+                                <input title="zip" type="text" class="input-text">
+                            </p>
+                            <p class="form-row form-row-last">
+                                <label class="text">Address</label>
+                                <input title="address" type="text" class="input-text">
+                            </p> -->
+                        </div>
+                    </div>
+                    <div class="row-col-2 row-col">
+                        <div class="your-order">
+                            <h3 class="title-form">
+                                Your Order
+                            </h3>
+                            <ul class="list-product-order">
+                                {% set i = 0 %}
+                                {% if addtocartdata %}
+                                {% for item in addtocartdata %}
+                                {% set i = i + 1 %}
+                                <li class="product-item-order">
+                                    <div class="product-thumb">
+                                        <a href="#">
+                                            <img src="{{item.product_defaultImg[0].path}}" alt="img">
+                                        </a>
+                                    </div>
+                                    <div class="product-order-inner">
+                                        <h5 class="product-name">
+                                            <input type="hidden" name="product_id" class="product_id" value="{{item._id}}">
+                                            <a href="#">{{item.product_name}}</a>
+                                        </h5>
+                                        <span class="attributes-select attributes-color">SKU : {{item.product_sku}}</span>
+                                        <span class="attributes-select attributes-size">Sold By : {{item.venodor_name}}</span>
+                                        {% if item.is_discount == "1" %}
+
+                                        <div class="price product_price" data-count="{{item.product_quantity}}">
+                                            {{item.discount_price}}
+                                            <span class="count">x{{item.product_quantity}}</span>
+                                        </div>
+
+                                        {% else %}
+
+                                        <div class="price product_price" data-count="{{item.product_quantity}}">
+                                            {{item.product_price}}
+                                            <span class="count">x{{item.product_quantity}}</span>
+                                        </div>
+
+                                        {% endif %}
+
+                                    </div>
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                            <div class="order-total">
+									<span class="title">
+										Total Price:
+									</span>
+                                    {% if item.is_discount == "1" %}
+
+                                <span class="total-price finalprice" data-id="{{item._id}}" id="{{item.discount_price}}" data-total_quantity="{{item.product_quantity_price}}">
+                                    {% if item.product_quantity_price == "0" %} {{item.discount_price}} {% else %} {{item.product_quantity_price}} {% endif %}	
+								</span>
+
+                                {% else %}
+
+                                <span class="total-price finalprice" data-id="{{item._id}}" id="{{item.product_price}}" data-total_quantity="{{item.product_quantity_price}}">
+                                    {% if item.product_quantity_price == "0" %} {{item.product_price}} {% else %} {{item.product_quantity_price}} {% endif %}	
+								</span>
+
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="javascript:void(0)" class="button button-payment" id="rzp-button1">Payment</a>
+            </div>
+            <!-- <div class="payment-method-wrapp">
+                <div class="payment-method-form checkout-form">
+                    <div class="row-col-1 row-col">
+                        <div class="payment-method">
+                            <h3 class="title-form">
+                                Payment Method
+                            </h3>
+                            <div class="group-button-payment">
+                                <a href="#" class="button btn-credit-card">Credit Card</a>
+                                <a href="#" class="button btn-paypal">paypal</a>
+                            </div>
+                            <p class="form-row form-row-card-number">
+                                <label class="text">Card number</label>
+                                <input type="text" class="input-text" placeholder="xxx - xxx - xxx - xxx">
+                            </p>
+                            <p class="form-row forn-row-col forn-row-col-1">
+                                <label class="text">Month</label>
+                                <select title="month" data-placeholder="01" class="chosen-select" tabindex="1">
+                                    <option value="thang01">01</option>
+                                    <option value="thang02">02</option>
+                                    <option value="thang03">03</option>
+                                    <option value="thang04">04</option>
+                                    <option value="thang05">05</option>
+                                    <option value="thang06">06</option>
+                                    <option value="thang07">07</option>
+                                    <option value="thang08">08</option>
+                                    <option value="thang09">09</option>
+                                    <option value="thang10">10</option>
+                                    <option value="thang11">11</option>
+                                    <option value="thang12">12</option>
+                                </select>
+                            </p>
+                            <p class="form-row forn-row-col forn-row-col-2">
+                                <label class="text">Year</label>
+                                <select title="Year" data-placeholder="2017" class="chosen-select" tabindex="1">
+                                    <option value="nam2022">2022</option>
+                                    <option value="nam2023">2023</option>
+                                    <option value="nam2024">2024</option>
+                                    <option value="nam2025">2025</option>
+                                    <option value="nam2026">2026</option>
+                                    <option value="nam2027">2027</option>
+                                    <option value="nam2028">2028</option>
+                                    <option value="nam2029">2029</option>
+                                    <option value="nam2030">2030</option>
+                                </select>
+                            </p>
+                            <p class="form-row forn-row-col forn-row-col-3">
+                                <label class="text">CVV</label>
+                                <select title="CVV" data-placeholder="238" class="chosen-select" tabindex="1">
+                                    <option value="cvv1">238</option>
+                                    <option value="cvv2">354</option>
+                                    <option value="cvv3">681</option>
+                                    <option value="cvv4">254</option>
+                                    <option value="cvv5">687</option>
+                                    <option value="cvv6">123</option>
+                                    <option value="cvv7">951</option>
+                                    <option value="cvv8">852</option>
+                                    <option value="cvv9">753</option>
+                                    <option value="vcc10">963</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row-col-2 row-col">
+                        <div class="your-order">
+                            <h3 class="title-form">
+                                Your Order
+                            </h3>
+                            <ul class="list-product-order">
+                                <li class="product-item-order">
+                                    <div class="product-thumb">
+                                        <a href="#">
+                                            <img src="/assets/images/item-order1.jpg" alt="img">
+                                        </a>
+                                    </div>
+                                    <div class="product-order-inner">
+                                        <h5 class="product-name">
+                                            <a href="#">3D Dining Chair</a>
+                                        </h5>
+                                        <span class="attributes-select attributes-color">Black,</span>
+                                        <span class="attributes-select attributes-size">XXL</span>
+                                        <div class="price">
+                                            $45
+                                            <span class="count">x1</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="product-item-order">
+                                    <div class="product-thumb">
+                                        <a href="#">
+                                            <img src="/assets/images/item-order2.jpg" alt="img">
+                                        </a>
+                                    </div>
+                                    <div class="product-order-inner">
+                                        <h5 class="product-name">
+                                            <a href="#">3D Dining Chair</a>
+                                        </h5>
+                                        <span class="attributes-select attributes-color">Black,</span>
+                                        <span class="attributes-select attributes-size">XXL</span>
+                                        <div class="price">
+                                            $45
+                                            <span class="count">x1</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="order-total">
+									<span class="title">
+										Total Price:
+									</span>
+                                <span class="total-price" id="order-amt">
+										$95
+									</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-control">
+                    <a href="#" class="button btn-back-to-shipping">Back to shipping</a>
+                    <a href="#" class="button btn-pay-now" id="order-button1">Pay now</a>
+                </div>
+            </div>
+            <div class="end-checkout-wrapp">
+                <div class="end-checkout checkout-form">
+                    <div class="icon">
+                    </div>
+                    <h3 class="title-checkend">
+                        Congratulation! Your order has been processed.
+                    </h3>
+                    <div class="sub-title">
+                        Aenean dui mi, tempus non volutpat eget, molestie a orci.
+                        Nullam eget sem et eros laoreet rutrum.
+                        Quisque sem ante, feugiat quis lorem in.
+                    </div>
+                    <a href="#" class="button btn-return">Return to Store</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<div class="hide_payment">
+<label for="">Amount: </label>
+<input type="text" id="order-amt">
+<br>
+<!-- Get order id from razorpay -->
+<!-- <button id="order-button1">Create Order</button> -->
+<br>
+
+<br>
+<hr>
+<label for="">Order id: </label>
+<input type="text" name="" id="rzp-text">
+<br>
+<!-- <button id="rzp-button1">Checkout</button> -->
+<div id="paymentDetails"></div>
+
+<br>
+<hr>
+<label for="">Order id :</label>
+<input type="text" id="order-id">
+<label for="">Payment id :</label>
+<input type="text" id="order-pay-id">
+<label for="">Order signature :</label>
+<input type="text" id="order-sig">
+<br>
+<button id="verify-button1">Verify </button>
+</div>
+{% endblock %}
+
+{% block Jscript %}
+
+<script>
+        $(document).ready(function () {
+    var host = window.location.origin;
+    let finaltotal = 0;
+        $(".product_price").each(function() {
+            let amount = $(this).text();
+            amount = amount.replace(/,/g, "");
+
+            let count = $(this).attr('data-count');
+            
+            console.log("am",amount);
+            amount = parseFloat(amount) * parseInt(count);
+            console.log("am", parseFloat(amount));
+            finaltotal = parseFloat(finaltotal) + parseFloat(amount);
+            var gstprice = calculateTax(parseFloat(finaltotal),18,"add");
+            finaltotal = gstprice.with_tax;
+            console.log("fn",finaltotal);
+
+            
+        });
+        function calculateTax(amount,tax_per,type) {
+            let base_amount =amount,
+                with_tax = amount,
+                without_tax = amount,
+                tax_amount
+            if(type == "add"){
+                tax_amount = ( amount * tax_per ) / 100
+                with_tax += tax_amount
+            }else if(type == "remove"){
+                with_tax = amount
+                tax_amount =  amount - (amount * (100/(100+tax_per)))
+                without_tax -= tax_amount
+            }
+            return {'base_amount':base_amount,"with_tax":parseFloat(with_tax).toFixed(2),"without_tax":without_tax,"tax_per":tax_per,"tax_amount":tax_amount,"type":type}
+        }
+
+        $(".total-price").text(finaltotal)
+        $(".total-price").attr('data-id',finaltotal)
+        $("#order-amt").attr('value',finaltotal+'00')
+        // $("#order-amt").attr('value',finaltotal.toFixed(2))
+
+        $(".default_add").click(function(){
+            // alert('You clicked radio!');
+            if($("input:radio[name='default_add']").is(":checked")) {
+                var id = $(this).attr('id');
+                $.ajax({
+                    type: 'POST',
+                    url: host + "/default_address",
+                    data: { id: id },
+                    success: function (resultData) {
+                        // alert(resultData)
+                        console.log(resultData);
+                        if (resultData == "success") {
+                            console.log("sdasd");
+                            
+                        } else {
+                            console.log("erere");
+                            // alert("Something went wrong")
+                        }
+                        
+                        // alert("Save Complete")
+                    }
+                // });
+            });
+            }
+        });
+    });
+</script>
+<script>
+    $('.hide_payment').hide();
+    // document.getElementById("order-button1").onclick = function(e) {
+        $(window).load(function() {
+            $("#overlay").fadeIn(1000);
+        });
+        // var product_idss = [];
+        // $('.product_id').each(function(){
+        //     product_idss.push($(this).attr('value'));
+        // });
+        window.addEventListener('load', function() {
+        var url = "/api/payment/order"
+        var params = {
+            amount: document.getElementById("order-amt").value,
+            currency: "INR",
+            receipt: "wthcoding001",
+            payment_capture: '1'
+        };
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function(res) {
+            if (xmlHttp.readyState === 4) {
+                res = JSON.parse(xmlHttp.responseText);
+                document.getElementById("rzp-text").value = res.sub.id
+            }
+        }
+        xmlHttp.open("POST", url, true);
+        xmlHttp.setRequestHeader("Content-type", "application/json");
+        xmlHttp.send(JSON.stringify(params));
+        setTimeout(function(){
+            $("#overlay").fadeOut(1000);
+        },500);
+        // order_click();
+    });
+</script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    // function order_click() {
+        let product_id = [];
+        $('.product_id').each(function(){
+            product_id.push($(this).attr('value'));
+        });
+      
+    document.getElementById("rzp-button1").onclick = async function(e) {
+   
+        var options = {
+            "key": "rzp_test_TuIsuSCYym3sTj",//"<%= key %>",
+            "currency": "INR",
+            "name": "WTH Coding",
+            "description": "WtH Coding Transaction",
+            "order_id": document.getElementById("rzp-text").value,
+            "handler": function(response) {
+                document.getElementById('order-pay-id').value = response.razorpay_payment_id;
+                document.getElementById('order-id').value = response.razorpay_order_id;
+                document.getElementById('order-sig').value = response.razorpay_signature;
+        //         const url = `/capture/${response.razorpay_payment_id}`;
+        //         const captureResponse = axios.post(url, {})
+        //         console.log("kk",captureResponse);
+        //  const successObj = JSON.parse(captureResponse.data)
+        //  const captured = successObj.captured;
+         console.log("App -> razorPayPaymentHandler -> captured", response.razorpay_signature)
+         if(response.razorpay_signature){
+             console.log('success')
+            //  window.location.href = '/payment_verify/'+response.razorpay_order_id+'/'+response.razorpay_payment_id+'/'+response.razorpay_signature+'/'+product_id; //'/paymentmsg'
+             var datasend = {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                product_id: product_id
+            };
+            axios.post('/payment_verify', datasend)
+            // xmlHttp.open("POST", '/payment_verify', true);
+            // xmlHttp.setRequestHeader("Content-type", "application/json");
+            // xmlHttp.send(JSON.stringify(datasend));
+                .then(function (response) {
+                 
+                    // response =  JSON.parse(response)
+                    if (response.data.status == 'success') {
+                        window.location = "/paymentmsg"
+                    }else{
+                        window.location = "/paymentfail"
+                    }
+                })
+                // .catch(function(error) {
+                //     window.location = "/paymentfail"
+                // })
+            }
+            },
+            "theme": {
+                "color": "#0EB9F2"
+            },
+            // redirect: true,
+            // "callback_url": "/is-order-complete",
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+        e.preventDefault();
+    }
+// }
+</script>
+<script>
+    document.getElementById('verify-button1').onclick = function(e) {
+        var url = '/api/payment/verify';
+        var params = {
+            razorpay_order_id: document.getElementById('order-id').value,
+            razorpay_payment_id: document.getElementById('order-pay-id').value,
+            razorpay_signature: document.getElementById('order-sig').value
+        };
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function(res) {
+            if (xmlHttp.readyState === 4) {
+                // alert(xmlHttp.responseText);
+            }
+        }
+        xmlHttp.open("POST", url, true); // false for synchronous request
+        xmlHttp.setRequestHeader("Content-type", "application/json");
+        xmlHttp.send(JSON.stringify(params));
+    }
+</script>
+{% endblock %}

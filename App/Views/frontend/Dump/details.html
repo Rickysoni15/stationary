@@ -1,0 +1,146 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+<section class="breadcrumb">
+    <div class="container">
+        <div class="page-title-inner">
+            <div class="float-left">
+                <h1 class="page-title">Project Details</h1>
+            </div>
+            <div class="float-right">
+                <div id="breadcrumb-menu" class="breadcrumb-menu">
+                    <a href="javascript:void(0)">Home</a>
+                    <a href="javascript:void(0)">Project</a>
+                    <span class="current">Project Details</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <figure>
+                    <img src="{{singleProjectData.project_image}}">
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-50">
+    <div class="container">
+        <div class="space-detail dot-border"></div>
+        <div class="row">
+            <div class="col-lg-8 col-sm-12 col-md-12">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h2 class="h4-title mb-4">{{singleProjectData.project_name}}</h2>
+                        <p>{{singleProjectData.project_description}}</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class=" space-detail">                           
+                                <div>
+                                    <canvas id="myChart" width="690" height="690"
+                                        style="display: block; box-sizing: border-box; height: 690px; width: 690px;"></canvas>
+                                </div>           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 col-md-12">
+                <div class="portfolio-meta">
+                    <ul class="portfolio-meta-list">
+                        <li>
+                            <h6>
+                                <span class="portfolio-meta-icon">
+                                    <i class="far fa-calendar-alt"></i></span>Date
+                            </h6>
+                            <span class="entry-date">{{dateResult}}</span>
+                        </li>
+
+                        <li>
+                            <h6>
+                                <span class="portfolio-meta-icon">
+                                    <i class="far fa-folder"></i></span>Category
+                            </h6>
+                            <span class="entry-date">{{singleProjectCategoryData.projectCategoryName}}</span>
+                        </li>
+                        <li>
+                        <h6>
+                            <span class="portfolio-meta-icon">
+                            <i class="far fa-user"></i></span>Client
+                        </h6>
+                        <span class="entry-date">Thompson</span>
+                    </li>
+                    <li>
+                        <h6>
+                            <span class="portfolio-meta-icon">
+                            <i class="fas fa-id-card"></i></span>Company Logo
+                        </h6>
+                        <span class="entry-date">alfa, Oil & Gas</span>
+                    </li>
+                    <li>
+                        <h6>
+                            <span class="portfolio-meta-icon">
+                            <i class="fas fa-tags"></i></span>Tags
+                        </h6>
+                        <span class="entry-date">Chemicals, Oil & Gas</span>
+                    </li>
+                    <li>
+                        <h6>
+                            <span class="portfolio-meta-icon">
+                            <i class="fas fa-share-square"></i></span>Share
+                        </h6>
+                        <ul class="nav portfolio-share social-icons">
+                            <li class="nav-item">
+                                <a href="#" class="social-facebook share-fb">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="social-twitter share-twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="social-linkedin share-linkedin">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="social-pinterest share-pinterest">
+                                    <i class="fab fa-pinterest"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="ptb-50">
+    <div class="container">
+        <h2 class="h4-title mb-4">Related Projects</h2>
+        <div class="testimonials">
+            <div class="owl-carousel owl-theme testimonials-owl">
+                {% for project in projectData %}
+                <div class="item">
+                    <div class="project-slider">
+                        <img src="{{project.project_image}}" height="100" width="100" class="img-fluid img-fluidimg"
+                            alt="">
+                        <div class="project-slider-header">
+                            <a href="/details/{{project._id}}">{{project.project_name}}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block Jscript %}
+
+{% endblock %}

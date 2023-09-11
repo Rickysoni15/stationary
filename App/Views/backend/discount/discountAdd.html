@@ -1,0 +1,520 @@
+{% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+<style>
+    .switch_vendorGst {
+        position: relative;
+        display: inline-block;
+        width: 47px;
+        height: 24px;
+        margin-bottom: 0 !important;
+        margin-left: 10px;
+    }
+
+    .switch_vendorGst input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider_vendorGst {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider_vendorGst:before {
+        position: absolute;
+        content: "";
+        height: 15px;
+        width: 15px;
+        left: 3px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked+.slider_vendorGst {
+        background-color: #3c8dbc;
+        ;
+    }
+
+    input:focus+.slider_vendorGst {
+        box-shadow: 0 0 1px #3c8dbc;
+        ;
+    }
+
+    input:checked+.slider_vendorGst:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider_vendorGst.round {
+        border-radius: 34px;
+    }
+
+    .slider_vendorGst.round:before {
+        border-radius: 50%;
+    }
+
+    select:required:invalid {
+        color: gray;
+    }
+
+    option[value=""][disabled] {
+        display: none;
+    }
+
+    option {
+        color: black;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        background-color: #e4e4e4;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        cursor: default;
+        float: left;
+        margin-right: 5px;
+        margin-top: 5px;
+        padding: 0 5px;
+        color: black;
+    }
+
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+<!-- Main Content
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		Title -->
+<section class="content-header">
+    <h1>Discount Products</h1>
+    <!-- Breadcrumb -->
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Discount Products</li>
+    </ol>
+    <!-- /Breadcrumb -->
+</section>
+<!-- /Title -->
+{% include "backend/partition/notification.html" %}
+<!-- Row -->
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default card-view">
+                <div class="panel-heading">
+
+                    <!-- <div class="pull-right">
+                        <a href="/backend/list_Attribute"><button type="button" class="btn btn-primary btn-md"><i class="fa fa-plus"></i> Add Attribute</button></a>
+                    </div> -->
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-wrapper collapse in">
+                    <div class="panel-body">
+                        <div class="table-wrap">
+                            <div class="table-responsive">
+                                {% if productData %}
+                                <form method="POST" action="/backend/discountEdit/{{productData._id}}"
+                                    class="form-horizontal" enctype="multipart/form-data">
+                                    {% else %}
+                                    <form id="formdata" method="POST" action="/backend/discountAddPost"
+                                        class="form-horizontal" enctype="multipart/form-data">
+                                        {% endif %}
+          
+                                    <table border="0" class="table display  pb-30">
+                                        <div class="col-sm-12">
+                                            <div class="panel-wrapper collapse in">
+                                                <div class="panel-body">
+                                                
+                                                    <div class="form-group">
+                                                        <input type="hidden" value="{{productData._id}}"
+                                                            id="finalCategory">
+                                                            {% if productData %}
+                                                            <div class="form-group">
+
+                                                                <label class="switch control-label mb-10 col-sm-2"
+                                                                    for="apply_discount">Product Name:</label>
+                                                                    <div class="col-sm-6">
+                                                                        <input type="text" class="form-control" name="product_name"
+                                                                            id="product_name" value="{{productData.product_name}}"
+                                                                            readonly />
+                                                                    </div>
+                                                            </div>
+                                                            {% else %}
+                                                        <label class="control-label mb-10 col-sm-2"
+                                                            for="product_select">Product List:</label>
+                                                        <div class="col-sm-6">
+                                                            <select id="product_select"
+                                                                name="product_select"
+                                                                class="form-control select2 select2-hidden-accessible js-example-basic-multiple" 
+                                                                data-placeholder="Select a Category"
+                                                                multiple=""
+                                                                style="width: 100%;" data-select2-id="7"
+                                                                tabindex="-1" aria-hidden="true">
+                                                               
+                                                                <option value="selectAll">All</option>
+                                                                {% if productDatass %}
+                                                                {% for item in productDatass %}
+                                                                
+                                                                <option value="{{item._id}}">{{item.product_name}}
+                                                                </option>
+                                                                
+  
+                                                                {% endfor %}
+                                                                {% endif %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                   
+
+                                                    <div class="form-group">
+
+                                                        <label class="switch control-label mb-10 col-sm-2"
+                                                            for="apply_discount">Apply For discount:</label>
+                                                        <div class="col-sm-6">
+
+                                                            <label class="switch_vendorGst">
+                                                                <input name="apply_discount1" type="checkbox"
+                                                                    id="apply_discount" data-iid1="checkone_discount"
+                                                                    value="{{productData.is_discount}}" {% if
+                                                                    productData.is_discount=="1" %} checked {% endif %}>
+                                                                <span class="slider_vendorGst round"></span>
+                                                            </label>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group" style="display: none;" >
+
+                                                        <input type="hidden" id="actual_price"
+                                                            value="{{productData.product_price}}">
+                                                        <label class="control-label mb-10 col-sm-2"
+                                                            for="product_price">Price:&nbsp; <span
+                                                                class="text-danger">*</span></label>
+                                                        <div class="col-sm-6">
+                                                            <input type="number" class="form-control"
+                                                                pattern="[0-9]+([\,|\.][0-9]+)?" step="0.01"
+                                                                name="product_price" id="product_price"
+                                                                value="" />
+                                                        </div>
+                                                    </div>
+
+                                                    {% if productData %}
+                                                    <div class="form-group">
+                                                        <label class="control-label mb-10 col-sm-2"
+                                                            for="selling_price">Selling Price:</label>
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control" name="selling_price"
+                                                                id="selling_price" value="{{productData.product_price}}"
+                                                                readonly />
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+
+                                                    {% if productData %}
+                                                    <div class="form-group">
+                                                        <label
+                                                            class="control-label mb-10 col-sm-2 discount_value">Discount
+                                                            Value:</label>
+                                                        <div class="col-sm-6">
+                                                            <input type="number" pattern="[0-9]+([\,|\.][0-9]+)?"
+                                                                step="0.01" class="form-control" name="discount_value"
+                                                                id="discount_value"
+                                                                value="{{productData.discount_value}}" readonly />
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+
+                                                    <div class="form-group">
+                                                        <label class="control-label mb-10 col-sm-2">Discount
+                                                            Percentage:</label>
+                                                        <div class="col-sm-6">
+                                                            <input type="number" pattern="[0-9]+([\,|\.][0-9]+)?"
+                                                                step="0.01" class="form-control"
+                                                                name="discount_percentage" id="discount_percentage"
+                                                                value="{{productData.discount_percentage}}" required/>
+                                                        </div>
+                                                    </div>
+
+                                                    {% if productData %}
+                                                    <div class="form-group">
+                                                        <input type="hidden" id="actual_discount"
+                                                            value="{{productData.discount_price}}">
+                                                        <label class="control-label mb-10 col-sm-2"
+                                                            for="discount_price">Discount Price:</label>
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control"
+                                                                name="discount_price" id="discount_price" value=""
+                                                                readonly />
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+
+                                                    <div class="form-group">
+                                                        <label class="control-label mb-10 col-sm-2"
+                                                            for="product_newform"> Set Discount
+                                                            From:</label>
+                                                        <div class="col-sm-6">
+                                                            <div class="col-lg-5">
+                                                                <input type="date" class="form-control"
+                                                                    name="discount_startDate" id="discount_startDate"
+                                                                    value="{{productData.discount_startDate}}" />
+                                                            </div>
+                                                            <div class="col-lg-2">
+
+                                                                <h4>To</h4>
+
+                                                            </div>
+                                                            <div class="col-lg-5">
+                                                                <input type="date" class="form-control"
+                                                                    name="discount_endDate" id="discount_endDate"
+                                                                    value="{{productData.discount_endDate}}" min={{previous_date}} />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <div class="col-sm-6">
+                                                            <input type="hidden" class="form-control" name="copy"
+                                                                id="copyText" value="">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <tr>
+                                            <!-- <td colspan="2"></td> -->
+                                        </tr>
+                                    </table>
+                             
+                           
+
+
+                        </div>
+
+                        {% if productData %}
+                        <input type="submit" class="btn btn-success btn-flat" value="Update">
+                        <a class="btn btn-danger btn-flat" href="/backend/discount">Cancel</a>
+                        {%else%}
+                        <input id="submit" type="submit" class="btn btn-success btn-flat" value="submit">
+                        <a class="btn btn-danger btn-flat" href="/backend/discount">Cancel</a>
+                        {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- /Row -->
+    </div>
+</section>
+
+{% endblock %}
+
+{% block Jscript %}
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+
+
+        $('.js-example-basic-multiple').select2();
+        // var arr = $('#finalCategory').val();
+        // console.log("dd",arr);
+        // $("#product_select").select2().select2('val',arr);
+
+        
+    });
+</script>
+
+
+
+
+<script>
+
+    $(document).ready(function () {
+
+        // var arr = $('#finalCategory').val();
+    // let options = arr.split(',');
+
+
+        // console.log("dd",arr);
+
+    // if (arr != '') {
+
+        // console.log("option 1", options);
+        // arr = arr.toString();
+        // $('#product_select').val(arr);
+        // $('#product_select').trigger('change');
+        // $("#product_select").select2({disabled:'readonly'});
+        // options.forEach(function (e) {
+            // $("#product_select option[value="+arr+"]").prop('selected', true);
+            // $("#product_select").select2("val", arr);
+            // $("#product_select").select2().select2('val',arr);
+        // });
+
+    // }
+
+
+        let actual_price = $("#actual_price").val();
+
+        // actual_price = actual_price.replace(/,/g, "");
+
+
+        $("#product_price").val(actual_price);
+
+
+        let actual_discount = $("#actual_discount").val()
+
+
+        // actual_discount = actual_discount.replace(/,/g, "");
+
+
+        $("#discount_price").val(actual_discount);
+
+        $('[data-iid1="checkone_discount"]').on("click", function () {
+
+            if ($(this).val() == 1) {
+
+                $(this).attr("value", "0");
+            }
+            else {
+
+                $(this).attr("value", "1");
+            }
+
+        });
+
+
+
+        $("#product_price").keyup(function () {
+
+            let product_price = $("#product_price").val()
+
+            $("#selling_price").val(product_price)
+
+            $("#discount_value").val("0")
+            $("#discount_percentage").val("0")
+
+        });
+
+
+        $("#apply_discount").click(function () {
+
+            var applyDiscount = $("#apply_discount").val()
+
+
+            if (applyDiscount == 1) {
+
+                $("#discount_value").prop('required', true);
+                $("#discount_percentage").prop('required', true);
+
+                $("#discount_value").val("0")
+                $("#discount_percentage").val("0")
+
+            } else {
+                $("#discount_value").prop('required', false);
+                $("#discount_percentage").prop('required', false);
+
+                $("#discount_value").val("0")
+                $("#discount_percentage").val("0")
+            }
+
+        });
+
+        $("#discount_percentage").keyup(function () {
+
+            let product_price = $("#product_price").val()
+            // product_price =  product_price.replace(/,/g, "");
+
+
+            let discount_value = $("#discount_value").val()
+
+            let discount_percentage = $("#discount_percentage").val()
+            // discount_percentage = discount_percentage.replace(/,/g, "");
+
+
+            let finaValue = (product_price * discount_percentage) / 100
+
+            let newFinalValue = (Math.round(finaValue * 100) / 100).toFixed(2);
+
+            let disocunt_price = Math.ceil(product_price - finaValue);
+
+
+            console.log("disocunt_price -- ", disocunt_price);
+
+
+            $("#discount_value").val(newFinalValue)
+
+            $("#discount_price").val(disocunt_price)
+
+
+        });
+
+
+        $("#discount_value").keyup(function () {
+
+            let product_price = $("#product_price").val()
+
+            // product_price =  product_price.replace(/,/g, "");
+
+
+            let discount_percentage = $("#discount_value").val()
+
+            // discount_percentage = discount_percentage.replace(/,/g, "");
+
+
+            let finaValue = (discount_percentage * 100) / product_price
+
+            let newFinalValue = (Math.round(finaValue * 100) / 100).toFixed(2);
+
+
+            let disocunt_price = Math.ceil(product_price - discount_percentage);
+
+
+
+            $("#discount_percentage").val(newFinalValue)
+
+            $("#discount_price").val(disocunt_price)
+
+
+        });
+
+    });
+
+</script>
+
+
+
+{% endblock %}

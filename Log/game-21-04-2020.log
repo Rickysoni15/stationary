@@ -1,0 +1,1232 @@
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :GJR5pFPVKhiBrjIIAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :GudTf5fg5E4mFcxfAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :EzZMH5xNqpvRFbJbAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :YpGN8OQ_iO9ZcUAIAAAA","level":"info"}
+{"message":"Some One Connected :ECGYjZINCO0CpqMFAAAB","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Error in Create Game : ValidationError: pot: Cast to Number failed for value \"NaN\" at path \"pot\"","level":"info"}
+{"message":"Mongoose default connection disconnected","level":"info"}
+{"message":"Error in Create Game : MongoError: Topology was destroyed","level":"info"}
+{"message":"Error in Update Room : MongoError: server instance pool was destroyed","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :rWB7TTNxxpubwFreAAAA","level":"info"}
+{"message":"Some One Connected :jgM0HJ8tSz7-Kb12AAAB","level":"info"}
+{"message":"Some One Connected :L7PfvqbB9RVHz9rUAAAC","level":"info"}
+{"message":"<=> gameCount|| 17","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :JuOSEFijCCcUrmQFAAAA","level":"info"}
+{"message":"Some One Connected :gq5sGNyUJLbvAzNhAAAB","level":"info"}
+{"message":"<=> gameCount|| 18","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :ZGVFiT9mg10WGH3TAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :elg3K69yc4pubt1qAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :Q87BAfeOZXM-fUwoAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :D7DFwih-2mRyit0sAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :BV4GbC-Z0ma2e48YAAAA","level":"info"}
+{"message":"Initializing Server...","level":"info"}
+{"message":"Loading... App Controllers","level":"info"}
+{"message":"Loading... App Middlewares","level":"info"}
+{"message":"Loading... App Models","level":"info"}
+{"message":"Loading... App Services","level":"info"}
+{"message":"Loading... Game Server.","level":"info"}
+{"message":"Loading... Router","level":"info"}
+{"message":"Initializing Variables","level":"info"}
+{"message":"Loading... DB Connection","level":"info"}
+{"message":"Mongoose default connection open to mongodb://127.0.0.1:27017/maangPatta","level":"info"}
+{"message":"Loading... Setting","level":"info"}
+{"message":"Loading... Socket","level":"info"}
+{"message":"Some One Connected :bSm-Ym32j3JA73CnAAAA","level":"info"}

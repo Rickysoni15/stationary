@@ -1,0 +1,196 @@
+{% extends "backend/partition/layout.html" %}
+
+{% block body %}
+
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Vendor List</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Order Management</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<h6 class="panel-title txt-dark">Order Management</h6>
+							</div>
+
+							<!-- <div class="pull-right">
+									<a href="/backend/addProduct"><button type="button" class="btn btn-primary btn-md"><i class="fa fa-plus"></i> Add Product</button></a>
+								</div> -->
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										<input type="hidden" id="gameType" name="gameType">
+										<input type="hidden" id="sessionId" value="{{App.id}}">
+										<table id="myTable" class="table table-hover display  pb-30">
+											<thead>
+												<tr>
+													<th>Vendor name</th>
+													<!-- <th>Product Description</th> -->
+													<!-- <th>Category</th> -->
+													<th>Action</th>
+												</tr>
+											</thead>
+											<tbody class="newTable">
+											</tbody>
+
+											
+
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+
+<script>
+	$(document).ready(function () {
+
+		var host = window.location.origin;
+
+
+		let sessionId = $("#sessionId").val();
+		$('#myTable').DataTable({
+			"oLanguage": {
+				"sSearch": "Vendor name"
+			},
+			"scrollX": true,
+			"processing": true,
+			"serverSide": true,
+			"searching": true,
+			"ordering": false,
+			"autoWidth": false,
+			"pageLength": 25,
+			"ajax": host + "/backend/getAdminOrder",
+			"columns": [
+				{ "data": "name" },
+				// { "data": "product_description" },
+
+
+
+
+				{
+					"data": "action",
+					render: function (data, type, row) {
+
+
+						return '<a  href="/backend/adminOrderDetails/' + row.id + '"><button type="button" class="btn btn-warning btn-xs btn-rounded" name="view"  ><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
+
+						// return '<a href="/backend/OrderEdit/'+row._id+'"><button type="button" class="btn btn-warning btn-xs btn-rounded" name="edit"><i class="fa fa-edit" aria-hidden="true"></i></button></a> <button type="button" name="delete" id="'+row._id+'" class="btn btn-danger btn-xs delete btn-rounded"><i class="fa fa-trash" aria-hidden="true"></i></button>'
+					}
+
+				}
+			]
+		});
+
+
+
+
+
+		// Setup - add a text input to each footer cell
+
+
+
+		$(function () {
+			"use strict";
+
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.delete', function (e) {
+					var id = $(this).attr('id');
+					var thisElement = this;
+					swal({
+						title: "Are you sure?",
+						text: "You will not be able to recover this Project!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#e69a2a",
+						confirmButtonText: "Yes, delete it!",
+						cancelButtonText: "No, cancel plx!",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					}, function (isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type: 'POST',
+								url: host + "/backend/OrderDelete",
+								data: { id: id },
+								success: function (resultData) {
+									// alert(resultData)
+									console.log(resultData);
+									if (resultData == 'success') {
+										$(thisElement).parent().parent().hide(700);
+										swal("Deleted!", "Your imaginary file has been deleted.", "success");
+									} else {
+										alert("Something went wrong")
+									}
+									// alert("Save Complete")
+								}
+							});
+							swal("Deleted!", "Order Deleted Succesfully.", "success");
+						} else {
+							swal("Cancelled", "Order Not Deleted)", "error");
+						}
+					});
+					return false;
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+
+		// var seen = {};
+		// $(' tbody.newTable').each(function () {
+		// 	var txt = $(this).find("td");
+
+		// 	console.log("texrt tetret  ===>>> ",txt);
+
+		// 	if (seen[txt])
+		// 		$(this).remove();
+		// 	else
+		// 		seen[txt] = true;
+		// });
+
+
+
+	});
+
+	// $(document).ready(function () {
+		
+	// 	$('#myTable').DataTable();
+	// });
+</script>
+
+{% endblock %}

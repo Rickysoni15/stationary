@@ -1,0 +1,493 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+<div class="wrap-breadcrumb parallax-breadcrumb">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a href="/home"><i class="fa fa-home"></i></a></li>
+      <li><a href="/home">Account</a></li>
+      <li><a href="/getAddressBook">Address Book</a></li>
+      <li><a href="">Edit Address</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="account-address" class="container">
+
+  <div class="row">
+
+    <aside id="column-left" class="col-sm-3 hidden-xs">
+      <div class="box">
+        <div class="box-heading">Account</div>
+        <div class="list-group">
+
+          <a href="/myAccount"
+            class="list-group-item">My Account </a>
+
+          <a href="/getAccountInformation"
+            class="list-group-item">Edit Account</a> 
+            <a
+            href="/changePassword"
+            class="list-group-item">Password</a>
+
+          <a href="/getAddressBook">Address Book</a> <a
+            href="/wishlist">Wish List </a> <a
+            href="/orderHistory"
+            class="list-group-item">Order History </a> 
+            <!-- <a
+            href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=account/download"
+            class="list-group-item">Downloads </a>
+            <a
+            href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=account/recurring"
+            class="list-group-item">Recurring payments </a> 
+            <a
+            href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=account/reward"
+            class="list-group-item">Reward Points </a>  -->
+            <a
+            href=""
+            class="list-group-item">Returns </a>
+             <a
+            href=""
+            class="list-group-item">Transactions </a>
+             <!-- <a
+            href="https://codezeel.com/opencart/OPC02/OPC020037/OPC1/index.php?route=account/newsletter"
+            class="list-group-item">Newsletter </a> -->
+
+          <a href="/frontend/logout"
+            class="list-group-item">Logout </a>
+
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box-heading">Information</div>
+        <div class="list-group">
+          <a class="list-group-item" href="/aboutus">About Us </a>
+          <a class="list-group-item" href="/deliveryInformation">Delivery
+            Information </a>
+          <a class="list-group-item" href="/privacyPolicy">Privacy Policy </a>
+          <a class="list-group-item" href="/termsconditions">Terms &amp;
+            Conditions </a>
+          <a class="list-group-item" href="/contact">Contact Us </a>
+          <!-- <a class="list-group-item" href="siteMap.html">Site Map </a> -->
+        </div>
+      </div>
+    </aside>
+    <div id="content" class="col-sm-9">
+      <h2>Edit Address</h2>
+      <form action="/savetEditAddress/{{addressDetail.id}}" method="post" enctype="multipart/form-data"
+        class="form-horizontal">
+        <fieldset>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
+            <div class="col-sm-10">
+              <input type="text" name="firstname" value="{{addressDetail.firstname}}" placeholder="First Name"
+                id="input-firstname" class="form-control">
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
+            <div class="col-sm-10">
+              <input type="text" name="lastname" value="{{addressDetail.lastname}}" placeholder="Last Name"
+                id="input-lastname" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-company">Company</label>
+            <div class="col-sm-10">
+              <input type="text" name="company" value="{{addressDetail.company}}" placeholder="Company"
+                id="input-company" class="form-control">
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-address-1">Address 1</label>
+            <div class="col-sm-10">
+              <input type="text" name="address_1" value="{{addressDetail.address_1}}" placeholder="Address 1"
+                id="input-address-1" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-address-2">Address 2</label>
+            <div class="col-sm-10">
+              <input type="text" name="address_2" value="{{addressDetail.address_2}}" placeholder="Address 2"
+                id="input-address-2" class="form-control">
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-city">City</label>
+            <div class="col-sm-10">
+              <input type="text" name="city" value="{{addressDetail.city}}" placeholder="City" id="input-city"
+                class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-postcode">Post Code</label>
+            <div class="col-sm-10">
+              <input type="text" name="postcode" value="{{addressDetail.postcode}}" placeholder="Post Code"
+                id="input-postcode" class="form-control">
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-payment-country">Country</label>
+            <div class="col-sm-10">
+              <select name="country_id" id="input-payment-country" class="form-control">
+                <option value=""> --- Please Select --- </option>
+                <option value="244_Aaland Islands" {% if addressDetail.country_id === "244" %}selected{% endif %}>Aaland Islands</option>
+                <option value="1_Afghanistan" {% if addressDetail.country_id === "1" %}selected{% endif %}>Afghanistan</option>
+                <option value="2_Albania" {% if addressDetail.country_id === "2" %}selected{% endif %}>Albania</option>
+                <option value="3_Algeria" {% if addressDetail.country_id === "3" %}selected{% endif %}>Algeria</option>
+                <option value="4_American Samoa" {% if addressDetail.country_id === "4" %}selected{% endif %}>American Samoa</option>
+                <option value="5_Andorra" {% if addressDetail.country_id === "5" %}selected{% endif %}>Andorra</option>
+                <option value="6_Angola" {% if addressDetail.country_id === "6" %}selected{% endif %}>Angola</option>
+                <option value="7_Anguilla" {% if addressDetail.country_id === "7" %}selected{% endif %}>Anguilla</option>
+                <option value="8_Antarctica" {% if addressDetail.country_id === "8" %}selected{% endif %}>Antarctica</option>
+                <option value="9_Antigua and Barbuda" {% if addressDetail.country_id === "9" %}selected{% endif %}>Antigua and Barbuda</option>
+                <option value="10_Argentina" {% if addressDetail.country_id === "10" %}selected{% endif %}>Argentina</option>
+                <option value="11_Armenia" {% if addressDetail.country_id === "11" %}selected{% endif %}>Armenia</option>
+                <option value="12_Aruba" {% if addressDetail.country_id === "12" %}selected{% endif %}>Aruba</option>
+                <option value="252_Ascension Island (British)" {% if addressDetail.country_id === "252" %}selected{% endif %}>Ascension Island (British)</option>
+                <option value="13_Australia" {% if addressDetail.country_id === "13" %}selected{% endif %}>Australia</option>
+                <option value="14_Austria" {% if addressDetail.country_id === "14" %}selected{% endif %}>Austria</option>
+                <option value="15_Azerbaijan" {% if addressDetail.country_id === "15" %}selected{% endif %}>Azerbaijan</option>
+                <option value="16_Bahamas" {% if addressDetail.country_id === "16" %}selected{% endif %}>Bahamas</option>
+                <option value="17_Bahrain" {% if addressDetail.country_id === "17" %}selected{% endif %}>Bahrain</option>
+                <option value="18_Bangladesh" {% if addressDetail.country_id === "18" %}selected{% endif %}>Bangladesh</option>
+                <option value="19_Barbados" {% if addressDetail.country_id === "19" %}selected{% endif %}>Barbados</option>
+                <option value="20_Belarus" {% if addressDetail.country_id === "20" %}selected{% endif %}>Belarus</option>
+                <option value="21_Belgium" {% if addressDetail.country_id === "21" %}selected{% endif %}>Belgium</option>
+                <option value="22_Belize" {% if addressDetail.country_id === "22" %}selected{% endif %}>Belize</option>
+                <option value="23_Benin" {% if addressDetail.country_id === "23" %}selected{% endif %}>Benin</option>
+                <option value="24_Bermuda" {% if addressDetail.country_id === "24" %}selected{% endif %}>Bermuda</option>
+                <option value="25_Bhutan" {% if addressDetail.country_id === "25" %}selected{% endif %}>Bhutan</option>
+                <option value="26_Bolivia" {% if addressDetail.country_id === "26" %}selected{% endif %}>Bolivia</option>
+                <option value="245_Bonaire, Sint Eustatius and Saba" {% if addressDetail.country_id === "245" %}selected{% endif %}>Bonaire, Sint Eustatius and Saba</option>
+                <option value="27_Bosnia and Herzegovina" {% if addressDetail.country_id === "27" %}selected{% endif %}>Bosnia and Herzegovina</option>
+                <option value="28_Botswana" {% if addressDetail.country_id === "28" %}selected{% endif %}>Botswana</option>
+                <option value="29_Bouvet Island" {% if addressDetail.country_id === "29" %}selected{% endif %}>Bouvet Island</option>
+                <option value="30_Brazil" {% if addressDetail.country_id === "30" %}selected{% endif %}>Brazil</option>
+                <option value="31_British Indian Ocean Territory" {% if addressDetail.country_id === "31" %}selected{% endif %}>British Indian Ocean Territory</option>
+                <option value="32_Brunei Darussalam" {% if addressDetail.country_id === "32" %}selected{% endif %}>Brunei Darussalam</option>
+                <option value="33_Bulgaria" {% if addressDetail.country_id === "33" %}selected{% endif %}>Bulgaria</option>
+                <option value="34_Burkina Faso" {% if addressDetail.country_id === "34" %}selected{% endif %}>Burkina Faso</option>
+                <option value="35_Burundi" {% if addressDetail.country_id === "35" %}selected{% endif %}>Burundi</option>
+                <option value="36_Cambodia" {% if addressDetail.country_id === "36" %}selected{% endif %}>Cambodia</option>
+                <option value="37" {% if addressDetail.country_id === "37" %}selected{% endif %}>Cameroon</option>
+                <option value="38_Canada" {% if addressDetail.country_id === "38" %}selected{% endif %}>Canada</option>
+                <option value="251_Canary Islands" {% if addressDetail.country_id === "251" %}selected{% endif %}>Canary Islands</option>
+                <option value="39_Cape Verde" {% if addressDetail.country_id === "39" %}selected{% endif %}>Cape Verde</option>
+                <option value="40_Cayman Islands" {% if addressDetail.country_id === "40" %}selected{% endif %}>Cayman Islands</option>
+                <option value="41_Central African Republic" {% if addressDetail.country_id === "41" %}selected{% endif %}>Central African Republic</option>
+                <option value="42_Chad" {% if addressDetail.country_id === "42" %}selected{% endif %}>Chad</option>
+                <option value="43_Chile" {% if addressDetail.country_id === "43" %}selected{% endif %}>Chile</option>
+                <option value="44_China" {% if addressDetail.country_id === "44" %}selected{% endif %}>China</option>
+                <option value="45_Christmas Island" {% if addressDetail.country_id === "45" %}selected{% endif %}>Christmas Island</option>
+                <option value="46_Cocos (Keeling) Islands" {% if addressDetail.country_id === "46" %}selected{% endif %}>Cocos (Keeling) Islands</option>
+                <option value="47_Colombia" {% if addressDetail.country_id === "47" %}selected{% endif %}>Colombia</option>
+                <option value="48_Comoros" {% if addressDetail.country_id === "48" %}selected{% endif %}>Comoros</option>
+                <option value="49_Congo" {% if addressDetail.country_id === "49" %}selected{% endif %}>Congo</option>
+                <option value="50_Cook Islands" {% if addressDetail.country_id === "50" %}selected{% endif %}>Cook Islands</option>
+                <option value="51_Costa Rica" {% if addressDetail.country_id === "51" %}selected{% endif %}>Costa Rica</option>
+                <option value="52_Cote D'Ivoire" {% if addressDetail.country_id === "52" %}selected{% endif %}>Cote D'Ivoire</option>
+                <option value="53_Croatia" {% if addressDetail.country_id === "53" %}selected{% endif %}>Croatia</option>
+                <option value="54_Cuba" {% if addressDetail.country_id === "54" %}selected{% endif %}>Cuba</option>
+                <option value="246_Curacao" {% if addressDetail.country_id === "246" %}selected{% endif %}>Curacao</option>
+                <option value="55_Cyprus" {% if addressDetail.country_id === "55" %}selected{% endif %}>Cyprus</option>
+                <option value="56_Czech Republic" {% if addressDetail.country_id === "56" %}selected{% endif %}>Czech Republic</option>
+                <option value="237_Democratic Republic of Congo" {% if addressDetail.country_id === "237" %}selected{% endif %}>Democratic Republic of Congo</option>
+                <option value="57_Denmark" {% if addressDetail.country_id === "57" %}selected{% endif %}>Denmark</option>
+                <option value="58_Djibouti" {% if addressDetail.country_id === "58" %}selected{% endif %}>Djibouti</option>
+                <option value="59_Dominica" {% if addressDetail.country_id === "59" %}selected{% endif %}>Dominica</option>
+                <option value="60_Dominican Republic" {% if addressDetail.country_id === "60" %}selected{% endif %}>Dominican Republic</option>
+                <option value="61_East Timor" {% if addressDetail.country_id === "61" %}selected{% endif %}>East Timor</option>
+                <option value="62_Ecuador" {% if addressDetail.country_id === "62" %}selected{% endif %}>Ecuador</option>
+                <option value="63_Egypt" {% if addressDetail.country_id === "63" %}selected{% endif %}>Egypt</option>
+                <option value="64_El Salvador" {% if addressDetail.country_id === "64" %}selected{% endif %}>El Salvador</option>
+                <option value="65_Equatorial Guinea" {% if addressDetail.country_id === "65" %}selected{% endif %}>Equatorial Guinea</option>
+                <option value="66_Eritrea" {% if addressDetail.country_id === "66" %}selected{% endif %}>Eritrea</option>
+                <option value="67_Estonia" {% if addressDetail.country_id === "67" %}selected{% endif %}>Estonia</option>
+                <option value="68_Ethiopia" {% if addressDetail.country_id === "68" %}selected{% endif %}>Ethiopia</option>
+                <option value="69_Falkland Islands (Malvinas)" {% if addressDetail.country_id === "69" %}selected{% endif %}>Falkland Islands (Malvinas)</option>
+                <option value="70_Faroe Islands" {% if addressDetail.country_id === "70" %}selected{% endif %}>Faroe Islands</option>
+                <option value="71_Fiji" {% if addressDetail.country_id === "71" %}selected{% endif %}>Fiji</option>
+                <option value="72_Finland" {% if addressDetail.country_id === "72" %}selected{% endif %}>Finland</option>
+                <option value="74_France, Metropolitan" {% if addressDetail.country_id === "74" %}selected{% endif %}>France, Metropolitan</option>
+                <option value="75_French Guiana" {% if addressDetail.country_id === "75" %}selected{% endif %}>French Guiana</option>
+                <option value="76_French Polynesia" {% if addressDetail.country_id === "76" %}selected{% endif %}>French Polynesia</option>
+                <option value="77_French Southern Territories" {% if addressDetail.country_id === "77" %}selected{% endif %}>French Southern Territories</option>
+                <option value="126_FYROM" {% if addressDetail.country_id === "126" %}selected{% endif %}>FYROM</option>
+                <option value="78_Gabon" {% if addressDetail.country_id === "78" %}selected{% endif %}>Gabon</option>
+                <option value="79_Gambia" {% if addressDetail.country_id === "79" %}selected{% endif %}>Gambia</option>
+                <option value="80_Georgia" {% if addressDetail.country_id === "80" %}selected{% endif %}>Georgia</option>
+                <option value="81_Germany" {% if addressDetail.country_id === "81" %}selected{% endif %}>Germany</option>
+                <option value="82_Ghana" {% if addressDetail.country_id === "82" %}selected{% endif %}>Ghana</option>
+                <option value="83_Gibraltar" {% if addressDetail.country_id === "83" %}selected{% endif %}>Gibraltar</option>
+                <option value="84_Greece" {% if addressDetail.country_id === "84" %}selected{% endif %}>Greece</option>
+                <option value="85_Greenland" {% if addressDetail.country_id === "85" %}selected{% endif %}>Greenland</option>
+                <option value="86_Grenada" {% if addressDetail.country_id === "86" %}selected{% endif %}>Grenada</option>
+                <option value="87_Guadeloupe" {% if addressDetail.country_id === "87" %}selected{% endif %}>Guadeloupe</option>
+                <option value="88_Guam" {% if addressDetail.country_id === "88" %}selected{% endif %}>Guam</option>
+                <option value="89_Guatemala" {% if addressDetail.country_id === "89" %}selected{% endif %}>Guatemala</option>
+                <option value="256_Guernsey" {% if addressDetail.country_id === "256" %}selected{% endif %}>Guernsey</option>
+                <option value="90_Guinea" {% if addressDetail.country_id === "90" %}selected{% endif %}>Guinea</option>
+                <option value="91_Guinea-Bissau" {% if addressDetail.country_id === "91" %}selected{% endif %}>Guinea-Bissau</option>
+                <option value="92_Guyana" {% if addressDetail.country_id === "92" %}selected{% endif %}>Guyana</option>
+                <option value="93_Haiti" {% if addressDetail.country_id === "93" %}selected{% endif %}>Haiti</option>
+                <option value="94_Heard and Mc Donald Islands" {% if addressDetail.country_id === "94" %}selected{% endif %}>Heard and Mc Donald Islands</option>
+                <option value="95_Honduras" {% if addressDetail.country_id === "95" %}selected{% endif %}>Honduras</option>
+                <option value="96_Hong Kong" {% if addressDetail.country_id === "96" %}selected{% endif %}>Hong Kong</option>
+                <option value="97_Hungary" {% if addressDetail.country_id === "97" %}selected{% endif %}>Hungary</option>
+                <option value="98_Iceland" {% if addressDetail.country_id === "98" %}selected{% endif %}>Iceland</option>
+                <option value="99_India" {% if addressDetail.country_id === "99" %}selected{% endif %}>India</option>
+                <option value="100_Indonesia" {% if addressDetail.country_id === "100" %}selected{% endif %}>Indonesia</option>
+                <option value="101_Iran (Islamic Republic of)" {% if addressDetail.country_id === "101" %}selected{% endif %}>Iran (Islamic Republic of)</option>
+                <option value="102_Iraq" {% if addressDetail.country_id === "102" %}selected{% endif %}>Iraq</option>
+                <option value="103_Ireland" {% if addressDetail.country_id === "103" %}selected{% endif %}>Ireland</option>
+                <option value="254_Isle of Man" {% if addressDetail.country_id === "254" %}selected{% endif %}>Isle of Man</option>
+                <option value="104_Israel" {% if addressDetail.country_id === "104" %}selected{% endif %}>Israel</option>
+                <option value="105_Italy" {% if addressDetail.country_id === "105" %}selected{% endif %}>Italy</option>
+                <option value="106_Jamaica" {% if addressDetail.country_id === "106" %}selected{% endif %}>Jamaica</option>
+                <option value="107_Japan" {% if addressDetail.country_id === "107" %}selected{% endif %}>Japan</option>
+                <option value="257_Jersey" {% if addressDetail.country_id === "257" %}selected{% endif %}>Jersey</option>
+                <option value="108_Jordan" {% if addressDetail.country_id === "108" %}selected{% endif %}>Jordan</option>
+                <option value="109_Kazakhstan" {% if addressDetail.country_id === "109" %}selected{% endif %}>Kazakhstan</option>
+                <option value="110_Kenya" {% if addressDetail.country_id === "110" %}selected{% endif %}>Kenya</option>
+                <option value="111_Kiribati" {% if addressDetail.country_id === "111" %}selected{% endif %}>Kiribati</option>
+                <option value="253_Kosovo, Republic of" {% if addressDetail.country_id === "253" %}selected{% endif %}>Kosovo, Republic of</option>
+                <option value="114_Kuwait" {% if addressDetail.country_id === "114" %}selected{% endif %}>Kuwait</option>
+                <option value="115_Kyrgyzstan" {% if addressDetail.country_id === "115" %}selected{% endif %}>Kyrgyzstan</option>
+                <option value="116_Lao People's Democratic Republic" {% if addressDetail.country_id === "116" %}selected{% endif %}>Lao People's Democratic Republic</option>
+                <option value="117_Latvia" {% if addressDetail.country_id === "117" %}selected{% endif %}>Latvia</option>
+                <option value="118_Lebanon" {% if addressDetail.country_id === "118" %}selected{% endif %}>Lebanon</option>
+                <option value="119_Lesotho" {% if addressDetail.country_id === "119" %}selected{% endif %}>Lesotho</option>
+                <option value="120_Liberia" {% if addressDetail.country_id === "120" %}selected{% endif %}>Liberia</option>
+                <option value="121_Libyan Arab Jamahiriya" {% if addressDetail.country_id === "121" %}selected{% endif %}>Libyan Arab Jamahiriya</option>
+                <option value="122_Liechtenstein" {% if addressDetail.country_id === "122" %}selected{% endif %}>Liechtenstein</option>
+                <option value="123_Lithuania" {% if addressDetail.country_id === "123" %}selected{% endif %}>Lithuania</option>
+                <option value="124_Luxembourg" {% if addressDetail.country_id === "124" %}selected{% endif %}>Luxembourg</option>
+                <option value="125_Macau" {% if addressDetail.country_id === "125" %}selected{% endif %}>Macau</option>
+                <option value="127_Madagascar" {% if addressDetail.country_id === "127" %}selected{% endif %}>Madagascar</option>
+                <option value="128_Malawi" {% if addressDetail.country_id === "128" %}selected{% endif %}>Malawi</option>
+                <option value="129_Malaysia" {% if addressDetail.country_id === "129" %}selected{% endif %}>Malaysia</option>
+                <option value="130_Maldives" {% if addressDetail.country_id === "130" %}selected{% endif %}>Maldives</option>
+                <option value="131_Mali" {% if addressDetail.country_id === "131" %}selected{% endif %}>Mali</option>
+                <option value="132_Malta" {% if addressDetail.country_id === "132" %}selected{% endif %}>Malta</option>
+                <option value="133_Marshall Islands" {% if addressDetail.country_id === "133" %}selected{% endif %}>Marshall Islands</option>
+                <option value="134_Martinique" {% if addressDetail.country_id === "134" %}selected{% endif %}>Martinique</option>
+                <option value="135_Mauritania" {% if addressDetail.country_id === "135" %}selected{% endif %}>Mauritania</option>
+                <option value="136_Mauritius" {% if addressDetail.country_id === "136" %}selected{% endif %}>Mauritius</option>
+                <option value="137_Mayotte" {% if addressDetail.country_id === "137" %}selected{% endif %}>Mayotte</option>
+                <option value="138_Mexico" {% if addressDetail.country_id === "138" %}selected{% endif %}>Mexico</option>
+                <option value="139_Micronesia, Federated States of" {% if addressDetail.country_id === "139" %}selected{% endif %}>Micronesia, Federated States of</option>
+                <option value="140_Moldova, Republic of" {% if addressDetail.country_id === "140" %}selected{% endif %}>Moldova, Republic of</option>
+                <option value="141_Monaco" {% if addressDetail.country_id === "141" %}selected{% endif %}>Monaco</option>
+                <option value="142_Mongolia" {% if addressDetail.country_id === "142" %}selected{% endif %}>Mongolia</option>
+                <option value="242_Montenegro" {% if addressDetail.country_id === "242" %}selected{% endif %}>Montenegro</option>
+                <option value="143_Montserrat" {% if addressDetail.country_id === "143" %}selected{% endif %}>Montserrat</option>
+                <option value="144_Morocco" {% if addressDetail.country_id === "144" %}selected{% endif %}>Morocco</option>
+                <option value="145_Mozambique" {% if addressDetail.country_id === "145" %}selected{% endif %}>Mozambique</option>
+                <option value="146_Myanmar" {% if addressDetail.country_id === "146" %}selected{% endif %}>Myanmar</option>
+                <option value="147_Namibia" {% if addressDetail.country_id === "147" %}selected{% endif %}>Namibia</option>
+                <option value="148_Nauru" {% if addressDetail.country_id === "148" %}selected{% endif %}>Nauru</option>
+                <option value="149_Nepal" {% if addressDetail.country_id === "149" %}selected{% endif %}>Nepal</option>
+                <option value="150_Netherlands" {% if addressDetail.country_id === "150" %}selected{% endif %}>Netherlands</option>
+                <option value="151_Netherlands Antilles" {% if addressDetail.country_id === "151" %}selected{% endif %}>Netherlands Antilles</option>
+                <option value="152_New Caledonia" {% if addressDetail.country_id === "152" %}selected{% endif %}>New Caledonia</option>
+                <option value="153_New Zealand" {% if addressDetail.country_id === "153" %}selected{% endif %}>New Zealand</option>
+                <option value="154_Nicaragua" {% if addressDetail.country_id === "154" %}selected{% endif %}>Nicaragua</option>
+                <option value="155_Niger" {% if addressDetail.country_id === "155" %}selected{% endif %}>Niger</option>
+                <option value="156_Nigeria" {% if addressDetail.country_id === "156" %}selected{% endif %}>Nigeria</option>
+                <option value="157_Niue" {% if addressDetail.country_id === "157" %}selected{% endif %}>Niue</option>
+                <option value="158_Norfolk Island" {% if addressDetail.country_id === "158" %}selected{% endif %}>Norfolk Island</option>
+                <option value="112_North Korea" {% if addressDetail.country_id === "112" %}selected{% endif %}>North Korea</option>
+                <option value="159_Northern Mariana Islands" {% if addressDetail.country_id === "159" %}selected{% endif %}>Northern Mariana Islands</option>
+                <option value="160_Norway" {% if addressDetail.country_id === "160" %}selected{% endif %}>Norway</option>
+                <option value="161_Oman" {% if addressDetail.country_id === "161" %}selected{% endif %}>Oman</option>
+                <option value="162_Pakistan" {% if addressDetail.country_id === "162" %}selected{% endif %}>Pakistan</option>
+                <option value="163_Palau" {% if addressDetail.country_id === "163" %}selected{% endif %}>Palau</option>
+                <option value="247_Palestinian Territory, Occupied" {% if addressDetail.country_id === "247" %}selected{% endif %}>Palestinian Territory, Occupied</option>
+                <option value="164_Panama" {% if addressDetail.country_id === "164" %}selected{% endif %}>Panama</option>
+                <option value="165_Papua New Guinea" {% if addressDetail.country_id === "165" %}selected{% endif %}>Papua New Guinea</option>
+                <option value="166_Paraguay" {% if addressDetail.country_id === "166" %}selected{% endif %}>Paraguay</option>
+                <option value="167_Peru" {% if addressDetail.country_id === "167" %}selected{% endif %}>Peru</option>
+                <option value="168_Philippines" {% if addressDetail.country_id === "168" %}selected{% endif %}>Philippines</option>
+                <option value="169_Pitcairn" {% if addressDetail.country_id === "169" %}selected{% endif %}>Pitcairn</option>
+                <option value="170_Poland" {% if addressDetail.country_id === "170" %}selected{% endif %}>Poland</option>
+                <option value="171_Portugal" {% if addressDetail.country_id === "171" %}selected{% endif %}>Portugal</option>
+                <option value="172_Puerto Rico" {% if addressDetail.country_id === "172" %}selected{% endif %}>Puerto Rico</option>
+                <option value="173_Qatar" {% if addressDetail.country_id === "173" %}selected{% endif %}>Qatar</option>
+                <option value="174_Reunion" {% if addressDetail.country_id === "174" %}selected{% endif %}>Reunion</option>
+                <option value="175_Romania" {% if addressDetail.country_id === "175" %}selected{% endif %}>Romania</option>
+                <option value="176_Russian Federation" {% if addressDetail.country_id === "176" %}selected{% endif %}>Russian Federation</option>
+                <option value="177_Rwanda" {% if addressDetail.country_id === "177" %}selected{% endif %}>Rwanda</option>
+                <option value="178_Saint Kitts and Nevis" {% if addressDetail.country_id === "178" %}selected{% endif %}>Saint Kitts and Nevis</option>
+                <option value="179_Saint Lucia" {% if addressDetail.country_id === "179" %}selected{% endif %}>Saint Lucia</option>
+                <option value="180_Saint Vincent and the Grenadines" {% if addressDetail.country_id === "180" %}selected{% endif %}>Saint Vincent and the Grenadines</option>
+                <option value="181_Samoa" {% if addressDetail.country_id === "181" %}selected{% endif %}>Samoa</option>
+                <option value="182_San Marino" {% if addressDetail.country_id === "182" %}selected{% endif %}>San Marino</option>
+                <option value="183_Sao Tome and Principe" {% if addressDetail.country_id === "183" %}selected{% endif %}>Sao Tome and Principe</option>
+                <option value="184_Saudi Arabia" {% if addressDetail.country_id === "184" %}selected{% endif %}>Saudi Arabia</option>
+                <option value="185_Senegal" {% if addressDetail.country_id === "185" %}selected{% endif %}>Senegal</option>
+                <option value="243_Serbia" {% if addressDetail.country_id === "243" %}selected{% endif %}>Serbia</option>
+                <option value="186_Seychelles" {% if addressDetail.country_id === "186" %}selected{% endif %}>Seychelles</option>
+                <option value="187_Sierra Leone" {% if addressDetail.country_id === "187" %}selected{% endif %}>Sierra Leone</option>
+                <option value="188_Singapore" {% if addressDetail.country_id === "188" %}selected{% endif %}>Singapore</option>
+                <option value="189_Slovak Republic" {% if addressDetail.country_id === "189" %}selected{% endif %}>Slovak Republic</option>
+                <option value="190_Slovenia" {% if addressDetail.country_id === "190" %}selected{% endif %}>Slovenia</option>
+                <option value="191_Solomon Islands" {% if addressDetail.country_id === "191" %}selected{% endif %}>Solomon Islands</option>
+                <option value="192_Somalia" {% if addressDetail.country_id === "192" %}selected{% endif %}>Somalia</option>
+                <option value="193_South Africa" {% if addressDetail.country_id === "193" %}selected{% endif %}>South Africa</option>
+                <option value="194_South Georgia & South Sandwich Islands" {% if addressDetail.country_id === "194" %}selected{% endif %}>South Georgia &amp; South Sandwich Islands
+                </option>
+                <option value="113_South Korea" {% if addressDetail.country_id === "113" %}selected{% endif %}>South Korea</option>
+                <option value="248_South Sudan" {% if addressDetail.country_id === "248" %}selected{% endif %}>South Sudan</option>
+                <option value="195_Spain" {% if addressDetail.country_id === "195" %}selected{% endif %}>Spain</option>
+                <option value="196_Sri Lanka" {% if addressDetail.country_id === "196" %}selected{% endif %}>Sri Lanka</option>
+                <option value="249_St. Barthelemy" {% if addressDetail.country_id === "249" %}selected{% endif %}>St. Barthelemy</option>
+                <option value="197_St. Helena" {% if addressDetail.country_id === "197" %}selected{% endif %}>St. Helena</option>
+                <option value="250_St. Martin (French part)" {% if addressDetail.country_id === "250" %}selected{% endif %}>St. Martin (French part)</option>
+                <option value="198_St. Pierre and Miquelon" {% if addressDetail.country_id === "198" %}selected{% endif %}>St. Pierre and Miquelon</option>
+                <option value="199_Sudan" {% if addressDetail.country_id === "199" %}selected{% endif %}>Sudan</option>
+                <option value="200_Suriname" {% if addressDetail.country_id === "200" %}selected{% endif %}>Suriname</option>
+                <option value="201_Svalbard and Jan Mayen Islands" {% if addressDetail.country_id === "201" %}selected{% endif %}>Svalbard and Jan Mayen Islands</option>
+                <option value="202_Swaziland" {% if addressDetail.country_id === "202" %}selected{% endif %}>Swaziland</option>
+                <option value="203_Sweden" {% if addressDetail.country_id === "203" %}selected{% endif %}>Sweden</option>
+                <option value="204_Switzerland" {% if addressDetail.country_id === "204" %}selected{% endif %}>Switzerland</option>
+                <option value="205_Syrian Arab Republic" {% if addressDetail.country_id === "205" %}selected{% endif %}>Syrian Arab Republic</option>
+                <option value="206_Taiwan" {% if addressDetail.country_id === "206" %}selected{% endif %}>Taiwan</option>
+                <option value="207_Tajikistan" {% if addressDetail.country_id === "207" %}selected{% endif %}>Tajikistan</option>
+                <option value="208_Tanzania, United Republic of" {% if addressDetail.country_id === "208" %}selected{% endif %}>Tanzania, United Republic of</option>
+                <option value="209_Thailand" {% if addressDetail.country_id === "209" %}selected{% endif %}>Thailand</option>
+                <option value="210_Togo" {% if addressDetail.country_id === "210" %}selected{% endif %}>Togo</option>
+                <option value="211_Tokelau" {% if addressDetail.country_id === "211" %}selected{% endif %}>Tokelau</option>
+                <option value="212_Tonga" {% if addressDetail.country_id === "212" %}selected{% endif %}>Tonga</option>
+                <option value="213_Trinidad and Tobago" {% if addressDetail.country_id === "213" %}selected{% endif %}>Trinidad and Tobago</option>
+                <option value="255_Tristan da Cunha" {% if addressDetail.country_id === "255" %}selected{% endif %}>Tristan da Cunha</option>
+                <option value="214_Tunisia" {% if addressDetail.country_id === "214" %}selected{% endif %}>Tunisia</option>
+                <option value="215_Turkey" {% if addressDetail.country_id === "215" %}selected{% endif %}>Turkey</option>
+                <option value="216_Turkmenistan" {% if addressDetail.country_id === "216" %}selected{% endif %}>Turkmenistan</option>
+                <option value="217_Turks and Caicos Islands" {% if addressDetail.country_id === "217" %}selected{% endif %}>Turks and Caicos Islands</option>
+                <option value="218_Tuvalu" {% if addressDetail.country_id === "218" %}selected{% endif %}>Tuvalu</option>
+                <option value="219_Uganda" {% if addressDetail.country_id === "219" %}selected{% endif %}>Uganda</option>
+                <option value="220_Ukraine" {% if addressDetail.country_id === "220" %}selected{% endif %}>Ukraine</option>
+                <option value="221_United Arab Emirates" {% if addressDetail.country_id === "221" %}selected{% endif %}>United Arab Emirates</option>
+                <option value="222_United Kingdom" {% if addressDetail.country_id === "222" %}selected{% endif %}>United Kingdom</option>
+                <option value="223_United States" {% if addressDetail.country_id === "223" %}selected{% endif %}>United States</option>
+                <option value="224_United States Minor Outlying Islands" {% if addressDetail.country_id === "224" %}selected{% endif %}>United States Minor Outlying Islands</option>
+                <option value="225_Uruguay" {% if addressDetail.country_id === "225" %}selected{% endif %}>Uruguay</option>
+                <option value="226_Uzbekistan" {% if addressDetail.country_id === "226" %}selected{% endif %}>Uzbekistan</option>
+                <option value="227_Vanuatu" {% if addressDetail.country_id === "227" %}selected{% endif %}>Vanuatu</option>
+                <option value="228_Vatican City State (Holy See)" {% if addressDetail.country_id === "228" %}selected{% endif %}>Vatican City State (Holy See)</option>
+                <option value="229_Venezuela" {% if addressDetail.country_id === "229" %}selected{% endif %}>Venezuela</option>
+                <option value="230_Viet Nam" {% if addressDetail.country_id === "230" %}selected{% endif %}>Viet Nam</option>
+                <option value="231_Virgin Islands (British)" {% if addressDetail.country_id === "231" %}selected{% endif %}>Virgin Islands (British)</option>
+                <option value="232_Virgin Islands (U.S.)" {% if addressDetail.country_id === "232" %}selected{% endif %}>Virgin Islands (U.S.)</option>
+                <option value="233_Wallis and Futuna Islands" {% if addressDetail.country_id === "233" %}selected{% endif %}>Wallis and Futuna Islands</option>
+                <option value="234_Western Sahara" {% if addressDetail.country_id === "234" %}selected{% endif %}>Western Sahara</option>
+                <option value="235_Yemen" {% if addressDetail.country_id === "235" %}selected{% endif %}>Yemen</option>
+                <option value="238_Zambia" {% if addressDetail.country_id === "238" %}selected{% endif %}>Zambia</option>
+                <option value="239_Zimbabwe" {% if addressDetail.country_id === "239" %}selected{% endif %}>Zimbabwe</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-payment-zone">Region /
+                State</label>
+            <div class="col-sm-10">
+                <select name="zone_id" id="input-payment-zone" class="form-control">
+                    <option value=""> --- Please Select --- </option>
+                    
+                    <option value="1475_Andaman and Nicobar Islands" {% if addressDetail.zone_id === "1475" %}selected{% endif %}>Andaman and Nicobar Islands</option>
+                    <option value="1476_Andhra Pradesh" {% if addressDetail.zone_id === "1476" %}selected{% endif %}>Andhra Pradesh</option>
+                    <option value="1477_Arunachal Pradesh" {% if addressDetail.zone_id === "1477" %}selected{% endif %}>Arunachal Pradesh</option>
+                    <option value="1478_Assam" {% if addressDetail.zone_id === "1478" %}selected{% endif %}>Assam</option>
+                    <option value="1479_Bihar" {% if addressDetail.zone_id === "1479" %}selected{% endif %}>Bihar</option>
+                    <option value="1480_Chandigarh" {% if addressDetail.zone_id === "1480" %}selected{% endif %}>Chandigarh</option>
+                    <option value="1481_Dadra and Nagar Haveli" {% if addressDetail.zone_id === "1481" %}selected{% endif %}>Dadra and Nagar Haveli</option>
+                    <option value="1482_Daman and Diu" {% if addressDetail.zone_id === "1482" %}selected{% endif %}>Daman and Diu</option>
+                    <option value="1483_Delhi" {% if addressDetail.zone_id === "1483" %}selected{% endif %}>Delhi</option>
+                    <option value="1484_Goa" {% if addressDetail.zone_id === "1484" %}selected{% endif %}>Goa</option>
+                    <option value="1485_Gujarat" {% if addressDetail.zone_id === "1485" %}selected{% endif %}>Gujarat</option>
+                    <option value="1486_Haryana" {% if addressDetail.zone_id === "1486" %}selected{% endif %}>Haryana</option>
+                    <option value="1487_Himachal Pradesh" {% if addressDetail.zone_id === "1487" %}selected{% endif %}>Himachal Pradesh</option>
+                    <option value="1488_Jammu and Kashmir" {% if addressDetail.zone_id === "1488" %}selected{% endif %}>Jammu and Kashmir</option>
+                    <option value="1489_Karnataka" {% if addressDetail.zone_id === "1489" %}selected{% endif %}>Karnataka</option>
+                    <option value="1490_Kerala" {% if addressDetail.zone_id === "1490" %}selected{% endif %}>Kerala</option>
+                    <option value="1491_Lakshadweep Islands" {% if addressDetail.zone_id === "1491" %}selected{% endif %}>Lakshadweep Islands</option>
+                    <option value="1492_Madhya Pradesh" {% if addressDetail.zone_id === "1492" %}selected{% endif %}>Madhya Pradesh</option>
+                    <option value="1493_Maharashtra" {% if addressDetail.zone_id === "1493" %}selected{% endif %}>Maharashtra</option>
+                    <option value="1494_Manipur" {% if addressDetail.zone_id === "1494" %}selected{% endif %}>Manipur</option>
+                    <option value="1495_Meghalaya" {% if addressDetail.zone_id === "1495" %}selected{% endif %}>Meghalaya</option>
+                    <option value="1496_Mizoram" {% if addressDetail.zone_id === "1496" %}selected{% endif %}>Mizoram</option>
+                    <option value="1497_Nagaland" {% if addressDetail.zone_id === "1497" %}selected{% endif %}>Nagaland</option>
+                    <option value="1498_Orissa" {% if addressDetail.zone_id === "1498" %}selected{% endif %}>Orissa</option>
+                    <option value="1499_Puducherry" {% if addressDetail.zone_id === "1499" %}selected{% endif %}>Puducherry</option>
+                    <option value="1500_Punjab" {% if addressDetail.zone_id === "1500" %}selected{% endif %}>Punjab</option>
+                    <option value="1501_Rajasthan" {% if addressDetail.zone_id === "1501" %}selected{% endif %}>Rajasthan</option>
+                    <option value="1502_Sikkim" {% if addressDetail.zone_id === "1502" %}selected{% endif %}>Sikkim</option>
+                    <option value="1503_Tamil Nadu" {% if addressDetail.zone_id === "1503" %}selected{% endif %}>Tamil Nadu</option>
+                    <option value="4231_Telangana" {% if addressDetail.zone_id === "4231" %}selected{% endif %}>Telangana</option>
+                    <option value="1504_Tripura" {% if addressDetail.zone_id === "1504" %}selected{% endif %}>Tripura</option>
+                    <option value="1505_Uttar Pradesh" {% if addressDetail.zone_id === "1505" %}selected{% endif %}>Uttar Pradesh</option>
+                    <option value="1506_West Bengal" {% if addressDetail.zone_id === "1506" %}selected{% endif %}>West Bengal</option>
+                </select>
+            </div>
+        </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Default Address</label>
+            <!-- <div class="col-sm-10">               <label class="radio-inline">
+                <input type="radio" name="default" value="1">
+                Yes</label>
+              <label class="radio-inline">
+                <input type="radio" name="default" value="0" checked="checked">
+                No</label>
+               </div> -->
+            <div class="col-sm-10">
+              <label class="radio-inline">
+                <input type="radio" name="default" value="1" {% if addressDetail.default==="1" %}checked="checked" {%
+                  endif %}>
+                Yes
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="default" value="0" {% if addressDetail.default==="0" %}checked="checked" {%
+                  endif %}>
+                No
+              </label>
+            </div>
+
+          </div>
+
+
+        </fieldset>
+        <div class="buttons clearfix">
+          <div class="pull-left"><a href="/getAddressBook" class="btn btn-default">Back</a></div>
+          <div class="pull-right">
+            <input type="submit" value="Continue" class="btn btn-primary">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+
+<!-- ======= Quick view JS ========= -->
+<script>
+
+  function quickbox() {
+    if ($(window).width() > 767) {
+      $('.quickview-button').magnificPopup({
+        type: 'iframe',
+        delegate: 'a',
+        preloader: true,
+        tLoading: 'Loading image #%curr%...',
+      });
+    }
+  }
+  jQuery(document).ready(function () { quickbox(); });
+  jQuery(window).resize(function () { quickbox(); });
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Profile Type</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Profile Type</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<!-- <h6 class="panel-title txt-dark">Settings</h6> -->
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										{% if application %}
+										<form method="POST" action="/backend/profileTypeEdit/{{application._id}}" class="form-horizontal" enctype="multipart/form-data">
+										{% else %}
+										<form method="POST" action="/backend/addProfileType" class="form-horizontal" enctype="multipart/form-data">
+										{% endif %}
+												<table border="0" class="table display  pb-30">
+													<div class="col-sm-12">
+														<div class="panel-wrapper collapse in">
+															<div class="panel-body">
+																<div class="form-group">
+																	<label class="control-label mb-10 col-sm-2" for="title">Profile Type :</label>
+																	<div class="col-sm-6">
+																		<input type="text" class="form-control" name="title" id="title" value="{{application.profileType}}" />
+																	</div>
+																</div>
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2" for="description">Home Head Text:</label>
+																	<div class="col-sm-6">
+																		<input type="text" class="form-control" name="description" id="description" value="{{application.description}}" />
+																	</div>
+																</div> -->
+
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2" for="name">Home Name:</label>
+																	<div class="col-sm-6">
+																		<input type="text" class="form-control" name="name" id="name" value="{{application.name}}" />
+																	</div>
+																</div> -->
+
+
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2" for="image">Application Cover File:</label>
+																	<div class="col-sm-6">
+																		{% if application %}     
+
+																		<input type="file" class="form-control" id="applicationImage" name="applicationImage" value="" >
+
+																		<br><img src= "{{application.file}}" height="200px" width="200px" alt="">
+
+																		{% else %}   
+																		<input type="file" class="form-control" id="applicationImage" required  name="applicationImage" value="">
+
+																		{% endif %} 	
+																	</div>
+																</div> -->
+							
+																<!-- <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2" for="description">Description:</label>
+																	<div class="col-sm-6">
+																		<textarea class="form-control" name="description" id="description" rows="9" style="resize:none;">{{application.description}}</textarea>
+																	</div>
+																</div> -->
+
+																<!-- <div class="form-group">
+																		<label class="control-label mb-10 col-sm-2" for="categoryName">Choose a category:</label>
+																		
+																			<select id="categoryName" name="categoryName">
+																				{% for categoryName in categoryData %}	
+																					<option value="{{categoryName._id}}" {{"selected" if(categoryName._id == application.category_id)}} >{{categoryName.categoryName}}</option>
+																				{% endfor %}
+																			</select>
+																			
+																	</form>
+																</div> -->
+
+															</div>
+														</div>
+													</div>
+													<tr>
+														<td colspan="2">
+                             
+															{% if application %}
+															<input type="submit" class="btn btn-success btn-flat" value="Update">
+                                                            {%else%} 
+															<input type="submit" class="btn btn-success btn-flat" value="submit">
+															{% endif %}
+														</td>
+													</tr>
+												</table>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+					<!-- /Row -->
+			</div>
+	 	</section>
+
+{% endblock %}
+
+{% block Jscript %}
+
+
+{% endblock %}

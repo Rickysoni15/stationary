@@ -1,0 +1,81 @@
+{% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+
+<style>
+	.table-bordered>tbody>tr>td {
+		border: 1px solid black;
+	}
+
+	.btn{
+		color: white;
+		background-color: #3c8dbc;
+	}
+</style>
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Questionnaire Form Table</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Order Management</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<!-- <div class="pull-left">
+									<h6 class="panel-title txt-dark">Order Management</h6>
+								</div> -->
+							<!-- <div class="pull-right">
+									<a href="/backend/addProduct"><button type="button" class="btn btn-primary btn-md"><i class="fa fa-plus"></i> Add Product</button></a>
+								</div> -->
+
+
+							{% if orderData %}
+
+							<table class="table table-bordered text-center">
+								{% for item in orderData.question_form %}
+								<tr>
+									<td style="width:50%">{{item.name}}</td>
+									<td style="width:50%">{{item.value}}</td>
+								</tr>
+								{% endfor %}
+
+							</table>
+
+						</div>
+						{% endif %}
+						<div class="clearfix"></div>
+
+						<button id="back_btn" class="btn waves-effect waves-light" name="action">Back
+						</button>
+					</div>
+
+				</div>
+			</div>
+	</div>
+	</section>
+</div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script>
+	$("#back_btn").click(function () {
+		window.history.back();
+	});
+</script>
+{% endblock %}

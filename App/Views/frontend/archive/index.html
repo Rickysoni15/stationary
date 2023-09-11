@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "frontend/partitions/head.html" %}
+<body>
+    <header class="top-header fixed-header bg-transparent">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg  main-menu">
+                <a class="navbar-brand slow"  href="/" style="display: none;"><img src="/front/img/logo.png" alt=""></a>
+                    <button class="btn btn-dark d-inline-block d-lg-none  ml-auto navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#menutooggle" aria-controls="menutooggle" aria-expanded="false" aria-label="Toggle navigation">
+                        <span> </span>
+                        <span> </span>
+                        <span> </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="menutooggle">
+                        <ul class="navbar-nav ml-auto left-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="aboutUs">About us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="product">PRODUCTS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="investors">INVESTORS</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="newsEvents">NEWS & EVENTS</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contactUs">CONTACT US</a>
+                            </li>
+                        </ul>
+                    </div>
+            </nav>
+        </div>
+    </header>
+    <main class="home-page">
+        <section class="home-top-video-sec">
+            <!-- <div class="overlay"></div> -->
+            <div class="vid-wrap">
+                <video playsinline="playsinline" autoplay="autoplay" muted="muted" >
+                    <source src="/front/video/home-video.mp4" type="video/mp4">
+                </video>
+              <div class="mid-inr">
+                <div class="container">
+                    <div class="text-center mid-detail">
+                        <div class="logo-img animated slow animated.delay-5s"  data-aos="fade-in" data-aos-offset="0">
+                            <img src="/front/img/logo-sym.png" alt="">
+                        </div>
+                        <div class="logo-nm">
+                            <h1 class="nm animated fadeIn slower delay-1s" >USHANTI COLOUR CHEM LIMITED</h1>
+                            <h2 class="yr animated fadeIn slower delay-2s" >Since 1961</h2>
+                        </div>
+                        <a href="/contactUs#orderPin" class="track-odr-btn" data-aos="fade-in" data-aos-offset="0">Track Order</a>
+
+                    </div>
+                </div>
+              </div>
+            </div>
+        </section>
+        <section class="home-aword-sec mt-0">
+            <div class="container">
+                <div class="col-md-12">
+                            <div class="text-center">
+                            <h3 class="top-heading" data-aos="zoom-in" data-aos-easing="linear"
+                            data-aos-duration="1000" data-aos-offset="0">Making the world more colourful...</h3>
+                            <a href="#" class="view-product-btn" data-aos="fade-in" data-aos-offset="0">View Products</a>
+                        </div>
+                            <div class="text-center">
+                            <div class="win-leafe" data-aos="fade-down"  data-aos-easing="linear"
+                            data-aos-duration="1200" data-aos-offset="0">
+                                <h4 class="title">AWARDS & CERTIFICTES</h4>
+                            </div>
+                        </div>
+                            <div class="owl-carousel owl-theme award-list-slider" data-aos="zoom-in" data-aos-easing="linear"
+                            data-aos-duration="1200" data-aos-offset="0">
+                                <div class="item text-center">
+                                    <div class="award-img">
+                                        <img src="/front/img/award-img-1.png" alt="">
+                                    </div>
+                                    <div class="name-yr-txt">Award name & year </div>
+                                </div>
+                                <div class="item text-center">
+                                    <div class="award-img">
+                                        <img src="/front/img/award-img-2.png" alt="">
+                                    </div>
+                                    <div class="name-yr-txt">Award name & year </div>
+                                </div>
+                                <div class="item text-center">
+                                    <div class="award-img">
+                                        <img src="/front/img/award-img-3.png" alt="">
+                                    </div>
+                                    <div class="name-yr-txt">Award name & year </div>
+                                </div>
+                            </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    {% include "frontend/partitions/footer.html" %}
+    <script>
+         $(document).ready(function() {
+          AOS.init({
+            // startEvent: 'load',
+            offset: 250,
+            duration: 1000,
+            easing: 'ease-in-sine',
+            delay: 50,
+            disableMutationObserver: true,
+            throttleDelay: 0,
+            debounceDelay: 0,
+            once: false,
+            mirror: true,
+            // startEvent: 'DOMContentLoaded'
+            });
+        });
+
+    </script>
+    <script>
+		$('.owl-carousel').owlCarousel({
+			loop:true,
+			autoplay:true,
+			autoplaySpeed:800,
+			margin:0,
+			nav:true,
+			dots:false,
+            responsiveClass:true,
+			responsive:{
+                0:{
+					items:1
+				},
+				768:{
+					items:2
+				},
+				992:{
+					items:2
+				},
+				1024:{
+					items:3
+				}
+			}
+		})
+    </script>
+
+        <script>
+
+           $(window).scroll(function(){
+            if ($(window).scrollTop() >= 260) {
+                $('.navbar-brand').addClass('animated fadeInUp');
+                $('.top-header').removeClass('bg-transparent');
+                $('.logo-img').addClass('unvisibile  slideOutUp');
+                $('.logo-img').removeClass('unvisibile ');
+                $('.navbar-brand').show();
+            }
+            else {
+                $('.top-header').addClass('bg-transparent');
+                $('.navbar-brand').removeClass('fadeInUp');
+                $('.logo-img').addClass('unvisibile ');
+                $('.logo-img').removeClass('unvisibile slideOutUp');
+
+                $('.navbar-brand').hide();
+
+            }
+        });
+
+    </script>
+</body>
+</html>

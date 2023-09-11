@@ -1,0 +1,134 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Excel Data</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>
+                    <thead>
+                        
+                        <tr style="background-color: #eaeaea; text-align: center;">
+                            
+                               
+                                
+                               
+                                
+                               
+                                <th>Candidate Pic</th>
+                                
+                                
+                               
+                                <th>Full Name</th>
+                                
+                                
+                               
+                                
+                               
+                                <th>Standard</th>
+                                
+                                
+                               
+                                <th>Address1</th>
+                                
+                                
+                               
+                                
+                               
+                                <th>Mobile</th>
+                                
+                                
+                               
+                                <th>Mobile2</th>
+                                
+                                
+                               
+                                <th>Mobile3</th>
+                                
+                                
+                                <th>Data Confirmetion Link</th>
+                        </tr>
+                    
+                        
+                    </thead>
+                    <tbody>
+                        
+                            
+                         
+                         <tr>
+                            
+                            
+                             
+                            
+                             
+                            
+                             
+                                
+                                
+                                    <td class="text-center"><img src="/cardElements/uploads/a8ae81daf7695a59be.png" height="100px" width="100px"></td> 
+                                
+                                
+                              
+                            
+                             
+                                
+                                   
+                                    <td class="text-center">Avalani Yesha Tejas</td> 
+                                
+                                
+                              
+                            
+                             
+                            
+                             
+                                
+                                   
+                                    <td class="text-center">10th E</td> 
+                                
+                                
+                              
+                            
+                             
+                                
+                                   
+                                    <td class="text-center">27, Ramvadi, Isanpur, Ahmedabad.</td> 
+                                
+                                
+                              
+                            
+                             
+                            
+                             
+                                
+                                   
+                                    <td class="text-center">1234567890</td> 
+                                
+                                
+                              
+                            
+                             
+                                
+                                   
+                                    <td class="text-center">1234567890</td> 
+                                
+                                
+                              
+                            
+                             
+                                
+                                   
+                                    <td class="text-center">1234567890</td> 
+                                
+                                
+                              
+                            
+                           
+                                
+                                  <td class="text-center"><a class="copy_text" data-toggle="tooltip" title="Copy to Clipboard" href="http://localhost:4014/icard-varification-link/61a5ecf984577e2bb3ad6224/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5YmZiNzBhNDI1OThiZGFhOCIsImlhdCI6MTYzODM0ODY2NywiZXhwIjoxNjM4NDM1MDY3fQ.TAB9sp10Sp8L-YmRvmDKk8tkv8ARbibyr0-X2tYgFtM">http://localhost:4014/icard-varification-link/61a5ecf984577e2bb3ad6224/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5YmZiNzBhNDI1OThiZGFhOCIsImlhdCI6MTYzODM0ODY2NywiZXhwIjoxNjM4NDM1MDY3fQ.TAB9sp10Sp8L-YmRvmDKk8tkv8ARbibyr0-X2tYgFtM</a></td> 
+                                
+
+                           
+                            <td class="text-center">
+                                <a href="/updateData/d9bfb70a42598bdaa8"><i class="fas fa-edit"></i></a>
+                                <a href="/deleteData/d9bfb70a42598bdaa8" onclick="return confirm('Are you sure you want to Delete Data?')"><i class="fas fa-trash-alt"></i></a>
+                             </td>
+                         </tr>   
+                            
+                        
+                        
+                        
+                    </tbody>
+                </table></body></html>

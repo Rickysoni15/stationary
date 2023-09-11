@@ -1,0 +1,647 @@
+{% extends "frontend/partitions/layout.html" %}
+{% block body %}
+<!-- <section>
+
+        <div class="slider">
+            <div class="arrows">
+                <a class="previous" href="javascript:void(0);"><i class="fas fa-angle-left"></i></a>
+                <a class="next" href="javascript:void(0);"><i class="fas fa-angle-right"></i></a>
+            </div>
+            <div class="slides">
+                <div class="slide active blue" data-icon="&#xf0ac;">
+                    <h4>Welcome To</h4>
+                    <h2 class="alfa__font">OEMONE.SHOP</h2>
+                    <p>Competent engineering</p>
+                    <a target="_blank" href="#"> Our Products</a>
+                </div>
+                <div class="slide white" data-icon="&#xf0f3;">
+                    <h4>Welcome To</h4>
+                    <h2> The Tour of Smart Factory <span class="alfa__font"> OEMONE.SHOP </span></h2>
+                    <p>50 Years of Experience in finance and consultant business! We helping a client achieve their
+                        goals than programming a workout and setting the pin in the weight stack.</p>
+                    <a target="_blank" href="#">READ More</a>
+                </div>
+                <div class="slide red" data-icon="&#xf013;">
+                    <h4>Get A Solution</h4>
+                    <h2>Business to grow</h2>
+                    <p>50 Years of Experience in finance and consultant business! We helping a client achieve their
+                        goals than programming a workout and setting the pin in the weight stack.</p>
+                    <a target="_blank" href="#">Associate with us</a>
+                </div>
+            </div>
+            <div class="bullets">
+            </div>
+        </div>
+    </section> -->
+
+<section>
+    <!-- {% if (successful.length > 0) %}
+    <div class="alert alert-success alert-dismissable notifications">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{{success}}
+    </div>
+    {% endif %}
+    {% if (error.length > 0) %}
+    <div class="alert alert-danger alert-dismissable notifications">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{{error}}
+    </div>
+    {% endif %} -->
+    <div class="slider">
+        <div class="arrows">
+            <a class="previous" href="javascript:void(0);"><i class="fas fa-angle-left"></i></a>
+            <a class="next" href="javascript:void(0);"><i class="fas fa-angle-right"></i></a>
+        </div>
+
+        <div class="slides">
+            <div class="slide active blue" data-icon="&#xf0ac;">
+                <h4>Welcome To</h4>
+                <h2 class="alfa__font">OEMONE.SHOP</h2>
+                <p>Competent engineering</p>
+                <a target="_blank" href="/products"> Our Products</a>
+            </div>
+            <div class="slide white" data-icon="&#xf0f3;">
+                <h4>Welcome To</h4>
+                <h2> The Tour of Smart Factory <span class="alfa__font"> OEMONE.SHOP </span></h2>
+                <p>50 Years of Experience in finance and consultant business! We helping a client achieve their
+                    goals than programming a workout and setting the pin in the weight stack.</p>
+                <a target="_blank" href="javascript:void(0)">READ More</a>
+            </div>
+            <div class="slide red" data-icon="&#xf013;">
+                <h4>Get A Solution</h4>
+                <h2>Business to grow</h2>
+                <p>50 Years of Experience in finance and consultant business! We helping a client achieve their
+                    goals than programming a workout and setting the pin in the weight stack.</p>
+                <a target="_blank" href="javascript:void(0)">Associate with us</a>
+            </div>
+            {% for data in homeData %}
+
+            {% if data.type == "image" %}
+            
+            <div class="slide red" style="background-image: url({{data.file}}) " data-icon="&#xf0ac;">
+                <!-- <img src="{{data.image}}" height="300" width="200" class="team-thumb"> -->
+                <h4>{{data.title}}</h4>
+                <h2 class="alfa__font">{{data.headtext}}</h2>
+                <p>{{data.description}}</p>
+                <a target="_blank" href="/products"> Our Products</a>
+            </div>
+            {% else %}
+
+            <div class="slide slidevideos" data-icon="&#xf0ac;">
+                <video autoPlay='autoplay' muted='muted' loop='loop' margin="none" width="100%">
+                    <source src="{{data.file}}" controls />
+                </video>
+                <div class="videodis">
+                    <!-- <img src="{{data.image}}" height="300" width="200" class="team-thumb"> -->
+                    <h4>{{data.title}}</h4>
+                    <h2 class="alfa__font">{{data.headtext}}</h2>
+                    <p>{{data.description}}</p>
+                    <a target="_blank" href="/products"> Our Products</a>
+                </div>
+            </div>
+
+            {% endif %}
+
+            {% endfor %}
+        </div>
+        <div class="bullets">
+        </div>
+    </div>
+</section>
+<section class="ptb-50 slide-card-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 col-md-12 slide-card">
+                <div class="slide-bg-image bg-orange-img">
+                    <h3 class="slide-section-title"> High Technology Factory</h3>
+                    <span class="slide-sub-title"> & Environment Friendly</span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 col-md-12 slide-card">
+                <div class="slide-bg-image black-bg-img">
+                    <h3 class="slide-section-title text-orange">Punctual Delivery Time</h3>
+                    <span class="slide-sub-title">99% Delivered On Time</span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 col-md-12 slide-card">
+                <div class="slide-bg-image dark-bg-img">
+                    <h3 class="slide-section-title text-orange">High Standard Labors</h3>
+                    <span class="slide-sub-title">99% QC Passed</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 mb-5">
+                <div class="section-heading">
+                    <p class="main-heading"><span class="alfa__font">WELCOME to OEMONE.SHOP </span></p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                    </p>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have
+                        suffered alteration in some form, by injected humour.</p>
+                    <figure>
+                        <img src="/front/image/signature.png">
+                    </figure>
+                    <p>Paul Anderson<br> CEO &amp; Founder</p>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12 mb-5">
+                        <div class="media">
+                            <img src="/front/image/affordable-45x45.png" class="mr-3">
+                            <div class="media-body">
+                                <h4 class="media-title">Easy and Affordable</h4>
+                                <p>Lorem ipsum dolor sit amet, the consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt.</p>
+                                <div class="readmore-btn mt-3">
+                                    <!-- <a class="link" href="#" title="Read More">Read More</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 mb-5">
+                        <div class="media">
+                            <img src="/front/image/delivery-45x45.png" class="mr-3">
+                            <div class="media-body">
+                                <h4 class="media-title">Punctual Delivery time</h4>
+                                <p>Lorem ipsum dolor sit amet, the consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt.</p>
+                                <div class="readmore-btn mt-3">
+                                    <!-- <a class="link" href="#" title="Read More">Read More</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 mb-5">
+                        <div class="media">
+                            <img src="/front/image/technology-45x45.png" class="mr-3">
+                            <div class="media-body">
+                                <h4 class="media-title">Smart Technology</h4>
+                                <p>Lorem ipsum dolor sit amet, the consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt.</p>
+                                <div class="readmore-btn mt-3">
+                                    <!-- <a class="link" href="#" title="Read More">Read More</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 mb-5">
+                        <div class="media">
+                            <img src="/front/image/professionals-45x45.png" class="mr-3">
+                            <div class="media-body">
+                                <h4 class="media-title">Team Of Professionals</h4>
+                                <p>Lorem ipsum dolor sit amet, the consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt.</p>
+                                <div class="readmore-btn mt-3">
+                                    <!-- <a class="link" href="#" title="Read More">Read More</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-50 customer-bg">
+    <span class="row-overlay"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-2 col-xs-12"></div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <h2 class="section-title">Innovation to take product from an idea all the way to reality.</h2>
+                <div class="feature-box-btn">
+                    <a class="btn default" href="#requestQuote">Get a Quote</a>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12"></div>
+        </div>
+    </div>
+</section>
+<section class="ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 col-md-12 col-xs-12 mb-5">
+                <h2 class="section-title-border">What We Do</h2>
+                <div class="section-description">
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have
+                        suffered alteration in some form or randomised words which don’t look even slightly
+                        believable.</p>
+                    <p>Lorem Ipsum, you need to be sure there isn’t anything embarrassing hidden in the middle of
+                        text.</p>
+                    <div class="feature-box-btn text-left mt-4 mb-5">
+                        <a class="btn default" href="/products">View All Products</a>
+                    </div>
+                </div>
+            </div>
+            {% for data in productData %}
+            <div class="col-lg-4 col-sm-12 col-md-12 col-xs-12 mb-5">
+                <img src="{{data.product_image}}" class="w-100 mb-5" style="height:35vh;">
+                <h4 class="section-title">{{data.product_name}}</h4>
+                <p class="desscroll">{{data.description_copy}}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+<section class=" pb-0 bg-our-join">
+    <span class="row-overlay"></span>
+    <!-- <div class="container"> -->
+    <!-- <div class="row"> -->
+    <!-- <div class="col-lg-12 col-md-12 col-sm-12 pt-5"> -->
+    <div class="news__section__title">
+        <h2 class=" text-white ">Latest News</h2>
+    </div>
+
+    <div class="container" id="containerNews">
+        <div onclick="slideRight()" class="Newsbtn news_pretbtn "></div>
+        <div id="slider-container">
+
+            <div id="sliderNews">
+
+                {% for news in newsData %}
+                <div class="slideNews">
+
+                    <div class="card">
+                        <img src="{{news.image}}" alt="Avatar" class="News__card__img">
+                        <div class="containerCard">
+                            <h6 class="pt-2 "><b>{{news.title}}</b>
+                            </h6>
+                            <small> <i class="fa fa-calendar pr-1" aria-hidden="true"></i>{{news.date}}</small> <i
+                                class="fa-thin fa-timer"></i>
+                            <p class="p1">{{news.description}}</p>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div onclick="slideLeft()" class="Newsbtn news_nextbtn"></div>
+    </div>
+
+    <div class="clear-fix"></div>
+
+    <!-- </div> -->
+    <!-- <div class="col-lg-2 col-md-12 col-sm-12"></div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                    <img src="image/industrial_worker.png" class="w-100">
+                </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+</section>
+<section class="ptb-50">
+    <div class="container">
+        <h2 class="section-title-center">Our Projects</h2>
+        <ul class="nav nav-tabs text-center portfolio" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#All" role="tab" aria-controls="home"
+                    aria-selected="true">All</a>
+            </li>
+            {% for projectCategory in projectCategoryData %}
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#{{projectCategory._id}}" role="tab"
+                    aria-controls="profile" aria-selected="false">{{projectCategory.projectCategoryName}}</a>
+            </li>
+            {% endfor %}
+
+        </ul>
+        <div class="tab-content mt-5 lightbox-gallery" id="myTabContent">
+            <div class="tab-pane fade show active " id="All" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row">
+                    {% set i = 0 %}
+                    {% for project in projectData%}
+                    {% set i = i+1 %}
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <article class="photos">
+                            <div class="portfolio-wrap">
+                                <div class="portfolio-img portfolio-overlay-wrap">
+                                    <div class="portfolio-overlay overlay-center">
+                                        <div class="portfolio-title">
+                                            <h3>
+                                                <a href="/details/{{project._id}}"
+                                                    target="_blank">{{project.project_name}}</a>
+                                            </h3>
+                                        </div>
+                                        <div class="portfolio-categories">
+                                            <span>{{project.project_description}}</span>
+                                        </div>
+                                        <input id="popupimg{{i}}" class="ImgThumbnail" type="hidden" value="{{project.project_image}}">
+                                        <div class="portfolio-icons ">
+                                            <!-- <a href="{{project.project_image}}" data-lightbox="photos" 
+                                                class="image-gallery-link zoom-icon">-->
+                                            <i class="iconplus fas fa-plus " id="myImg"></i>
+                                            <!-- </a>   -->                                                                         
+                                            <a href="/details/{{project._id}}" class="link-icon">
+                                                <i class="iconlink fas fa-link"></i>
+                                            </a>
+                                        </div>                                          
+                                    </div>
+                                    <a href="#" class="image-gallery-link">
+                                        <img width="440" height="260" src="{{project.project_image}}" class="img-fluid"
+                                            alt="">
+                                    </a>
+                                </div>
+                                <div id="myModal" class="modal">
+                                    <!-- The Close Button -->
+                                    <span class="close">&times;</span>                                  
+                                    <!-- Modal Content (The Image) -->
+                                    <img  class="modal-content" id="img01">                               
+                                   
+                                  </div>        
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+            {% set i = 0 %}
+            {% for projectCategory in projectCategoryData%}
+            <div class="tab-pane fade" id="{{projectCategory._id}}" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row">
+                    {% for project in projectCategory.project %}
+                    {% set i = i+1 %}
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <article class="photos">
+                            <div class="portfolio-wrap">
+                                <div class="portfolio-img portfolio-overlay-wrap">
+                                    <div class="portfolio-overlay overlay-center">
+                                        <div class="portfolio-title">
+                                            <h3>
+                                                <a href="/details/{{project._id}}"
+                                                    target="_blank">{{project.project_name}}</a>
+                                            </h3>
+                                        </div>
+                                        <div class="portfolio-categories">
+                                            <span>{{project.project_description}}</span>
+                                    </div>
+                                    <input id="popupimg1{{i}}" class="ImgThumbnail" type="hidden" value="{{project.project_image}}">
+
+                                        <div class="portfolio-icons align-items-center justify-content-center">
+                                            <!-- <a href="{{project.project_image}}" data-lightbox="photos"
+                                                class="image-gallery-link zoom-icon"> -->
+                                                <i class="iconplus fas fa-plus " id="myImgs"></i>
+                                            <!-- </a> -->
+                                            <a href="/details/{{project._id}}" class="link-icon">
+                                                <i class="iconlink fas fa-link"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="image-gallery-link">
+                                        <img width="440" height="260" src="{{project.project_image}}" class="img-fluid"
+                                            alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section id="requestQuote" class="ptb-50 form-bg">
+    <span class="row-overlay"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 col-md-12">
+                <!-- <div class="counter">
+                            <div class="clearfix mb-5">
+                                <div class="float-left counter-icon mr-3">
+                                    <i class="far fa-flag fa-2x"></i>
+                                </div>
+                                <div class="float-left counter-title">
+                                    <h2 class="timer count-title count-number" data-to="32" data-speed="1500"></h2>
+                                    <p class="count-text">Years Experience</p>
+                                </div>
+                            </div>
+                            <div class="clearfix mb-5">
+                                <div class="float-left counter-icon mr-3">
+                                    <i class="fas fa-gift fa-2x"></i>
+                                </div>
+                                <div class="float-left counter-title">
+                                    <h2 class="timer count-title count-number" data-to="368" data-speed="1500"></h2>
+                                    <p class="count-text">Projects</p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="float-left counter-icon mr-3">
+                                    <i class="fas fa-user-check fa-2x"></i>
+                                </div>
+                                <div class="float-left counter-title">
+                                    <h2 class="timer count-title count-number" data-to="989" data-speed="1500"></h2>
+                                    <p class="count-text">Happy Customers</p>
+                                </div>
+                            </div>
+                        </div> -->
+            </div>
+            <div class="col-lg-12 col-sm-12 col-md-12">
+                <h2 class="section-title-border text-white">Request a Quote</h2>
+                <form method="POST" action="/getGuote" class="mt-4 home-form">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="company" placeholder="Company Name"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="location" placeholder="Location" required>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="head" placeholder="Head" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="capacity" placeholder="Capacity" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="specificGravity"
+                                    placeholder="Specific Gravity" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="fluid" placeholder=" Fluid" required>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="form-group">
+                                <textarea cols="40" rows="8" class="form-control" name="message" placeholder="Message"
+                                    required></textarea>
+                            </div>
+                            <div class="feature-box-btn text-left mt-4 mb-4">
+                                <input class="btn default quality-btn" type="submit" value="Get a Quote">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-50">
+    <div class="container">
+        <h2 class="section-title-border">Testimonials</h2>
+        <div class="testimonials">
+            <div class="row">
+                <div class="col-lg-9 col-sm-12 col-md-12">
+                    <div class="owl-carousel owl-theme testimonials-owl">
+                        {% for data in OurTestimonialsData %}
+                        <div class="item">
+                            <div class="testimonial-inner rounded">
+                                <div class="testimonial-thumb">
+                                    <img width="80" height="80" src="{{data. image}}" class="img-fluid rounded-circle"
+                                        alt="">
+
+                                </div>
+                                <div class="testimonial-info">
+                                    <p><a href="#" class="client-name">{{data.name}}</a></p>
+                                    <div class="testimonial-additional-info">
+                                        <span class="client-designation">{{data.designation}}</span>
+                                        <span class="static-comma">,</span>
+                                        <span class="company-url-wrap">
+                                            <a href="#" class="company-url">{{data.company_name}}</a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="testimonial-excerpt">
+                                    <p>{{data.testimonial}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+
+                        <div class="item">
+                            <div class="testimonial-inner rounded">
+                                <div class="testimonial-thumb">
+                                    <img width="80" height="80" src="/front/image/testi-5-80x80.jpg"
+                                        class="img-fluid rounded-circle" alt="">
+
+                                </div>
+                                <div class="testimonial-info">
+                                    <p><a href="#" class="client-name">Clifford Donley</a></p>
+                                    <div class="testimonial-additional-info">
+                                        <span class="client-designation">Manager</span>
+                                        <span class="static-comma">,</span>
+                                        <span class="company-url-wrap">
+                                            <a href="#" class="company-url">OEMONE.SHOP</a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="testimonial-excerpt">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-12 col-md-12">
+                    <div class="help-form h-100">
+                        <h2 style="font-size: 23px;color: #ffffff;line-height: 35px">DO YOU NEED ANY HELP?</h2>
+                        <p class="text-white mb-4">My job is to help professionals to achieve their industrial goals
+                            whilst having adequate protection along the way.</p>
+                        <div class="feature-box-btn text-left mt-4 mb-4">
+                            <a class="btn default contact-btn" href="/contact">CONTACT NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-50" style="background-color: #f7f7f7;">
+    <div class="container">
+        <div class="owl-carousel owl-theme clientico">
+            <div class="item">
+                <figure>
+                    <img src="/front/image/client-logo_01.png" alt="">
+                </figure>
+            </div>
+            <div class="item">
+                <figure>
+                    <img src="/front/image/client-logo_02.png" alt="">
+                </figure>
+            </div>
+            <div class="item">
+                <figure>
+                    <img src="/front/image/client-logo_03.png" alt="">
+                </figure>
+            </div>
+            <div class="item">
+                <figure>
+                    <img src="/front/image/client-logo_04.png" alt="">
+                </figure>
+            </div>
+            <div class="item">
+                <figure>
+                    <img src="/front/image/client-logo_05.png" alt="">
+                </figure>
+            </div>
+            <div class="item">
+                <figure>
+                    <img src="/front/image/client-logo_06.png" alt="">
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block Jscript %}
+<script> 
+
+    // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+// var img = document.getElementById("myImg");
+// var img =document.getElementsByClassName("fas fa-plus")[0];
+// var mysrc = document.getElementById("popupimg").value;
+var modalImg = document.getElementById("img01");
+// img.onclick = function(){
+//   modal.style.display = "block";
+//   modalImg.src = mysrc;
+// }
+var str = '';
+var i = 0;
+Array.from(document.querySelectorAll(".fa-plus")).forEach(item => {
+    // alert(123)
+  item.addEventListener("click", event => {
+           i = i+1;    
+    str = document.getElementById("popupimg"+i).value;
+    console.log(str,i);
+    alert(str)
+    modalImg.src =document.getElementById("popupimg"+i).value;
+    // alert(modalImg.src);
+  
+    modal.style.display = "block";
+  });
+});
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,334 @@
+{% extends "backend/partition/layout.html" %}
+
+{% block body %}
+<style>
+	.date_Order {
+		display: none !important;
+	}
+
+	#reportFilter {
+		color: white;
+		padding: 6px 10px;
+		margin-left: 5px;
+		background-color: #3c8dbc;
+		z-index: 7000;
+		border-radius: 5px 5px;
+		cursor: pointer;
+		margin-bottom: 10px;
+	}
+
+	.text-right {
+		margin-bottom: 10px;
+
+	}
+</style>
+
+
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Order List</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Order Management</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+		{% include "backend/partition/notification.html" %}
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<h6 class="panel-title txt-dark">Order Management</h6>
+							</div>
+							<!-- <div class="pull-right">
+									<a href="/backend/addProduct"><button type="button" class="btn btn-primary btn-md"><i class="fa fa-plus"></i> Add Product</button></a>
+								</div> -->
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										<input type="hidden" id="gameType" name="gameType">
+										<input type="hidden" id="sessionId" value="{{App.id}}">
+
+										<div class="text-right">
+											<label>Start date:</label>
+											<input type="date" id="startdate" class="datepicker"></input>
+											<label>End date:</label>
+											<input type="date" id="enddate" class="datepicker"></input>
+
+											<sapa id="reportFilter"> Get Order</sapa>
+                                        <button onClick="window.location.reload();">Clear Filter</button>
+
+										</div>
+										<table id="myTable" class="table table-hover display  pb-30">
+											<thead>
+												<tr>
+
+													<th>Order ID</th>
+													<th>Order Type</th>
+													<th>Order Status</th>
+                                                    <th>Payment Status</th>
+													<th>Order Date</th>
+													<th>Action</th>
+												</tr>
+											</thead>
+											<tbody class="newTable">
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block Jscript %}
+<script src="//cdn.datatables.net/plug-ins/1.10.11/sorting/date-eu.js" type="text/javascript"></script>
+<script>
+	$(document).ready(function () {
+
+		let sessionId = $("#sessionId").val();
+		var host = window.location.origin;
+		$('#myTable').DataTable({
+			"oLanguage": {
+				// "sSearch": "Search Username",
+				"sSearchPlaceholder": "Order Id Or Order Type"
+			},
+			// "scrollX": true,
+			"processing": true,
+			"serverSide": true,
+			"searching": true,
+			"ordering": false,
+			"autoWidth": false,
+			"pageLength": 25,
+			"ajax": host + "/backend/getOrder",
+			"columns": [
+				{ "data": "order_id" },
+				{ "data": "order_type" },
+				{ "data": "order_status" },
+                { "data": "payment_status" },
+
+
+				{
+
+					"data": "updatedAt",
+
+					render: function (data, type, row) {
+
+						let dt = new Date(row.updatedAt);
+						let date = dt.getDate();
+						let month = parseInt(dt.getMonth() + 1);
+						let year = dt.getFullYear();
+						let hours = dt.getHours();
+						let minutes = dt.getMinutes();
+						let ampm = hours >= 12 ? 'pm' : 'am';
+						hours = hours % 12;
+						hours = hours ? hours : 12;
+						minutes = minutes < 10 ? '0' + minutes : minutes;
+						let createdAt = month + '/' + date + '/' + year;
+						return createdAt
+						// users[j].createdAt = createdAt;
+					}
+
+				},
+				{
+					"data": "action",
+					render: function (data, type, row) {
+
+
+						// return '<a href="/backend/orderDetails/' + row._id + '/' + row.vendor_id + '"><button type="button" class="btn btn-warning btn-xs btn-rounded" name="view"><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
+						return '<a href="/backend/orderDetails/' + row._id +'"><button type="button" class="btn btn-warning btn-xs btn-rounded" name="view"><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
+
+						// return '<a href="/backend/OrderEdit/'+row._id+'"><button type="button" class="btn btn-warning btn-xs btn-rounded" name="edit"><i class="fa fa-edit" aria-hidden="true"></i></button></a> <button type="button" name="delete" id="'+row._id+'" class="btn btn-danger btn-xs delete btn-rounded"><i class="fa fa-trash" aria-hidden="true"></i></button>'
+					}
+
+				}
+			],
+
+		});
+
+
+
+
+		$(function () {
+			"use strict";
+
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.delete', function (e) {
+					var id = $(this).attr('id');
+					var thisElement = this;
+					swal({
+						title: "Are you sure?",
+						text: "You will not be able to recover this Project!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#e69a2a",
+						confirmButtonText: "Yes, delete it!",
+						cancelButtonText: "No, cancel plx!",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					}, function (isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type: 'POST',
+								url: host + "/backend/OrderDelete",
+								data: { id: id },
+								success: function (resultData) {
+									// alert(resultData)
+									console.log(resultData);
+									if (resultData == 'success') {
+										$(thisElement).parent().parent().hide(700);
+										swal("Deleted!", "Your imaginary file has been deleted.", "success");
+									} else {
+										alert("Something went wrong")
+									}
+									// alert("Save Complete")
+								}
+							});
+							swal("Deleted!", "Order Deleted Succesfully.", "success");
+						} else {
+							swal("Cancelled", "Order Not Deleted)", "error");
+						}
+					});
+					return false;
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+
+		// var seen = {};
+		// $(' tbody.newTable').each(function () {
+		// 	var txt = $(this).find("td");
+
+		// 	console.log("texrt tetret  ===>>> ",txt);
+
+		// 	if (seen[txt])
+		// 		$(this).remove();
+		// 	else
+		// 		seen[txt] = true;
+		// });
+
+		$(document).on('click', '#reportFilter', function () {
+
+			$("#remove_total").attr('text', '');
+
+
+			let startDate = $("#startdate").val();
+			let endDate = $("#enddate").val();
+
+			var myDataTable = $('#myTable').DataTable({
+				"oLanguage": {
+					// "sSearch": "Search Username",
+					"sSearchPlaceholder": "Order Id Or Order Type"
+				},
+				// "scrollX": true,
+				searchPlaceholder: "Enter Last Name",
+				"processing": true,
+				"serverSide": true,
+				"searching": true,
+				"ordering": false,
+				"autoWidth": false,
+				"pageLength": 25,
+				destroy: true,
+
+				"ajax": host + "/backend/getOrder/" + startDate + '/' + endDate,
+				"columns": [
+					{ "data": "order_id" },
+					{ "data": "order_type" },
+					{ "data": "order_status" },
+
+                    { "data": "payment_status" },
+
+					{
+
+						"data": "updatedAt",
+						render: function (data, type, row) {
+
+							let dt = new Date(row.updatedAt);
+							let date = dt.getDate();
+							let month = parseInt(dt.getMonth() + 1);
+							let year = dt.getFullYear();
+							let hours = dt.getHours();
+							let minutes = dt.getMinutes();
+							let ampm = hours >= 12 ? 'pm' : 'am';
+							hours = hours % 12;
+							hours = hours ? hours : 12;
+							minutes = minutes < 10 ? '0' + minutes : minutes;
+							let createdAt = month + '/' + date + '/' + year;
+							return createdAt
+							// users[j].createdAt = createdAt;
+						}
+
+					},
+					{
+						"data": "action",
+						render: function (data, type, row) {
+
+
+							return '<a href="/backend/orderDetails/' + row._id + '"><button type="button" class="btn btn-warning btn-xs btn-rounded" name="view"><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
+							// return '<a href="/backend/orderDetails/' + row._id + '/' + row.vendor_id + '"><button type="button" class="btn btn-warning btn-xs btn-rounded" name="view"><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
+
+							// return '<a href="/backend/OrderEdit/'+row._id+'"><button type="button" class="btn btn-warning btn-xs btn-rounded" name="edit"><i class="fa fa-edit" aria-hidden="true"></i></button></a> <button type="button" name="delete" id="'+row._id+'" class="btn btn-danger btn-xs delete btn-rounded"><i class="fa fa-trash" aria-hidden="true"></i></button>'
+						}
+
+					}
+				],
+
+
+			});
+
+
+
+
+		});
+
+
+
+	});
+
+	// $(document).ready(function () {
+
+	// 	$(".date_Order").each(function () {
+
+
+	// 		let newDate = $(".date_Order").val();
+
+	// 		let date = $(".date_Order").attr("data-date");
+
+
+	// 		console.log("date === >>", date, "newDate ==", newDate);
+
+	// 	});
+
+	// });
+
+
+
+
+
+</script>
+{% endblock %}

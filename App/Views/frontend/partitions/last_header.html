@@ -1,0 +1,825 @@
+<header class="header style7">
+    <div class="top-bar">
+        <div class="container O_E_M_U_P">
+
+            <div class="top-bar-left">
+                <div class="header-message">
+                    Welcome to our online store!
+                </div>
+            </div>
+
+
+            <div class="top-bar-right  header-user-links" style="justify-content: space-between;">
+                {% if App.firstname %} Hi,&nbsp; {{App.firstname}}
+
+                {% if App%}
+                <div class="block-minicart oemone-mini-cart block-header  shoping___cart">
+                    <!-- oemone-dropdown-->
+                    {% if hidefrom_homepage == "true" %}
+                    {% if App.firstname %}
+                    <a href="/shoppingcart" class="shopcart-icon">
+                        <!--data-oemone="oemone-dropdown"-->
+                        Cart
+                        <span class="count">
+                            {{addtocart.length}}
+                        </span>
+                    </a>
+                    {% endif %}
+                    <!-- ll -->
+                    {% else %}
+                    {% if App.firstname %}
+                    <a href="/shoppingcart" class="shopcart-icon">
+                        <!--data-oemone="oemone-dropdown"-->
+                        Cart
+                        <span class="count">
+                            {{addtocart.length}}
+                        </span>
+                    </a>
+                    {% endif %}
+                    {% endif %}
+                </div>
+
+
+                {% endif %}
+                <div class="block-account block-header oemone-dropdown  profile___Icon">
+                    <a href="javascript:void(0);" data-oemone="oemone-dropdown">
+
+                        {% if App.firstname %}
+
+                        <span class="flaticon-user"></span>
+
+                        {% endif %}
+                    </a>
+                    <div class="header-account oemone-submenu">
+                        <div class="header-user-form-tabs">
+                            <!-- <ul class="tab-link">
+                                {% if App.firstname %}
+                                <li>
+                                    <a data-toggle="tab" aria-expanded="true" href="">Account & Lists</a>
+                                </li>
+                                {% else %}
+                                <li class="active">
+                                    <a data-toggle="tab" aria-expanded="true" href="#header-tab-login">Login</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" aria-expanded="true"
+                                        href="#header-tab-rigister">Register</a>
+                                </li>
+                                {% endif %}
+                            </ul> -->
+                            <div class="tab-container">
+                                {% if App.firstname %}
+                                <div id="header-tab-login" class="tab-panel active">
+                                    <div class="login form-login">
+                                        <li class="lost_password" style="margin-left: 20px;margin-top: 18px;
+                                        font-size: 15px;
+                                        line-height: 15px;
+                                        margin-bottom: 18px;">
+                                            <a href="/customer_profile">Edit Profile</a>
+                                        </li>
+                                        <li class="lost_password" style="margin-left: 20px;margin-top: 18px;
+                                        font-size: 15px;
+                                        line-height: 15px;
+                                        margin-bottom: 18px;">
+                                            <a href="/customer_address">Your Addreses</a>
+                                        </li>
+                                        <li class="lost_password" style="margin-left: 20px;margin-top: 18px;
+                                        font-size: 15px;
+                                        line-height: 15px;
+                                        margin-bottom: 18px;">
+                                            <a href="/orders_list">Your Orders</a>
+                                        </li>
+                                        <li class="lost_password" style="margin-left: 20px;margin-top: 18px;
+                                        font-size: 15px;
+                                        line-height: 15px;
+                                        margin-bottom: 18px;">
+                                            <a href="/wishlist">Your Wishlist</a>
+                                        </li>
+                                        <!-- <li class="lost_password" style="margin-left: 20px;margin-top: 18px;
+                                        font-size: 15px;
+                                        line-height: 15px;
+                                        margin-bottom: 18px;">
+                                            <a href="">Customer Service</a>
+                                        </li> -->
+                                        <!-- <li class="lost_password" style="margin-left: 20px;margin-top: 18px;
+                                        font-size: 15px;
+                                        line-height: 15px;
+                                        margin-bottom: 18px;">
+                                            <a href="">Return & Refund</a>
+                                        </li> -->
+                                        <li class="lost_password" style="margin-left: 20px;margin-top: 18px;
+                                        font-size: 15px;
+                                        line-height: 15px;
+                                        margin-bottom: 18px;">
+                                            <a href="/close_account">Close Your Account</a>
+                                        </li>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <!-- <div id="header-tab-login" class="tab-panel active">
+                                    <form method="post" class="login form-login">
+                                        <p class="form-row form-row-wide">
+                                            <input type="email" name="email" placeholder="Email"
+                                                class="input-text">
+                                        </p>
+                                        <p class="form-row form-row-wide">
+                                            <input type="password" name="password" class="input-text"
+                                                placeholder="Password">
+                                        </p>
+                                        <p class="form-row">
+                                            <label class="form-checkbox">
+                                                <input type="checkbox" name="rememberMe" class="input-checkbox">
+                                                <span>
+                                                    Remember me
+                                                </span>
+                                            </label>
+                                            <input type="submit" class="button" value="Login">
+                                        </p>
+                                        <p class="lost_password">
+                                            <a href="#">Lost your password?</a>
+                                        </p>
+                                    </form>
+                                </div> -->
+                                <!-- <div id="header-tab-rigister" class="tab-panel">
+                                    <form method="post" class="register form-register">
+                                        <p class="form-row form-row-wide">
+                                            <input type="email" name="email" placeholder="Email"
+                                                class="input-text">
+                                        </p>
+                                        <p class="form-row form-row-wide">
+                                            <input type="text" name="username" placeholder="Username"
+                                                class="input-text">
+                                        </p>
+                                        <p class="form-row form-row-wide">
+                                            <input type="password" namr="password" class="input-text"
+                                                placeholder="Password">
+                                        </p>
+                                        <p class="form-row">
+                                            <input type="submit" class="button" value="Register">
+                                        </p>
+                                    </form>
+                                </div> -->
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% else %}
+                <a href="/user_login"> Login
+                    or Register </a>
+                {% endif %}
+
+                {% if App.firstname %}
+
+                <a href="/frontend/logout">
+                    <div class="logOut_ICON_">
+                        <span class="glyphicon glyphicon-log-out"></span>
+
+                    </div>
+                </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="main-header">
+            <div class="row">
+                <div class="col-lg-2 col-sm-3 col-md-2 col-xs-6 col-ts-12 header-element">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="/assets/images/logo.png" alt="img">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-sm-9 col-md-7 col-xs-6 col-ts-12">
+                    <div class="block-search-block">
+
+                        <div class="form-search form-search-width-category">
+                            {% if hidefrom_homepage == "true" %}
+                            <div class="form-content" id="hidefrom_homepage" style="display: none;">
+                                {% else %}
+                                <div class="form-content" id="hidefrom_homepage">
+                                    {% endif %}
+                                    <div class="category">
+                                        <select title="cate" id="categoryId" data-placeholder="All Categories"
+                                            class="chosen-select" tabindex="1">
+                                            <option value="0">Please Select </option>
+                                            {% if productCategoryData %}
+                                            {% for item in productCategoryData %}
+
+                                            {% if item.main_productId == null and
+                                            item.main_sub_productId == null %}
+                                            <option value="{{item.productCategoryName}}">{{item.productCategoryName}}
+                                            </option>
+
+                                            {% endif %}
+
+                                            {% endfor %}
+                                            {% endif %}
+
+                                        </select>
+                                    </div>
+                                    <div class="inner">
+                                        <input type="text" class="input" id="inputSearch" name="search" value=""
+                                            placeholder="Search here">
+                                    </div>
+                                    <button class="btn-search" type="submit">
+                                        <span class="icon-search"></span>
+                                    </button>
+                                </div>
+                                <div class="form-content" id="hidefrom_productpage" style="display: none;">
+                                    <!-- <div class="category"> -->
+                                    <input type="text" class="dropdown-option filterFunction" placeholder="Search here"
+                                        id="myInput">
+                                    <div id="myDropdown" class="dropdown-content">
+
+                                        {% if productCategoryData %}
+                                        {% for item in productCategoryData %}
+                                        {% if item.main_productId and item.main_sub_productId == null %}
+
+                                        <a href="/products/{{item.main_productId}}/{{item.productCategoryName}}"
+                                            style="display: none;">{{item.productCategoryName}}</a>
+
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+
+                                        {% if productData %}
+                                        {% for itemss in productData %}
+
+                                        <a href="/productDetails/{{itemss._id}}/{{itemss.product_name}}"
+                                            style="display: none;">{{itemss.product_name}}</a>
+
+                                        {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-2 col-sm-12 col-md-3 col-xs-12 col-ts-12">
+                        <div class="header-control">
+
+
+                            <!------------------------ cart end------------------------------------------------------------------------- --><!-- cart start -->
+
+                            <!------------------------ cart end------------------------------------------------------------------------- -->
+
+                            <!------------------------------ ------------------------------------------------------------------------------------------------- -->
+                            <a class="menu-bar mobile-navigation menu-toggle" href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="header-nav-container">
+            <div class="container">
+                <div class="header-nav-wapper main-menu-wapper">
+                    <div class="vertical-wapper block-nav-categori">
+                        <div class="block-title">
+                            <span class="icon-bar">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                            <span class="text">All Categories</span>
+                        </div>
+                        <div class="block-content verticalmenu-content">
+
+                            <ul class="oemone-nav-vertical vertical-menu oemone-clone-mobile-menu " id="myid">
+
+                                {% if productCategoryData %}
+                                {% for item in productCategoryData %}
+
+                                <li class="menu-item menu-item-has-children">
+                                    {% if item.main_productId == null and
+                                    item.main_sub_productId == null %}
+                                    <a href="#" class="oemone-menu-item-title">
+                                        {{item.productCategoryName}}</a>
+                                    <span class="toggle-submenu"></span>
+                                    {% endif %}
+                                    <ul role="menu" class=" submenu">
+
+
+                                        {% if item.subproduct %}
+                                        {% for itemsub in item.subproduct %}
+                                        {% if itemsub.main_sub_productId == null %}
+
+
+                                        <li class="menu-item">
+                                            <a href="/products/{{item._id}}/{{itemsub.itemname}}"
+                                                data-urlall="/products/{{item._id}}/{{itemsub.itemname}}"
+                                                class="oemone-item-title hrefallRemove">{{itemsub.name}}</a>
+                                        </li>
+                                        {% endif %}
+                                        {% if itemsub.subof_subproduct %}
+
+                                        {% for itemsubofsub in
+                                        itemsub.subof_subproduct %}
+
+                                        {% if itemsubofsub.main_productId != null and
+                                        itemsubofsub.main_sub_productId != null%}
+
+
+                                        <li class="menu-item">
+                                            <a title="Living" href="/products/{{item._id}}/{{itemsubofsub.itemname}}"
+                                                class="oemone-item-title hrefallRemoveSub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{itemsubofsub.name}}</a>
+                                        </li>
+
+                                        <!-- <option value="{{itemsubofsub.itemname}}">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{itemsubofsub.name}}
+                                    </option> -->
+                                        {% endif %}
+
+
+                                        {% endfor %}
+                                        {% endif %}
+
+                                        {% endfor %}
+                                        {% endif %}
+
+                                    </ul>
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="header-nav">
+                        <div class="container-wapper">
+                            <ul class="oemone-clone-mobile-menu oemone-nav main-menu " id="menu-main-menu">
+                                <li class="menu-item">
+                                    <a href="/" class="oemone-menu-item-title {{home}}" title="Home">Home</a>
+                                </li>
+                                <li class="menu-item  menu-item-has-children item-megamenu">
+                                    <a href="#" class="oemone-menu-item-title {{product}}" title="Products">Products</a>
+                                    <span class="toggle-submenu"></span>
+                                    <div class="submenu mega-menu menu-page">
+                                        <div class="row">
+
+                                            {% for item in prjectCategoryData_dup %}
+
+                                            {% if item.main_productId == null and item.main_sub_productId == null %}
+
+                                            <!-- {% if (loop.length ) %} -->
+
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 menu-page-item">
+                                                <div class="oemone-custommenu default">
+                                                    <h2 class="widgettitle">{{item.productCategoryName}} </h2>
+                                                    <!--Pumps-->
+
+                                                    <ul class=" menu" id="myid">
+                                                        {% if item.subproduct %}
+                                                        {% for itemsub in item.subproduct %}
+                                                        {% if itemsub.main_sub_productId == null %}
+
+
+                                                        <li class="menu-item">
+                                                            <a href="/products/{{item._id}}/{{itemsub.itemname}}"
+                                                                data-url="/products/{{item._id}}/{{itemsub.itemname}}"
+                                                                class="oemone-item-title subNamrHref">{{itemsub.name}}</a>
+                                                        </li>
+                                                        {% endif %}
+                                                        {% if itemsub.subof_subproduct %}
+
+                                                        {% for itemsubofsub in
+                                                        itemsub.subof_subproduct %}
+
+                                                        {% if itemsubofsub.main_productId != null and
+                                                        itemsubofsub.main_sub_productId != null%}
+
+
+                                                        <li class="menu-item">
+                                                            <a href="/products/{{item._id}}/{{itemsubofsub.itemname}}"
+                                                                data-urlsub="/products/{{item._id}}/{{itemsubofsub.itemname}}"
+                                                                class="oemone-item-title subNamrHrefSub">&nbsp;&nbsp;&nbsp;{{itemsubofsub.name}}</a>
+                                                        </li>
+
+
+                                                        {% endif %}
+
+
+                                                        {% endfor %}
+                                                        {% endif %}
+
+                                                        {% endfor %}
+                                                        {% endif %}
+
+                                                    </ul>
+
+
+                                                </div>
+
+
+                                            </div>
+                                            {% endif %}
+                                            {% endif %}
+
+
+                                            {% endfor %}
+
+
+
+
+                                            <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item"> -->
+                                            <!-- <div class="oemone-custommenu default"> -->
+                                            <!-- <h2 class="widgettitle">Valves</h2> Valves -->
+                                            <!-- <ul class="menu">
+                                                    <li class="menu-item">
+                                                        <a href="productdetails-fullwidth.html">Product Fullwidth</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="productdetails-leftsidebar.html">Product left
+                                                            sidebar</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="productdetails-rightsidebar.html">Product right
+                                                            sidebar</a>
+                                                    </li>
+                                                </ul> -->
+                                            <!-- </div> -->
+                                            <!-- </div> -->
+                                            <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item"> -->
+                                            <!-- <div class="oemone-custommenu default"> -->
+                                            <!-- <h2 class="widgettitle">Accessories</h2> Accessories -->
+                                            <!-- <ul class="menu">
+                                                    <li class="menu-item">
+                                                        <a href="productdetails-fullwidth.html">Product Fullwidth</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="productdetails-leftsidebar.html">Product left
+                                                            sidebar</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="productdetails-rightsidebar.html">Product right
+                                                            sidebar</a>
+                                                    </li>
+                                                </ul> -->
+                                            <!-- </div> -->
+                                            <!-- </div> -->
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/aboutus" class="oemone-menu-item-title {{aboutus}}" title="About">About
+                                        Us</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/privacypolicy" class="oemone-menu-item-title {{privacypolicy}}"
+                                        title="Privacy Policy">Privacy policy</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/contact" class="oemone-menu-item-title {{contact}}"
+                                        title="Contact us">Contact
+                                        us</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/termsconditions" class="oemone-menu-item-title {{termsconditions}}"
+                                        title="Terms & Conditions">Terms & conditions</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</header>
+<div class="header-device-mobile">
+    <div class="wapper">
+        <div class="item mobile-logo">
+            <div class="logo">
+                <a href="#">
+                    <img src="/assets/images/logo.png" alt="img">
+                </a>
+            </div>
+        </div>
+        <div class="item item mobile-search-box has-sub">
+            <a href="#">
+                <span class="icon">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+            </a>
+            <div class="block-sub">
+                <a href="#" class="close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+                <div class="header-searchform-box">
+                    <form class="header-searchform">
+                        <div class="searchform-wrap">
+                            <input type="text" class="search-input" placeholder="Enter keywords to search...">
+                            <input type="submit" class="submit button" value="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="item mobile-settings-box has-sub">
+            <a href="#">
+                <span class="icon">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </span>
+            </a>
+            <div class="block-sub">
+                <a href="#" class="close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+                <div class="block-sub-item">
+                    <h5 class="block-item-title">Settings</h5>
+                </div>
+            </div>
+        </div>
+        <div class="item menu-bar">
+            <a class=" mobile-navigation  menu-toggle" href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<script src="/assets/js/jquery-1.12.4.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        var liText = '', liList = $('#myid li'), listForRemove = [];
+
+        $(liList).each(function () {
+
+            var text = $(this).text();
+
+            var textlower = $(this).text().toLocaleLowerCase();
+
+            if (liText.indexOf('|' + textlower + '|') == -1)
+                liText += '|' + textlower + '|';
+            else
+                listForRemove.push($(this));
+
+
+
+            if (liText.indexOf('|' + text + '|') == -1)
+                liText += '|' + text + '|';
+            else
+                listForRemove.push($(this));
+
+        });
+
+        $(listForRemove).each(function () { $(this).remove(); });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+
+        var host = window.location.origin;
+
+        $("#inputSearch").keyup(function () {
+
+
+            let searchVal = this.value;
+
+            if (!searchVal) {
+                searchVal = 'null';
+            } else {
+                searchVal = this.value;
+            }
+            $.ajax({
+                type: 'POST',
+                url: host + "/filterData",
+                data: { searchVal: searchVal },
+                success: function (data) {
+                    if (data == 'error') {
+                        location.reload();
+                    } else {
+                        // console.log("data", data);
+                        $("#totalRecord1").val(data.length)
+                        generateView(data)
+                        createPagination()
+                    }
+                },
+            }).done(function (data) {
+                let user_login = $('#user_login').attr('value');
+                if (user_login != "user") {
+                    $('.yith-wcwl-add-to-wishlist').hide();
+                    $('.review_form_wrapper').hide();
+                    $('.loop-form-add-to-cart').css({ 'display': 'none' });
+                }
+                $(".paging").removeClass("current");
+                $(".paginationPage" + 1).addClass("current");
+
+
+                $(".product_stock_quantity").each(function () {
+                    let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                    var isnan = isNaN(product_stock_quantity);
+                    console.log("done -----------------", isnan);
+
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                            $(this).text("(only " + product_stock_quantity + " left)");
+                        } else {
+                            if (parseInt(product_stock_quantity) == 0) {
+                                $(this).text("out of stock");
+                            }
+                        }
+                    }
+                });
+
+                $(".single_add_to_cart_button").each(function () {
+                    let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                    var isnan = isNaN(product_stock_quantity_check);
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity_check) == 0) {
+                            $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                        }
+                    }
+                });
+
+                $(".wishlist_call").each(function () {
+                    let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                    var isnan = isNaN(product_stock_quantity_check);
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity_check) == 0) {
+                            $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                        }
+                    }
+                });
+
+                $(".wishlist_fun").each(function () {
+                    let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                    var isnan = isNaN(product_stock_quantity_check);
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity_check) == 0) {
+                            $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                        }
+                    }
+                });
+            });
+        });
+
+
+
+        $('.subNamrHref').on('click', function () {
+
+            let newHref = $(this).attr('data-url');
+
+            localStorage.removeItem('filterObj')
+            localStorage.removeItem('sortValue')
+
+
+
+        });
+
+        $('.subNamrHrefSub').on('click', function () {
+
+            let newHref = $(this).attr('data-urlsub');
+
+            localStorage.removeItem('filterObj')
+            localStorage.removeItem('sortValue')
+
+        });
+
+        $('.hrefallRemove').on('click', function () {
+
+            localStorage.removeItem('filterObj')
+            localStorage.removeItem('sortValue')
+        });
+
+        $('.hrefallRemoveSub').on('click', function () {
+
+            localStorage.removeItem('filterObj')
+            localStorage.removeItem('sortValue')
+        });
+
+
+
+
+        $('#categoryId').on('change', function () {
+            let categoryData = this.value;
+            categoryData = categoryData.split(' ').join('_');
+            let finalName = 'null';
+            console.log("category ----------->>>", categoryData);
+            $.ajax({
+                type: 'POST',
+                url: host + "/filterData",
+                data: { categoryData: categoryData, finalName: finalName },
+                success: function (data) {
+                    console.log("data ----->>", data);
+                    $("#totalRecord1").val(data.length)
+                    if (data == 'error') {
+                        location.reload();
+                    } else {
+                        createPagination()
+
+                        generateView(data)
+                    }
+                },
+            }).done(function (data) {
+                let user_login = $('#user_login').attr('value');
+                if (user_login != "user") {
+                    $('.yith-wcwl-add-to-wishlist').hide();
+                    $('.review_form_wrapper').hide();
+                    $('.loop-form-add-to-cart').css({ 'display': 'none' });
+                }
+
+                $(".paging").removeClass("current");
+                $(".paginationPage" + 1).addClass("current");
+
+                $(".product_stock_quantity").each(function () {
+                    let product_stock_quantity = $(this).attr('data-product_stock_quantity');
+                    var isnan = isNaN(product_stock_quantity);
+                    console.log("done -----------------", isnan);
+
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity) >= 1 && parseInt(product_stock_quantity) <= 5) {
+                            $(this).text("(only " + product_stock_quantity + " left)");
+                        } else {
+                            if (parseInt(product_stock_quantity) == 0) {
+                                $(this).text("out of stock");
+                            }
+                        }
+                    }
+                });
+
+                $(".single_add_to_cart_button").each(function () {
+                    let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                    var isnan = isNaN(product_stock_quantity_check);
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity_check) == 0) {
+                            $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                        }
+                    }
+                });
+
+                $(".wishlist_call").each(function () {
+                    let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                    var isnan = isNaN(product_stock_quantity_check);
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity_check) == 0) {
+                            $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                        }
+                    }
+                });
+
+                $(".wishlist_fun").each(function () {
+                    let product_stock_quantity_check = $(this).attr('data-product_stock_quantity_check');
+                    var isnan = isNaN(product_stock_quantity_check);
+                    if (isnan == false) {
+                        if (parseInt(product_stock_quantity_check) == 0) {
+                            $(this).attr("style", "opacity: 0.4; cursor:not-allowed;");
+                        }
+                    }
+                });
+            });
+        });
+
+        // function filterFunction() {
+        $('.filterFunction').on('keyup', function () {
+            // alert(9);
+            // $('.dropdown-content').show();
+            var input, filter, ul, li, a, i, inoutval;
+            input = document.getElementById("myInput");
+            inoutval = $(this).val();//attr('value');
+            filter = input.value.toUpperCase();
+            var div = document.getElementById("myDropdown");
+            a = div.getElementsByTagName("a");
+            console.log("input, filter, ul, li, a, i", inoutval);
+
+            for (i = 0; i < a.length; i++) {
+                txtValue = a[i].textContent || a[i].innerText;
+                // console.log("txtValue",txtValue);
+                // console.log("a[i].textContent",a[i].textContent);
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    $('.dropdown-content').show();
+                    a[i].style.display = "block";
+                } else {
+                    a[i].style.display = "none";
+                }
+            }
+            if (!inoutval) {
+                $('.dropdown-content').hide();
+            }
+        });
+    });
+
+
+</script>

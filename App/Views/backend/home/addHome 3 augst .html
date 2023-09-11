@@ -1,0 +1,847 @@
+{% extends "backend/partition/layout.html" %}
+
+
+{% block body %}
+<style>
+    .close2, .close3, .close4, .close5, .close6 {
+    position: relative;
+    top: -74px;
+    right: 34px;
+    color: red;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    }
+    .close2:hover, .close2:focus,.close3:hover, .close3:focus,.close4:hover, .close4:focus,.close5:hover, .close5:focus,.close6:hover, .close6:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+    }
+</style>
+<!-- Main Content -->
+<div class="page-wrapper">
+	<div class="container-fluid">
+
+		<!-- Title -->
+		<section class="content-header">
+			<h1>Home</h1>
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
+				<li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active">Home</li>
+			</ol>
+			<!-- /Breadcrumb -->
+		</section>
+		<!-- /Title -->
+        {% include "backend/partition/notification.html" %}
+
+		<!-- Row -->
+		<section class="content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default card-view">
+						<div class="panel-heading">
+							<div class="pull-left">
+								<!-- <h6 class="panel-title txt-dark">Settings</h6> -->
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="table-wrap">
+									<div class="table-responsive">
+										{% if project %}
+										<form method="POST" action="/backend/homeEdit/{{project._id}}" class="form-horizontal" enctype="multipart/form-data">
+										{% else %}
+										<form method="POST" action="/backend/addHome" class="form-horizontal" enctype="multipart/form-data">
+										{% endif %}
+												<table border="0" class="table display  pb-30">
+													<div class="col-sm-12">
+														<div class="panel-wrapper collapse in">
+															<div class="panel-body">
+															
+                                                                <input type="hidden" id="productdeleteid"
+                                                                value="{{project._id}}">
+																<div class="form-group">
+																	<label class="control-label mb-10 col-sm-2" for="project_image">Cover pic:</label>
+																	<div class="col-sm-6">
+																		{% if project %}
+																		<input type="hidden" name="mainid" id="mainid" value="{{project._id}}" />
+
+																		<div class="upload__box">
+																			<input type="file" class="form-control"
+																				id="productImage" name="projectImage"
+																				multiple value="" data-max_length="20"accept="image/png, image/gif, image/jpg, image/jpeg">
+																			<div id="imgs"></div>
+																			<input type="hidden" name="files_selected"
+																				id="files_selected" />
+																			
+																			{% set i = 0 %}
+																			{% for image in project.coverfiles %}
+																			{% set i = i+1 %}
+																			{% if (image.is_deleted == "0") %}
+																			<div class="containerdiv_img">
+																				<input type="hidden" id="productImgId"
+																					value="{{image._id}}">
+																					
+																				<img id="proimage{{i}}" 
+																					class="upload__img-wrap"
+																					src="{{image.path}}" height="200px"
+																					width="200px" alt=""><span
+																					id="cls{{i}} "
+																					class="close_img" data-id = "{{image._id}}"><b>X</b></span>
+																			</div>
+																			{% endif %}
+																			{% endfor %}
+																			{% else %}
+																			<input type="file" class="form-control"
+																				id="gallery-photo-add" required multiple
+																				name="projectImage" value="" >
+																				<input type="hidden" name="files_selected_pre"
+																				id="files_selected_pre"accept="image/png, image/gif, image/jpg, image/jpeg" />
+																			<div  class="gallery"></div>
+																		{% endif %}
+																		<span class="text-danger">Please upload
+                                                                            image minimum size 1170*495 px.</span>
+																	</div>
+																</div>
+																</div>
+																
+
+																
+																<div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="Logo Image">Image 1:</label>
+																	<div class="col-sm-6">
+																		{% if project.home_image1 != "" %} 
+
+																		<input type="file" class="form-control" id="apllication_img" name="apllication_img" 
+																		value="" accept="image/png, image/gif, image/jpg, image/jpeg"onchange="previewFile(this);" >
+
+																		<br><div> <img id="previewImg"src="{{project.home_image1}}" height="200px"
+																			width="200px" alt=""><span class='close1'>&times;</span>
+																		</div>
+																		{% else %}   
+
+																		<input type="file" class="form-control" id="apllication_img"   name="apllication_img"
+																		 value="" accept="image/png, image/gif, image/jpg, image/jpeg"onchange="previewFile(this);">
+																		<br><div> <img style="display: none;" id="previewImg"src="{{project.home_image1}}" height="200px"
+																			width="200px" alt=""><span style="display: none;" class='close1'>&times;</span>
+																		</div>
+																		{% endif %} 
+                                                                        <span class="text-danger">Please upload
+                                                                            image minimum size 250*370 px.</span>
+																		
+																	</div>
+																</div>
+
+                                                                <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="Logo Image">Image 2:</label>
+																	<div class="col-sm-6">
+																		{% if project.home_image2 != "" %}  
+
+																		<input type="file" class="form-control" id="apllication_img2" name="apllication_img2" 
+																		value="" accept="image/png, image/gif, image/jpg, image/jpeg" onchange="previewFile(this);" >
+
+																		<br><div> <img id="previewImg2" src="{{project.home_image2}}" height="200px"
+																			width="200px" alt=""><span class='close2'>&times;</span>
+																		</div>
+																		{% else %}   
+
+																		<input type="file" class="form-control" id="apllication_img2"   name="apllication_img2"
+																		 value="" accept="image/png, image/gif, image/jpg, image/jpeg" onchange="previewFile(this);">
+																		<br><div> <img style="display: none;" id="previewImg2" src="{{project.home_image2}}" height="200px"
+																			width="200px" alt=""><span style="display: none;" class='close2'>&times;</span>
+																		</div>
+																		{% endif %} 
+                                                                        <span class="text-danger">Please upload
+                                                                            image minimum size 250*370 px.</span>																		
+																	</div>
+																</div>
+
+                                                                <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="Logo Image">Image 3:</label>
+																	<div class="col-sm-6">
+																		{% if project.home_image3 != "" %}
+
+																		<input type="file" class="form-control" id="apllication_img3" name="apllication_img3" 
+																		value="" accept="image/png, image/gif, image/jpg, image/jpeg" onchange="previewFile(this);" >
+
+																		<br><div> <img id="previewImg3" src="{{project.home_image3}}" height="200px"
+																			width="200px" alt=""><span class='close3'>&times;</span>
+																		</div>
+																		{% else %}   
+
+																		<input type="file" class="form-control" id="apllication_img3"   name="apllication_img3"
+																		 value="" accept="image/png, image/gif, image/jpg, image/jpeg" onchange="previewFile(this);">
+																		<br><div> <img style="display: none;" id="previewImg3" src="{{project.home_image1}}" height="200px"
+																			width="200px" alt=""><span style="display: none;" class='close3'>&times;</span>
+																		</div>
+																		{% endif %} 
+                                                                        <span class="text-danger">Please upload
+                                                                            image minimum size 250*370 px.</span>																		
+																	</div>
+																</div>
+
+                                                                <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="Logo Image">Image 4:</label>
+																	<div class="col-sm-6">
+																		{% if project.home_image4 != "" %}
+
+																		<input type="file" class="form-control" id="apllication_img4" name="apllication_img4" 
+																		value="" accept="image/png, image/gif, image/jpg, image/jpeg" onchange="previewFile(this);" >
+
+																		<br><div> <img id="previewImg4" src="{{project.home_image4}}" height="200px"
+																			width="200px" alt=""><span class='close4'>&times;</span>
+																		</div>
+																		{% else %}   
+
+																		<input type="file" class="form-control" id="apllication_img4"   name="apllication_img4"
+																		 value="" accept="image/png, image/gif, image/jpg, image/jpeg" onchange="previewFile(this);">
+																		<br><div> <img style="display: none;" id="previewImg4" src="{{project.home_image4}}" height="200px"
+																			width="200px" alt=""><span style="display: none;" class='close4'>&times;</span>
+																		</div>
+																		{% endif %} 
+                                                                        <span class="text-danger">Please upload
+                                                                            image minimum size 250*370 px.</span>																		
+																	</div>
+																</div>
+
+                                                                <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="Logo Image">Image 5:</label>
+																	<div class="col-sm-6">
+																		{% if project.home_image5 != "" %}
+
+																		<input type="file" class="form-control" id="apllication_img5" name="apllication_img5" 
+																		value="" accept="image/png, image/gif, image/jpg, image/jpeg" onchange="previewFile(this);" >
+
+																		<br><div> <img id="previewImg5" src="{{project.home_image5}}" height="200px"
+																			width="200px" alt=""><span class='close5'>&times;</span>
+																		</div>
+																		{% else %}   
+
+																		<input type="file" class="form-control" id="apllication_img5"   name="apllication_img5"
+																		 value="" accept="image/png, image/gif, image/jpg, image/jpeg" onchange="previewFile(this);">
+																		<br><div> <img style="display: none;" id="previewImg5" src="{{project.home_image5}}" height="200px"
+																			width="200px" alt=""><span style="display: none;" class='close5'>&times;</span>
+																		</div>
+																		{% endif %} 
+                                                                        <span class="text-danger">Please upload
+                                                                            image minimum size 470*300 px.</span>																		
+																	</div>
+																</div>
+
+                                                                <div class="form-group">
+																	<label class="control-label mb-10 col-sm-2"
+																		for="Logo Image">Image 6:</label>
+																	<div class="col-sm-6">
+																		{% if project.home_image6 != "" %}  
+
+																		<input type="file" class="form-control" id="apllication_img6" name="apllication_img6" 
+																		value="" accept="image/png, image/gif, image/jpg, image/jpeg" onchange="previewFile(this);" >
+
+																		<br><div> <img id="previewImg6" src="{{project.home_image6}}" height="200px"
+																			width="200px" alt=""><span class='close6'>&times;</span>
+																		</div>
+																		{% else %}   
+
+																		<input type="file" class="form-control" id="apllication_img6" name="apllication_img6"
+																		 value="" accept="image/png, image/gif, image/jpg, image/jpeg" onchange="previewFile(this);">
+																		<br><div> <img style="display: none;" id="previewImg6" src="{{project.home_image6}}" height="200px"
+																			width="200px" alt=""><span style="display: none;" class='close6'>&times;</span>
+																		</div>
+																		{% endif %} 
+                                                                        <span class="text-danger">Please upload
+                                                                            image minimum size 670*300 px.</span>																		
+																	</div>
+																</div>
+															
+																	
+																	</form>
+																</div>
+
+															</div>
+														</div>
+													</div>
+													<tr>
+														<td colspan="2">
+                             
+															{% if project %}
+															<input type="submit" class="btn btn-success btn-flat" value="Update">
+															<!-- <a href="/backend/project "id="cancel" name="cancel" class="btn btn-default">Cancel</a>                                                         -->
+                                                            
+															{%else%} 
+															<input type="submit" class="btn btn-success btn-flat" value="submit">
+															<!-- <a href="/backend/project "id="cancel" name="cancel" class="btn btn-default">Cancel</a>                                                         -->
+															
+															{% endif %}
+														</td>
+													</tr>
+												</table>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+					<!-- /Row -->
+			</div>
+	 	</section>
+
+{% endblock %}
+
+{% block Jscript %}
+<script>
+	function previewFile(input){	
+      
+				var file = $("#"+input.id).get(0).files[0];
+                
+                const last = input.id.slice(- 1);
+				if(file){
+					var reader = new FileReader();
+		
+					reader.onload = function(){
+						$("#previewImg"+last).attr("src", reader.result);
+						$("#previewImg"+last).css({'display':'block'});
+						$(".close"+last).css({'display':'block'});				
+					}
+		
+					reader.readAsDataURL(file);
+				}
+			}
+
+
+    
+    $(document).ready(function () {
+		var host = window.location.origin;
+		$(function () {
+			"use strict";
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.close2', function (e) {
+                    $('#previewImg').css({'display':'none'});
+					$('.close1').css({'display':'none'});
+					$('#apllication_img').val('');
+					$('#apllication_img').attr('value','');
+					
+					 var id = "home_image1";
+                    var mainid = $("#mainid").attr('value');
+					var thisElement = this;
+					swal({
+						title: "Are you sure?",
+						text: "You will not be able to recover this Image!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#e69a2a",
+						confirmButtonText: "Yes, delete it!",
+						cancelButtonText: "No, cancel plx!",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					}, function (isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type: 'GET',
+								url: host + "/backend/projectSingleImageDelete/"+id+"/"+mainid,
+								success: function (resultData) {
+									//  alert(resultData)
+									console.log(resultData);
+									if (resultData == 'success') {
+										$(thisElement).parent().hide(700);
+										swal("Deleted!", "Your file has been deleted.", "success");
+									} else {
+										alert("Something went wrong")
+									}
+									// alert("Save Complete")
+								}
+							});
+							swal("Deleted!", "Image Deleted Succesfully.", "success");
+
+						} else {
+							swal("Cancelled", "Image Not Deleted)", "error");
+						}
+					});
+					return false;
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+	});
+
+    $(document).ready(function () {
+		var host = window.location.origin;
+		$(function () {
+			"use strict";
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.close2', function (e) {
+                    $('#previewImg2').css({'display':'none'});
+					$('.close2').css({'display':'none'});
+					$('#apllication_img2').val('');
+					$('#apllication_img2').attr('value','');
+					
+					 var id = "home_image2";
+                    var mainid = $("#mainid").attr('value');
+					var thisElement = this;
+					swal({
+						title: "Are you sure?",
+						text: "You will not be able to recover this Image!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#e69a2a",
+						confirmButtonText: "Yes, delete it!",
+						cancelButtonText: "No, cancel plx!",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					}, function (isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type: 'GET',
+								url: host + "/backend/projectSingleImageDelete/"+id+"/"+mainid,
+								success: function (resultData) {
+									//  alert(resultData)
+									console.log(resultData);
+									if (resultData == 'success') {
+										$(thisElement).parent().hide(700);
+										swal("Deleted!", "Your file has been deleted.", "success");
+									} else {
+										alert("Something went wrong")
+									}
+									// alert("Save Complete")
+								}
+							});
+							swal("Deleted!", "Image Deleted Succesfully.", "success");
+
+						} else {
+							swal("Cancelled", "Image Not Deleted)", "error");
+						}
+					});
+					return false;
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+	});
+          
+         
+    $(document).ready(function () {
+		var host = window.location.origin;
+		$(function () {
+			"use strict";
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.close3', function (e) {
+                    $('#previewImg3').css({'display':'none'});
+					$('.close3').css({'display':'none'});
+					$('#apllication_img3').val('');
+					$('#apllication_img3').attr('value','');
+
+					
+					 var id = "home_image3";
+                    var mainid = $("#mainid").attr('value');
+					var thisElement = this;
+					swal({
+						title: "Are you sure?",
+						text: "You will not be able to recover this Image!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#e69a2a",
+						confirmButtonText: "Yes, delete it!",
+						cancelButtonText: "No, cancel plx!",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					}, function (isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type: 'GET',
+								url: host + "/backend/projectSingleImageDelete/"+id+"/"+mainid,
+								success: function (resultData) {
+									//  alert(resultData)
+									console.log(resultData);
+									if (resultData == 'success') {
+										$(thisElement).parent().hide(700);
+										swal("Deleted!", "Your file has been deleted.", "success");
+									} else {
+										alert("Something went wrong")
+									}
+									// alert("Save Complete")
+								}
+							});
+							swal("Deleted!", "Image Deleted Succesfully.", "success");
+
+						} else {
+							swal("Cancelled", "Image Not Deleted)", "error");
+						}
+					});
+					return false;
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+	});
+
+    $(document).ready(function () {
+		var host = window.location.origin;
+		$(function () {
+			"use strict";
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.close3', function (e) {
+                    $('#previewImg4').css({'display':'none'});
+					$('.close4').css({'display':'none'});
+					$('#apllication_img4').val('');
+					$('#apllication_img4').attr('value','');
+
+					
+					 var id = "home_image4";
+                    var mainid = $("#mainid").attr('value');
+					var thisElement = this;
+					swal({
+						title: "Are you sure?",
+						text: "You will not be able to recover this Image!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#e69a2a",
+						confirmButtonText: "Yes, delete it!",
+						cancelButtonText: "No, cancel plx!",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					}, function (isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type: 'GET',
+								url: host + "/backend/projectSingleImageDelete/"+id+"/"+mainid,
+								success: function (resultData) {
+									//  alert(resultData)
+									console.log(resultData);
+									if (resultData == 'success') {
+										$(thisElement).parent().hide(700);
+										swal("Deleted!", "Your file has been deleted.", "success");
+									} else {
+										alert("Something went wrong")
+									}
+									// alert("Save Complete")
+								}
+							});
+							swal("Deleted!", "Image Deleted Succesfully.", "success");
+
+						} else {
+							swal("Cancelled", "Image Not Deleted)", "error");
+						}
+					});
+					return false;
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+	});
+
+    $(document).ready(function () {
+		var host = window.location.origin;
+		$(function () {
+			"use strict";
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.close3', function (e) {
+                    $('#previewImg5').css({'display':'none'});
+					$('.close5').css({'display':'none'});
+					$('#apllication_img5').val('');
+					$('#apllication_img5').attr('value','');
+					
+					 var id = "home_image5";
+                    var mainid = $("#mainid").attr('value');
+					var thisElement = this;
+					swal({
+						title: "Are you sure?",
+						text: "You will not be able to recover this Image!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#e69a2a",
+						confirmButtonText: "Yes, delete it!",
+						cancelButtonText: "No, cancel plx!",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					}, function (isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type: 'GET',
+								url: host + "/backend/projectSingleImageDelete/"+id+"/"+mainid,
+								success: function (resultData) {
+									//  alert(resultData)
+									console.log(resultData);
+									if (resultData == 'success') {
+										$(thisElement).parent().hide(700);
+										swal("Deleted!", "Your file has been deleted.", "success");
+									} else {
+										alert("Something went wrong")
+									}
+									// alert("Save Complete")
+								}
+							});
+							swal("Deleted!", "Image Deleted Succesfully.", "success");
+
+						} else {
+							swal("Cancelled", "Image Not Deleted)", "error");
+						}
+					});
+					return false;
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+	});
+
+    $(document).ready(function () {
+		var host = window.location.origin;
+		$(function () {
+			"use strict";
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.close3', function (e) {
+                    $('#previewImg6').css({'display':'none'});
+					$('.close6').css({'display':'none'});
+					$('#apllication_img6').val('');
+					$('#apllication_img6').attr('value','');
+					
+					 var id = "home_image6";
+                    var mainid = $("#mainid").attr('value');
+					var thisElement = this;
+					swal({
+						title: "Are you sure?",
+						text: "You will not be able to recover this Image!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#e69a2a",
+						confirmButtonText: "Yes, delete it!",
+						cancelButtonText: "No, cancel plx!",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					}, function (isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type: 'GET',
+								url: host + "/backend/projectSingleImageDelete/"+id+"/"+mainid,
+								success: function (resultData) {
+									//  alert(resultData)
+									console.log(resultData);
+									if (resultData == 'success') {
+										$(thisElement).parent().hide(700);
+										swal("Deleted!", "Your file has been deleted.", "success");
+									} else {
+										alert("Something went wrong")
+									}
+									// alert("Save Complete")
+								}
+							});
+							swal("Deleted!", "Image Deleted Succesfully.", "success");
+
+						} else {
+							swal("Cancelled", "Image Not Deleted)", "error");
+						}
+					});
+					return false;
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+	});
+
+        
+        
+
+	// after closing preview show updated image preview
+	function updateFiles_pre() {
+		var fileIndexes = $('.gallery > div').map(function () {
+			return $(this).data('index');
+		}).get().join(",");
+		$('#files_selected_pre').val(fileIndexes);
+	}
+	//insert time multiple images preview 
+
+	$("#gallery-photo-add").on('change', function () {
+		var fileList = this.files;
+		$('.gallery').empty();
+		for (var i = 0; i < fileList.length; i++) {
+			var t = window.URL || window.webkitURL;
+			var objectUrl = t.createObjectURL(fileList[i]);
+			$('.removeimg').fadeIn();
+			$('.gallery').append('<div data-index="' + i + '" class="pro-category-html pip img_' + i + '"><span class="preview-close-btn remove img_' + i + '" "><b>x</b></span><img class="img_' + i + '" src="' + objectUrl + '" width="200px" height="200px" style="margin-right: 3px;"></div>');
+			j = i + 1;
+
+		}
+		updateFiles_pre();
+	});
+	// insert time preview close
+	$(document).on('click', '.remove', function(){
+	// alert(3)
+	var pips = $('.pip').toArray();
+	// alert(pips)
+	var $selectedPip = $(this).parent('.pip');
+	var index = pips.indexOf($selectedPip[0]);
+
+	var dt = new DataTransfer();
+	var files = $("#gallery-photo-add")[0].files;
+
+	for (var fileIdx = 0; fileIdx < files.length; fileIdx++) {
+		if (fileIdx !== index) {
+		dt.items.add(files[fileIdx]);
+	  }
+	}
+	$("#gallery-photo-add")[0].files = dt.files;
+	$selectedPip.remove();
+  });
+
+	// after closing preview show updated image preview			
+	function updateFiles() {
+		var fileIndexes = $('#imgs > div').map(function () {
+			return $(this).data('index');
+		}).get().join(",");
+		$('#files_selected').val(fileIndexes);
+	}
+	// update tme multiple images preview
+	$("#productImage").on('change', function () {
+		var fileList = this.files;
+		$('#imgs').empty();
+		for (var i = 0; i < fileList.length; i++) {
+			var t = window.URL || window.webkitURL;
+			var objectUrl = t.createObjectURL(fileList[i]);
+			$('.removeimg').fadeIn();
+			$('#imgs').append('<div data-index=" ' + i + '" class="pro-category-html pip img_' + i + '"><span class="preview-close-btn remove1 img_' + i + '" "><b>x</b></span><img class="img_' + i + '" src="' + objectUrl + '" width="200px" height="200px" style="margin-right: 3px;"></div>');
+			j = i + 1;
+		}
+		updateFiles();
+	});
+	
+//  update time preview close
+  $(document).on('click', '.remove1', function(){
+	// alert(3)
+	var pips = $('.pip').toArray();
+	// alert(pips)
+	var $selectedPip = $(this).parent('.pip');
+	var index = pips.indexOf($selectedPip[0]);
+
+	var dt = new DataTransfer();
+	var files = $("#productImage")[0].files;
+
+	for (var fileIdx = 0; fileIdx < files.length; fileIdx++) {
+		if (fileIdx !== index) {
+		dt.items.add(files[fileIdx]);
+	  }
+	}
+	$("#productImage")[0].files = dt.files;
+
+	$selectedPip.remove();
+  });
+		$(document).ready(function () {
+		var host = window.location.origin;
+		$(function () {
+			"use strict";
+			var SweetAlert = function () { };
+
+			SweetAlert.prototype.init = function () {
+
+				//Parameter
+				$('body').on('click', '.close_img', function (e) {
+					
+					 var deleteid = $(this).attr("data-id");
+					//  alert(deleteid)
+					// var deleteid = $('#productImgId').val();
+					var id = $('#productdeleteid').val();
+					console.log(id, "id");
+					var thisElement = this;
+					swal({
+						title: "Are you sure?",
+						text: "You will not be able to recover this Image!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#e69a2a",
+						confirmButtonText: "Yes, delete it!",
+						cancelButtonText: "No, cancel plx!",
+						closeOnConfirm: false,
+						closeOnCancel: false
+					}, function (isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type: 'GET',
+								url: host + "/backend/projectImageDelete/" + id + "/" + deleteid,
+								success: function (resultData) {
+									//  alert(resultData)
+									console.log(resultData);
+									if (resultData == 'success') {
+										$(thisElement).parent().hide(700);
+										swal("Deleted!", "Your file has been deleted.", "success");
+									} else {
+										alert("Something went wrong")
+									}
+									// alert("Save Complete")
+								}
+							});
+							swal("Deleted!", "Image Deleted Succesfully.", "success");
+
+						} else {
+							swal("Cancelled", "Image Not Deleted)", "error");
+						}
+					});
+					return false;
+				});
+
+			},
+				$.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;
+
+			$.SweetAlert.init();
+		});
+
+	});
+    
+	
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+{% endblock %} -->
